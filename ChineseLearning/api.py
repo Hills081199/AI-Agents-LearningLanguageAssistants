@@ -14,10 +14,10 @@ from ChineseLearning.main import generate_lesson_content, get_topic_suggestion
 
 app = FastAPI(title="HSK Content Factory API")
 
-# Allow requests from the frontend dev server and common local origins
+# Allow requests from any origin (flexible for EC2/Production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
