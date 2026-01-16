@@ -20,6 +20,18 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
     const [isOpen, setIsOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
+    // Determine API base URL dynamically
+    const [apiBaseUrl, setApiBaseUrl] = useState("http://127.0.0.1:8000");
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const host = window.location.hostname;
+            if (host !== "localhost" && host !== "127.0.0.1") {
+                setApiBaseUrl(`http://${host}:8000`);
+            }
+        }
+    }, []);
+
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -37,7 +49,7 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
         setLoading(true);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/chat', {
+            const response = await fetch(`${apiBaseUrl}/chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

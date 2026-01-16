@@ -37,9 +37,23 @@ export default function Home() {
   const [loadingStep, setLoadingStep] = useState(0);
   const [showPricing, setShowPricing] = useState(false);
 
+  // Determine API base URL dynamically
+  const [apiBaseUrl, setApiBaseUrl] = useState("http://127.0.0.1:8000");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const host = window.location.hostname;
+      // If we are on EC2 (Public IP), we want to call the API on that same IP.
+      // If we are on localhost, we keep 127.0.0.1.
+      if (host !== "localhost" && host !== "127.0.0.1") {
+        setApiBaseUrl(`http://${host}:8000`);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     fetchHistory();
-  }, []);
+  }, [apiBaseUrl]);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -65,7 +79,7 @@ export default function Home() {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch("/api/history");
+      const res = await fetch(`${apiBaseUrl}/history`);
       const data = await res.json();
       setHistory(data);
     } catch (e) {
@@ -77,7 +91,7 @@ export default function Home() {
     if (loading) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/history/${filename}`);
+      const res = await fetch(`${apiBaseUrl}/history/${filename}`);
       const data = await res.json();
       if (data.html_content) setHtmlContent(data.html_content);
       if (data.lesson_data) setLessonData(data.lesson_data);
@@ -97,7 +111,7 @@ export default function Home() {
     setActiveView("story");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/generate", {
+      const response = await fetch(`${apiBaseUrl}/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: topic || null, level }),
@@ -164,7 +178,7 @@ export default function Home() {
                     setSuggesting(true);
                     setTopic("Asking AI...");
                     try {
-                      const res = await fetch("http://127.0.0.1:8000/suggest-topic", {
+                      const res = await fetch(`${apiBaseUrl}/suggest-topic`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ level })
