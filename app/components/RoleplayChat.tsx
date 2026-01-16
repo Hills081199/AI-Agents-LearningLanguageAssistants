@@ -37,7 +37,7 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
         setLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8000/chat', {
+            const response = await fetch('http://127.0.0.1:8000/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -135,8 +135,8 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
                                 )}
                                 <div
                                     className={`max-w-[75%] p-3 rounded-2xl ${msg.role === 'user'
-                                            ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-br-md'
-                                            : 'bg-white text-slate-800 shadow-sm border border-slate-100 rounded-bl-md'
+                                        ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-br-md'
+                                        : 'bg-white text-slate-800 shadow-sm border border-slate-100 rounded-bl-md'
                                         }`}
                                 >
                                     {msg.content}
