@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sparkles, Loader2, BookOpen, GraduationCap, Target, Menu, X, ChevronRight, Zap, PlayCircle, Check, Circle, Dices } from "lucide-react";
+import { Sparkles, Loader2, BookOpen, GraduationCap, Target, Menu, X, ChevronRight, Zap, PlayCircle, Check, Circle, Dices, Crown } from "lucide-react";
 import VocabularyList from "./components/VocabularyList";
 import Quiz from "./components/Quiz";
 import RoleplayChat from "./components/RoleplayChat";
+import PricingModal from "./components/PricingModal";
 
 interface LessonData {
   topic: string;
@@ -34,6 +35,7 @@ export default function Home() {
   const [suggesting, setSuggesting] = useState(false);
 
   const [loadingStep, setLoadingStep] = useState(0);
+  const [showPricing, setShowPricing] = useState(false);
 
   useEffect(() => {
     fetchHistory();
@@ -135,7 +137,7 @@ export default function Home() {
           }`}
       >
         <div className="flex flex-col h-full">
-          {/* Logo */}
+          {/* Logo Section */}
           <div className="p-6 border-b border-slate-100 flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <Zap className="w-5 h-5 text-white" />
@@ -147,14 +149,14 @@ export default function Home() {
           <div className="p-5 space-y-4 border-b border-slate-100 bg-slate-50/50">
             <div>
               <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block ml-1">New Lesson</label>
-              <div className="flex gap-2">
+              <div className="space-y-2">
                 <input
                   type="text"
                   placeholder="Enter a topic..."
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   disabled={loading}
-                  className="flex-1 w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm placeholder:text-slate-400 min-w-0"
+                  className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm placeholder:text-slate-400"
                 />
                 <button
                   onClick={async () => {
@@ -170,26 +172,26 @@ export default function Home() {
                       const data = await res.json();
                       if (data.topic) setTopic(data.topic);
                     } catch (e) {
-                      console.error("Failed to suggest topic", e);
                       setTopic("Travel to China");
                     } finally {
                       setSuggesting(false);
                     }
                   }}
                   disabled={loading || suggesting}
-                  className="px-3 bg-white border border-slate-200 text-slate-500 rounded-xl hover:text-indigo-600 hover:border-indigo-200 transition-colors flex-shrink-0"
-                  title="Get Random Topic from AI (based on Level)"
+                  className="w-full py-2 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl hover:bg-indigo-100 hover:border-indigo-200 transition-all text-sm font-medium flex items-center justify-center gap-2"
                 >
-                  {suggesting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Dices className="w-5 h-5" />}
+                  {suggesting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Dices className="w-4 h-4" />}
+                  <span>Random Topic</span>
                 </button>
               </div>
             </div>
-            <div className="flex gap-2">
+
+            <div className="grid grid-cols-2 gap-2">
               <select
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
                 disabled={loading}
-                className="flex-1 px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-sm cursor-pointer hover:border-indigo-300 transition-colors"
+                className="px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-sm cursor-pointer hover:border-indigo-300 transition-colors"
               >
                 {["HSK 1", "HSK 2", "HSK 3", "HSK 4", "HSK 5", "HSK 6"].map((l) => (
                   <option key={l} value={l}>{l}</option>
@@ -198,7 +200,7 @@ export default function Home() {
               <button
                 onClick={generateLesson}
                 disabled={loading}
-                className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center gap-2 min-w-[120px] justify-center"
+                className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl text-sm font-medium hover:shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-50 flex items-center gap-2 justify-center"
               >
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
                 <span>Generate</span>
@@ -206,11 +208,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Library List */}
+          {/* Library Section (History list) */}
           <div className="flex-1 overflow-y-auto p-3 custom-scrollbar">
             <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-3 mt-2">History</div>
 
-            {/* Generating Skeleton */}
             {loading && !hasData && (
               <div className="mb-2 px-4 py-3 bg-indigo-50/50 border border-indigo-100 rounded-xl flex items-center gap-3">
                 <div className="w-4 h-4 rounded-full border-2 border-indigo-200 border-t-indigo-600 animate-spin" />
@@ -222,30 +223,50 @@ export default function Home() {
             )}
 
             <div className="space-y-1">
-              {history.map((item) => (
-                <button
-                  key={item.filename}
-                  onClick={() => loadLesson(item.filename)}
-                  disabled={loading}
-                  className={`w-full text-left px-4 py-3 rounded-xl text-sm transition-all group border border-transparent ${loading
-                    ? "opacity-50 cursor-not-allowed"
-                    : "hover:bg-white hover:shadow-md hover:shadow-slate-200/50 hover:border-slate-100 text-slate-600 hover:text-slate-900"
-                    }`}
-                >
-                  <div className="w-full">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium truncate pr-2 flex-1">{item.topic}</span>
-                      {item.level && (
-                        <span className="text-[9px] px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded font-bold uppercase tracking-wide whitespace-nowrap">
-                          {item.level}
-                        </span>
-                      )}
+              {history.length > 0 ? (
+                history.map((item) => (
+                  <button
+                    key={item.filename}
+                    onClick={() => loadLesson(item.filename)}
+                    disabled={loading}
+                    className={`w-full text-left px-4 py-3 rounded-xl text-sm transition-all group border border-transparent ${loading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-white hover:shadow-md hover:shadow-slate-200/50 hover:border-slate-100 text-slate-600 hover:text-slate-900"
+                      }`}
+                  >
+                    <div className="w-full">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-medium truncate pr-2 flex-1">{item.topic}</span>
+                        {item.level && (
+                          <span className="text-[9px] px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded font-bold uppercase tracking-wide whitespace-nowrap">
+                            {item.level}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[10px] text-slate-400 block">{new Date(item.created_at * 1000).toLocaleDateString()}</span>
                     </div>
-                    <span className="text-[10px] text-slate-400 block">{new Date(item.created_at * 1000).toLocaleDateString()}</span>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                ))
+              ) : (
+                <div className="p-8 text-center">
+                  <p className="text-xs text-slate-400">No lessons generated yet.</p>
+                </div>
+              )}
             </div>
+          </div>
+
+          {/* Sidebar Footer */}
+          <div className="p-4 border-t border-slate-100 bg-slate-50/80">
+            <button
+              onClick={() => setShowPricing(true)}
+              className="w-full py-4 px-4 bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-white font-bold rounded-2xl shadow-xl shadow-amber-200/50 flex items-center justify-center gap-3 transition-all hover:-translate-y-1 group"
+            >
+              <Crown className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <div className="text-left">
+                <p className="text-[10px] uppercase opacity-80 leading-none mb-1">Premium</p>
+                <p className="text-sm leading-none">Upgrade Plan</p>
+              </div>
+            </button>
           </div>
         </div>
       </aside>
@@ -387,6 +408,7 @@ export default function Home() {
           characterName="Teacher Li"
         />
       )}
+      <PricingModal isOpen={showPricing} onClose={() => setShowPricing(false)} />
     </div>
   );
 }
