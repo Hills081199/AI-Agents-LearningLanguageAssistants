@@ -604,19 +604,22 @@ def generate_lesson_content(topic=None, level="HSK 5"):
     
     return final_topic_name, final_markdown, html_content, lesson_data
 
-def get_topic_suggestion(level="HSK 3"):
+def get_topic_suggestion(level="HSK 3", additional_excluded=None):
     agents = ChineseLearningAgents()
     tasks = ChineseLearningTasks()
     
-    # Get existing topics to avoid repetition
+    # Get existing topics from disk to avoid repetition
     output_dir = os.path.join(os.path.dirname(__file__), "output")
-    excluded_topics = []
+    disk_topics = []
     if os.path.exists(output_dir):
-        excluded_topics = [
+        disk_topics = [
             f.replace(".html", "").replace("_", " ").title() 
             for f in os.listdir(output_dir) 
             if f.endswith(".html")
         ]
+    
+    # Combine with extra topics (e.g. from current session)
+    excluded_topics = list(set(disk_topics + (additional_excluded or [])))
     
     planner = agents.lesson_planner_agent()
     topic_task = tasks.suggest_topic_task(planner, level, excluded_topics)

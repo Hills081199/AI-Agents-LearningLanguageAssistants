@@ -49,16 +49,24 @@ class ChineseLearningTasks:
             "Housing & Real Estate", "Mobile Apps & Digital Life"
         ]
         selected_category = random.choice(categories)
+        
+        # Add a diverse mood/style modifier
+        styles = ["Creative", "Unconventional", "Deeply Cultural", "Controversial", "Playful", "Academic", "Practical", "Futuristic"]
+        selected_style = random.choice(styles)
+        
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
         return Task(
             description=(
-                f"Suggest a single, UNIQUE topic suitable for HSK level '{level}'.\n"
-                f"FOCUS DOMAIN: {selected_category} (You MUST choose a topic within this specific domain).\n"
-                f"Constraint: You MUST NOT reuse any of these recent topics: [{recent_topics}].\n"
-                f"Random Seed: {random_seed}.\n"
+                f"Suggest a single, UNIQUE and UNCOMMON topic suitable for HSK level '{level}'.\n"
+                f"STYLE: {selected_style}\n"
+                f"FOCUS DOMAIN: {selected_category} (You MUST choose a topic within this specific domain).\n\n"
+                f"CRITICAL CONSTRAINT: You MUST NOT reuse any of these recent topics: [{recent_topics}].\n"
+                f"CRITICAL CONSTRAINT: Avoid generic topics like 'Weather', 'Food', 'Travel' or 'School'. Go for specific sub-topics or unique angles.\n"
+                f"Random Context Token: {random_seed}-{timestamp}.\n\n"
                 "The topic should be interesting, specific, and culturally relevant.\n"
-                "Be creative! Look for unique angles or specific sub-topics rather than generic ones.\n"
-                "Output ONLY the topic name (e.g., 'The Art of Tea Making' or 'Mobile Payments in China')."
+                "Be highly creative! Look for unique angles or specific sub-topics rather than generic ones.\n"
+                "Output ONLY the topic name (e.g., 'The Hidden Meaning of Colors in Beijing Opera' or 'The Rise of Smart Cities in China')."
             ),
             expected_output='A single string representing the topic.',
             agent=agent

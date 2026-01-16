@@ -23,6 +23,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Global cache for recently suggested topics to avoid repetitive "Random Topic" results
+recent_suggestions = []
+
 class LessonRequest(BaseModel):
     topic: Optional[str] = None
     level: str = "HSK 5"
@@ -42,7 +45,14 @@ class TopicRequest(BaseModel):
 @app.post("/suggest-topic")
 def suggest_topic(request: TopicRequest):
     try:
-        topic = get_topic_suggestion(request.level)
+        topic = get_topic_suggestion(request.level, additional_excluded=recent_suggestions)
+        
+        # Add to recent suggestions, keep list manageable
+        if topic not in recent_suggestions:
+            recent_suggestions.append(topic)
+            if len(recent_suggestions) > 20:
+                recent_suggestions.pop(0)
+                
         return {"topic": topic}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
