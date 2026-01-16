@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Chinese Tea Culture and Tea Ceremony Experience - HSK 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 2px;
+        }
+        
+        h2, h3, h4 { color: #0f172a; margin: 20px 0 12px; }
+        h2 { font-size: 1.35rem; font-weight: 700; }
+        h3 { font-size: 1.15rem; font-weight: 600; }
+        h4 { font-size: 1rem; font-weight: 600; color: #475569; }
+        p { margin-bottom: 14px; color: #475569; line-height: 1.9; }
+        li { margin-left: 20px; margin-bottom: 8px; color: #475569; }
+        strong { color: #0f172a; }
+        
+        .story-content {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #1e293b;
+        }
+        .story-content p {
+            color: #1e293b;
+            margin-bottom: 18px;
+        }
+        
+        .story-block {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .story-hanzi {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+        
+        details.story-details {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        details.story-details summary {
+            padding: 12px 16px;
+            background: #f1f5f9;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            list-style: none; /* Hide default triangle */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.story-details summary::after {
+            content: '+';
+            font-weight: bold;
+        }
+        details.story-details[open] summary::after {
+            content: '-';
+        }
+        .story-pinyin, .story-trans {
+            padding: 16px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .story-pinyin { color: #8b5cf6; } 
+
+        
+        .vocab-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            padding: 16px 20px;
+            margin: 0 -20px;
+            border-radius: 12px;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .vocab-row:hover { background: #f8fafc; }
+        .hanzi { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #0f172a;
+            min-width: 80px;
+        }
+        .vocab-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .pinyin { color: #8b5cf6; font-weight: 500; font-size: 0.95rem; }
+        .meaning { color: #64748b; font-size: 0.9rem; }
+        .tts-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f1f5f9;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tts-btn:hover { background: #3b82f6; transform: scale(1.1); }
+        
+        .grammar-card {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-family: 'Noto Sans SC', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+        .grammar-example-badge {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">HSK 3</span>
+        <h1>Traditional Chinese Tea Culture and Tea Ceremony Experience</h1>
+        
+        <div class="section">
+            <div class="section-title">📋 Lesson Plan</div>
+            <p>Lesson Plan Outline: Traditional Chinese Tea Culture and Tea Ceremony Experience (HSK 3 Level)</p>
+<p>I. Learning Objectives</p>
+<p>By the end of the lesson, students will be able to:</p>
+<p>1. Understand basic concepts and cultural significance of traditional Chinese tea culture.</p>
+<p>2. Recognize and use key vocabulary related to tea and tea ceremonies.</p>
+<p>3. Describe simple processes involved in a Chinese tea ceremony using appropriate grammar structures.</p>
+<p>4. Express preferences and experiences regarding tea using HSK 3 level sentences.</p>
+<p>5. Participate in a guided tea ceremony experience, using learned terms and polite expressions.</p>
+<p>II. Key Vocabulary (HSK 3 appropriate)</p>
+<p>1. 茶 (chá) - tea</p>
+<p>2. 茶叶 (chá yè) - tea leaves</p>
+<p>3. 茶杯 (chá bēi) - teacup</p>
+<p>4. 茶壶 (chá hú) - teapot</p>
+<p>5. 泡茶 (pào chá) - to brew tea</p>
+<p>6. 品茶 (pǐn chá) - to taste tea</p>
+<p>7. 传统 (chuán tǒng) - tradition; traditional</p>
+<p>8. 礼仪 (lǐ yí) - ceremony; etiquette</p>
+<p>9. 文化 (wén huà) - culture</p>
+<p>10. 喜欢 (xǐ huān) - to like</p>
+<p>III. Grammar Points to Cover</p>
+<p>1. 把字句 (bǎ structure) — Used to describe the handling or disposal of an object, which is useful when explaining steps in making tea or handling tea utensils.</p>
+<li>Example: 我把茶叶放进茶壶里。 (Wǒ bǎ chá yè fàng jìn chá hú lǐ.) — I put the tea leaves into the teapot.</li>
+<p>2. 了 (le) — Completed action particle, to indicate the completion of steps in the tea ceremony or changes in state.</p>
+<li>Example: 我泡了三分钟茶。 (Wǒ pào le sān fēn zhōng chá.) — I brewed the tea for three minutes.</li>
+<p>IV. Suggested Lesson Flow</p>
+<p>1. Introduction (10 min)</p>
+<li>Present images and a short video about Chinese tea culture and ceremony.</li>
+<li>Engage students in a brief discussion or Q&A about their experiences with tea.</li>
+<p>2. Vocabulary Presentation (15 min)</p>
+<li>Introduce the key vocabulary with pictures and sample sentences.</li>
+<li>Conduct interactive practice through matching and repetition.</li>
+<p>3. Grammar Explanation (15 min)</p>
+<li>Teach the 把字句 and 了 particle with contextualized examples related to tea making.</li>
+<li>Engage students in sentence building exercises.</li>
+<p>4. Reading and Listening Practice (15 min)</p>
+<li>Provide a short text or audio about a traditional Chinese tea ceremony.</li>
+<li>Comprehension questions focusing on vocabulary and grammar.</li>
+<p>5. Tea Ceremony Experience (20 min)</p>
+<li>Demonstrate a simple tea ceremony step-by-step.</li>
+<li>Students practice the ceremony in pairs or small groups, narrating the steps using target vocabulary and grammar.</li>
+<p>6. Wrap-up and Review (10 min)</p>
+<li>Review new words and grammar.</li>
+<li>Ask students to share their feelings and favorite parts using learned language structures.</li>
+<p>V. Assessment</p>
+<li>Informal assessment through participation and oral practice.</li>
+<li>A short written or oral quiz on vocabulary and grammar at lesson end.</li>
+<p>This detailed plan ensures that students encounter tea culture linguistically and experientially, aligned with HSK 3 capabilities.</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📖 Reading Passage</div>
+            <div class="story-content">
+                
+    <div class="story-block">
+        <div class="story-hanzi">
+            <p>中国有悠久的茶文化。传统的茶文化不仅仅是喝茶，还包括泡茶和品茶的礼仪。茶在中国是一种重要的饮品，也是一种文化的象征。中国人喜欢用茶来招待客人，表达友好和尊重。</p>
+<p>茶叶是泡茶的重要材料。泡茶的时候，首先要把茶叶放进茶壶里，然后用热水冲泡。泡好茶后，人们会用小小的茶杯品茶。品茶的时候，要先闻茶的香味，再慢慢喝，体会茶的味道。茶叶有很多种，有绿茶、红茶和乌龙茶，每种茶的味道和泡法都不一样。</p>
+<p>在传统的茶礼仪中，泡茶和送茶都是非常讲究的过程。主持茶道的人会用标准的步骤来泡茶，比如先热杯子、再放茶叶、然后倒水。整个过程安静而优雅，给人一种放松的感觉。体验茶道不仅能学到泡茶的技巧，还能感受到中国文化的美和历史的深厚。</p>
+<p>很多外国人来中国都喜欢参加一次茶道体验。他们学习用中文说“茶杯”、“茶叶”等词语，跟老师一起泡茶，感受茶文化的魅力。通过茶道，人们不仅学到了语言知识，还加深了对中国传统文化的理解。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-pinyin">
+                <p>Zhōngguó yǒu yōujiǔ de chá wénhuà. Chuántǒng de chá wénhuà bù jǐnjǐn shì hē chá, hái bāokuò pào chá hé pǐn chá de lǐyí. Chá zài Zhōngguó shì yī zhǒng zhòngyào de yǐnpǐn, yě shì yī zhǒng wénhuà de xiàngzhēng. Zhōngguó rén xǐhuan yòng chá lái zhāodài kèrén, biǎodá yǒuhǎo hé zūnzhòng.</p>
+<p>Cháyè shì pào chá de zhòngyào cáiliào. Pào chá de shíhòu, shǒuxiān yào bǎ cháyè fàng jìn chá hú lǐ, ránhòu yòng rè shuǐ chōng pào. Pào hǎo chá hòu, rénmen huì yòng xiǎo xiǎo de chábēi pǐn chá. Pǐn chá de shíhòu, yào xiān wén chá de xiāngwèi, zài màn man hē, tǐhuì chá de wèidào. Cháyè yǒu hěn duō zhǒng, yǒu lǜchá, hóngchá hé wūlóngchá, měi zhǒng chá de wèidào hé pào fǎ dōu bù yīyàng.</p>
+<p>Zài chuántǒng de chá lǐyí zhōng, pào chá hé sòng chá dōu shì fēicháng jiǎngjiū de guòchéng. Zhǔchí chá dào de rén huì yòng biāozhǔn de bùzhòu lái pào chá, bǐrú xiān rè bēizi, zài fàng cháyè, ránhòu dǎo shuǐ. Zhěnggè guòchéng ānjìng ér yōuyǎ, gěi rén yī zhǒng fàngsōng de gǎnjué. Tǐyàn chádào bùjǐn néng xué dào pào chá de jìqiǎo, hái néng gǎnshòu dào Zhōngguó wénhuà de měi hé lìshǐ de shēnhòu.</p>
+<p>Hěn duō wàiguó rén lái Zhōngguó dōu xǐhuan cānjiā yīcì chádào tǐyàn. Tāmen xuéxí yòng zhōngwén shuō “chábēi”、“cháyè” děng cíyǔ, gēn lǎoshī yīqǐ pào chá, gǎnshòu chá wénhuà de mèilì. Tōngguò chádào, rénmen bùjǐn xué dào le yǔyán zhīshì, hái jiāshēn le duì Zhōngguó chuántǒng wénhuà de lǐjiě.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>China has a long history of tea culture. Traditional tea culture is not only about drinking tea but also includes the etiquette of brewing and tasting tea. Tea is an important beverage in China and also a symbol of culture. Chinese people like to use tea to entertain guests, expressing friendliness and respect.</p>
+<p>Tea leaves are the essential materials for brewing tea. When brewing tea, first put the tea leaves into the teapot, then pour hot water over them. After brewing the tea, people use small teacups to taste the tea. When tasting tea, you first smell the fragrance of the tea, then slowly drink it to experience the flavor. There are many kinds of tea leaves, including green tea, black tea, and oolong tea. Each type has a different taste and brewing method.</p>
+<p>In traditional tea etiquette, brewing and serving tea are very careful processes. The person hosting the tea ceremony follows standard steps to brew tea, such as warming the cups first, then putting in the tea leaves, and finally pouring the water. The whole process is quiet and elegant, giving people a feeling of relaxation. Experiencing the tea ceremony not only teaches tea-brewing skills but also allows people to feel the beauty of Chinese culture and its deep history.</p>
+<p>Many foreigners who come to China enjoy participating in a tea ceremony experience. They learn to say words like "teacup" and "tea leaves" in Chinese, brew tea together with the teacher, and feel the charm of tea culture. Through the tea ceremony, people not only learn language knowledge but also deepen their understanding of traditional Chinese culture.</p>
+            </div>
+        </details>
+        
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📝 Vocabulary (20 words)</div>
+            
+        <div class="vocab-row">
+            <span class="hanzi">茶叶</span>
+            <div class="vocab-info">
+                <span class="pinyin">chá yè</span>
+                <span class="meaning">tea leaves</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我把茶叶放进茶壶里。</span>
+                    <button onclick="speak('我把茶叶放进茶壶里。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒ bǎ chá yè fàng jìn chá hú lǐ.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">I put the tea leaves into the teapot.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('茶叶')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">泡茶</span>
+            <div class="vocab-info">
+                <span class="pinyin">pào chá</span>
+                <span class="meaning">to brew tea</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">他正在泡茶，请稍等。</span>
+                    <button onclick="speak('他正在泡茶，请稍等。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Tā zhèngzài pào chá, qǐng shāo děng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">He is brewing tea, please wait a moment.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('泡茶')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">品茶</span>
+            <div class="vocab-info">
+                <span class="pinyin">pǐn chá</span>
+                <span class="meaning">to taste tea</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们一起品茶，感受茶的味道。</span>
+                    <button onclick="speak('我们一起品茶，感受茶的味道。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yīqǐ pǐn chá, gǎnshòu chá de wèidào.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We taste tea together to experience the flavor.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('品茶')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">传统</span>
+            <div class="vocab-info">
+                <span class="pinyin">chuán tǒng</span>
+                <span class="meaning">tradition; traditional</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">春节是中国的传统节日。</span>
+                    <button onclick="speak('春节是中国的传统节日。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Chūnjié shì Zhōngguó de chuántǒng jiérì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Spring Festival is a traditional Chinese holiday.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('传统')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">礼仪</span>
+            <div class="vocab-info">
+                <span class="pinyin">lǐ yí</span>
+                <span class="meaning">ceremony; etiquette</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">茶礼仪非常讲究，体现尊重。</span>
+                    <button onclick="speak('茶礼仪非常讲究，体现尊重。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Chá lǐyí fēicháng jiǎngjiū, tǐxiàn zūnzhòng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Tea ceremony is very particular, reflecting respect.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('礼仪')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">文化</span>
+            <div class="vocab-info">
+                <span class="pinyin">wén huà</span>
+                <span class="meaning">culture</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">中国文化历史悠久。</span>
+                    <button onclick="speak('中国文化历史悠久。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Zhōngguó wénhuà lìshǐ yōujiǔ.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Chinese culture has a long history.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('文化')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">招待</span>
+            <div class="vocab-info">
+                <span class="pinyin">zhāo dài</span>
+                <span class="meaning">to entertain (guests)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们用茶招待客人。</span>
+                    <button onclick="speak('我们用茶招待客人。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yòng chá zhāodài kèrén.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We use tea to entertain guests.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('招待')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">尊重</span>
+            <div class="vocab-info">
+                <span class="pinyin">zūn zhòng</span>
+                <span class="meaning">to respect</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们要尊重别人的习惯。</span>
+                    <button onclick="speak('我们要尊重别人的习惯。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yào zūnzhòng biérén de xíguàn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We should respect other people's habits.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('尊重')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">过程</span>
+            <div class="vocab-info">
+                <span class="pinyin">guò chéng</span>
+                <span class="meaning">process</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">泡茶的过程很讲究。</span>
+                    <button onclick="speak('泡茶的过程很讲究。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Pào chá de guòchéng hěn jiǎngjiū.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">The process of brewing tea is very particular.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('过程')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">步骤</span>
+            <div class="vocab-info">
+                <span class="pinyin">bù zhòu</span>
+                <span class="meaning">step (in a process)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">泡茶有几个步骤。</span>
+                    <button onclick="speak('泡茶有几个步骤。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Pào chá yǒu jǐ gè bùzhòu.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">There are several steps in brewing tea.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('步骤')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">安静</span>
+            <div class="vocab-info">
+                <span class="pinyin">ān jìng</span>
+                <span class="meaning">quiet</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">图书馆里很安静。</span>
+                    <button onclick="speak('图书馆里很安静。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Túshūguǎn lǐ hěn ānjìng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">The library is very quiet.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('安静')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">优雅</span>
+            <div class="vocab-info">
+                <span class="pinyin">yōu yǎ</span>
+                <span class="meaning">elegant</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">她的动作很优雅。</span>
+                    <button onclick="speak('她的动作很优雅。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Tā de dòngzuò hěn yōuyǎ.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Her movements are very elegant.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('优雅')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">体验</span>
+            <div class="vocab-info">
+                <span class="pinyin">tǐ yàn</span>
+                <span class="meaning">to experience</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我想体验中国茶道。</span>
+                    <button onclick="speak('我想体验中国茶道。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒ xiǎng tǐyàn Zhōngguó chádào.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">I want to experience Chinese tea ceremony.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('体验')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">技巧</span>
+            <div class="vocab-info">
+                <span class="pinyin">jì qiǎo</span>
+                <span class="meaning">skill; technique</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">泡茶需要学习技巧。</span>
+                    <button onclick="speak('泡茶需要学习技巧。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Pào chá xūyào xuéxí jìqiǎo.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Brewing tea requires learning skills.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('技巧')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">魅力</span>
+            <div class="vocab-info">
+                <span class="pinyin">mèi lì</span>
+                <span class="meaning">charm; attraction</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">茶文化有很大的魅力。</span>
+                    <button onclick="speak('茶文化有很大的魅力。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Chá wénhuà yǒu hěn dà de mèilì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Tea culture has great charm.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('魅力')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">加深</span>
+            <div class="vocab-info">
+                <span class="pinyin">jiā shēn</span>
+                <span class="meaning">to deepen</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">学习加深了我对文化的理解。</span>
+                    <button onclick="speak('学习加深了我对文化的理解。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Xuéxí jiāshēn le wǒ duì wénhuà de lǐjiě.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Studying deepened my understanding of culture.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('加深')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">理解</span>
+            <div class="vocab-info">
+                <span class="pinyin">lǐ jiě</span>
+                <span class="meaning">understand, comprehension</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们应该理解别人的想法。</span>
+                    <button onclick="speak('我们应该理解别人的想法。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yīnggāi lǐjiě biérén de xiǎngfǎ.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We should understand others' thoughts.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('理解')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">主持</span>
+            <div class="vocab-info">
+                <span class="pinyin">zhǔ chí</span>
+                <span class="meaning">to host; to preside over</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">他主持了茶道表演。</span>
+                    <button onclick="speak('他主持了茶道表演。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Tā zhǔchí le chádào biǎoyǎn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">He hosted the tea ceremony performance.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('主持')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">送茶</span>
+            <div class="vocab-info">
+                <span class="pinyin">sòng chá</span>
+                <span class="meaning">to serve tea</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">客人来了，我们应该送茶。</span>
+                    <button onclick="speak('客人来了，我们应该送茶。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Kèrén lái le, wǒmen yīnggāi sòng chá.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">When guests arrive, we should serve tea.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('送茶')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">冲泡</span>
+            <div class="vocab-info">
+                <span class="pinyin">chōng pào</span>
+                <span class="meaning">to steep; to brew (tea)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">请用热水冲泡茶叶。</span>
+                    <button onclick="speak('请用热水冲泡茶叶。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Qǐng yòng rè shuǐ chōngpào cháyè.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Please brew the tea leaves with hot water.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('冲泡')">🔊</button>
+        </div>
+        
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📐 Grammar Points</div>
+            
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">把 + Object + Verb + 到/进/上/里 + Place</div>
+                <div class="grammar-explanation">The 把 structure places emphasis on how an object is handled or disposed of, especially useful to highlight the handling of tea leaves or utensils in tea ceremony steps.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">我把茶叶放进茶壶里。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Verb + 了</div>
+                <div class="grammar-explanation">了 (le) is a particle indicating completed action or change of state. It is used to mark the completion of steps or processes in tea-making.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">我泡了三分钟茶。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">先...，然后...，再...</div>
+                <div class="grammar-explanation">Used to describe sequential steps or procedures, very common to present the order in tea ceremony actions.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">先热杯子，然后放茶叶，再倒水。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不但...，还/也...</div>
+                <div class="grammar-explanation">Used to express 'not only..., but also...' structure, often found in describing additional benefits or qualities.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">体验茶道不但能学到技巧，还能感受到文化的美。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">用...来 + Verb</div>
+                <div class="grammar-explanation">Using something as a tool or medium to do an action. In this context, expressing using tea to entertain guests.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">中国人喜欢用茶来招待客人。</div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>

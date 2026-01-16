@@ -35,7 +35,7 @@ env/
 python_env/
 
 # CrewAI / Output
-output/
+# output/
 db/
 *.db
 *.sqlite3
