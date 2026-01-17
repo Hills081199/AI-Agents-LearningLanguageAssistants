@@ -78,7 +78,7 @@ export default function Home() {
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [htmlContent, setHtmlContent] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [activeView, setActiveView] = useState<"story" | "vocab" | "quiz" | "writing">("story");
+  const [activeView, setActiveView] = useState<"objectives" | "reading" | "quiz" | "writing">("objectives");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [suggesting, setSuggesting] = useState(false);
 
@@ -188,7 +188,7 @@ export default function Home() {
     setLoading(true);
     setLessonData(null);
     setHtmlContent(null);
-    setActiveView("story");
+    setActiveView("objectives");
 
     try {
       const response = await fetch(`${apiBaseUrl}/generate`, {
@@ -224,8 +224,9 @@ export default function Home() {
   const currentLevels = currentLangConfig?.levels || [];
 
   const navItems = [
-    { key: "story", label: "Lesson", icon: BookOpen },
-    { key: "vocab", label: "Vocabulary", icon: GraduationCap, count: lessonData?.vocabulary?.length },
+
+    { key: "objectives", label: "Lesson Objectives", icon: Zap },
+    { key: "reading", label: "Reading", icon: BookOpen },
     { key: "quiz", label: "Practice", icon: Target, count: lessonData?.quiz?.length },
     { key: "writing", label: "Writing", icon: PenTool },
   ];
@@ -462,19 +463,27 @@ export default function Home() {
 
             {/* Content Views */}
             <div className="min-h-[600px] animate-in fade-in duration-500">
-              {activeView === "story" && htmlContent && (
+              {activeView === "objectives" && htmlContent && (
                 <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden ring-1 ring-black/[0.02]">
                   <iframe
-                    srcDoc={htmlContent}
+                    srcDoc={htmlContent.replace('</body>', '<script>switchTab("lesson-plan");</script></body>')}
                     className="w-full h-[850px] border-none"
-                    title="Lesson"
+                    title="Lesson Objectives"
                   />
                 </div>
               )}
 
-              {activeView === "vocab" && lessonData && (
-                <VocabularyList vocabulary={lessonData.vocabulary} language={lessonData.language || language} />
+              {activeView === "reading" && htmlContent && (
+                <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden ring-1 ring-black/[0.02]">
+                  <iframe
+                    srcDoc={htmlContent.replace('</body>', '<script>switchTab("story");</script></body>')}
+                    className="w-full h-[850px] border-none"
+                    title="Reading"
+                  />
+                </div>
               )}
+
+
 
               {activeView === "quiz" && lessonData && (
                 <Quiz

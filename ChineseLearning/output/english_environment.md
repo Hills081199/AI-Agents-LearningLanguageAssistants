@@ -1,0 +1,457 @@
+# Lesson: Environment - B2 (english)
+
+## Lesson Plan
+
+Lesson Plan Outline – Topic: Environment (Level: B2)
+
+1. Learning Objectives:
+   - Students will be able to discuss and express opinions on environmental issues using appropriate vocabulary.
+   - Students will develop reading and listening comprehension skills through environmental texts and audio.
+   - Students will practice producing both spoken and written texts about environmental topics, such as pollution, climate change, and conservation.
+   - Students will learn and correctly use complex grammar structures to link ideas and express cause, contrast, and hypothetical situations related to environment.
+   
+2. Key Vocabulary (B2 level):
+   - sustainable development
+   - deforestation
+   - carbon footprint
+   - renewable energy
+   - biodiversity
+   - pollution
+   - conservation
+   - climate change
+   - ecosystem
+   - greenhouse gases
+
+3. Grammar Points to Cover:
+   a) Conditionals: Zero, First, Second, and Third Conditionals
+      - Use to talk about real, possible, hypothetical, and unreal situations related to the environment.
+      - Examples:
+        * Zero conditional: "If you recycle, you reduce waste."
+        * First conditional: "If we reduce emissions, we will slow global warming."
+        * Second conditional: "If people were more aware, they would protect nature."
+        * Third conditional: "If governments had acted sooner, environmental damage might have been less severe."
+      
+   b) Passive Voice (including modals in passive)
+      - Use to emphasize actions and processes rather than the doer, common in scientific and environmental discourse.
+      - Examples:
+        * "Many forests are being destroyed every year."
+        * "Renewable energy should be used more widely."
+        * "Laws protecting endangered species have been introduced."
+        
+Lesson Structure Suggestion:
+- Warm-up discussion on students’ opinions about current environmental issues.
+- Vocabulary introduction with definitions, example sentences, and practice exercises.
+- Grammar presentation and clarification of the two grammar points, followed by controlled practice.
+- Reading/listening activity on environmental topics incorporating target vocabulary and grammar.
+- Speaking and writing tasks encouraging using new vocabulary and grammar to express viewpoints and propose solutions.
+- Feedback and error correction focusing on vocabulary use and grammar accuracy.
+
+This structured lesson plan at B2 level addresses both language skills and encourages critical thinking about important environment-related topics.
+
+---
+
+## Story
+
+# Story (English)
+
+The environment plays a crucial role in sustaining life on Earth. However, many activities carried out by humans have led to significant environmental problems that threaten the planet’s future. One of the most pressing issues is deforestation. Forests are being destroyed at an alarming rate, mainly to make room for agriculture or urban development. If deforestation continues unchecked, many species will lose their habitats, leading to a decline in biodiversity. This loss affects ecosystems, which rely on a variety of plants and animals to function properly.
+
+Pollution is another serious environmental concern. Air, water, and soil pollution have resulted from industrial activities and the excessive use of fossil fuels. Greenhouse gases, such as carbon dioxide and methane, are released into the atmosphere, contributing to climate change. If emissions are not reduced, the effects of climate change, like rising temperatures and extreme weather, will become more severe. It is said that if governments had introduced stricter regulations earlier, some of the current environmental damage might have been less severe.
+
+On the other hand, solutions like sustainable development offer hope for the future. Sustainable development means meeting the needs of the present without harming the ability of future generations to meet their own needs. If renewable energy sources, such as solar and wind power, were used more widely, we could significantly reduce our carbon footprint. In fact, many experts argue that renewable energy should replace fossil fuels to protect the environment.
+
+Conservation efforts are essential to preserving ecosystems and biodiversity. Laws protecting endangered species have been introduced in many countries, and national parks are often established to conserve natural habitats. If people were more aware of environmental issues, they would participate actively in conservation efforts, helping to protect the planet. For example, recycling programs and community clean-up projects allow individuals to contribute positively.
+
+If everyone takes responsibility and changes their behavior, the future of the environment could improve dramatically. However, if environmental problems are ignored, the consequences will be devastating. It is important to remember that the environment is interconnected with human health and well-being. Therefore, protecting it is not only a moral obligation but also a necessity for our survival. By working together and using knowledge about sustainable development, conservation, and clean energy, we can help ensure a healthier planet for generations to come.
+
+# Key Expressions
+
+- **Deforestation**: The process of cutting down trees in large areas, often leading to loss of animal habitats and biodiversity.
+- **Biodiversity**: The variety of different living species in a particular environment or on Earth as a whole.
+- **Ecosystem**: A community of living organisms interacting with their physical environment.
+- **Greenhouse gases**: Gases, such as carbon dioxide or methane, that trap heat in the atmosphere and contribute to global warming.
+- **Climate change**: Long-term changes in temperature and weather patterns, often caused by human activities.
+- **Sustainable development**: Development that meets present needs without harming the ability of future generations to meet theirs.
+- **Renewable energy**: Energy sources that are naturally replenished, like solar or wind power.
+- **Carbon footprint**: The total amount of greenhouse gases produced directly or indirectly by an individual, organization, or product.
+- **Conservation efforts**: Actions taken to protect the environment, including laws, protected areas, and community programs.
+- **If conditions (conditionals)**: Sentences that describe real or hypothetical situations, such as:
+  - Zero conditional: "If you recycle, you reduce waste." (real fact)
+  - First conditional: "If we reduce emissions, we will slow global warming." (possible future)
+  - Second conditional: "If people were more aware, they would protect nature." (hypothetical present)
+  - Third conditional: "If governments had acted sooner, environmental damage might have been less severe." (hypothetical past)
+- **Passive voice in environmental context**: Used to focus on actions or states rather than the doer, for example, "Many forests are being destroyed every year" and "Renewable energy should be used more widely."
+
+---
+
+## Language Analysis
+
+{
+  "vocabulary": [
+    {
+      "word": "deforestation",
+      "meaning": "The process of cutting down trees in large areas, causing loss of animal habitats and biodiversity.",
+      "part_of_speech": "noun",
+      "example": "If deforestation continues unchecked, many species will lose their habitats.",
+      "example_meaning": "Si la deforestación continúa sin control, muchas especies perderán sus hábitats."
+    },
+    {
+      "word": "biodiversity",
+      "meaning": "The variety of different living species in a particular environment.",
+      "part_of_speech": "noun",
+      "example": "A decline in biodiversity affects ecosystems, which rely on a variety of plants and animals.",
+      "example_meaning": "Una disminución en la biodiversidad afecta a los ecosistemas, que dependen de una variedad de plantas y animales."
+    },
+    {
+      "word": "ecosystem",
+      "meaning": "A community of living organisms interacting with their physical environment.",
+      "part_of_speech": "noun",
+      "example": "Ecosystems depend on balanced interactions between species and their environment.",
+      "example_meaning": "Los ecosistemas dependen de interacciones equilibradas entre las especies y su entorno."
+    },
+    {
+      "word": "pollution",
+      "meaning": "Contamination of air, water, or soil caused by harmful substances.",
+      "part_of_speech": "noun",
+      "example": "Air, water, and soil pollution have resulted from industrial activities.",
+      "example_meaning": "La contaminación del aire, agua y suelo ha resultado de actividades industriales."
+    },
+    {
+      "word": "greenhouse gases",
+      "meaning": "Gases such as carbon dioxide or methane that trap heat in the atmosphere and contribute to global warming.",
+      "part_of_speech": "noun phrase",
+      "example": "Greenhouse gases contribute to climate change by trapping heat in the atmosphere.",
+      "example_meaning": "Los gases de efecto invernadero contribuyen al cambio climático al retener el calor en la atmósfera."
+    },
+    {
+      "word": "climate change",
+      "meaning": "Long-term changes in temperature and weather patterns, often caused by human activities.",
+      "part_of_speech": "noun phrase",
+      "example": "If emissions are not reduced, the effects of climate change will become more severe.",
+      "example_meaning": "Si no se reducen las emisiones, los efectos del cambio climático serán más graves."
+    },
+    {
+      "word": "sustainable development",
+      "meaning": "Development that meets present needs without harming future generations' ability to meet theirs.",
+      "part_of_speech": "noun phrase",
+      "example": "Sustainable development offers hope for the future of the environment.",
+      "example_meaning": "El desarrollo sostenible ofrece esperanza para el futuro del medio ambiente."
+    },
+    {
+      "word": "renewable energy",
+      "meaning": "Energy from sources that are naturally replenished, such as solar and wind power.",
+      "part_of_speech": "noun phrase",
+      "example": "Renewable energy should replace fossil fuels to protect the environment.",
+      "example_meaning": "La energía renovable debería reemplazar a los combustibles fósiles para proteger el medio ambiente."
+    },
+    {
+      "word": "carbon footprint",
+      "meaning": "The total amount of greenhouse gases produced directly or indirectly by an individual or organization.",
+      "part_of_speech": "noun phrase",
+      "example": "Using renewable energy can significantly reduce our carbon footprint.",
+      "example_meaning": "Usar energía renovable puede reducir significativamente nuestra huella de carbono."
+    },
+    {
+      "word": "conservation",
+      "meaning": "Efforts made to protect and preserve natural environments and biodiversity.",
+      "part_of_speech": "noun",
+      "example": "Conservation efforts include laws and protected areas to preserve habitats.",
+      "example_meaning": "Los esfuerzos de conservación incluyen leyes y áreas protegidas para preservar hábitats."
+    },
+    {
+      "word": "habitat",
+      "meaning": "The natural environment where an animal or plant normally lives.",
+      "part_of_speech": "noun",
+      "example": "Many species will lose their habitats due to deforestation.",
+      "example_meaning": "Muchas especies perderán sus hábitats debido a la deforestación."
+    },
+    {
+      "word": "emissions",
+      "meaning": "Pollutants released into the air, especially gases from factories and vehicles.",
+      "part_of_speech": "noun",
+      "example": "If we reduce emissions, we will slow global warming.",
+      "example_meaning": "Si reducimos las emisiones, desaceleraremos el calentamiento global."
+    },
+    {
+      "word": "industrial",
+      "meaning": "Relating to industry or manufacturing processes.",
+      "part_of_speech": "adjective",
+      "example": "Air and water pollution is often caused by industrial activities.",
+      "example_meaning": "La contaminación del aire y agua suele ser causada por actividades industriales."
+    },
+    {
+      "word": "alarming",
+      "meaning": "Causing concern or fear; worrying.",
+      "part_of_speech": "adjective",
+      "example": "Forests are being destroyed at an alarming rate.",
+      "example_meaning": "Los bosques están siendo destruidos a un ritmo alarmante."
+    },
+    {
+      "word": "hypothetical",
+      "meaning": "Based on possible ideas or situations rather than real facts.",
+      "part_of_speech": "adjective",
+      "example": "The second conditional talks about hypothetical present situations.",
+      "example_meaning": "El segundo condicional habla sobre situaciones hipotéticas en el presente."
+    },
+    {
+      "word": "responsibility",
+      "meaning": "The state or fact of having a duty to deal with something or of having control over someone.",
+      "part_of_speech": "noun",
+      "example": "If everyone takes responsibility for the environment, it could improve dramatically.",
+      "example_meaning": "Si todos asumen la responsabilidad del medio ambiente, podría mejorar dramáticamente."
+    }
+  ],
+  "grammar": [
+    {
+      "pattern": "Zero conditional: If + present simple, present simple",
+      "explanation": "Used to talk about general truths or facts that are always true.",
+      "example": "If you recycle, you reduce waste."
+    },
+    {
+      "pattern": "First conditional: If + present simple, will + base verb",
+      "explanation": "Used to talk about real or possible future situations and their likely results.",
+      "example": "If we reduce emissions, we will slow global warming."
+    },
+    {
+      "pattern": "Second conditional: If + past simple, would + base verb",
+      "explanation": "Used to talk about hypothetical or unlikely present or future situations and their possible results.",
+      "example": "If people were more aware, they would protect nature."
+    },
+    {
+      "pattern": "Third conditional: If + past perfect, would have + past participle",
+      "explanation": "Used to talk about hypothetical past situations and their imagined results.",
+      "example": "If governments had acted sooner, environmental damage might have been less severe."
+    },
+    {
+      "pattern": "Passive voice (including modals):",
+      "explanation": "Used to focus on the action or the receiver of the action rather than who performs it. Common in scientific and formal contexts.",
+      "example": "Renewable energy should be used more widely."
+    }
+  ]
+}
+
+---
+
+## Quiz
+
+{
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "question": "What is described as one of the most pressing environmental issues?",
+      "options": [
+        "A. Climate change",
+        "B. Pollution",
+        "C. Deforestation",
+        "D. Sustainable development"
+      ],
+      "answer": "C",
+      "explanation": "Deforestation is highlighted in the story as one of the most pressing problems, leading to habitat loss and reduced biodiversity."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "According to the story, what could happen if deforestation continues unchecked?",
+      "options": [
+        "A. Ecosystems will improve",
+        "B. Many species will lose their habitats",
+        "C. Greenhouse gases will decrease",
+        "D. Renewable energy use will increase"
+      ],
+      "answer": "B",
+      "explanation": "The story states that unchecked deforestation causes species to lose their habitats, negatively affecting biodiversity and ecosystems."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which of the following contributes to climate change by trapping heat in the atmosphere?",
+      "options": [
+        "A. Renewable energy",
+        "B. Carbon footprint",
+        "C. Greenhouse gases",
+        "D. Conservation efforts"
+      ],
+      "answer": "C",
+      "explanation": "Greenhouse gases like carbon dioxide and methane trap heat and contribute to global warming and climate change."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the main benefit of sustainable development as discussed in the story?",
+      "options": [
+        "A. It eliminates pollution immediately",
+        "B. It meets current needs without harming future generations",
+        "C. It increases the carbon footprint",
+        "D. It stops all industrial activity"
+      ],
+      "answer": "B",
+      "explanation": "Sustainable development is defined as meeting present needs without harming the ability of future generations to meet theirs."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "If renewable energy were used more widely, what is a likely outcome?",
+      "options": [
+        "A. Increase in greenhouse gases",
+        "B. Rise in carbon footprint",
+        "C. Significant reduction of carbon footprint",
+        "D. More deforestation"
+      ],
+      "answer": "C",
+      "explanation": "Using renewable energy can significantly reduce carbon footprints by replacing fossil fuel consumption."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Why are passive voice constructions common in environmental discourse?",
+      "options": [
+        "A. To focus on the people who do actions",
+        "B. To emphasize actions or processes rather than the doer",
+        "C. To make sentences shorter",
+        "D. To describe hypothetical situations"
+      ],
+      "answer": "B",
+      "explanation": "Passive voice is used to emphasize the action or process rather than the person or entity performing it, common in scientific contexts."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What do conservation efforts typically include according to the story?",
+      "options": [
+        "A. Industrial expansion",
+        "B. Deforestation promotion",
+        "C. Laws and protected areas",
+        "D. Increasing carbon footprint"
+      ],
+      "answer": "C",
+      "explanation": "Conservation efforts include laws protecting species and establishing national parks to preserve natural habitats."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What is the result mentioned if emissions are not reduced?",
+      "options": [
+        "A. Climate change effects will become less severe",
+        "B. Climate change will stop",
+        "C. Effects like rising temperatures and extreme weather will worsen",
+        "D. Pollution will disappear"
+      ],
+      "answer": "C",
+      "explanation": "If emissions are not reduced, the effects of climate change, such as rising temperatures and extreme weather, will worsen."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "According to the story, how would increased awareness among people affect conservation?",
+      "options": [
+        "A. People would ignore environmental issues",
+        "B. Conservation efforts would decrease",
+        "C. People would participate actively in conservation",
+        "D. Renewable energy use would decline"
+      ],
+      "answer": "C",
+      "explanation": "Increased awareness would lead people to actively participate in efforts like recycling and protecting habitats."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What condition is illustrated by the sentence 'If governments had acted sooner, environmental damage might have been less severe'?",
+      "options": [
+        "A. Zero conditional",
+        "B. First conditional",
+        "C. Second conditional",
+        "D. Third conditional"
+      ],
+      "answer": "D",
+      "explanation": "This structure is a third conditional used to talk about hypothetical past situations and their possible imagined results."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "Many forests are being destroyed every year, mainly due to ___.",
+      "answer": "deforestation",
+      "hint": "The process of cutting down large areas of trees",
+      "explanation": "Deforestation refers to clearing forests leading to habitat loss and biodiversity decline."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "To reduce our ____, we should switch from fossil fuels to renewable energy.",
+      "answer": "carbon footprint",
+      "hint": "The total amount of greenhouse gases produced by a person or organization",
+      "explanation": "Carbon footprint measures the greenhouse gases someone or something produces."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "If we ___ emissions, we will slow down global warming.",
+      "answer": "reduce",
+      "hint": "Opposite of increase",
+      "explanation": "Reducing emissions decreases the release of harmful gases that cause climate change."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "___ gases such as carbon dioxide trap heat in the atmosphere.",
+      "answer": "Greenhouse",
+      "hint": "Gases contributing to global warming",
+      "explanation": "Greenhouse gases trap heat, leading to climate change."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "Laws protecting endangered species are part of ___.",
+      "answer": "conservation",
+      "hint": "Actions to preserve natural environment and biodiversity",
+      "explanation": "Conservation involves efforts like laws and protected areas to protect the environment."
+    },
+    {
+      "type": "matching",
+      "pairs": [
+        {"word": "deforestation", "meaning": "cutting down large areas of trees"},
+        {"word": "biodiversity", "meaning": "variety of living species"},
+        {"word": "carbon footprint", "meaning": "total greenhouse gases produced"},
+        {"word": "renewable energy", "meaning": "energy from naturally replenished sources"},
+        {"word": "conservation", "meaning": "efforts to protect natural environments"}
+      ]
+    },
+    {
+      "type": "sentence_order",
+      "words": ["If", "we", "reduce", "emissions", ",", "we", "will", "slow", "global", "warming"],
+      "answer": "If we reduce emissions, we will slow global warming",
+      "translation": "Si reducimos las emisiones, desaceleraremos el calentamiento global."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["Many", "forests", "are", "being", "destroyed", "every", "year"],
+      "answer": "Many forests are being destroyed every year",
+      "translation": "Muchos bosques están siendo destruidos cada año."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["If", "people", "were", "more", "aware", ",", "they", "would", "protect", "nature"],
+      "answer": "If people were more aware, they would protect nature",
+      "translation": "Si la gente estuviera más consciente, protegería la naturaleza."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["Renewable", "energy", "should", "be", "used", "more", "widely"],
+      "answer": "Renewable energy should be used more widely",
+      "translation": "La energía renovable debería ser usada más ampliamente."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["If", "governments", "had", "acted", "sooner", ",", "damage", "might", "have", "been", "less", "severe"],
+      "answer": "If governments had acted sooner, damage might have been less severe",
+      "translation": "Si los gobiernos hubieran actuado antes, el daño podría haber sido menos grave."
+    }
+  ]
+}
+
+---
+
+## Writing Prompt
+
+{
+  "prompt_type": "essay",
+  "title": "Protecting Our Planet: Challenges and Solutions",
+  "question": "Write an essay discussing the main environmental problems facing the world today and suggest practical solutions. Use vocabulary related to the environment and apply conditional sentences and passive voice where appropriate to explain cause and effect, hypothetical situations, and actions.",
+  "context": "Environmental issues like deforestation, pollution, and climate change threaten Earth's ecosystems and biodiversity. Sustainable development, renewable energy, and conservation efforts are important strategies for protecting the environment. Understanding the impact of human activity and possible solutions is crucial to safeguard the planet for future generations.",
+  "requirements": [
+    "Include at least five vocabulary words such as deforestation, biodiversity, carbon footprint, renewable energy, and conservation.",
+    "Use a variety of conditional sentences (zero, first, second, third) to describe real and hypothetical situations.",
+    "Incorporate passive voice constructions to emphasize environmental actions or processes.",
+    "Organize your essay with a clear introduction, supporting paragraphs, and a conclusion."
+  ],
+  "word_count_min": 150,
+  "word_count_max": 250
+}
+
+---
+

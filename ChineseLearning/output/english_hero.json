@@ -1,0 +1,447 @@
+{
+  "topic": "HERO",
+  "level": "B2",
+  "language": "english",
+  "lesson_plan": "Lesson Plan Outline: Topic – HERO (CEFR Level: B2)\n\n1. Learning Objectives:\n- By the end of the lesson, students will be able to define and discuss the concept of a hero, identifying characteristics and examples from different contexts.\n- Students will expand their vocabulary related to heroes and heroic traits.\n- Students will practice and master the use of narrative tenses and modal verbs for speculation and deduction within the context of talking about heroes.\n- Students will develop speaking skills through describing heroes and engaging in debate or discussion on what makes someone a hero.\n\n2. Key Vocabulary (B2 Level):\n- Hero/Heroine\n- Courage\n- Self-sacrifice\n- Integrity\n- Role model\n- Bravery\n- Admirable\n- Legendary\n- Compassion\n- Resilience\n\n3. Grammar Points:\na) Narrative Tenses: Past Simple, Past Continuous, Past Perfect (to tell stories about heroism and past events)\n   - Usage: Describing events involving heroes, sequencing past actions, and setting scenes.\n   - Example: “The firefighter was rescuing the family when the roof collapsed.”\n\nb) Modal Verbs for Speculation and Deduction: must, might, could, can’t (to talk about uncertainty or assumptions regarding heroes’ actions or character)\n   - Usage: Speculating about why a hero acted a certain way or what might happen.\n   - Example: “He must have been very brave to face such danger.” / “She might have sacrificed her own safety.”\n\nSummary of the plan structure:\n- Warm-up/Introduction: Discuss what students know about heroes; elicit examples.\n- Vocabulary introduction with definitions and context.\n- Grammar focus: explanation and practice exercises for narrative tenses and modal verbs.\n- Speaking activity: Students describe a hero (real or fictional), using newly learned vocabulary and grammar.\n- Listening/Reading: A short story or excerpt about a hero, practicing comprehension and grammar recognition.\n- Wrap-up: Reflective discussion: “What qualities make someone a hero?” and writing a short paragraph describing a hero’s admirable actions.\n\nThis lesson plan effectively integrates vocabulary and grammar specific to the topic and level, promoting both receptive and productive skills in context.",
+  "story": "# Story (English)  \nA hero is someone who shows courage and integrity, often at great personal risk. Heroes can be found in many places and in many forms. Sometimes they are famous people whose stories we hear on the news, and other times they are ordinary individuals whose brave actions might never become legendary but are just as admirable. The definition of a hero is not always simple, because what makes someone a hero can depend on the situation and culture. However, common traits like self-sacrifice, resilience, and compassion are always important.\n\nOne inspiring story happened a few years ago in a small town. A young woman named Emily was walking home from work when she saw thick smoke coming from a nearby house. Someone might have already called the fire department, but Emily didn’t wait. She ran towards the burning building. She could have stayed safe, but she decided to act quickly. Emily must have been very brave because the fire was dangerous, and the smoke made it difficult to see or breathe. Inside the house, she found an elderly man who was trapped and unable to move easily. Without hesitation, Emily helped him out, protecting him from the flames and smoke. Thanks to her quick thinking and courage, no one was hurt that day.\n\nEmily could be seen as a role model because of her selflessness and compassion. Her story teaches us that heroism isn’t only about strength or physical power; it is also about doing what is right, even when it is hard. Being a hero might mean putting others before yourself and showing resilience in the face of danger. Sometimes heroes are famous for their achievements, but most heroes are ordinary people who act bravely when others need help.\n\nWe might wonder why Emily acted so quickly. She must have had a deep sense of responsibility and kindness. It’s possible she thought about what could happen if she did nothing, and she couldn’t accept that. Her actions inspire us to consider how we can help others in our own lives. After all, heroism is not limited to big or dramatic moments – sometimes small acts of kindness and bravery make a huge difference. The world needs more people like Emily, who show that anyone can be a hero.\n\n# Key Expressions  \n- **Courage and integrity** – showing bravery and strong moral principles.  \n- **Self-sacrifice** – giving up one’s own safety or comfort for the benefit of others.  \n- **Admirable** – deserving respect and approval.  \n- **Legendary** – famous or well-known, especially for brave or great acts.  \n- **Role model** – someone who others look up to and want to imitate.  \n- **Resilience** – the ability to recover quickly from difficulties.  \n- **Quick thinking** – the ability to make good decisions fast in difficult situations.  \n- **Must have been very brave** – modal verb + perfect tense used to deduce that someone showed bravery in the past.  \n- **Could be seen as** – a phrase used to suggest that someone might be described in a certain way.  \n- **Put others before yourself** – to care about other people’s needs more than your own.  \n- **Might have had a deep sense of responsibility** – used to speculate about someone’s feelings or motivations in the past.",
+  "vocabulary": [
+    {
+      "word": "hero",
+      "meaning": "A person admired for their courage, outstanding achievements, or noble qualities.",
+      "part_of_speech": "noun",
+      "example": "Emily is considered a hero because she saved the elderly man from the fire.",
+      "example_meaning": ""
+    },
+    {
+      "word": "courage",
+      "meaning": "The ability to do something that frightens one; bravery.",
+      "part_of_speech": "noun",
+      "example": "It takes a lot of courage to run into a burning building.",
+      "example_meaning": ""
+    },
+    {
+      "word": "integrity",
+      "meaning": "The quality of being honest and having strong moral principles.",
+      "part_of_speech": "noun",
+      "example": "The hero showed integrity by putting others’ needs before his own.",
+      "example_meaning": ""
+    },
+    {
+      "word": "self-sacrifice",
+      "meaning": "Giving up one's own safety or comfort for the benefit of others.",
+      "part_of_speech": "noun",
+      "example": "Her self-sacrifice saved many lives during the crisis.",
+      "example_meaning": ""
+    },
+    {
+      "word": "resilience",
+      "meaning": "The ability to recover quickly from difficulties or challenges.",
+      "part_of_speech": "noun",
+      "example": "The hero demonstrated resilience by remaining calm under pressure.",
+      "example_meaning": ""
+    },
+    {
+      "word": "compassion",
+      "meaning": "Sympathy and concern for the sufferings or misfortunes of others.",
+      "part_of_speech": "noun",
+      "example": "Compassion motivated Emily to help the elderly man.",
+      "example_meaning": ""
+    },
+    {
+      "word": "admirable",
+      "meaning": "Deserving respect or approval.",
+      "part_of_speech": "adjective",
+      "example": "Her bravery was truly admirable in such a dangerous situation.",
+      "example_meaning": ""
+    },
+    {
+      "word": "legendary",
+      "meaning": "Famous or well-known, especially for brave or great acts.",
+      "part_of_speech": "adjective",
+      "example": "Some heroes become legendary because of their extraordinary deeds.",
+      "example_meaning": ""
+    },
+    {
+      "word": "role model",
+      "meaning": "A person looked up to by others as an example to follow.",
+      "part_of_speech": "noun",
+      "example": "Emily serves as a role model for bravery and kindness.",
+      "example_meaning": ""
+    },
+    {
+      "word": "quick thinking",
+      "meaning": "The ability to make good decisions quickly in difficult situations.",
+      "part_of_speech": "noun phrase",
+      "example": "Her quick thinking helped save the man’s life.",
+      "example_meaning": ""
+    },
+    {
+      "word": "speculation",
+      "meaning": "The forming of a theory or conjecture without firm evidence.",
+      "part_of_speech": "noun",
+      "example": "We can only make speculation about what motivated her actions.",
+      "example_meaning": ""
+    },
+    {
+      "word": "modal verb",
+      "meaning": "A type of auxiliary verb used to express ability, possibility, permission, or obligation (e.g., must, might, could).",
+      "part_of_speech": "noun",
+      "example": "She must have been very brave to enter the burning house.",
+      "example_meaning": ""
+    },
+    {
+      "word": "deduction",
+      "meaning": "The process of reasoning from general principles to reach a specific conclusion.",
+      "part_of_speech": "noun",
+      "example": "Using deduction, we can conclude Emily acted out of kindness.",
+      "example_meaning": ""
+    },
+    {
+      "word": "ordinary",
+      "meaning": "With no special or distinctive features; normal.",
+      "part_of_speech": "adjective",
+      "example": "Not all heroes are famous; many are ordinary people.",
+      "example_meaning": ""
+    },
+    {
+      "word": "bravery",
+      "meaning": "Courageous behavior or character.",
+      "part_of_speech": "noun",
+      "example": "Bravery is a key trait of many heroes.",
+      "example_meaning": ""
+    },
+    {
+      "word": "achievement",
+      "meaning": "Something accomplished through effort, skill, or courage.",
+      "part_of_speech": "noun",
+      "example": "Her heroic actions were a remarkable achievement.",
+      "example_meaning": ""
+    },
+    {
+      "word": "hesitation",
+      "meaning": "The action of pausing before saying or doing something.",
+      "part_of_speech": "noun",
+      "example": "Without hesitation, Emily ran into the fire to save the man.",
+      "example_meaning": ""
+    },
+    {
+      "word": "speculate",
+      "meaning": "To form a theory or conjecture about a subject without firm evidence.",
+      "part_of_speech": "verb",
+      "example": "We might speculate why she chose to act so quickly.",
+      "example_meaning": ""
+    },
+    {
+      "word": "face",
+      "meaning": "To confront or deal with a difficult situation or danger.",
+      "part_of_speech": "verb",
+      "example": "Heroes often face danger to help others.",
+      "example_meaning": ""
+    },
+    {
+      "word": "put others before yourself",
+      "meaning": "To prioritize others’ needs above your own.",
+      "part_of_speech": "phrase",
+      "example": "True heroism often means putting others before yourself.",
+      "example_meaning": ""
+    }
+  ],
+  "grammar": [
+    {
+      "pattern": "Narrative tenses (Past Simple, Past Continuous, Past Perfect)",
+      "explanation": "Used to describe sequences of events in the past, background details, and actions that happened before other past actions.",
+      "example": "Emily was walking home when she saw smoke. She had already called the fire department before she ran toward the house."
+    },
+    {
+      "pattern": "Modal verbs for speculation and deduction (must, might, could, can’t) + have + past participle",
+      "explanation": "Used to make guesses or draw conclusions about past actions or events with varying degrees of certainty.",
+      "example": "Emily must have been very brave to enter the burning house. She might have called for help before going inside."
+    },
+    {
+      "pattern": "Passive voice with modal verbs (e.g., could be seen as)",
+      "explanation": "Used to suggest how someone or something might be described or perceived, often less direct or more polite.",
+      "example": "Emily could be seen as a role model because of her actions."
+    },
+    {
+      "pattern": "Phrasal verbs and phrases with 'put' (put others before yourself)",
+      "explanation": "Used idiomatically to express prioritizing others’ needs above one’s own interests.",
+      "example": "A true hero puts others before themselves, showing selflessness."
+    },
+    {
+      "pattern": "Relative clauses to define or add information (e.g., 'Someone who shows courage')",
+      "explanation": "Used to provide essential or additional information about a noun in the sentence.",
+      "example": "A hero is someone who acts bravely in difficult situations."
+    }
+  ],
+  "quiz": [
+    {
+      "type": "multiple_choice",
+      "question": "What is one main reason Emily is considered a hero in the story?",
+      "options": [
+        "A. She became famous on the news",
+        "B. She rescued an elderly man from a fire",
+        "C. She helped the fire department arrive quickly",
+        "D. She wrote a story about heroism"
+      ],
+      "answer": "B",
+      "explanation": "Emily is considered a hero because she rescued an elderly man from a burning house, showing courage and quick thinking."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which of the following traits is NOT explicitly mentioned in the story as a common trait of heroes?",
+      "options": [
+        "A. Resilience",
+        "B. Compassion",
+        "C. Intelligence",
+        "D. Self-sacrifice"
+      ],
+      "answer": "C",
+      "explanation": "Intelligence is not explicitly mentioned as a common trait of heroes in the story."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What does the phrase 'Emily must have been very brave' suggest?",
+      "options": [
+        "A. It is a proven fact that Emily was brave",
+        "B. The speaker guesses Emily was brave based on her actions",
+        "C. Emily told people she was brave",
+        "D. Emily might not have been brave"
+      ],
+      "answer": "B",
+      "explanation": "The phrase uses modal verb 'must' plus perfect tense to deduce or guess Emily's bravery based on evidence."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "In the story, why might Emily be described as a 'role model'?",
+      "options": [
+        "A. Because she won a prize",
+        "B. Because she showed self-sacrifice and compassion",
+        "C. Because she was famous",
+        "D. Because she taught a class about heroes"
+      ],
+      "answer": "B",
+      "explanation": "Emily could be seen as a role model because her actions demonstrated self-sacrifice and compassion, qualities others can admire and imitate."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What does the story imply about heroism?",
+      "options": [
+        "A. Only famous people can be heroes",
+        "B. Heroes always have physical strength",
+        "C. Heroism can include small acts of kindness",
+        "D. Heroism is always recognized publicly"
+      ],
+      "answer": "C",
+      "explanation": "The story emphasizes that heroism includes small acts of kindness and bravery, not just famous or dramatic acts."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which narrative tense is used in the sentence: 'Emily was walking home from work when she saw thick smoke'?",
+      "options": [
+        "A. Past Simple",
+        "B. Past Continuous",
+        "C. Past Perfect",
+        "D. Present Perfect"
+      ],
+      "answer": "B",
+      "explanation": "The past continuous tense 'was walking' sets the scene and shows an ongoing action interrupted by another past event."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What does 'self-sacrifice' mean as used in the story?",
+      "options": [
+        "A. Doing something for personal gain",
+        "B. Giving up your own safety for others",
+        "C. Avoiding danger at all costs",
+        "D. Watching others in need"
+      ],
+      "answer": "B",
+      "explanation": "Self-sacrifice means giving up one’s own safety or comfort to help others, as shown by Emily's actions."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Why does the story use modal verbs like 'might' and 'must' when talking about Emily's actions?",
+      "options": [
+        "A. To declare facts about Emily's feelings",
+        "B. To explain exactly what Emily thought",
+        "C. To speculate about her motivations and bravery",
+        "D. To describe future events"
+      ],
+      "answer": "C",
+      "explanation": "Modal verbs with perfect tense are used to speculate or make deductions about past actions or feelings when the exact facts are unknown."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "Which sentence best summarizes the story's message about heroes?",
+      "options": [
+        "A. Heroes are always physically strong",
+        "B. Heroes are only those who become famous",
+        "C. Anyone can be a hero by acting bravely and kindly",
+        "D. Heroes never face danger"
+      ],
+      "answer": "C",
+      "explanation": "The story highlights that heroism is about brave, kind actions anyone can do, not just fame or strength."
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What does the word 'resilience' mean in the context of heroism?",
+      "options": [
+        "A. Giving up easily",
+        "B. Quickly recovering from difficulties",
+        "C. Being physically weak",
+        "D. Avoiding danger"
+      ],
+      "answer": "B",
+      "explanation": "Resilience refers to the ability to recover quickly from difficulties, an important quality of heroes."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "Emily showed great ___ when she decided to enter the burning house to help the elderly man.",
+      "answer": "courage",
+      "hint": "The ability to do something that frightens you; bravery.",
+      "explanation": "Courage is the noun describing bravery, which Emily demonstrated."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "A true hero often practices ___, putting others' needs before their own safety or comfort.",
+      "answer": "self-sacrifice",
+      "hint": "Giving up one's own safety or comfort for others.",
+      "explanation": "Self-sacrifice means putting others before yourself, a key trait of heroes."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "The firefighters showed great ___ by remaining calm and helping people despite the dangerous situation.",
+      "answer": "resilience",
+      "hint": "The ability to recover quickly from difficulties.",
+      "explanation": "Resilience describes the ability to withstand and recover from hardships."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "Emily helped the elderly man without ____, showing she did not hesitate to act.",
+      "answer": "hesitation",
+      "hint": "The action of pausing before doing something.",
+      "explanation": "Not hesitating means acting quickly and decisively, as Emily did."
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "We can only ___ about why Emily acted so quickly, but it was likely because she cared deeply.",
+      "answer": "speculate",
+      "hint": "To form a theory without certain evidence.",
+      "explanation": "Speculate means to guess or form ideas about something unknown, which fits the sentence context."
+    },
+    {
+      "type": "matching",
+      "pairs": [
+        {
+          "word": "courage",
+          "meaning": "The ability to face fear or danger bravely"
+        },
+        {
+          "word": "integrity",
+          "meaning": "Being honest and having strong moral principles"
+        },
+        {
+          "word": "self-sacrifice",
+          "meaning": "Giving up one’s own safety for others"
+        },
+        {
+          "word": "resilience",
+          "meaning": "Recovering quickly from difficulties"
+        },
+        {
+          "word": "role model",
+          "meaning": "Someone others look up to and want to imitate"
+        }
+      ]
+    },
+    {
+      "type": "sentence_order",
+      "words": [
+        "was",
+        "Emily",
+        "home",
+        "walking",
+        "from",
+        "work",
+        "when",
+        "she",
+        "saw",
+        "smoke"
+      ],
+      "answer": "Emily was walking home from work when she saw smoke",
+      "translation": "Emily was on her way home from work when she noticed smoke."
+    },
+    {
+      "type": "sentence_order",
+      "words": [
+        "helped",
+        "man",
+        "the",
+        "elderly",
+        "Emily",
+        "the",
+        "house",
+        "from",
+        "fire",
+        "escape"
+      ],
+      "answer": "Emily helped the elderly man escape from the fire",
+      "translation": "Emily assisted the elderly man to get out of the burning house."
+    },
+    {
+      "type": "sentence_order",
+      "words": [
+        "must",
+        "have",
+        "been",
+        "brave",
+        "Emily",
+        "very"
+      ],
+      "answer": "Emily must have been very brave",
+      "translation": "It is certain that Emily showed great bravery."
+    },
+    {
+      "type": "sentence_order",
+      "words": [
+        "a",
+        "hero",
+        "someone",
+        "is",
+        "who",
+        "helps",
+        "others",
+        "bravely"
+      ],
+      "answer": "A hero is someone who helps others bravely",
+      "translation": "A hero is a person who courageously helps others."
+    },
+    {
+      "type": "sentence_order",
+      "words": [
+        "put",
+        "before",
+        "others",
+        "yourself",
+        "you",
+        "must"
+      ],
+      "answer": "You must put others before yourself",
+      "translation": "It is necessary to prioritize others' needs over your own."
+    }
+  ],
+  "writing_prompt": {
+    "prompt_type": "essay",
+    "title": "What Makes a Hero?",
+    "question": "Describe someone you consider a hero. Explain what qualities make this person a hero in your opinion. Use narrative tenses to tell a story about a heroic action they have done and modal verbs to speculate about their motivations or feelings.",
+    "context": "Heroes are people admired for their courage, integrity, and self-sacrifice. They might be famous or ordinary individuals who show bravery and compassion in difficult situations. Thinking about what makes someone a hero helps us understand important qualities like resilience and being a role model.",
+    "requirements": [
+      "Use at least five vocabulary words related to heroes, such as courage, self-sacrifice, resilience, compassion, or integrity.",
+      "Include examples using past simple, past continuous, and past perfect tenses to narrate a past event about the hero.",
+      "Use modal verbs (must, might, could, can’t) with perfect forms to speculate about the hero’s thoughts, feelings, or decisions.",
+      "Write between 150 and 250 words."
+    ],
+    "word_count_min": 150,
+    "word_count_max": 250
+  }
+}

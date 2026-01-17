@@ -173,7 +173,7 @@ def generate_lesson(request: LessonRequest):
             story=lesson_data.get("story", ""),
             vocabulary=lesson_data.get("vocabulary", []),
             grammar=lesson_data.get("grammar", []),
-            grammar=lesson_data.get("grammar", []),
+
             quiz=lesson_data.get("quiz", []),
             writing_prompt=lesson_data.get("writing_prompt", None),
             filename=f"{base_filename}.html"

@@ -608,13 +608,12 @@ def generate_interactive_html(lesson_data, language="chinese"):
             
             // Show selected tab
             document.getElementById(tabName).classList.add('active');
-            document.querySelector('[onclick="switchTab(\\'' + tabName + '\\')"]').classList.add('active');
         }}
         
-        // Show first tab on load
-        window.addEventListener('DOMContentLoaded', () => {{
-            switchTab('lesson-plan');
-        }});
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
     </script>
 </head>
 <body>
@@ -625,11 +624,8 @@ def generate_interactive_html(lesson_data, language="chinese"):
             <h1>{topic}</h1>
         </div>
         
-        <div class="tab-nav">
-            <button class="tab-btn active" onclick="switchTab('lesson-plan')">🎯 Lesson Objectives</button>
-            <button class="tab-btn" onclick="switchTab('story')">📖 Reading</button>
-            <button class="tab-btn" onclick="switchTab('vocabulary')">📝 Vocabulary ({len(vocabulary)})</button>
-            <button class="tab-btn" onclick="switchTab('grammar')">📐 Grammar</button>
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
         </div>
         
         <!-- Lesson Plan Tab -->
@@ -642,25 +638,19 @@ def generate_interactive_html(lesson_data, language="chinese"):
             </div>
         </div>
         
-        <!-- Story Tab -->
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
         <div id="story" class="tab-content">
             <div class="section">
                 <div class="section-title">📖 Reading Passage</div>
                 {story_html if story_html else "<p>No story data.</p>"}
             </div>
-        </div>
-        
-        <!-- Vocabulary Tab -->
-        <div id="vocabulary" class="tab-content">
-            <div class="section">
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
                 <div class="section-title">📝 Vocabulary ({len(vocabulary)} words)</div>
                 {vocab_html if vocab_html else "<p>No vocabulary data.</p>"}
             </div>
-        </div>
-        
-        <!-- Grammar Tab -->
-        <div id="grammar" class="tab-content">
-            <div class="section">
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
                 <div class="section-title">📐 Grammar Points</div>
                 {grammar_html if grammar_html else "<p>No grammar data.</p>"}
             </div>

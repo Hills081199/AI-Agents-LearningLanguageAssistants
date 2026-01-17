@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国传统梯田的历史与现代保护技术 - HSK 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+        // Show first tab on load
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('lesson-plan');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">HSK 4</span>
+            <span class="lang-badge">Chinese</span>
+            <h1>中国传统梯田的历史与现代保护技术</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <strong>Lesson Plan Outline: 中国传统梯田的历史与现代保护技术 (HSK 4)</strong>
+<p>---</p>
+<h4>一、学习目标 (Learning Objectives)</h4>
+<p>1. 理解并掌握描述“梯田历史与保护技术”相关的话题词汇和表达。</p>
+<p>2. 能够用较流利的中文介绍中国梯田的历史背景及现代保护技术。</p>
+<p>3. 学习并运用两种HSK 4级语法结构，加强表达能力。</p>
+<p>4. 能够听懂并复述关于梯田发展和保护的短文或对话。</p>
+<p>---</p>
+<h4>二、词汇表 (Key Vocabulary)</h4>
+<p>| 汉字       | 拼音       | 英文释义               | 说明                           |</p>
+<p>|------------|------------|------------------------|---------------------------------|</p>
+<p>| 梯田       | tītián     | terraced fields        | 传统农田的一种形式               |</p>
+<p>| 保护       | bǎohù      | to protect, protection | 保护环境，保护文化               |</p>
+<p>| 历史       | lìshǐ      | history                | 了解过去发生的事情               |</p>
+<p>| 技术       | jìshù      | technology             | 实现目标的方法或手段             |</p>
+<p>| 现代       | xiàndài    | modern                 | 当代，现今                     |</p>
+<p>| 环境       | huánjìng   | environment            | 自然条件，生活和工作周围的状况   |</p>
+<p>| 农业       | nóngyè     | agriculture            | 种植和养殖业                   |</p>
+<p>| 生态       | shēngtài   | ecology                | 生物与环境的关系               |</p>
+<p>| 可持续     | kěchíxù    | sustainable            | 能长期保持，不破坏环境           |</p>
+<p>| 传统       | chuántǒng  | tradition              | 长期流传下来的文化或习惯         |</p>
+<p>---</p>
+<h4>三、语法点 (Grammar Points)</h4>
+<p>1. **“一边……一边……”结构**</p>
+<li>用法：表示两个动作同时进行。</li>
+<li>例句：农民们一边耕作，一边保护梯田的生态环境。</li>
+<li>练习：让学生造句描述梯田保护与农业生产的关系。</li>
+<p>2. **“被”字句**</p>
+<li>用法：强调动作的承受者，表达被动含义。</li>
+<li>例句：梯田被列为重要的文化遗产而受到保护。</li>
+<li>练习：让学生将主动句改为被动句，如“保护者保护梯田”变为“梯田被保护者保护”。</li>
+<p>---</p>
+<h4>四、教学流程建议 (Brief Teaching Process)</h4>
+<p>1. **导入 (10分钟)**</p>
+<li>观看关于中国梯田的短视频或图片，激发兴趣。</li>
+<li>简单讨论：“你知道什么是梯田吗？你觉得保护梯田重要吗？”</li>
+<p>2. **新词讲解与练习 (15分钟)**</p>
+<li>介绍词汇表，解释词义，结合图片理解。</li>
+<li>小组讨论新词的用法，制作词汇卡片。</li>
+<p>3. **语法讲解与实践 (15分钟)**</p>
+<li>讲解“一边……一边……”和“被”字句，用例句说明。</li>
+<li>学生练习造句，教师反馈。</li>
+<p>4. **阅读理解练习 (20分钟)**</p>
+<li>提供一篇适合HSK 4的短文，内容涉及梯田的历史和现代保护技术。</li>
+<li>学生阅读后回答问题，练习归纳总结。</li>
+<p>5. **口语表达 (20分钟)**</p>
+<li>分组讨论：“你觉得现代技术如何帮助保护梯田？”</li>
+<li>学生用新词和新语法阐述观点，教师指导纠错。</li>
+<p>6. **复习与作业 (10分钟)**</p>
+<li>复习本节课重点词汇和语法。</li>
+<li>作业：写一段简短的介绍，说明梯田的历史及保护方法。</li>
+<p>---</p>
+<p>此计划帮助HSK 4水平学生全面了解中国传统梯田的文化价值与现代保护技术，词汇和语法均符合该水平要求，旨在提升听说读写综合能力。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>中国的梯田历史悠久，已经有几千年的时间。梯田是一种传统的农田形式，主要分布在山区。中国农民为了在陡峭的山坡上种植庄稼，创造了梯田。这种设计不仅节约了土地，还能有效防止水土流失。古代的梯田被认为是人类智慧的体现，也是农业发展的重要基础。</p>
+<p>在历史上，梯田不仅是农民的粮食来源，还承载了丰富的文化和生态价值。许多著名的梯田，如云南元阳梯田和龙脊梯田，都被列为世界文化遗产。这些梯田被当地人民一代代保护着，一边耕作，一边保持生态平衡。</p>
+<p>随着现代社会的发展，梯田面临着环境恶化和人口迁移等挑战。为了保护这些宝贵的文化遗产和生态系统，现代保护技术逐渐被引入。现在，科学家们利用遥感技术和无人机监测梯田的变化，同时通过生态农业方法减少化肥和农药的使用。现代技术帮助农民更加有效地管理水资源和土壤，提高农业产量，同时保证了梯田的可持续发展。</p>
+<p>此外，政府和社区也积极参与保护工作。例如，建立生态保护区，推广环境教育，鼓励年轻一代了解并传承梯田文化。梯田不仅仅是农田，它们还是连接人类与自然的重要桥梁。只有通过传统与现代技术的结合，梯田的历史和文化才能得到长久的保护。</p>
+<p>总的来说，中国传统梯田的历史不仅反映了古人的智慧，也展示了生态农业的价值。现代保护技术的应用，使得梯田被更好地管理和保护。未来，我们希望更多的人认识到梯田的重要性，一边保护环境，一边发展农业，实现真正的可持续发展。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-romanization">
+                <p>Zhōngguó de tītián lìshǐ yōujiǔ, yǐjīng yǒu jǐ qiān nián de shíjiān. Tītián shì yī zhǒng chuántǒng de nóngtián xíngshì, zhǔyào fēnbù zài shānqū. Zhōngguó nóngmín wèile zài dǒutiě de shānpō shàng zhòngzhí zhuāngjià, chuàngzàole tītián. Zhè zhǒng shèjì bùjǐn jiéyuēle tǔdì, hái néng yǒuxiào fángzhǐ shuǐtǔ liúshī. Gǔdài de tītián bèi rènwéi shì rénlèi zhìhuì de tǐxiàn, yě shì nóngyè fāzhǎn de zhòngyào jīchǔ.</p>
+<p>Zài lìshǐ shàng, tītián bùjǐn shì nóngmín de liángshí láiyuán, hái chéngzǎile fēngfù de wénhuà hé shēngtài jiàzhí. Xǔduō zhùmíng de tītián, rú Yúnnán Yuányáng tītián hé Lóngjǐ tītián, dōu bèi liè wéi shìjiè wénhuà yíchǎn. Zhèxiē tītián bèi dāngdì rénmín yī dài dài bǎohù zhe, yībiān gēngzuò, yībiān bǎochí shēngtài pínghéng.</p>
+<p>Suízhe xiàndài shèhuì de fāzhǎn, tītián miànlín zhe huánjìng èhuà hé rénkǒu qiānyí děng tiǎozhàn. Wèile bǎohù zhèxiē bǎoguì de wénhuà yíchǎn hé shēngtài xìtǒng, xiàndài bǎohù jìshù zhújiàn bèi yǐnrù. Xiànzài, kēxuéjiāmen lìyòng yáogǎn jìshù hé wúrénjī jiāncè tītián de biànhuà, tóngshí tōngguò shēngtài nóngyè fāngfǎ jiǎnshǎo huàféi hé nóngyào de shǐyòng. Xiàndài jìshù bāngzhù nóngmín gèngjiā yǒuxiào de guǎnlǐ shuǐ zīyuán hé tǔrǎng, tígāo nóngyè chǎnliàng, tóngshí bǎozhèng le tītián de kěchíxù fāzhǎn.</p>
+<p>Cǐwài, zhèngfǔ hé shèqū yě jījí cānyù bǎohù gōngzuò. Lìrú, jiànlì shēngtài bǎohùqū, tuīguǎng huánjìng jiàoyù, gǔlì niánqīng yīdài liǎojiě bìng chuánchéng tītián wénhuà. Tītián bù jǐn jǐn shì nóngtián, tāmen háishì liánjiē rénlèi yǔ zìrán de zhòngyào qiáoliáng. Zhǐyǒu tōngguò chuántǒng yǔ xiàndài jìshù de jiéhé, tītián de lìshǐ hé wénhuà cáinéng dédào chángjiǔ de bǎohù.</p>
+<p>Zǒng de lái shuō, Zhōngguó chuántǒng tītián de lìshǐ bùjǐn fǎnyìng le gǔrén de zhìhuì, yě zhǎnshì le shēngtài nóngyè de jiàzhí. Xiàndài bǎohù jìshù de yìngyòng, shǐdé tītián bèi gèng hǎo de guǎnlǐ hé bǎohù. Wèilái, wǒmen xīwàng gèng duō de rén rènshi dào tītián de zhòngyào xìng, yībiān bǎohù huánjìng, yībiān fāzhǎn nóngyè, shíxiàn zhēnzhèng de kěchíxù fāzhǎn.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>The history of China’s terraced fields is very long, spanning thousands of years. Terraced fields are a traditional form of farmland mainly distributed in mountainous areas. Chinese farmers created terraced fields in order to cultivate crops on steep slopes. This design not only saves land but also effectively prevents soil erosion. Ancient terraced fields are considered a manifestation of human wisdom and an important foundation for agricultural development.</p>
+<p>Historically, terraced fields have not only been the source of food for farmers but also bear rich cultural and ecological values. Many famous terraced fields, such as the Yuanyang terraces in Yunnan and the Longji terraces, have been listed as World Cultural Heritage sites. These terraces have been protected by local people for generations, who simultaneously cultivate and maintain ecological balance.</p>
+<p>With the development of modern society, terraced fields face challenges such as environmental degradation and population migration. To protect these precious cultural heritages and ecosystems, modern protection technologies have gradually been introduced. Nowadays, scientists use remote sensing technology and drones to monitor changes in terraced fields, while ecological farming methods reduce the use of chemical fertilizers and pesticides. Modern technology helps farmers manage water resources and soil more effectively, increase agricultural output, and ensure the sustainable development of terraced fields.</p>
+<p>Moreover, governments and communities actively participate in protection efforts. For example, ecological protection zones have been established, environmental education promoted, and young generations encouraged to understand and inherit terraced field culture. Terraced fields are not just farmland; they are an important bridge connecting humans and nature. Only by combining traditional and modern technologies can the history and culture of terraced fields be protected for the long term.</p>
+<p>In summary, the history of China’s traditional terraced fields not only reflects the wisdom of ancient people but also demonstrates the value of ecological agriculture. The application of modern protection technologies enables better management and preservation of terraced fields. In the future, we hope more people will recognize the importance of terraced fields, protect the environment while developing agriculture, and achieve true sustainable development.</p>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (18 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">梯田</span>
+            <div class="vocab-info">
+                <span class="romanization">tītián</span> <span class="meaning">terraced fields</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">中国的梯田历史悠久。</span>
+                    <button onclick="speak('中国的梯田历史悠久。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhōngguó de tītián lìshǐ yōujiǔ.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The history of China's terraced fields is very long.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('梯田')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">创造</span>
+            <div class="vocab-info">
+                <span class="romanization">chuàngzào</span> <span class="meaning">to create</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">中国农民创造了梯田。</span>
+                    <button onclick="speak('中国农民创造了梯田。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhōngguó nóngmín chuàngzàole tītián.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Chinese farmers created terraced fields.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('创造')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">节约</span>
+            <div class="vocab-info">
+                <span class="romanization">jiéyuē</span> <span class="meaning">to save; to conserve</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">这种设计节约了土地。</span>
+                    <button onclick="speak('这种设计节约了土地。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhè zhǒng shèjì jiéyuēle tǔdì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>This design saves land.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('节约')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">防止</span>
+            <div class="vocab-info">
+                <span class="romanization">fángzhǐ</span> <span class="meaning">to prevent</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">能有效防止水土流失。</span>
+                    <button onclick="speak('能有效防止水土流失。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Néng yǒuxiào fángzhǐ shuǐtǔ liúshī.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Can effectively prevent soil erosion.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('防止')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">文化遗产</span>
+            <div class="vocab-info">
+                <span class="romanization">wénhuà yíchǎn</span> <span class="meaning">cultural heritage</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">梯田被列为世界文化遗产。</span>
+                    <button onclick="speak('梯田被列为世界文化遗产。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tītián bèi liè wéi shìjiè wénhuà yíchǎn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Terraced fields are listed as World Cultural Heritage.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('文化遗产')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">生态</span>
+            <div class="vocab-info">
+                <span class="romanization">shēngtài</span> <span class="meaning">ecology; ecological</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">保持生态平衡。</span>
+                    <button onclick="speak('保持生态平衡。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Bǎochí shēngtài pínghéng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Maintain ecological balance.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('生态')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">现代</span>
+            <div class="vocab-info">
+                <span class="romanization">xiàndài</span> <span class="meaning">modern</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">随着现代社会的发展。</span>
+                    <button onclick="speak('随着现代社会的发展。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Suízhe xiàndài shèhuì de fāzhǎn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>With the development of modern society.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('现代')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">挑战</span>
+            <div class="vocab-info">
+                <span class="romanization">tiǎozhàn</span> <span class="meaning">challenge</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">梯田面临着环境恶化的挑战。</span>
+                    <button onclick="speak('梯田面临着环境恶化的挑战。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tītián miànlín zhe huánjìng èhuà de tiǎozhàn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Terraced fields face the challenge of environmental degradation.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('挑战')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">引入</span>
+            <div class="vocab-info">
+                <span class="romanization">yǐnrù</span> <span class="meaning">to introduce</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">现代保护技术逐渐被引入。</span>
+                    <button onclick="speak('现代保护技术逐渐被引入。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Xiàndài bǎohù jìshù zhújiàn bèi yǐnrù.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Modern protection technology is gradually introduced.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('引入')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">遥感技术</span>
+            <div class="vocab-info">
+                <span class="romanization">yáogǎn jìshù</span> <span class="meaning">remote sensing technology</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">科学家利用遥感技术监测梯田。</span>
+                    <button onclick="speak('科学家利用遥感技术监测梯田。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Kēxuéjiā lìyòng yáogǎn jìshù jiāncè tītián.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Scientists use remote sensing technology to monitor terraced fields.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('遥感技术')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">无人机</span>
+            <div class="vocab-info">
+                <span class="romanization">wúrénjī</span> <span class="meaning">drone</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">用无人机监测梯田的变化。</span>
+                    <button onclick="speak('用无人机监测梯田的变化。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yòng wúrénjī jiāncè tītián de biànhuà.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Use drones to monitor changes in terraced fields.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('无人机')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">减少</span>
+            <div class="vocab-info">
+                <span class="romanization">jiǎnshǎo</span> <span class="meaning">to reduce</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">减少化肥和农药的使用。</span>
+                    <button onclick="speak('减少化肥和农药的使用。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Jiǎnshǎo huàféi hé nóngyào de shǐyòng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Reduce the use of chemical fertilizers and pesticides.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('减少')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">可持续</span>
+            <div class="vocab-info">
+                <span class="romanization">kěchíxù</span> <span class="meaning">sustainable</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">保证梯田的可持续发展。</span>
+                    <button onclick="speak('保证梯田的可持续发展。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Bǎozhèng tītián de kěchíxù fāzhǎn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Ensure the sustainable development of terraced fields.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('可持续')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">生态农业</span>
+            <div class="vocab-info">
+                <span class="romanization">shēngtài nóngyè</span> <span class="meaning">ecological agriculture</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">展示了生态农业的价值。</span>
+                    <button onclick="speak('展示了生态农业的价值。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhǎnshì le shēngtài nóngyè de jiàzhí.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Demonstrates the value of ecological agriculture.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('生态农业')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">结合</span>
+            <div class="vocab-info">
+                <span class="romanization">jiéhé</span> <span class="meaning">to combine</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">通过传统与现代技术的结合保护梯田。</span>
+                    <button onclick="speak('通过传统与现代技术的结合保护梯田。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tōngguò chuántǒng yǔ xiàndài jìshù de jiéhé bǎohù tītián.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Protect terraced fields by combining traditional and modern technologies.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('结合')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">管理</span>
+            <div class="vocab-info">
+                <span class="romanization">guǎnlǐ</span> <span class="meaning">to manage; management</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">更好地管理水资源和土壤。</span>
+                    <button onclick="speak('更好地管理水资源和土壤。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Gèng hǎo de guǎnlǐ shuǐ zīyuán hé tǔrǎng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Better manage water resources and soil.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('管理')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">承载</span>
+            <div class="vocab-info">
+                <span class="romanization">chéngzǎi</span> <span class="meaning">to carry; to bear</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">梯田承载了丰富的文化和生态价值。</span>
+                    <button onclick="speak('梯田承载了丰富的文化和生态价值。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tītián chéngzǎile fēngfù de wénhuà hé shēngtài jiàzhí.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Terraced fields bear rich cultural and ecological value.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('承载')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">面临</span>
+            <div class="vocab-info">
+                <span class="romanization">miànlín</span> <span class="meaning">to face (a challenge or situation)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">梯田面临环境恶化和人口迁移的挑战。</span>
+                    <button onclick="speak('梯田面临环境恶化和人口迁移的挑战。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tītián miànlín huánjìng èhuà hé rénkǒu qiānyí de tiǎozhàn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Terraced fields face challenges such as environmental degradation and population migration.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('面临')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">一边……一边……</div>
+                <div class="grammar-explanation">表示两个动作同时进行，强调两个活动同时发生。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">农民们一边耕作，一边保护梯田的生态环境。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">被……(所)……</div>
+                <div class="grammar-explanation">用来突出动作的承受者，表达被动语态。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">梯田被列为重要的文化遗产而受到保护。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">为了……，……</div>
+                <div class="grammar-explanation">表示目的，说明前面的行为是为了实现后面的目标。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">中国农民为了在陡峭的山坡上种植庄稼，创造了梯田。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅……，还……</div>
+                <div class="grammar-explanation">表示递进关系，不但有前者，还有后者，强调两者兼具。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">这种设计不仅节约了土地，还能有效防止水土流失。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">随着……的发展，……</div>
+                <div class="grammar-explanation">表示时间上的变化和伴随关系，说明某事随着另一事的发展而发生。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">随着现代社会的发展，梯田面临着环境恶化和人口迁移等挑战。</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>
