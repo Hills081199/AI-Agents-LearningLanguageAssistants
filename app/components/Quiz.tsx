@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import { CheckCircle, XCircle, RotateCcw, ListChecks, PenLine, Link2, ArrowUpDown } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, ListChecks, PenLine, Link2, ArrowUpDown, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
 import FillBlankQuiz from './FillBlankQuiz';
 import MatchingQuiz from './MatchingQuiz';
 import SentenceOrderQuiz from './SentenceOrderQuiz';
@@ -21,6 +21,7 @@ interface QuizQuestion {
 
 interface QuizProps {
     questions: QuizQuestion[];
+    story?: string;
 }
 
 // Multiple Choice Component (embedded)
@@ -71,10 +72,10 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
 
             {allAnswered && (
                 <div className={`p-6 rounded-xl text-center mb-6 ${getScore() === questions.length
-                        ? 'bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200'
-                        : getScore() >= questions.length / 2
-                            ? 'bg-gradient-to-r from-yellow-100 to-amber-100 border border-yellow-200'
-                            : 'bg-gradient-to-r from-red-100 to-rose-100 border border-red-200'
+                    ? 'bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200'
+                    : getScore() >= questions.length / 2
+                        ? 'bg-gradient-to-r from-yellow-100 to-amber-100 border border-yellow-200'
+                        : 'bg-gradient-to-r from-red-100 to-rose-100 border border-red-200'
                     }`}>
                     <div className="text-3xl font-bold mb-2">{getScore()} / {questions.length}</div>
                     <div className="text-slate-600">
@@ -113,12 +114,12 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
                                         onClick={() => handleAnswer(qIndex, optionLetter)}
                                         disabled={isAnswered}
                                         className={`w-full text-left p-4 rounded-lg border-2 transition-all flex items-center gap-3 ${isAnswered
-                                                ? isCorrectOption
-                                                    ? 'bg-green-100 border-green-400 text-green-800'
-                                                    : isSelected
-                                                        ? 'bg-red-100 border-red-400 text-red-800'
-                                                        : 'bg-slate-50 border-slate-200 text-slate-500'
-                                                : 'bg-white border-slate-200 hover:border-teal-400 hover:bg-teal-50 cursor-pointer'
+                                            ? isCorrectOption
+                                                ? 'bg-green-100 border-green-400 text-green-800'
+                                                : isSelected
+                                                    ? 'bg-red-100 border-red-400 text-red-800'
+                                                    : 'bg-slate-50 border-slate-200 text-slate-500'
+                                            : 'bg-white border-slate-200 hover:border-teal-400 hover:bg-teal-50 cursor-pointer'
                                             }`}
                                     >
                                         <span className="flex-1">{option}</span>
@@ -144,8 +145,9 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
 }
 
 // Main Quiz Router Component
-export default function Quiz({ questions }: QuizProps) {
+export default function Quiz({ questions, story }: QuizProps) {
     const [activeType, setActiveType] = useState<string>('all');
+    const [showStory, setShowStory] = useState(false);
 
     // Group exercises by type
     const grouped = useMemo(() => {
@@ -176,6 +178,72 @@ export default function Quiz({ questions }: QuizProps) {
 
     return (
         <div className="space-y-6">
+            {/* Story Reference */}
+            {story && (
+                <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button
+                        onClick={() => setShowStory(!showStory)}
+                        className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                                <BookOpen className="w-5 h-5" />
+                            </div>
+                            <div className="text-left">
+                                <h3 className="font-semibold text-slate-800">Reading Context</h3>
+                                <p className="text-xs text-slate-500">Refer to the lesson text for answers</p>
+                            </div>
+                        </div>
+                        {showStory ? <ChevronUp className="w-5 h-5 text-slate-400" /> : <ChevronDown className="w-5 h-5 text-slate-400" />}
+                    </button>
+
+                    {showStory && (
+                        <div className="p-6 pt-0 border-t border-slate-100 animate-in slide-in-from-top-2 duration-200">
+                            <div className="prose prose-slate max-w-none">
+                                <div className="bg-slate-50 rounded-xl p-6 whitespace-pre-wrap text-slate-700 leading-relaxed font-serif text-lg">
+                                    {story.split('#').map((segment, i) => {
+                                        if (!segment.trim()) return null;
+                                        const lines = segment.split('\n');
+                                        const title = lines[0].trim();
+                                        const content = lines.slice(1).join('\n').trim();
+
+                                        const isPinyin = title.includes('Pinyin');
+                                        const isTranslation = title.includes('Translation');
+                                        const isStory = title.includes('Story') || title.includes('Hanzi');
+
+                                        // Skip if it's not a story-related segment (e.g. "Lesson Plan" or "Vocabulary")
+                                        if (!isPinyin && !isTranslation && !isStory) return null;
+
+                                        if (isPinyin || isTranslation) {
+                                            return (
+                                                <details key={i} className="mb-4 last:mb-0 group/segment">
+                                                    <summary className="text-xs font-bold uppercase tracking-wider text-indigo-500/60 cursor-pointer hover:text-indigo-500 transition-colors list-none flex items-center gap-2">
+                                                        <ChevronDown className="w-3 h-3 group-open/segment:rotate-180 transition-transform" />
+                                                        Show {title}
+                                                    </summary>
+                                                    <div className={`mt-2 p-3 rounded-lg bg-white/50 border border-slate-100 ${isPinyin ? 'text-purple-600 font-sans text-base' : 'text-slate-500 font-sans text-base italic'}`}>
+                                                        {content}
+                                                    </div>
+                                                </details>
+                                            );
+                                        }
+
+                                        return (
+                                            <div key={i} className="mb-6 last:mb-0">
+                                                <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-2">{title}</h4>
+                                                <div className="text-slate-900">
+                                                    {content}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
+
             {/* Type Selector */}
             <div className="flex flex-wrap gap-2 p-1 bg-slate-100 rounded-xl">
                 {quizTypes.map(({ key, label, icon: Icon, count }) => (
@@ -183,8 +251,8 @@ export default function Quiz({ questions }: QuizProps) {
                         key={key}
                         onClick={() => setActiveType(key)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeType === key
-                                ? 'bg-white shadow-sm text-teal-600'
-                                : 'text-slate-600 hover:text-slate-800'
+                            ? 'bg-white shadow-sm text-teal-600'
+                            : 'text-slate-600 hover:text-slate-800'
                             }`}
                     >
                         <Icon className="w-4 h-4" />

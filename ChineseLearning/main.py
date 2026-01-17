@@ -466,11 +466,6 @@ def generate_interactive_html(lesson_data):
         <h1>{topic}</h1>
         
         <div class="section">
-            <div class="section-title">📋 Lesson Plan</div>
-            {lesson_plan_html if lesson_plan_html else "<p>No lesson plan data.</p>"}
-        </div>
-        
-        <div class="section">
             <div class="section-title">📖 Reading Passage</div>
             <div class="story-content">
                 {story_html if story_html else "<p>No story data.</p>"}

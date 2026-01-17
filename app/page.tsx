@@ -360,7 +360,7 @@ export default function Home() {
               )}
 
               {activeView === "quiz" && lessonData && (
-                <Quiz questions={lessonData.quiz} />
+                <Quiz questions={lessonData.quiz} story={lessonData.story} />
               )}
             </div>
           </div>

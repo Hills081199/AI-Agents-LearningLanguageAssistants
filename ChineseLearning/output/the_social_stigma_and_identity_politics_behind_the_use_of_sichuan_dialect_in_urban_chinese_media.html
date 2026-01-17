@@ -1,0 +1,771 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Social Stigma and Identity Politics Behind the Use of Sichuan Dialect in Urban Chinese Media - HSK 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 2px;
+        }
+        
+        h2, h3, h4 { color: #0f172a; margin: 20px 0 12px; }
+        h2 { font-size: 1.35rem; font-weight: 700; }
+        h3 { font-size: 1.15rem; font-weight: 600; }
+        h4 { font-size: 1rem; font-weight: 600; color: #475569; }
+        p { margin-bottom: 14px; color: #475569; line-height: 1.9; }
+        li { margin-left: 20px; margin-bottom: 8px; color: #475569; }
+        strong { color: #0f172a; }
+        
+        .story-content {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #1e293b;
+        }
+        .story-content p {
+            color: #1e293b;
+            margin-bottom: 18px;
+        }
+        
+        .story-block {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .story-hanzi {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+        
+        details.story-details {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        details.story-details summary {
+            padding: 12px 16px;
+            background: #f1f5f9;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            list-style: none; /* Hide default triangle */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.story-details summary::after {
+            content: '+';
+            font-weight: bold;
+        }
+        details.story-details[open] summary::after {
+            content: '-';
+        }
+        .story-pinyin, .story-trans {
+            padding: 16px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .story-pinyin { color: #8b5cf6; } 
+
+        
+        .vocab-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            padding: 16px 20px;
+            margin: 0 -20px;
+            border-radius: 12px;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .vocab-row:hover { background: #f8fafc; }
+        .hanzi { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #0f172a;
+            min-width: 80px;
+        }
+        .vocab-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .pinyin { color: #8b5cf6; font-weight: 500; font-size: 0.95rem; }
+        .meaning { color: #64748b; font-size: 0.9rem; }
+        .tts-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f1f5f9;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tts-btn:hover { background: #3b82f6; transform: scale(1.1); }
+        
+        .grammar-card {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-family: 'Noto Sans SC', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+        .grammar-example-badge {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">HSK 4</span>
+        <h1>The Social Stigma and Identity Politics Behind the Use of Sichuan Dialect in Urban Chinese Media</h1>
+        
+        <div class="section">
+            <div class="section-title">📋 Lesson Plan</div>
+            <p>Lesson Plan Outline for HSK 4 Topic:</p>
+<p>"The Social Stigma and Identity Politics Behind the Use of Sichuan Dialect in Urban Chinese Media"</p>
+<p>1. Learning Objectives:</p>
+<li>Understand the cultural and social implications of using Sichuan dialect in urban Chinese media.</li>
+<li>Recognize and discuss the social stigma associated with regional dialects, focusing on Sichuan dialect.</li>
+<li>Express opinions about identity politics related to language use in media.</li>
+<li>Use relevant vocabulary and grammar structures to describe social attitudes and personal identity in Chinese.</li>
+<p>2. Key Vocabulary (HSK 4 appropriate):</p>
+<li>方言 (fāngyán) - dialect</li>
+<li>社会 (shèhuì) - society</li>
+<li>媒体 (méitǐ) - media</li>
+<li>歧视 (qíshì) - discrimination/stigma</li>
+<li>认同 (rèntóng) - identity/recognition</li>
+<li>公共 (gōnggòng) - public</li>
+<li>影响 (yǐngxiǎng) - influence/effect</li>
+<li>表达 (biǎodá) - express</li>
+<li>文化 (wénhuà) - culture</li>
+<li>现代 (xiàndài) - modern</li>
+<p>3. Grammar Points:</p>
+<p>a. Passive Voice using “被” (bèi)</p>
+<li>Usage: To describe social stigma or discrimination as experienced by dialect speakers (e.g., 四川话被认为不正式。Sichuan dialect is considered informal.)</li>
+<li>Focus: Forming passive sentences to highlight social attitudes or imposed identities.</li>
+<p>b. Result Complement with “得” (de)</p>
+<li>Usage: To describe the outcome or degree of an action, especially in terms of expression and understanding (e.g., 用四川话交流得很顺利。Communicating in Sichuan dialect goes smoothly.)</li>
+<li>Focus: Expressing how well or to what extent an action is performed, useful for discussing media expression and social reception.</li>
+<p>---</p>
+<p>This lesson plan allows HSK 4 learners to explore complex social topics through manageable vocabulary and grammar, encouraging meaningful discussion and comprehension about the sociolinguistic realities of Sichuan dialect in urban media contexts.</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📖 Reading Passage</div>
+            <div class="story-content">
+                
+    <div class="story-block">
+        <div class="story-hanzi">
+            <p>四川话作为中国西南地区的重要方言，在现代城市媒体中一直存在着复杂的社会文化意义。虽然四川话在本地人民日常生活中被广泛使用，但在公共媒体上使用四川话往往会被认为是不正式，甚至带有一定的社会歧视。这种现象反映了社会对方言使用者身份认同的复杂态度，同时也暴露出身份政治在语言选择中的影响。</p>
+<p>近年来，随着文化多样性的推广，四川话逐渐被更多人注意到。电影、电视剧和网络节目中开始尝试用四川话表达地方特色，这种表达方式使得四川文化得以更生动地呈现。然而，四川话被部分媒体观众认为“土气”或不够“现代”，导致讲四川话的演员和主持人有时会被标签化。这种标签化不仅影响个人的职业发展，也影响了公众对四川话的认同感。</p>
+<p>在社会层面，四川话使用者经常被要求在正式场合使用普通话，原因是普通话被视为更规范和现代的语言工具。四川话在公共领域的使用被限制，使得很多人感受到方言被边缘化甚至歧视。媒体中的这种倾向，无形中加深了地域文化的隔阂，也让使用四川话的人在身份表达上产生困惑。</p>
+<p>然而，语言不仅是交流的工具，更是文化身份的重要组成部分。很多四川话使用者希望通过媒体表达自己的文化特色和情感，使得自己的身份能够被社会认可和尊重。理解和接纳四川话在城市媒体中的地位，有助于促进社会包容和文化多元发展。未来，随着社会观念的转变，四川话在媒体中的表现或许会更加丰富和被尊重，从而减少因语言不同而产生的社会歧视。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-pinyin">
+                <p>Sìchuān huà zuòwéi Zhōngguó xīnán dìqū de zhòngyào fāngyán, zài xiàndài chéngshì méitǐ zhōng yīzhí cúnzài zhe fùzá de shèhuì wénhuà yìyì. Suīrán Sìchuān huà zài běndì rénmín rìcháng shēnghuó zhōng bèi guǎngfàn shǐyòng, dàn zài gōnggòng méitǐ shàng shǐyòng Sìchuān huà wǎngwǎng huì bèi rènwéi shì bù zhèngshì, shènzhì dàiyǒu yīdìng de shèhuì qíshì. Zhè zhǒng xiànxiàng fǎnyìng le shèhuì duì fāngyán shǐyòng zhě shēnfèn rèntóng de fùzá tàidù, tóngshí yě pùlù chū shēnfèn zhèngzhì zài yǔyán xuǎnzé zhōng de yǐngxiǎng.</p>
+<p>Jìnnián lái, suízhe wénhuà duōyàngxìng de tuīguǎng, Sìchuān huà zhújiàn bèi gèng duō rén zhùyì dào. Diànyǐng, diànshìjù hé wǎngluò jiémù zhōng kāishǐ chángshì yòng Sìchuān huà biǎodá dìfāng tèsè, zhè zhǒng biǎodá fāngshì shǐdé Sìchuān wénhuà déyǐ gèng shēngdòng dì chéngxiàn. Rán’ér, Sìchuān huà bèi bùfen méitǐ guānzhòng rènwéi “tǔqì” huò bùgòu “xiàndài”, dǎozhì jiǎng Sìchuān huà de yǎnyuán hé zhǔchírén yǒu shí huì bèi biāoqiān huà. Zhè zhǒng biāoqiān huà bùjǐn yǐngxiǎng gèrén de zhíyè fāzhǎn, yě yǐngxiǎng le gōngzhòng duì Sìchuān huà de rèn tóng gǎn.</p>
+<p>Zài shèhuì céngmiàn, Sìchuān huà shǐyòng zhě jīngcháng bèi yāoqiú zài zhèngshì chǎnghé shǐyòng Pǔtōnghuà, yuányīn shì Pǔtōnghuà bèi shì wéi gèng guīfàn hé xiàndài de yǔyán gōngjù. Sìchuān huà zài gōnggòng lǐngyù de shǐyòng bèi xiànzhì, shǐdé hěn duō rén gǎnshòu dào fāngyán bèi biānyuán huà shènzhì qíshì. Méitǐ zhōng de zhè zhǒng qīngxiàng, wúxíng zhōng jiāshēn le dìqū wénhuà de géhé, yě ràng shǐyòng Sìchuān huà de rén zài shēnfèn biǎodá shàng chǎnshēng kùnhuò.</p>
+<p>Rán’ér, yǔyán bùjǐn shì jiāoliú de gōngjù, gèng shì wénhuà shēnfèn de zhòngyào zǔchéng bùfèn. Hěn duō Sìchuān huà shǐyòng zhě xīwàng tōngguò méitǐ biǎodá zìjǐ de wénhuà tèsè hé qínggǎn, shǐdé zìjǐ de shēnfèn nénggòu bèi shèhuì rènkě hé zūnzhòng. Lĭjiě hé jiēnà Sìchuān huà zài chéngshì méitǐ zhōng de dìwèi, yǒuzhù yú cùjìn shèhuì bāoróng hé wénhuà duōyuán fāzhǎn. Wèilái, suízhe shèhuì guānniàn de zhuǎnbiàn, Sìchuān huà zài méitǐ zhōng de biǎoxiàn huòxǔ huì gèng jiā fēngfù hé bèi zūnzhòng, cóng’ér jiǎnshǎo yīn yǔyán bùtóng ér chǎnshēng de shèhuì qíshì.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>As an important dialect in southwestern China, the Sichuan dialect holds complex social and cultural significance in modern urban media. Although Sichuan dialect is widely used in the daily lives of local people, its use in public media is often considered informal and even carries certain social stigma. This phenomenon reflects the complicated societal attitudes toward dialect speakers’ identity and also reveals the influence of identity politics in language choice.</p>
+<p>In recent years, with the promotion of cultural diversity, the Sichuan dialect has gradually attracted more attention. Films, TV dramas, and online programs have begun to attempt expressing local characteristics through Sichuan dialect, which helps to present Sichuan culture more vividly. However, some media audiences regard Sichuan dialect as “rustic” or insufficiently “modern,” leading to actors and hosts who speak Sichuan dialect sometimes being stereotyped. This labeling not only affects individual career development but also impacts public recognition of Sichuan dialect.</p>
+<p>At the social level, Sichuan dialect speakers are often required to use Mandarin in formal occasions because Mandarin is viewed as a more standard and modern language tool. The limited use of Sichuan dialect in public domains causes many people to feel that their dialect is marginalized or even discriminated against. This media tendency invisibly deepens regional cultural divides and creates confusion for Sichuan dialect users in expressing their identity.</p>
+<p>However, language is not only a tool of communication but also an essential part of cultural identity. Many Sichuan dialect speakers hope to express their cultural characteristics and emotions through the media so that their identity can be acknowledged and respected by society. Understanding and accepting the status of Sichuan dialect in urban media helps promote social inclusion and cultural diversity. In the future, as social attitudes change, the portrayal of Sichuan dialect in media may become richer and more respected, thereby reducing social stigma caused by language differences.</p>
+            </div>
+        </details>
+        
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📝 Vocabulary (19 words)</div>
+            
+        <div class="vocab-row">
+            <span class="hanzi">方言</span>
+            <div class="vocab-info">
+                <span class="pinyin">fāngyán</span>
+                <span class="meaning">dialect</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">四川话是一种重要的方言。</span>
+                    <button onclick="speak('四川话是一种重要的方言。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Sìchuān huà shì yī zhǒng zhòngyào de fāngyán.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Sichuan dialect is an important dialect.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('方言')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">社会</span>
+            <div class="vocab-info">
+                <span class="pinyin">shèhuì</span>
+                <span class="meaning">society</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">社会对方言使用者有复杂的态度。</span>
+                    <button onclick="speak('社会对方言使用者有复杂的态度。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Shèhuì duì fāngyán shǐyòng zhě yǒu fùzá de tàidù.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Society has complex attitudes toward dialect users.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('社会')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">媒体</span>
+            <div class="vocab-info">
+                <span class="pinyin">méitǐ</span>
+                <span class="meaning">media</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">电影和电视是重要的媒体形式。</span>
+                    <button onclick="speak('电影和电视是重要的媒体形式。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Diànyǐng hé diànshì shì zhòngyào de méitǐ xíngshì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Films and television are important forms of media.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('媒体')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">歧视</span>
+            <div class="vocab-info">
+                <span class="pinyin">qíshì</span>
+                <span class="meaning">discrimination; stigma</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">方言使用者有时会遭受社会歧视。</span>
+                    <button onclick="speak('方言使用者有时会遭受社会歧视。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Fāngyán shǐyòng zhě yǒu shí huì zāoshòu shèhuì qíshì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialect users sometimes suffer social discrimination.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('歧视')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">认同</span>
+            <div class="vocab-info">
+                <span class="pinyin">rèntóng</span>
+                <span class="meaning">identity; recognition</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">他们希望获得社会的认同和尊重。</span>
+                    <button onclick="speak('他们希望获得社会的认同和尊重。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Tāmen xīwàng huòdé shèhuì de rèntóng hé zūnzhòng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">They hope to gain social recognition and respect.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('认同')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">公共</span>
+            <div class="vocab-info">
+                <span class="pinyin">gōnggòng</span>
+                <span class="meaning">public</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">公共媒体上不常使用方言。</span>
+                    <button onclick="speak('公共媒体上不常使用方言。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Gōnggòng méitǐ shàng bù cháng shǐyòng fāngyán.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialects are not often used in public media.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('公共')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">影响</span>
+            <div class="vocab-info">
+                <span class="pinyin">yǐngxiǎng</span>
+                <span class="meaning">influence; effect</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">标签化影响了演员的职业发展。</span>
+                    <button onclick="speak('标签化影响了演员的职业发展。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Biāoqiān huà yǐngxiǎng le yǎnyuán de zhíyè fāzhǎn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Labeling affects actors' career development.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('影响')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">表达</span>
+            <div class="vocab-info">
+                <span class="pinyin">biǎodá</span>
+                <span class="meaning">to express</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">通过媒体表达文化特色非常重要。</span>
+                    <button onclick="speak('通过媒体表达文化特色非常重要。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Tōngguò méitǐ biǎodá wénhuà tèsè fēicháng zhòngyào.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Expressing cultural characteristics through media is very important.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('表达')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">文化</span>
+            <div class="vocab-info">
+                <span class="pinyin">wénhuà</span>
+                <span class="meaning">culture</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">四川文化在媒体中逐渐被重视。</span>
+                    <button onclick="speak('四川文化在媒体中逐渐被重视。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Sìchuān wénhuà zài méitǐ zhōng zhújiàn bèi zhòngshì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Sichuan culture is gradually being valued in the media.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('文化')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">现代</span>
+            <div class="vocab-info">
+                <span class="pinyin">xiàndài</span>
+                <span class="meaning">modern</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">普通话被认为是现代语言工具。</span>
+                    <button onclick="speak('普通话被认为是现代语言工具。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Pǔtōnghuà bèi rènwéi shì xiàndài yǔyán gōngjù.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Mandarin is considered a modern language tool.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('现代')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">身份</span>
+            <div class="vocab-info">
+                <span class="pinyin">shēnfèn</span>
+                <span class="meaning">identity; status</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">方言使用者的身份认同很复杂。</span>
+                    <button onclick="speak('方言使用者的身份认同很复杂。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Fāngyán shǐyòng zhě de shēnfèn rèntóng hěn fùzá.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialect users’ identity recognition is very complex.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('身份')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">标签化</span>
+            <div class="vocab-info">
+                <span class="pinyin">biāoqiānhuà</span>
+                <span class="meaning">labeling; stereotyping</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">标签化对社会认知有负面影响。</span>
+                    <button onclick="speak('标签化对社会认知有负面影响。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Biāoqiānhuà duì shèhuì rènzhī yǒu fùmiàn yǐngxiǎng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Labeling has negative impact on social perception.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('标签化')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">职业</span>
+            <div class="vocab-info">
+                <span class="pinyin">zhíyè</span>
+                <span class="meaning">profession; career</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">方言会影响演员的职业发展。</span>
+                    <button onclick="speak('方言会影响演员的职业发展。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Fāngyán huì yǐngxiǎng yǎnyuán de zhíyè fāzhǎn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialect can affect actors’ career development.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('职业')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">边缘化</span>
+            <div class="vocab-info">
+                <span class="pinyin">biānyuán huà</span>
+                <span class="meaning">marginalization</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">方言在公共领域容易被边缘化。</span>
+                    <button onclick="speak('方言在公共领域容易被边缘化。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Fāngyán zài gōnggòng lǐngyù róngyì bèi biānyuán huà.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialects are easily marginalized in public domains.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('边缘化')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">促进</span>
+            <div class="vocab-info">
+                <span class="pinyin">cùjìn</span>
+                <span class="meaning">to promote; to advance</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">理解多元文化有助于促进社会包容。</span>
+                    <button onclick="speak('理解多元文化有助于促进社会包容。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Lǐjiě duōyuán wénhuà yǒuzhù yú cùjìn shèhuì bāoróng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Understanding multiculturalism helps to promote social inclusion.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('促进')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">表现</span>
+            <div class="vocab-info">
+                <span class="pinyin">biǎoxiàn</span>
+                <span class="meaning">performance; to show; to express</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">四川话在媒体中的表现越来越丰富。</span>
+                    <button onclick="speak('四川话在媒体中的表现越来越丰富。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Sìchuān huà zài méitǐ zhōng de biǎoxiàn yuè lái yuè fēngfù.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">The representation of Sichuan dialect in media becomes richer and richer.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('表现')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">困惑</span>
+            <div class="vocab-info">
+                <span class="pinyin">kùnhuò</span>
+                <span class="meaning">confusion; perplexed</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">方言使用者在身份表达上有时会感到困惑。</span>
+                    <button onclick="speak('方言使用者在身份表达上有时会感到困惑。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Fāngyán shǐyòng zhě zài shēnfèn biǎodá shàng yǒushí huì gǎndào kùnhuò.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Dialect users sometimes feel confused about their identity expression.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('困惑')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">多样性</span>
+            <div class="vocab-info">
+                <span class="pinyin">duōyàngxìng</span>
+                <span class="meaning">diversity</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">文化多样性在现代社会越来越受重视。</span>
+                    <button onclick="speak('文化多样性在现代社会越来越受重视。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wénhuà duōyàngxìng zài xiàndài shèhuì yuè lái yuè shòu zhòngshì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Cultural diversity is becoming increasingly valued in modern society.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('多样性')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">推广</span>
+            <div class="vocab-info">
+                <span class="pinyin">tuīguǎng</span>
+                <span class="meaning">to promote; promotion</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">政府在推广文化多样性方面做了很多努力。</span>
+                    <button onclick="speak('政府在推广文化多样性方面做了很多努力。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Zhèngfǔ zài tuīguǎng wénhuà duōyàngxìng fāngmiàn zuò le hěn duō nǔlì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">The government has made great efforts in promoting cultural diversity.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('推广')">🔊</button>
+        </div>
+        
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📐 Grammar Points</div>
+            
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">被 + verb</div>
+                <div class="grammar-explanation">Used to form passive voice, it shows that the subject is the receiver of an action usually with some negative connotation, often used to describe social stigma or discrimination.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">四川话被认为不正式。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Verb + 得 + complement</div>
+                <div class="grammar-explanation">Result complement with '得' describes the degree or outcome of an action, such as how smoothly or well something is done.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">用四川话交流得很顺利。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">随着 + noun/verb phrase</div>
+                <div class="grammar-explanation">Indicates 'along with' or 'as something happens/change happens', used to show concurrent developments or changes.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">随着文化多样性的推广，四川话逐渐被更多人注意到。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅...，也...</div>
+                <div class="grammar-explanation">Used for 'not only... but also...' to connect two related clauses, emphasizing both.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">标签化不仅影响个人的职业发展，也影响了公众的认同感。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">更 + adjective/verb</div>
+                <div class="grammar-explanation">Used to indicate 'more' or an increased degree of a quality or action.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">普通话被认为是更规范和现代的语言工具。</div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>

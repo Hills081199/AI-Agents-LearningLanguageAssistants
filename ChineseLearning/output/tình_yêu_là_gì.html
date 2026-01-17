@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tình yêu là gì - HSK 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 760px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 2px;
+        }
+        
+        h2, h3, h4 { color: #0f172a; margin: 20px 0 12px; }
+        h2 { font-size: 1.35rem; font-weight: 700; }
+        h3 { font-size: 1.15rem; font-weight: 600; }
+        h4 { font-size: 1rem; font-weight: 600; color: #475569; }
+        p { margin-bottom: 14px; color: #475569; line-height: 1.9; }
+        li { margin-left: 20px; margin-bottom: 8px; color: #475569; }
+        strong { color: #0f172a; }
+        
+        .story-content {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #1e293b;
+        }
+        .story-content p {
+            color: #1e293b;
+            margin-bottom: 18px;
+        }
+        
+        .story-block {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .story-hanzi {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #0f172a;
+            margin-bottom: 24px;
+        }
+        
+        details.story-details {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        details.story-details summary {
+            padding: 12px 16px;
+            background: #f1f5f9;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            list-style: none; /* Hide default triangle */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.story-details summary::after {
+            content: '+';
+            font-weight: bold;
+        }
+        details.story-details[open] summary::after {
+            content: '-';
+        }
+        .story-pinyin, .story-trans {
+            padding: 16px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .story-pinyin { color: #8b5cf6; } 
+
+        
+        .vocab-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            padding: 16px 20px;
+            margin: 0 -20px;
+            border-radius: 12px;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .vocab-row:hover { background: #f8fafc; }
+        .hanzi { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #0f172a;
+            min-width: 80px;
+        }
+        .vocab-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .pinyin { color: #8b5cf6; font-weight: 500; font-size: 0.95rem; }
+        .meaning { color: #64748b; font-size: 0.9rem; }
+        .tts-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f1f5f9;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tts-btn:hover { background: #3b82f6; transform: scale(1.1); }
+        
+        .grammar-card {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-family: 'Noto Sans SC', sans-serif;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border: 1px solid #f1f5f9;
+            position: relative;
+        }
+        .grammar-example-badge {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">HSK 5</span>
+        <h1>Tình yêu là gì</h1>
+        
+        <div class="section">
+            <div class="section-title">📋 Lesson Plan</div>
+            <p>Lesson Plan Outline for Topic: "Tình yêu là gì" (What is Love?) – HSK 5 Level</p>
+<p>1. Learning Objectives:</p>
+<li>Students will be able to understand and use vocabulary related to love and emotions at an advanced intermediate level.</li>
+<li>Students will improve their ability to express abstract ideas and feelings in Chinese.</li>
+<li>Students will demonstrate understanding of advanced grammar patterns related to expressing opinions, conjectures, and emphasis.</li>
+<li>Students will be able to write and speak about the concept of love, its qualities, and cultural perspectives in Chinese.</li>
+<p>2. Key Vocabulary (HSK 5 appropriate):</p>
+<p>1. 爱情 (àiqíng) – romantic love</p>
+<p>2. 感情 (gǎnqíng) – feelings, emotion</p>
+<p>3. 真诚 (zhēnchéng) – sincere</p>
+<p>4. 依赖 (yīlài) – to rely on, dependence</p>
+<p>5. 付出 (fùchū) – to pay (effort, price), to dedicate</p>
+<p>6. 牵挂 (qiānguà) – to be concerned about, to care deeply</p>
+<p>7. 承诺 (chéngnuò) – promise, commitment</p>
+<p>8. 包容 (bāoróng) – tolerance, forgiveness</p>
+<p>9. 渴望 (kěwàng) – to desire, to long for</p>
+<p>10. 幸福 (xìngfú) – happiness, blessedness</p>
+<p>3. Grammar Points:</p>
+<p>A. Use of "不仅...而且..." (Not only... but also...) to link related ideas and deepen the description of love:</p>
+<li>Example: 爱情不仅让人感到幸福，而且让人学会包容和付出。(Love not only makes people feel happy but also teaches them to be tolerant and to give.)</li>
+<p>B. The structure "对...来说" (As far as... is concerned / to...):</p>
+<li>Used for expressing personal opinions or perspectives.</li>
+<li>Example: 对我来说，爱情就是相互理解和尊重。(For me, love is mutual understanding and respect.)</li>
+<p>4. Suggested Activity Ideas:</p>
+<li>Discussion: Students share their definitions of love using the target vocabulary and grammar.</li>
+<li>Writing: Compose a short essay describing what love means to them, using the grammar structures practiced.</li>
+<li>Role-play: Simulate conversations expressing feelings, making promises, or discussing emotional experiences.</li>
+<p>This lesson plan equips HSK 5 learners with rich emotional vocabulary and sophisticated grammatical tools to articulate complex feelings and abstract concepts, appropriate to their learning level.</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📖 Reading Passage</div>
+            <div class="story-content">
+                
+    <div class="story-block">
+        <div class="story-hanzi">
+            <p>爱情是什么？这是一个古老而又永恒的问题。对很多人来说，爱情不仅仅是两个人间的感情，也是人生中最宝贵的体验。爱情让人感到幸福和满足，它不仅让人学会了付出，而且教会了包容与真诚。</p>
+<p>爱情之所以美丽，是因为它包含了许多复杂的情感。首先，爱情让我们感受到强烈的渴望和依赖。我们渴望和爱人在一起，分享生活中的点滴喜悦和忧伤。同时，我们也依赖对方的支持和鼓励。许多人常说，爱情是人生道路上的力量源泉，因为有了爱情，我们才能勇敢面对困难和挑战。</p>
+<p>然而，爱情不仅是甜蜜的感觉，它还有责任和承诺。对每一段健康的感情来说，承诺是不可缺少的部分。承诺意味着两个人愿意共同努力，不管遇到什么问题，都不轻易放弃。爱情需要双方的付出和牵挂，这种付出不是单方面的，而是双方互相给予。没有付出，爱情难以维系；没有牵挂，感情就会渐渐淡化。</p>
+<p>在爱情中，包容也是非常重要的。没有人是完美的，爱情教会我们接受对方的缺点和不足。包容不仅仅是忍耐，更是一种理解和尊重。实际上，爱情不仅让人感到幸福，而且让人学会包容和付出。它促使我们成长，成为更好的人。</p>
+<p>对我来说，爱情是相互理解和尊重。这种理解不是表面的，而是深入心灵的；这种尊重不是形式上的，而是真诚表达的。爱情让我们感受到被关心和被认可的幸福，这种感觉远远超过了物质和外表。它是一种精神的连接，是心与心的交流。</p>
+<p>总的来说，爱情是复杂而美好的感情。它包含了渴望、依赖、付出、承诺和包容。爱情不仅仅是一个简单的词语，而是一种生活的态度和生命的力量。无论文化背景如何变化，爱情的本质始终不变。它是人类最深刻的体验之一，是我们追求幸福的源泉。</p>
+<p>因此，虽然爱情有时会带来痛苦和挑战，但它依旧值得我们珍惜和追求。因为正是爱情，让我们感受到生命的意义和生活的美好。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-pinyin">
+                <p>Àiqíng shì shénme? Zhè shì yīgè gǔlǎo ér yòu yǒnghéng de wèntí. Duì hěnduō rén lái shuō, àiqíng bù jǐn jǐn shì liǎng gèrén jiān de gǎnqíng, yě shì rénshēng zhōng zuì bǎoguì de tǐyàn. Àiqíng ràng rén gǎndào xìngfú hé mǎnzú, tā bù jǐn ràng rén xuéhuì le fùchū, érqiě jiàohuì le bāoróng yǔ zhēnchéng.</p>
+<p>Àiqíng zhī suǒyǐ měilì, shì yīnwèi tā bāohán le xǔduō fùzá de qínggǎn. Shǒuxiān, àiqíng ràng wǒmen gǎnshòu dào qiángliè de kěwàng hé yīlài. Wǒmen kěwàng hé àirén zài yīqǐ, fēnxiǎng shēnghuó zhōng de diǎndī xǐyuè hé yōushāng. Tóngshí, wǒmen yě yīlài duìfāng de zhīchí hé gǔlì. Xǔduō rén cháng shuō, àiqíng shì rénshēng dàolù shàng de lìliàng yuánquán, yīnwèi yǒule àiqíng, wǒmen cáinéng yǒnggǎn miànduì kùnnan hé tiǎozhàn.</p>
+<p>Rán'ér, àiqíng bù jǐn shì tiánmì de gǎnjué, tā hái yǒu zérèn hé chéngnuò. Duì měi yī duàn jiànkāng de gǎnqíng lái shuō, chéngnuò shì bùkě quēshǎo de bùfen. Chéngnuò yìwèi zhe liǎng gèrén yuànyì gòngtóng nǔlì, bùguǎn yù dào shénme wèntí, dōu bù qīngyì fàngqì. Àiqíng xūyào shuāngfāng de fùchū hé qiānguà, zhè zhǒng fùchū bù shì dān fāngmiàn de, ér shì shuāngfāng hùxiāng jǐyǔ. Méiyǒu fùchū, àiqíng nányǐ wéixì; méiyǒu qiānguà, gǎnqíng jiù huì jiànjiàn dàn huà.</p>
+<p>Zài àiqíng zhōng, bāoróng yě shì fēicháng zhòngyào de. Méiyǒu rén shì wánměi de, àiqíng jiàohuì wǒmen jiēshòu duìfāng de quēdiǎn hé bùzú. Bāoróng bù jǐn jǐn shì rěnnài, gèng shì yī zhǒng lǐjiě hé zūnzhòng. Shíjì shang, àiqíng bù jǐn ràng rén gǎndào xìngfú, érqiě ràng rén xuéhuì bāoróng hé fùchū. Tā cùshǐ wǒmen chéngzhǎng, chéngwéi gèng hǎo de rén.</p>
+<p>Duì wǒ lái shuō, àiqíng shì xiānghù lǐjiě hé zūnzhòng. Zhè zhǒng lǐjiě bù shì biǎomiàn de, ér shì shēnrù xīnlíng de; zhè zhǒng zūnzhòng bù shì xíngshì shàng de, ér shì zhēnchéng biǎodá de. Àiqíng ràng wǒmen gǎnshòu dào bèi guānxīn hé bèi rènkě de xìngfú, zhè zhǒng gǎnjué yuǎn yuǎn chāoguò le wùzhì hé wàibiǎo. Tā shì yī zhǒng jīngshén de liánjiē, shì xīn yǔ xīn de jiāoliú.</p>
+<p>Zǒng de lái shuō, àiqíng shì fùzá ér měihǎo de gǎnqíng. Tā bāohán le kěwàng, yīlài, fùchū, chéngnuò hé bāoróng. Àiqíng bù jǐn jǐn shì yī gè jiǎndān de cíyǔ, ér shì yī zhǒng shēnghuó de tàidù hé shēngmìng de lìliàng. Wúlùn wénhuà bèijǐng rúhé biànhuà, àiqíng de běnzhì shǐzhōng bùbiàn. Tā shì rénlèi zuì shēnkè de tǐyàn zhī yī, shì wǒmen zhuīqiú xìngfú de yuánquán.</p>
+<p>Yīncǐ, suīrán àiqíng yǒu shí huì dàilái tòngkǔ hé tiǎozhàn, dàn tā yījiù zhídé wǒmen zhēnxī hé zhuīqiú. Yīnwèi zhèng shì àiqíng, ràng wǒmen gǎnshòu dào shēngmìng de yìyì hé shēnghuó de měihǎo.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>What is love? This is an ancient and eternal question. For many people, love is not only the feelings between two individuals but also the most precious experience in life. Love makes people feel happy and satisfied; it not only teaches us to give but also teaches tolerance and sincerity.</p>
+<p>Love is beautiful because it contains many complex emotions. First, love makes us feel strong desire and dependence. We long to be with the one we love, sharing the joys and sorrows of life. At the same time, we also rely on their support and encouragement. Many people often say that love is a source of strength on the road of life because with love, we can bravely face difficulties and challenges.</p>
+<p>However, love is not only sweet feelings; it also comes with responsibility and commitment. For every healthy relationship, commitment is an indispensable part. Commitment means that both people are willing to work hard together and not give up easily no matter what problems they encounter. Love requires both parties to give and to care; this giving is not one-sided but mutual. Without giving, love is hard to sustain; without care, feelings will gradually fade.</p>
+<p>Tolerance is also very important in love. No one is perfect, and love teaches us to accept the other person's flaws and shortcomings. Tolerance is not only about endurance but is also a form of understanding and respect. In fact, love not only makes people feel happy but also teaches them to tolerate and give. It encourages us to grow and become better people.</p>
+<p>For me, love is mutual understanding and respect. This understanding is not superficial but deep in the heart; this respect is not formal but sincerely expressed. Love makes us feel cared for and recognized, a feeling that far surpasses material things and appearances. It is a spiritual connection, a communication heart to heart.</p>
+<p>In summary, love is a complex and beautiful emotion. It contains desire, dependence, giving, commitment, and tolerance. Love is not just a simple word but an attitude towards life and a life force. No matter how cultural backgrounds change, the essence of love remains the same. It is one of the most profound human experiences and the source of our pursuit of happiness.</p>
+<p>Therefore, although love sometimes brings pain and challenges, it is still worth cherishing and pursuing. Because it is love that allows us to feel the meaning of life and the beauty of living.</p>
+            </div>
+        </details>
+        
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📝 Vocabulary (16 words)</div>
+            
+        <div class="vocab-row">
+            <span class="hanzi">爱情</span>
+            <div class="vocab-info">
+                <span class="pinyin">àiqíng</span>
+                <span class="meaning">romantic love</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情让人感到幸福和满足。</span>
+                    <button onclick="speak('爱情让人感到幸福和满足。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng ràng rén gǎndào xìngfú hé mǎnzú.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love makes people feel happiness and satisfaction.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('爱情')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">感情</span>
+            <div class="vocab-info">
+                <span class="pinyin">gǎnqíng</span>
+                <span class="meaning">feelings, emotion, relationship</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">对很多人来说，爱情不仅仅是两个人间的感情。</span>
+                    <button onclick="speak('对很多人来说，爱情不仅仅是两个人间的感情。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Duì hěnduō rén lái shuō, àiqíng bù jǐn jǐn shì liǎng gèrén jiān de gǎnqíng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">For many people, love is not only feelings between two people.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('感情')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">真诚</span>
+            <div class="vocab-info">
+                <span class="pinyin">zhēnchéng</span>
+                <span class="meaning">sincere; sincerity</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情让人学会包容和真诚。</span>
+                    <button onclick="speak('爱情让人学会包容和真诚。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng ràng rén xuéhuì bāoróng hé zhēnchéng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love teaches people tolerance and sincerity.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('真诚')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">依赖</span>
+            <div class="vocab-info">
+                <span class="pinyin">yīlài</span>
+                <span class="meaning">to depend on; dependence</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们依赖对方的支持和鼓励。</span>
+                    <button onclick="speak('我们依赖对方的支持和鼓励。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yīlài duìfāng de zhīchí hé gǔlì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We depend on each other's support and encouragement.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('依赖')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">付出</span>
+            <div class="vocab-info">
+                <span class="pinyin">fùchū</span>
+                <span class="meaning">to pay (effort, price); to give (dedication)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情需要双方的付出和牵挂。</span>
+                    <button onclick="speak('爱情需要双方的付出和牵挂。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng xūyào shuāngfāng de fùchū hé qiānguà.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love requires both parties’ giving and caring.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('付出')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">牵挂</span>
+            <div class="vocab-info">
+                <span class="pinyin">qiānguà</span>
+                <span class="meaning">to be concerned about; care deeply</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">没有牵挂，感情就会渐渐淡化。</span>
+                    <button onclick="speak('没有牵挂，感情就会渐渐淡化。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Méiyǒu qiānguà, gǎnqíng jiù huì jiànjiàn dàn huà.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Without care, feelings gradually fade.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('牵挂')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">承诺</span>
+            <div class="vocab-info">
+                <span class="pinyin">chéngnuò</span>
+                <span class="meaning">promise; commitment</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">承诺是不可缺少的部分。</span>
+                    <button onclick="speak('承诺是不可缺少的部分。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Chéngnuò shì bùkě quēshǎo de bùfen.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Commitment is an indispensable part.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('承诺')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">包容</span>
+            <div class="vocab-info">
+                <span class="pinyin">bāoróng</span>
+                <span class="meaning">tolerance; forgiveness</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情教会我们接受对方的缺点和不足，学会包容。</span>
+                    <button onclick="speak('爱情教会我们接受对方的缺点和不足，学会包容。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng jiàohuì wǒmen jiēshòu duìfāng de quēdiǎn hé bùzú, xuéhuì bāoróng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love teaches us to accept the other's flaws and learn tolerance.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('包容')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">渴望</span>
+            <div class="vocab-info">
+                <span class="pinyin">kěwàng</span>
+                <span class="meaning">to long for; desire</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情让我们感受到强烈的渴望。</span>
+                    <button onclick="speak('爱情让我们感受到强烈的渴望。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng ràng wǒmen gǎnshòu dào qiángliè de kěwàng.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love makes us feel strong desire.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('渴望')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">幸福</span>
+            <div class="vocab-info">
+                <span class="pinyin">xìngfú</span>
+                <span class="meaning">happiness; blessedness</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情让人感到幸福和满足。</span>
+                    <button onclick="speak('爱情让人感到幸福和满足。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng ràng rén gǎndào xìngfú hé mǎnzú.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love makes people feel happy and satisfied.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('幸福')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">责任</span>
+            <div class="vocab-info">
+                <span class="pinyin">zérèn</span>
+                <span class="meaning">responsibility; duty</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情还有责任和承诺。</span>
+                    <button onclick="speak('爱情还有责任和承诺。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng hái yǒu zérèn hé chéngnuò.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love also has responsibility and commitment.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('责任')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">接受</span>
+            <div class="vocab-info">
+                <span class="pinyin">jiēshòu</span>
+                <span class="meaning">to accept; to receive</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情教会我们接受对方的缺点。</span>
+                    <button onclick="speak('爱情教会我们接受对方的缺点。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng jiàohuì wǒmen jiēshòu duìfāng de quēdiǎn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love teaches us to accept the other person's flaws.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('接受')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">缺点</span>
+            <div class="vocab-info">
+                <span class="pinyin">quēdiǎn</span>
+                <span class="meaning">shortcoming; flaw</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">没有人是完美的，大家都有缺点。</span>
+                    <button onclick="speak('没有人是完美的，大家都有缺点。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Méiyǒu rén shì wánměi de, dàjiā dōu yǒu quēdiǎn.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">No one is perfect; everyone has flaws.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('缺点')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">欣赏</span>
+            <div class="vocab-info">
+                <span class="pinyin">xīnshǎng</span>
+                <span class="meaning">to appreciate; to enjoy</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">我们应该欣赏爱情中的美好。</span>
+                    <button onclick="speak('我们应该欣赏爱情中的美好。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Wǒmen yīnggāi xīnshǎng àiqíng zhōng de měihǎo.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">We should appreciate the beauty in love.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('欣赏')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">交流</span>
+            <div class="vocab-info">
+                <span class="pinyin">jiāoliú</span>
+                <span class="meaning">communication; to communicate</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">爱情是心与心的交流。</span>
+                    <button onclick="speak('爱情是心与心的交流。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Àiqíng shì xīn yǔ xīn de jiāoliú.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Love is a communication heart to heart.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('交流')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="hanzi">努力</span>
+            <div class="vocab-info">
+                <span class="pinyin">nǔlì</span>
+                <span class="meaning">to strive; effort</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">两个人愿意共同努力，不放弃。</span>
+                    <button onclick="speak('两个人愿意共同努力，不放弃。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">Liǎng gèrén yuànyì gòngtóng nǔlì, bù fàngqì.</div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">Two people are willing to work hard together and not give up.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('努力')">🔊</button>
+        </div>
+        
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📐 Grammar Points</div>
+            
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅...而且...</div>
+                <div class="grammar-explanation">Used to connect two related ideas, emphasizing that not only the first condition is true, but also the second one.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">爱情不仅让人感到幸福，而且让人学会包容和付出。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">对...来说</div>
+                <div class="grammar-explanation">Used to express personal perspectives or opinions, literally 'as far as ... is concerned'.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">对我来说，爱情就是相互理解和尊重。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">既...又...</div>
+                <div class="grammar-explanation">Used to express two simultaneous or complementary qualities or actions, meaning 'both... and...'.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">爱情既有责任，又有承诺。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">因为...所以...</div>
+                <div class="grammar-explanation">Used to indicate cause and effect relationship. 'Because... therefore...'.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">因为有了爱情，我们才能勇敢面对困难和挑战。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不管...都...</div>
+                <div class="grammar-explanation">Used to express 'no matter... (condition), (result)'. Shows unconditional action or situation.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">不管遇到什么问题，都不轻易放弃。</div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</body>
+</html>

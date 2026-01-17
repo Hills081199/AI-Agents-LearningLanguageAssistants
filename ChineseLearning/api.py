@@ -35,6 +35,7 @@ class LessonResponse(BaseModel):
     level: str
     markdown_content: str
     html_content: str
+    story: str
     vocabulary: List[Any] = []
     grammar: List[Any] = []
     quiz: List[Any] = []
@@ -87,6 +88,7 @@ def generate_lesson(request: LessonRequest):
             level=request.level,
             markdown_content=markdown,
             html_content=html_content,
+            story=lesson_data.get("story", ""),
             vocabulary=lesson_data.get("vocabulary", []),
             grammar=lesson_data.get("grammar", []),
             quiz=lesson_data.get("quiz", [])
