@@ -11,14 +11,48 @@ interface ChatMessage {
 interface RoleplayChatProps {
     lessonContext: string;
     characterName?: string;
+    language?: string;
 }
 
-export default function RoleplayChat({ lessonContext, characterName = "Chinese Teacher" }: RoleplayChatProps) {
+// Language-specific configurations
+const LANGUAGE_CONFIG: Record<string, { greeting: string; prompt: string; placeholder: string; subtitle: string }> = {
+    chinese: {
+        greeting: '你好！我是你的中文老师。有什么问题吗？(Hello! I am your Chinese teacher. Do you have any questions?)',
+        prompt: 'Try: "你好" or "这课讲什么?"',
+        placeholder: 'Type in Chinese or English...',
+        subtitle: 'Practice your Chinese'
+    },
+    english: {
+        greeting: 'Hello! I am your English teacher. Feel free to ask me anything about the lesson!',
+        prompt: 'Try: "Can you explain this word?" or "What does this phrase mean?"',
+        placeholder: 'Type your message...',
+        subtitle: 'Practice your English'
+    },
+    spanish: {
+        greeting: '¡Hola! Soy tu profesor de español. ¿Tienes alguna pregunta? (Hello! I am your Spanish teacher. Do you have any questions?)',
+        prompt: 'Try: "¿Qué significa...?" or "¿Cómo se usa...?"',
+        placeholder: 'Escribe en español o inglés...',
+        subtitle: 'Practice your Spanish'
+    }
+};
+
+export default function RoleplayChat({ lessonContext, characterName, language = "chinese" }: RoleplayChatProps) {
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    // Get language-specific config
+    const langConfig = LANGUAGE_CONFIG[language] || LANGUAGE_CONFIG.english;
+
+    // Default character name based on language
+    const defaultNames: Record<string, string> = {
+        chinese: 'Teacher Li',
+        english: 'Teacher Sarah',
+        spanish: 'Profesor García'
+    };
+    const displayName = characterName || defaultNames[language] || 'Teacher';
 
     // Determine API base URL dynamically
     const [apiBaseUrl, setApiBaseUrl] = useState("http://127.0.0.1:8000");
@@ -56,6 +90,7 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
                     message: userMessage,
                     context: lessonContext,
                     history: messages,
+                    language: language,
                 }),
             });
 
@@ -65,14 +100,14 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
             } else {
                 setMessages(prev => [...prev, {
                     role: 'assistant',
-                    content: '抱歉，我现在无法回答。请稍后再试。(Sorry, I cannot respond right now.)'
+                    content: 'Sorry, I cannot respond right now. Please try again later.'
                 }]);
             }
         } catch (error) {
             // If chat endpoint doesn't exist yet, provide a mock response
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: '你好！我是你的中文老师。有什么问题吗？(Hello! I am your Chinese teacher. Do you have any questions?)'
+                content: langConfig.greeting
             }]);
         } finally {
             setLoading(false);
@@ -112,8 +147,8 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
                                 <Bot className="w-6 h-6" />
                             </div>
                             <div>
-                                <div className="font-semibold">{characterName}</div>
-                                <div className="text-xs text-white/80">Practice your Chinese</div>
+                                <div className="font-semibold">{displayName}</div>
+                                <div className="text-xs text-white/80">{langConfig.subtitle}</div>
                             </div>
                         </div>
                         <button
@@ -129,8 +164,8 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
                         {messages.length === 0 && (
                             <div className="text-center text-slate-400 py-8">
                                 <Bot className="w-12 h-12 mx-auto mb-3 text-slate-300" />
-                                <p className="text-sm">Start a conversation in Chinese!</p>
-                                <p className="text-xs mt-1">Try: "你好" or "这课讲什么?"</p>
+                                <p className="text-sm">Start a conversation!</p>
+                                <p className="text-xs mt-1">{langConfig.prompt}</p>
                             </div>
                         )}
 
@@ -183,7 +218,7 @@ export default function RoleplayChat({ lessonContext, characterName = "Chinese T
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={handleKeyPress}
-                                placeholder="Type in Chinese or English..."
+                                placeholder={langConfig.placeholder}
                                 className="flex-1 p-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                             <button

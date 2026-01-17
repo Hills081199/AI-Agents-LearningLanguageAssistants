@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Shuffle, Volume2, ArrowRight } from 'lucide-react';
 
+// TTS language codes mapping
+const TTS_CODES: Record<string, string> = {
+    chinese: 'zh-CN',
+    english: 'en-US',
+    spanish: 'es-ES'
+};
+
 interface SentenceOrderExercise {
     type: 'sentence_order';
     words: string[];
@@ -12,9 +19,10 @@ interface SentenceOrderExercise {
 
 interface SentenceOrderQuizProps {
     exercises: SentenceOrderExercise[];
+    language?: string;
 }
 
-export default function SentenceOrderQuiz({ exercises }: SentenceOrderQuizProps) {
+export default function SentenceOrderQuiz({ exercises, language = 'chinese' }: SentenceOrderQuizProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedWords, setSelectedWords] = useState<string[]>([]);
     const [availableWords, setAvailableWords] = useState<string[]>([]);
@@ -43,8 +51,8 @@ export default function SentenceOrderQuiz({ exercises }: SentenceOrderQuizProps)
 
     const speak = (text: string) => {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN';
-        utterance.rate = 0.8;
+        utterance.lang = TTS_CODES[language] || 'en-US';
+        utterance.rate = language === 'chinese' ? 0.8 : 0.9;
         speechSynthesis.speak(utterance);
     };
 
@@ -61,7 +69,9 @@ export default function SentenceOrderQuiz({ exercises }: SentenceOrderQuizProps)
     };
 
     const checkAnswer = () => {
-        const userAnswer = selectedWords.join('');
+        // For Chinese, words are joined without spaces; for others, with spaces
+        const joiner = language === 'chinese' ? '' : ' ';
+        const userAnswer = selectedWords.join(joiner);
         const isCorrect = userAnswer === currentExercise.answer;
         setResults({ ...results, [currentIndex]: isCorrect });
         setChecked(true);
@@ -87,6 +97,9 @@ export default function SentenceOrderQuiz({ exercises }: SentenceOrderQuizProps)
     const isCorrect = results[currentIndex];
     const allDone = Object.keys(results).length === exercises.length;
     const score = Object.values(results).filter(Boolean).length;
+
+    // Display selected words with appropriate spacing
+    const joiner = language === 'chinese' ? '' : ' ';
 
     return (
         <div className="space-y-6">
@@ -161,7 +174,7 @@ export default function SentenceOrderQuiz({ exercises }: SentenceOrderQuizProps)
 
                 {selectedWords.length > 0 && (
                     <button
-                        onClick={() => speak(selectedWords.join(''))}
+                        onClick={() => speak(selectedWords.join(joiner))}
                         className="p-2 rounded-full bg-white/50 hover:bg-white transition-colors ml-2"
                     >
                         <Volume2 className="w-4 h-4 text-slate-500" />

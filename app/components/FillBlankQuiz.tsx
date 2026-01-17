@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, HelpCircle, Volume2 } from 'lucide-react';
 
+// TTS language codes mapping
+const TTS_CODES: Record<string, string> = {
+    chinese: 'zh-CN',
+    english: 'en-US',
+    spanish: 'es-ES'
+};
+
 interface FillBlankExercise {
     type: 'fill_blank';
     sentence: string;
@@ -13,9 +20,10 @@ interface FillBlankExercise {
 
 interface FillBlankQuizProps {
     exercises: FillBlankExercise[];
+    language?: string;
 }
 
-export default function FillBlankQuiz({ exercises }: FillBlankQuizProps) {
+export default function FillBlankQuiz({ exercises, language = 'chinese' }: FillBlankQuizProps) {
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [checked, setChecked] = useState<Record<number, boolean>>({});
     const [showHint, setShowHint] = useState<Record<number, boolean>>({});
@@ -38,8 +46,8 @@ export default function FillBlankQuiz({ exercises }: FillBlankQuizProps) {
 
     const speak = (text: string) => {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN';
-        utterance.rate = 0.8;
+        utterance.lang = TTS_CODES[language] || 'en-US';
+        utterance.rate = language === 'chinese' ? 0.8 : 0.9;
         speechSynthesis.speak(utterance);
     };
 

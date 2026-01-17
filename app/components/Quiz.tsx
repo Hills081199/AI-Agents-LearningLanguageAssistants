@@ -22,12 +22,17 @@ interface QuizQuestion {
 interface QuizProps {
     questions: QuizQuestion[];
     story?: string;
+    language?: string;
+    apiBaseUrl?: string;
+    lessonFilename?: string;
 }
 
 // Multiple Choice Component (embedded)
-function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
+function MultipleChoiceQuiz({ questions, apiBaseUrl, lessonFilename }: { questions: QuizQuestion[], apiBaseUrl?: string, lessonFilename?: string }) {
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [showResults, setShowResults] = useState<Record<number, boolean>>({});
+    const [isSaving, setIsSaving] = useState(false);
+    const [saved, setSaved] = useState(false);
 
     const handleAnswer = (questionIndex: number, selectedLetter: string) => {
         if (showResults[questionIndex]) return;
@@ -46,6 +51,32 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
             if (answers[i] === q.answer) correct++;
         });
         return correct;
+
+    };
+
+    const saveProgress = async () => {
+        if (!lessonFilename || !apiBaseUrl) return;
+        setIsSaving(true);
+        try {
+            await fetch(`${apiBaseUrl}/progress/${lessonFilename}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'quiz',
+                    data: {
+                        quiz_type: 'multiple_choice',
+                        score: getScore(),
+                        total: questions.length,
+                        timestamp: Date.now() / 1000
+                    }
+                })
+            });
+            setSaved(true);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     const allAnswered = Object.keys(showResults).length === questions.length;
@@ -81,6 +112,19 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
                     <div className="text-slate-600">
                         {getScore() === questions.length ? '🎉 Perfect Score!' : getScore() >= questions.length / 2 ? '👍 Good Job!' : '📚 Keep Practicing!'}
                     </div>
+                    {lessonFilename && (
+                        <div className="mt-4">
+                            <button
+                                onClick={saveProgress}
+                                disabled={saved || isSaving}
+                                className={`px-4 py-2 rounded-lg font-medium transition-all ${saved
+                                    ? 'bg-green-200 text-green-800 cursor-default'
+                                    : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md'}`}
+                            >
+                                {saved ? 'Success! Progress Saved' : isSaving ? 'Saving...' : 'Save Progress'}
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -145,7 +189,7 @@ function MultipleChoiceQuiz({ questions }: { questions: QuizQuestion[] }) {
 }
 
 // Main Quiz Router Component
-export default function Quiz({ questions, story }: QuizProps) {
+export default function Quiz({ questions, story, language = 'chinese', apiBaseUrl, lessonFilename }: QuizProps) {
     const [activeType, setActiveType] = useState<string>('all');
     const [showStory, setShowStory] = useState(false);
 
@@ -268,19 +312,19 @@ export default function Quiz({ questions, story }: QuizProps) {
             {/* Quiz Content */}
             <div className="space-y-8">
                 {(activeType === 'all' || activeType === 'mcq') && grouped.mcq.length > 0 && (
-                    <MultipleChoiceQuiz questions={grouped.mcq} />
+                    <MultipleChoiceQuiz questions={grouped.mcq} apiBaseUrl={apiBaseUrl} lessonFilename={lessonFilename} />
                 )}
 
                 {(activeType === 'all' || activeType === 'fillBlank') && grouped.fillBlank.length > 0 && (
-                    <FillBlankQuiz exercises={grouped.fillBlank as any} />
+                    <FillBlankQuiz exercises={grouped.fillBlank as any} language={language} />
                 )}
 
                 {(activeType === 'all' || activeType === 'matching') && grouped.matching.length > 0 && (
-                    <MatchingQuiz exercises={grouped.matching as any} />
+                    <MatchingQuiz exercises={grouped.matching as any} language={language} />
                 )}
 
                 {(activeType === 'all' || activeType === 'sentenceOrder') && grouped.sentenceOrder.length > 0 && (
-                    <SentenceOrderQuiz exercises={grouped.sentenceOrder as any} />
+                    <SentenceOrderQuiz exercises={grouped.sentenceOrder as any} language={language} />
                 )}
             </div>
         </div>

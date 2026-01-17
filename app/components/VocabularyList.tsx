@@ -3,29 +3,52 @@
 import { useState } from 'react';
 import { Volume2, VolumeX, ChevronDown, ChevronUp, BookOpen } from 'lucide-react';
 
+// TTS language codes mapping
+const TTS_CODES: Record<string, string> = {
+    chinese: 'zh-CN',
+    english: 'en-US',
+    spanish: 'es-ES'
+};
+
 interface VocabItem {
-    hanzi: string;
-    pinyin: string;
+    // Universal fields
+    word?: string;
     meaning: string;
     example?: string;
-    example_pinyin?: string;
     example_meaning?: string;
+    part_of_speech?: string;
+    // Chinese-specific fields
+    hanzi?: string;
+    pinyin?: string;
+    romanization?: string;
+    example_pinyin?: string;
+    example_romanization?: string;
 }
 
 interface VocabularyListProps {
     vocabulary: VocabItem[];
+    language?: string;
 }
 
-function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
+function VocabularyItem({ item, index, language = 'chinese' }: { item: VocabItem, index: number, language?: string }) {
     const [speaking, setSpeaking] = useState(false);
     const [expanded, setExpanded] = useState(false);
+
+    // Get the word to display (handle different field names)
+    const displayWord = item.word || item.hanzi || '';
+    // Get romanization (pinyin for Chinese, could be IPA for others)
+    const displayRomanization = item.romanization || item.pinyin || '';
+    // Get example romanization
+    const displayExampleRomanization = item.example_romanization || item.example_pinyin || '';
+    // Check if this language uses romanization
+    const hasRomanization = language === 'chinese' && displayRomanization;
 
     const speak = (text: string, e: React.MouseEvent) => {
         e.stopPropagation();
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN';
-        utterance.rate = 0.8;
+        utterance.lang = TTS_CODES[language] || 'en-US';
+        utterance.rate = language === 'chinese' ? 0.8 : 0.9;
         setSpeaking(true);
         utterance.onend = () => setSpeaking(false);
         utterance.onerror = () => setSpeaking(false);
@@ -35,8 +58,8 @@ function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
     return (
         <div
             className={`bg-white rounded-xl border transition-all duration-200 ${expanded
-                    ? 'border-indigo-200 shadow-md ring-1 ring-indigo-50'
-                    : 'border-slate-200 hover:border-indigo-200 hover:shadow-sm'
+                ? 'border-indigo-200 shadow-md ring-1 ring-indigo-50'
+                : 'border-slate-200 hover:border-indigo-200 hover:shadow-sm'
                 }`}
         >
             <div
@@ -45,7 +68,7 @@ function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
             >
                 {/* TTS Button */}
                 <button
-                    onClick={(e) => speak(item.hanzi, e)}
+                    onClick={(e) => speak(displayWord, e)}
                     disabled={speaking}
                     className={`
                         p-2.5 rounded-full transition-all duration-200 shrink-0
@@ -62,8 +85,13 @@ function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
                 {/* Content */}
                 <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
                     <div className="flex flex-col">
-                        <span className="text-xl font-bold text-slate-800">{item.hanzi}</span>
-                        <span className="text-sm text-indigo-500 font-medium">{item.pinyin}</span>
+                        <span className="text-xl font-bold text-slate-800">{displayWord}</span>
+                        {hasRomanization && (
+                            <span className="text-sm text-indigo-500 font-medium">{displayRomanization}</span>
+                        )}
+                        {item.part_of_speech && (
+                            <span className="text-xs text-slate-400 italic">{item.part_of_speech}</span>
+                        )}
                     </div>
                     <div className="text-slate-600 md:col-span-2">
                         {item.meaning}
@@ -94,8 +122,12 @@ function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
                         </button>
                         <div className="space-y-1">
                             <div className="font-medium text-slate-800 text-lg">{item.example}</div>
-                            <div className="text-slate-500 text-sm">{item.example_pinyin}</div>
-                            <div className="text-slate-600 text-sm italic border-t border-slate-200/60 pt-1 mt-1">{item.example_meaning}</div>
+                            {hasRomanization && displayExampleRomanization && (
+                                <div className="text-slate-500 text-sm">{displayExampleRomanization}</div>
+                            )}
+                            {item.example_meaning && (
+                                <div className="text-slate-600 text-sm italic border-t border-slate-200/60 pt-1 mt-1">{item.example_meaning}</div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -104,7 +136,7 @@ function VocabularyItem({ item, index }: { item: VocabItem, index: number }) {
     );
 }
 
-export default function VocabularyList({ vocabulary }: VocabularyListProps) {
+export default function VocabularyList({ vocabulary, language = 'chinese' }: VocabularyListProps) {
     if (!vocabulary || vocabulary.length === 0) {
         return (
             <div className="text-center py-12 text-slate-400 bg-slate-50 rounded-xl border border-dashed border-slate-200">
@@ -129,7 +161,7 @@ export default function VocabularyList({ vocabulary }: VocabularyListProps) {
 
             <div className="grid gap-3">
                 {vocabulary.map((item, index) => (
-                    <VocabularyItem key={index} item={item} index={index} />
+                    <VocabularyItem key={index} item={item} index={index} language={language} />
                 ))}
             </div>
         </div>

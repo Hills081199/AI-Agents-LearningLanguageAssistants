@@ -1,36 +1,84 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sparkles, Loader2, BookOpen, GraduationCap, Target, Menu, X, ChevronRight, Zap, PlayCircle, Check, Circle, Dices, Crown } from "lucide-react";
+import { Sparkles, Loader2, BookOpen, GraduationCap, Target, Menu, X, ChevronRight, Zap, PlayCircle, Check, Circle, Dices, Crown, Globe, PenTool } from "lucide-react";
 import VocabularyList from "./components/VocabularyList";
 import Quiz from "./components/Quiz";
 import RoleplayChat from "./components/RoleplayChat";
 import PricingModal from "./components/PricingModal";
+import WritingExercise from "./components/WritingExercise";
 
 interface LessonData {
   topic: string;
   level: string;
+  language: string;
   story: string;
   vocabulary: any[];
   grammar: any[];
   quiz: any[];
+  writing_prompt?: any;
+  filename?: string;
+  progress?: any;
 }
 
 interface HistoryItem {
   filename: string;
   topic: string;
   level?: string;
+  language?: string;
   created_at: number;
 }
 
+interface LanguageConfig {
+  code: string;
+  name: string;
+  native_name: string;
+  levels: string[];
+  level_system: string;
+}
+
+// Default language configurations (fallback if API fails)
+const DEFAULT_LANGUAGES: LanguageConfig[] = [
+  {
+    code: "chinese",
+    name: "Chinese",
+    native_name: "中文",
+    levels: ["HSK 1", "HSK 2", "HSK 3", "HSK 4", "HSK 5", "HSK 6"],
+    level_system: "HSK"
+  },
+  {
+    code: "english",
+    name: "English",
+    native_name: "English",
+    levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    level_system: "CEFR"
+  },
+  {
+    code: "spanish",
+    name: "Spanish",
+    native_name: "Español",
+    levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
+    level_system: "CEFR"
+  }
+];
+
+// Language flag emojis
+const LANGUAGE_FLAGS: Record<string, string> = {
+  chinese: "🇨🇳",
+  english: "🇬🇧",
+  spanish: "🇪🇸"
+};
+
 export default function Home() {
+  const [language, setLanguage] = useState("chinese");
+  const [languages, setLanguages] = useState<LanguageConfig[]>(DEFAULT_LANGUAGES);
   const [level, setLevel] = useState("HSK 3");
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [htmlContent, setHtmlContent] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [activeView, setActiveView] = useState<"story" | "vocab" | "quiz">("story");
+  const [activeView, setActiveView] = useState<"story" | "vocab" | "quiz" | "writing">("story");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [suggesting, setSuggesting] = useState(false);
 
@@ -51,9 +99,35 @@ export default function Home() {
     }
   }, []);
 
+  // Fetch available languages from API
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const res = await fetch(`${apiBaseUrl}/languages`);
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setLanguages(data);
+        }
+      } catch (e) {
+        console.log("Using default language config");
+      }
+    };
+    fetchLanguages();
+  }, [apiBaseUrl]);
+
   useEffect(() => {
     fetchHistory();
-  }, [apiBaseUrl]);
+  }, [apiBaseUrl, language]);
+
+  // Update level when language changes
+  useEffect(() => {
+    const currentLangConfig = languages.find(l => l.code === language);
+    if (currentLangConfig && currentLangConfig.levels.length > 0) {
+      // Set to a middle level by default
+      const midIndex = Math.floor(currentLangConfig.levels.length / 2);
+      setLevel(currentLangConfig.levels[midIndex]);
+    }
+  }, [language, languages]);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -79,7 +153,7 @@ export default function Home() {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch(`${apiBaseUrl}/history`);
+      const res = await fetch(`${apiBaseUrl}/history?language=${language}`);
       const data = await res.json();
       setHistory(data);
     } catch (e) {
@@ -94,7 +168,13 @@ export default function Home() {
       const res = await fetch(`${apiBaseUrl}/history/${filename}`);
       const data = await res.json();
       if (data.html_content) setHtmlContent(data.html_content);
-      if (data.lesson_data) setLessonData(data.lesson_data);
+      if (data.lesson_data) {
+        setLessonData({
+          ...data.lesson_data,
+          filename: filename,
+          progress: data.progress
+        });
+      }
       else setLessonData(null);
     } catch (e) {
       console.error(e);
@@ -114,7 +194,7 @@ export default function Home() {
       const response = await fetch(`${apiBaseUrl}/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: topic || null, level }),
+        body: JSON.stringify({ topic: topic || null, level, language }),
       });
 
       const data = await response.json();
@@ -122,10 +202,14 @@ export default function Home() {
       setLessonData({
         topic: data.topic,
         level: data.level,
+        language: data.language || language,
         story: data.markdown_content,
         vocabulary: data.vocabulary || [],
         grammar: data.grammar || [],
         quiz: data.quiz || [],
+        writing_prompt: data.writing_prompt || null,
+        filename: data.filename,
+        progress: null
       });
       fetchHistory();
     } catch (error) {
@@ -136,11 +220,14 @@ export default function Home() {
   };
 
   const hasData = lessonData || htmlContent;
+  const currentLangConfig = languages.find(l => l.code === language);
+  const currentLevels = currentLangConfig?.levels || [];
 
   const navItems = [
     { key: "story", label: "Lesson", icon: BookOpen },
     { key: "vocab", label: "Vocabulary", icon: GraduationCap, count: lessonData?.vocabulary?.length },
     { key: "quiz", label: "Practice", icon: Target, count: lessonData?.quiz?.length },
+    { key: "writing", label: "Writing", icon: PenTool },
   ];
 
   return (
@@ -156,11 +243,35 @@ export default function Home() {
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <Zap className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">HSK Factory</span>
+            <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">Language Factory</span>
           </div>
 
           {/* Generator Controls */}
           <div className="p-5 space-y-4 border-b border-slate-100 bg-slate-50/50">
+            {/* Language Selector */}
+            <div>
+              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block ml-1 flex items-center gap-1.5">
+                <Globe className="w-3 h-3" />
+                Language
+              </label>
+              <div className="grid grid-cols-3 gap-1.5">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code)}
+                    disabled={loading}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-all flex flex-col items-center gap-1 ${language === lang.code
+                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
+                      : "bg-white border border-slate-200 text-slate-600 hover:border-indigo-300 hover:text-indigo-600"
+                      }`}
+                  >
+                    <span className="text-lg">{LANGUAGE_FLAGS[lang.code] || "🌐"}</span>
+                    <span>{lang.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div>
               <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block ml-1">New Lesson</label>
               <div className="space-y-2">
@@ -181,12 +292,12 @@ export default function Home() {
                       const res = await fetch(`${apiBaseUrl}/suggest-topic`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ level })
+                        body: JSON.stringify({ level, language })
                       });
                       const data = await res.json();
                       if (data.topic) setTopic(data.topic);
                     } catch (e) {
-                      setTopic("Travel to China");
+                      setTopic("Travel");
                     } finally {
                       setSuggesting(false);
                     }
@@ -207,7 +318,7 @@ export default function Home() {
                 disabled={loading}
                 className="px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 shadow-sm cursor-pointer hover:border-indigo-300 transition-colors"
               >
-                {["HSK 1", "HSK 2", "HSK 3", "HSK 4", "HSK 5", "HSK 6"].map((l) => (
+                {currentLevels.map((l) => (
                   <option key={l} value={l}>{l}</option>
                 ))}
               </select>
@@ -224,7 +335,10 @@ export default function Home() {
 
           {/* Library Section (History list) */}
           <div className="flex-1 overflow-y-auto p-3 custom-scrollbar">
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-3 mt-2">History</div>
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-3 mt-2 flex items-center justify-between">
+              <span>History</span>
+              <span className="text-[10px] px-2 py-0.5 bg-slate-100 rounded-full">{LANGUAGE_FLAGS[language]} {currentLangConfig?.name}</span>
+            </div>
 
             {loading && !hasData && (
               <div className="mb-2 px-4 py-3 bg-indigo-50/50 border border-indigo-100 rounded-xl flex items-center gap-3">
@@ -263,7 +377,7 @@ export default function Home() {
                 ))
               ) : (
                 <div className="p-8 text-center">
-                  <p className="text-xs text-slate-400">No lessons generated yet.</p>
+                  <p className="text-xs text-slate-400">No {currentLangConfig?.name} lessons yet.</p>
                 </div>
               )}
             </div>
@@ -309,6 +423,9 @@ export default function Home() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold rounded-full shadow-sm uppercase tracking-wide">
                   {lessonData?.level}
+                </span>
+                <span className="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full flex items-center gap-1">
+                  {LANGUAGE_FLAGS[lessonData?.language || language]} {languages.find(l => l.code === (lessonData?.language || language))?.name}
                 </span>
                 <span className="text-slate-400 text-sm font-medium flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
@@ -356,11 +473,30 @@ export default function Home() {
               )}
 
               {activeView === "vocab" && lessonData && (
-                <VocabularyList vocabulary={lessonData.vocabulary} />
+                <VocabularyList vocabulary={lessonData.vocabulary} language={lessonData.language || language} />
               )}
 
               {activeView === "quiz" && lessonData && (
-                <Quiz questions={lessonData.quiz} story={lessonData.story} />
+                <Quiz
+                  questions={lessonData.quiz}
+                  story={lessonData.story}
+                  language={lessonData.language || language}
+                  apiBaseUrl={apiBaseUrl}
+                  lessonFilename={lessonData.filename}
+                />
+              )}
+
+              {activeView === "writing" && (
+                <WritingExercise
+                  key={(lessonData?.topic || topic) + (lessonData?.level || level)}
+                  topic={lessonData?.topic || topic}
+                  level={lessonData?.level || level}
+                  language={lessonData?.language || language}
+                  apiBaseUrl={apiBaseUrl}
+                  initialPrompt={lessonData?.writing_prompt}
+                  lessonFilename={lessonData?.filename}
+                  initialHistory={lessonData?.progress?.writing_history}
+                />
               )}
             </div>
           </div>
@@ -399,7 +535,7 @@ export default function Home() {
                     ))}
                   </div>
                 ) : (
-                  "Choose a topic topic in the sidebar to generate a completely personalized Chinese lesson."
+                  <>Choose a language and topic in the sidebar to generate a personalized lesson.</>
                 )}
               </p>
               {!loading && (
@@ -419,7 +555,8 @@ export default function Home() {
       {lessonData && (
         <RoleplayChat
           lessonContext={lessonData.story || ""}
-          characterName="Teacher Li"
+          characterName="Teacher"
+          language={lessonData.language || language}
         />
       )}
       <PricingModal isOpen={showPricing} onClose={() => setShowPricing(false)} />

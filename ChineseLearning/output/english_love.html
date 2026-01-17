@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector('[onclick="switchTab(\'' + tabName + '\')"]').classList.add('active');
+        }
+        
+        // Show first tab on load
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('lesson-plan');
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>Love</h1>
+        </div>
+        
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('lesson-plan')">🎯 Lesson Objectives</button>
+            <button class="tab-btn" onclick="switchTab('story')">📖 Reading</button>
+            <button class="tab-btn" onclick="switchTab('vocabulary')">📝 Vocabulary (18)</button>
+            <button class="tab-btn" onclick="switchTab('grammar')">📐 Grammar</button>
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline for Topic: "Love"</p>
+<p>Level: B2 (Upper-Intermediate)</p>
+<p>I. Learning Objectives:</p>
+<p>By the end of the lesson, students will be able to:</p>
+<p>1. Understand and use a range of love-related vocabulary appropriate for B2 level.</p>
+<p>2. Discuss different aspects of love confidently, including romantic relationships, friendship, and familial love.</p>
+<p>3. Apply two key grammar structures (conditional sentences and the present perfect continuous tense) to talk about love experiences and feelings.</p>
+<p>4. Enhance speaking and writing skills by expressing opinions, describing personal experiences, and hypothesizing about love.</p>
+<p>II. Key Vocabulary:</p>
+<p>1. Affection</p>
+<p>2. Commitment</p>
+<p>3. Attraction</p>
+<p>4. Soulmate</p>
+<p>5. Infatuation</p>
+<p>6. Devotion</p>
+<p>7. Heartbreak</p>
+<p>8. Compatibility</p>
+<p>9. Passion</p>
+<p>10. Trustworthiness</p>
+<p>III. Grammar Points:</p>
+<p>1. **Conditional Sentences (Type 2 and Type 3) – Hypothetical Situations About Love**</p>
+<li>Use Type 2 conditionals for unreal or hypothetical present/future situations (e.g., If I were in love, I would...)</li>
+<li>Use Type 3 conditionals for unreal past situations (e.g., If they had communicated better, their relationship would have lasted.)</li>
+<li>Practice forming conditional sentences related to love, relationships, and emotions.</li>
+<p>2. **Present Perfect Continuous Tense – Expressing Duration and Experience of Feelings**</p>
+<li>Structure: have/has + been + verb(-ing)</li>
+<li>Usage: To describe an action or feeling that started in the past and is still continuing or recently stopped (e.g., I have been thinking about her a lot lately.)</li>
+<li>Focus on expressing ongoing feelings, attraction, or emotional states related to love.</li>
+<p>IV. Suggested Lesson Procedure:</p>
+<p>1. Warm-up discussion: What does love mean to you? Types of love? (5-10 mins)</p>
+<p>2. Introduce and explain key vocabulary with example sentences. Use images or real-life contexts. (15 mins)</p>
+<p>3. Grammar input and guided practice: conditionals and present perfect continuous with love-themed sentences. (20 mins)</p>
+<p>4. Pair or group activity: Role-play or discussion using vocabulary and grammar (e.g., hypothetical relationship scenarios, sharing experiences). (20 mins)</p>
+<p>5. Writing task: Short paragraph on “Describe a memorable experience of love using today’s vocabulary and grammar.” (15 mins)</p>
+<p>6. Feedback and summary, address any questions. (10 mins)</p>
+<p>V. Materials/Resources:</p>
+<li>Flashcards or slides with vocabulary words and definitions.</li>
+<li>Worksheets for grammar exercises.</li>
+<li>Short reading passage or dialogue about love.</li>
+<li>Audio/video clip illustrating love contexts (optional).</li>
+<p>This lesson plan aims to deepen students’ lexical range and grammatical control around the theme of love at a B2 level, enabling greater fluency and confidence in interpersonal communication.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>Love is one of the most powerful emotions that human beings can experience. It takes many forms, ranging from romantic relationships to deep friendships and family bonds. Often, people find it difficult to explain what love truly means because it is such a complex feeling. However, certain key elements like affection, commitment, and attraction often play a significant role in any loving relationship.</p>
+<p>In romantic love, attraction is often the first spark that brings two people together. When this attraction grows, it can develop into passion—a strong feeling that motivates individuals to express their devotion towards one another. Passion keeps relationships alive and helps partners support each other through challenges. But love is not only about excitement; trustworthiness and compatibility are essential foundations. If two people are compatible, they share similar values or interests, making it easier to build a lasting bond based on honesty and respect.</p>
+<p>Many people have searched for their soulmate—the person they believe is their perfect match. Finding a soulmate often feels like an incredible coincidence, but it also requires patience and openness. Sometimes, what feels like infatuation, a brief but intense admiration, can fade quickly if a relationship lacks deeper understanding. Without genuine commitment, infatuation often leads to heartbreak when reality doesn’t meet expectations.</p>
+<p>Love is also about continuous effort. For example, some couples have been working on their relationship for years, communicating and growing together. Others have been thinking about someone special for a long time, feeling emotions that evolve and deepen. The present perfect continuous tense helps to express these ongoing experiences: “I have been loving her for over three years,” or “They have been building trust since they met.”</p>
+<p>If people had communicated better, many relationships would have lasted longer. If I were more honest about my feelings, I would have avoided misunderstandings. These conditional sentences help us imagine different outcomes based on our choices, showing how love can change depending on what actions we take.</p>
+<p>In family relationships, love is often expressed through continuous support and sacrifice. Parents show devotion by caring for their children despite difficulties. Friends express affection by being trustworthy and present during hard times. Each type of love strengthens our sense of belonging and happiness.</p>
+<p>Ultimately, love is not just a feeling but a journey full of learning and growth. It teaches us patience, kindness, and resilience. Whether romantic, familial, or friendly, love enriches our lives in ways that nothing else can.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Affection**: A gentle feeling of fondness or liking towards someone.</li>
+<li>**Commitment**: A promise or dedication to stay loyal or continue an effort in a relationship.</li>
+<li>**Attraction**: The action or power of evoking interest or liking, often the first stage in romantic love.</li>
+<li>**Soulmate**: A person ideally suited to another as a close friend or romantic partner.</li>
+<li>**Infatuation**: An intense but short-lived passion or admiration for someone.</li>
+<li>**Devotion**: Strong love and loyalty shown through continuous support or care.</li>
+<li>**Heartbreak**: The overwhelming feeling of sadness when a relationship ends or love is lost.</li>
+<li>**Compatibility**: The ability of two people to live or work together harmoniously.</li>
+<li>**Passion**: A strong and barely controllable emotion, often related to love or desire.</li>
+<li>**Trustworthiness**: Being reliable and deserving of trust in a relationship.</li>
+<li>**Present Perfect Continuous Tense**: A grammar structure used to talk about actions or feelings that started in the past and continue now (e.g., "have been loving").</li>
+<li>**Conditional Sentences (Type 2)**: Used for hypothetical situations in the present or future (e.g., "If I were in love, I would...").</li>
+<li>**Conditional Sentences (Type 3)**: Used for hypothetical past situations (e.g., "If they had communicated better, their relationship would have lasted.").</li>
+            </div>
+        </details>
+        
+            </div>
+        </div>
+        
+        <!-- Vocabulary Tab -->
+        <div id="vocabulary" class="tab-content">
+            <div class="section">
+                <div class="section-title">📝 Vocabulary (18 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Affection</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A gentle feeling of fondness or liking towards someone.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">She showed great affection for her family members.</span>
+                    <button onclick="speak('She showed great affection for her family members.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Ella mostró gran cariño por los miembros de su familia.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Affection')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Commitment</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A promise or dedication to stay loyal or continue an effort in a relationship.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Their commitment to each other made their bond stronger.</span>
+                    <button onclick="speak('Their commitment to each other made their bond stronger.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su compromiso mutuo fortaleció su vínculo.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Commitment')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Attraction</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The action or power of evoking interest or liking, often the first stage in romantic love.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The attraction between the two was immediate.</span>
+                    <button onclick="speak('The attraction between the two was immediate.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La atracción entre los dos fue inmediata.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Attraction')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Soulmate</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A person ideally suited to another as a close friend or romantic partner.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many people believe everyone has a soulmate.</span>
+                    <button onclick="speak('Many people believe everyone has a soulmate.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Mucha gente cree que todos tienen un alma gemela.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Soulmate')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Infatuation</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">An intense but short-lived passion or admiration for someone.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">His infatuation with her faded after a few weeks.</span>
+                    <button onclick="speak('His infatuation with her faded after a few weeks.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su enamoramiento pasajero por ella desapareció después de unas semanas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Infatuation')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Devotion</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Strong love and loyalty shown through continuous support or care.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Her devotion to the cause never wavered.</span>
+                    <button onclick="speak('Her devotion to the cause never wavered.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su devoción por la causa nunca flaqueó.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Devotion')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Heartbreak</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The overwhelming feeling of sadness when a relationship ends or love is lost.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">He experienced deep heartbreak after the breakup.</span>
+                    <button onclick="speak('He experienced deep heartbreak after the breakup.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Experimentó un profundo desamor después de la ruptura.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Heartbreak')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Compatibility</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The ability of two people to live or work together harmoniously.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Compatibility is important for a lasting relationship.</span>
+                    <button onclick="speak('Compatibility is important for a lasting relationship.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La compatibilidad es importante para una relación duradera.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Compatibility')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Passion</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A strong and barely controllable emotion, often related to love or desire.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Their passion for music brought them closer.</span>
+                    <button onclick="speak('Their passion for music brought them closer.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su pasión por la música los acercó.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Passion')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Trustworthiness</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Being reliable and deserving of trust in a relationship.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Trustworthiness is essential in any friendship.</span>
+                    <button onclick="speak('Trustworthiness is essential in any friendship.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La confiabilidad es esencial en cualquier amistad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Trustworthiness')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Express</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To convey a thought or feeling in words or gestures.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">She expressed her love through small acts of kindness.</span>
+                    <button onclick="speak('She expressed her love through small acts of kindness.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Ella expresó su amor a través de pequeños actos de bondad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Express')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Hypothetical</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Based on or serving as a hypothesis; imagined or supposed.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">They discussed hypothetical situations to practice conditionals.</span>
+                    <button onclick="speak('They discussed hypothetical situations to practice conditionals.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Discutieron situaciones hipotéticas para practicar condicionales.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Hypothetical')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Ongoing</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Continuing; still in progress.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Their ongoing relationship shows how much they care.</span>
+                    <button onclick="speak('Their ongoing relationship shows how much they care.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su relación continua muestra cuánto se preocupan.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Ongoing')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Resilience</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The capacity to recover quickly from difficulties; toughness.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Love teaches us patience and resilience through challenges.</span>
+                    <button onclick="speak('Love teaches us patience and resilience through challenges.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El amor nos enseña paciencia y resiliencia ante los desafíos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Resilience')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Sacrifice</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Giving up something valuable for the sake of others.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Parents often make sacrifices for their children.</span>
+                    <button onclick="speak('Parents often make sacrifices for their children.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Los padres a menudo hacen sacrificios por sus hijos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Sacrifice')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Bond</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A close connection or relationship between people.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Their bond grew stronger after overcoming difficulties.</span>
+                    <button onclick="speak('Their bond grew stronger after overcoming difficulties.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Su vínculo se fortaleció después de superar dificultades.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Bond')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Longevity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The duration or length of life or existence.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Compatibility often contributes to the longevity of a relationship.</span>
+                    <button onclick="speak('Compatibility often contributes to the longevity of a relationship.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La compatibilidad a menudo contribuye a la longevidad de una relación.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Longevity')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Communication</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The act of sharing information or feelings.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Effective communication is vital in love relationships.</span>
+                    <button onclick="speak('Effective communication is vital in love relationships.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La comunicación efectiva es vital en las relaciones amorosas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Communication')">🔊</button>
+        </div>
+        
+            </div>
+        </div>
+        
+        <!-- Grammar Tab -->
+        <div id="grammar" class="tab-content">
+            <div class="section">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Conditional Sentences Type 2</div>
+                <div class="grammar-explanation">Used to talk about unreal or hypothetical situations in the present or future. The structure is: If + past simple, ... would + base verb.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If I were more honest about my feelings, I would avoid misunderstandings.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Conditional Sentences Type 3</div>
+                <div class="grammar-explanation">Used to talk about unreal situations in the past and their possible past consequences. The structure is: If + past perfect, ... would have + past participle.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If they had communicated better, their relationship would have lasted longer.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Perfect Continuous Tense</div>
+                <div class="grammar-explanation">Expresses actions or feelings that started in the past and continue into the present or have recently stopped. The structure is: have/has + been + verb(-ing).</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">I have been loving her for over three years.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Use of 'Often' and 'Sometimes' to Express Frequency</div>
+                <div class="grammar-explanation">Adverbs of frequency like 'often' and 'sometimes' are used to describe how frequently an action or feeling occurs.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Attraction is often the first spark in romantic love.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Gerunds After Prepositions</div>
+                <div class="grammar-explanation">When a verb follows a preposition, the verb is in the gerund (-ing) form.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">They have been thinking about someone special for a long time.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

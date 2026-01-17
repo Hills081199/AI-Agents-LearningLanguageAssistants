@@ -7,8 +7,8 @@ import re
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from crewai import Crew, Process
-from ChineseLearning.agents import ChineseLearningAgents
-from ChineseLearning.tasks import ChineseLearningTasks
+from ChineseLearning.agents import LanguageLearningAgents, ChineseLearningAgents, get_language_config, get_supported_languages
+from ChineseLearning.tasks import LanguageLearningTasks, ChineseLearningTasks
 from dotenv import load_dotenv
 
 
@@ -47,10 +47,16 @@ def parse_json_from_text(text):
                 pass
     return None
 
-def generate_interactive_html(lesson_data):
+def generate_interactive_html(lesson_data, language="chinese"):
     """Generate a clean HTML page showing all agent outputs."""
+    config = get_language_config(language)
+    tts_code = config.get("tts_code", "en-US")
+    has_romanization = config.get("has_romanization", False)
+    romanization_name = config.get("romanization_name", "Romanization")
+    lang_name = config.get("name", "Language")
+    
     topic = lesson_data.get('topic', 'Lesson')
-    level = lesson_data.get('level', 'HSK')
+    level = lesson_data.get('level', 'Level')
     lesson_plan = lesson_data.get('lesson_plan', '')
     story = lesson_data.get('story', '')
     vocabulary = lesson_data.get('vocabulary', [])
@@ -76,46 +82,80 @@ def generate_interactive_html(lesson_data):
                 result.append(f'<p>{line}</p>')
         return '\n'.join(result)
     
-    # Parse structured story using regex or split (simple split based on agent prompt)
-    # Expected: # Story (Hanzi) ... # Pinyin ... # Translation ...
-    story_parts = {'hanzi': '', 'pinyin': '', 'translation': ''}
+    # Parse structured story - handles multiple format styles
+    story_parts = {'main': '', 'romanization': '', 'translation': '', 'expressions': ''}
     
-    if '# Story' in story and '# Pinyin' in story and '# Translation' in story:
-        try:
-            # Simple manual parsing based on new structure
-            parts = story.split('# Pinyin')
-            hanzi_part = parts[0].replace('# Story (Hanzi)', '').replace('# Story', '').strip()
-            
-            remaining = parts[1]
-            subparts = remaining.split('# Translation')
-            pinyin_part = subparts[0].strip()
-            trans_part = subparts[1].strip()
-            
-            story_parts['hanzi'] = hanzi_part
-            story_parts['pinyin'] = pinyin_part
-            story_parts['translation'] = trans_part
-        except:
-            # Fallback if structure is slightly off
-            story_parts['hanzi'] = story
-    else:
-        # Fallback to legacy full text if keys missing
-        story_parts['hanzi'] = story
+    # Try to parse based on language
+    if language == "chinese":
+        if '# Story' in story and '# Pinyin' in story and '# Translation' in story:
+            try:
+                parts = story.split('# Pinyin')
+                hanzi_part = parts[0].replace('# Story (Chinese)', '').replace('# Story (中文)', '').replace('# Story', '').strip()
+                remaining = parts[1]
+                subparts = remaining.split('# Translation')
+                pinyin_part = subparts[0].strip()
+                trans_part = subparts[1].strip()
+                
+                story_parts['main'] = hanzi_part
+                story_parts['romanization'] = pinyin_part
+                story_parts['translation'] = trans_part
+            except:
+                story_parts['main'] = story
+        else:
+            story_parts['main'] = story
+    elif language == "spanish":
+        if '# Story' in story and '# Translation' in story:
+            try:
+                parts = story.split('# Translation')
+                main_part = parts[0].replace('# Story (Español)', '').replace('# Story (Spanish)', '').replace('# Story', '').strip()
+                remaining = parts[1] if len(parts) > 1 else ""
+                
+                if '# Key Expressions' in remaining:
+                    subparts = remaining.split('# Key Expressions')
+                    trans_part = subparts[0].strip()
+                    expr_part = subparts[1].strip() if len(subparts) > 1 else ""
+                else:
+                    trans_part = remaining.strip()
+                    expr_part = ""
+                
+                story_parts['main'] = main_part
+                story_parts['translation'] = trans_part
+                story_parts['expressions'] = expr_part
+            except:
+                story_parts['main'] = story
+        else:
+            story_parts['main'] = story
+    else:  # English
+        if '# Story' in story:
+            try:
+                if '# Key Expressions' in story:
+                    parts = story.split('# Key Expressions')
+                    main_part = parts[0].replace('# Story (English)', '').replace('# Story', '').strip()
+                    expr_part = parts[1].strip()
+                    story_parts['main'] = main_part
+                    story_parts['expressions'] = expr_part
+                else:
+                    story_parts['main'] = story.replace('# Story (English)', '').replace('# Story', '').strip()
+            except:
+                story_parts['main'] = story
+        else:
+            story_parts['main'] = story
 
     # Render Story HTML
     story_html = f'''
     <div class="story-block">
-        <div class="story-hanzi">
-            {md_to_html(story_parts['hanzi'])}
+        <div class="story-main">
+            {md_to_html(story_parts['main'])}
         </div>
     </div>
     '''
     
-    if story_parts['pinyin']:
+    if story_parts['romanization']:
         story_html += f'''
         <details class="story-details">
-            <summary>Show Pinyin</summary>
-            <div class="story-pinyin">
-                {md_to_html(story_parts['pinyin'])}
+            <summary>Show {romanization_name}</summary>
+            <div class="story-romanization">
+                {md_to_html(story_parts['romanization'])}
             </div>
         </details>
         '''
@@ -129,20 +169,32 @@ def generate_interactive_html(lesson_data):
             </div>
         </details>
         '''
+    
+    if story_parts['expressions']:
+        story_html += f'''
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                {md_to_html(story_parts['expressions'])}
+            </div>
+        </details>
+        '''
         
     # Validating lesson_plan_html to replace None with empty string
     lesson_plan_html = md_to_html(lesson_plan) if lesson_plan else ""
     
-    # Build vocabulary HTML
+    # Build vocabulary HTML - adapt for different languages
     vocab_html = ""
     for item in vocabulary:
-        hanzi = item.get('hanzi', '')
-        pinyin = item.get('pinyin', '')
+        # Handle different vocabulary field names
+        word = item.get('word', item.get('hanzi', ''))
+        romanization = item.get('romanization', item.get('pinyin', ''))
         meaning = item.get('meaning', '')
+        part_of_speech = item.get('part_of_speech', '')
         
         # Example Sentence Logic
         example = item.get('example', '')
-        example_pinyin = item.get('example_pinyin', '')
+        example_romanization = item.get('example_romanization', item.get('example_pinyin', ''))
         example_meaning = item.get('example_meaning', '')
         
         example_block = ""
@@ -153,20 +205,27 @@ def generate_interactive_html(lesson_data):
                     <span style="font-weight:500; font-size:0.95rem; color:#334155;">{example}</span>
                     <button onclick="speak('{example}')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
                 </div>
-                <div style="font-size:0.85rem; color:#64748b; margin-top:2px;">{example_pinyin}</div>
-                <div style="font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;">{example_meaning}</div>
+                {"<div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>" + example_romanization + "</div>" if example_romanization else ""}
+                {"<div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>" + example_meaning + "</div>" if example_meaning else ""}
             </div>
             '''
-
+        
+        # Build vocab info section
+        vocab_info_parts = []
+        if romanization and has_romanization:
+            vocab_info_parts.append(f'<span class="romanization">{romanization}</span>')
+        if part_of_speech:
+            vocab_info_parts.append(f'<span class="pos">{part_of_speech}</span>')
+        vocab_info_parts.append(f'<span class="meaning">{meaning}</span>')
+        
         vocab_html += f'''
         <div class="vocab-row">
-            <span class="hanzi">{hanzi}</span>
+            <span class="word">{word}</span>
             <div class="vocab-info">
-                <span class="pinyin">{pinyin}</span>
-                <span class="meaning">{meaning}</span>
+                {" ".join(vocab_info_parts)}
                 {example_block}
             </div>
-            <button class="tts-btn" onclick="speak('{hanzi}')">🔊</button>
+            <button class="tts-btn" onclick="speak('{word}')">🔊</button>
         </div>
         '''
     
@@ -191,23 +250,23 @@ def generate_interactive_html(lesson_data):
 
     html = f'''
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{tts_code[:2]}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{topic} - {level}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
     <style>
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
         body {{
-            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
             line-height: 1.8;
             color: #1f2937;
             background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
             padding: 48px 32px;
             min-height: 100vh;
         }}
-        .container {{ max-width: 760px; margin: 0 auto; }}
+        .container {{ max-width: 880px; margin: 0 auto; }}
         
         .header {{
             text-align: center;
@@ -224,159 +283,244 @@ def generate_interactive_html(lesson_data):
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+            margin-right: 8px;
+        }}
+        .lang-badge {{
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
         }}
         h1 {{
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }}
-        .subtitle {{
-            color: #64748b;
-            font-size: 1rem;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
         }}
         
+        /* Tab Navigation */
+        .tab-nav {{
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }}
+        .tab-btn {{
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }}
+        .tab-btn:hover {{
+            color: #3b82f6;
+            background: #f1f5f9;
+        }}
+        .tab-btn.active {{
+            color: #3b82f6;
+            background: white;
+        }}
+        .tab-btn.active::after {{
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }}
+        
+        .tab-content {{
+            display: none;
+        }}
+        .tab-content.active {{
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }}
+        @keyframes fadeIn {{
+            from {{ opacity: 0; transform: translateY(10px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
+        
+        /* Section styles */
         .section {{
             background: white;
             border-radius: 16px;
-            padding: 28px;
+            padding: 32px;
             margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }}
-        
         .section-title {{
-            font-size: 0.7rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #3b82f6;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            color: #0f172a;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }}
-        .section-title::before {{
-            content: '';
-            width: 3px;
-            height: 16px;
-            background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
-            border-radius: 2px;
+            gap: 12px;
         }}
         
-        h2, h3, h4 {{ color: #0f172a; margin: 20px 0 12px; }}
-        h2 {{ font-size: 1.35rem; font-weight: 700; }}
-        h3 {{ font-size: 1.15rem; font-weight: 600; }}
-        h4 {{ font-size: 1rem; font-weight: 600; color: #475569; }}
-        p {{ margin-bottom: 14px; color: #475569; line-height: 1.9; }}
-        li {{ margin-left: 20px; margin-bottom: 8px; color: #475569; }}
-        strong {{ color: #0f172a; }}
-        
-        .story-content {{
-            font-size: 1.2rem;
-            line-height: 2.2;
-            color: #1e293b;
-        }}
-        .story-content p {{
-            color: #1e293b;
-            margin-bottom: 18px;
-        }}
-        
-        .story-block {{
-            background: #fff;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }}
-        .story-hanzi {{
-            font-size: 1.3rem;
+        /* Lesson Plan specific */
+        .lesson-plan-content {{
             line-height: 2;
-            color: #0f172a;
-            margin-bottom: 24px;
+        }}
+        .lesson-plan-content h2 {{
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }}
+        .lesson-plan-content h3 {{
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }}
+        .lesson-plan-content h4 {{
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }}
+        .lesson-plan-content p {{
+            margin: 8px 0;
+            color: #64748b;
+        }}
+        .lesson-plan-content li {{
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }}
+        .lesson-plan-content strong {{
+            color: #1e293b;
+            font-weight: 600;
         }}
         
-        details.story-details {{
-            margin-top: 12px;
-            margin-bottom: 12px;
+        /* Story styles */
+        .story-section {{
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }}
+        .story-section.main {{
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden;
+        }}
+        .story-section.romanization {{
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }}
+        .story-section.translation {{
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }}
+        .story-section.expressions {{
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }}
+        .story-section-title {{
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }}
+        .story-text {{
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }}
+        .story-section.main .story-text {{
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }}
+        .story-section.romanization .story-text {{
+            color: #92400e;
+            font-style: italic;
+        }}
+        .story-section.translation .story-text {{
+            color: #1e40af;
+        }}
+        .story-section.expressions .story-text {{
+            color: #4c1d95;
+        }}
+        
+        /* Vocabulary styles */
+        .vocab-row {{
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }}
+        .vocab-row:hover {{
             background: #f8fafc;
         }}
-        details.story-details summary {{
-            padding: 12px 16px;
-            background: #f1f5f9;
-            cursor: pointer;
-            font-weight: 600;
-            color: #475569;
-            font-size: 0.9rem;
-            list-style: none; /* Hide default triangle */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .vocab-row:last-child {{
+            border-bottom: none;
         }}
-        details.story-details summary::after {{
-            content: '+';
-            font-weight: bold;
-        }}
-        details.story-details[open] summary::after {{
-            content: '-';
-        }}
-        .story-pinyin, .story-trans {{
-            padding: 16px;
-            border-top: 1px solid #e2e8f0;
-            color: #64748b;
-            font-size: 1rem;
-            line-height: 1.8;
-        }}
-        .story-pinyin {{ color: #8b5cf6; }} 
-
-        
-        .vocab-row {{
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 20px;
-            padding: 16px 20px;
-            margin: 0 -20px;
-            border-radius: 12px;
-            align-items: center;
-            transition: background 0.2s;
-        }}
-        .vocab-row:hover {{ background: #f8fafc; }}
-        .hanzi {{ 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: #0f172a;
-            min-width: 80px;
+        .word {{
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
         }}
         .vocab-info {{
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            flex: 1;
         }}
-        .pinyin {{ color: #8b5cf6; font-weight: 500; font-size: 0.95rem; }}
-        .meaning {{ color: #64748b; font-size: 0.9rem; }}
-        .tts-btn {{
-            width: 36px;
-            height: 36px;
-            border: none;
+        .romanization {{
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }}
+        .pos {{
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
             background: #f1f5f9;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 4px;
+            margin-right: 10px;
         }}
-        .tts-btn:hover {{ background: #3b82f6; transform: scale(1.1); }}
+        .meaning {{
+            color: #475569;
+            font-size: 1rem;
+        }}
+        .tts-btn {{
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }}
+        .tts-btn:hover {{
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }}
         
+        /* Grammar styles */
         .grammar-card {{
-            background: #ffffff;
-            border-radius: 20px;
-            margin-bottom: 28px;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06);
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             border: 1px solid rgba(255, 255, 255, 0.5);
             position: relative;
             overflow: hidden;
@@ -405,7 +549,6 @@ def generate_interactive_html(lesson_data):
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            font-family: 'Noto Sans SC', sans-serif;
             letter-spacing: -0.02em;
         }}
         .grammar-explanation {{
@@ -419,23 +562,19 @@ def generate_interactive_html(lesson_data):
             background: #f8fafc;
             border-radius: 14px;
             padding: 18px 20px;
-            border: 1px solid #f1f5f9;
-            position: relative;
+            border-left: 4px solid #8b5cf6;
         }}
         .grammar-example-badge {{
-            position: absolute;
-            top: -10px;
-            left: 16px;
-            background: #fff;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #6366f1;
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
         }}
         .grammar-example-content {{
             font-size: 1.05rem;
@@ -454,32 +593,77 @@ def generate_interactive_html(lesson_data):
     <script>
         function speak(text) {{
             const u = new SpeechSynthesisUtterance(text);
-            u.lang = 'zh-CN';
+            u.lang = '{tts_code}';
             u.rate = 0.85;
             speechSynthesis.speak(u);
         }}
+        
+        function switchTab(tabName) {{
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector('[onclick="switchTab(\\'' + tabName + '\\')"]').classList.add('active');
+        }}
+        
+        // Show first tab on load
+        window.addEventListener('DOMContentLoaded', () => {{
+            switchTab('lesson-plan');
+        }});
     </script>
 </head>
 <body>
     <div class="container">
-        <span class="badge">{level}</span>
-        <h1>{topic}</h1>
+        <div class="header">
+            <span class="badge">{level}</span>
+            <span class="lang-badge">{lang_name}</span>
+            <h1>{topic}</h1>
+        </div>
         
-        <div class="section">
-            <div class="section-title">📖 Reading Passage</div>
-            <div class="story-content">
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('lesson-plan')">🎯 Lesson Objectives</button>
+            <button class="tab-btn" onclick="switchTab('story')">📖 Reading</button>
+            <button class="tab-btn" onclick="switchTab('vocabulary')">📝 Vocabulary ({len(vocabulary)})</button>
+            <button class="tab-btn" onclick="switchTab('grammar')">📐 Grammar</button>
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    {lesson_plan_html}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
                 {story_html if story_html else "<p>No story data.</p>"}
             </div>
         </div>
         
-        <div class="section">
-            <div class="section-title">📝 Vocabulary ({len(vocabulary)} words)</div>
-            {vocab_html if vocab_html else "<p>No vocabulary data.</p>"}
+        <!-- Vocabulary Tab -->
+        <div id="vocabulary" class="tab-content">
+            <div class="section">
+                <div class="section-title">📝 Vocabulary ({len(vocabulary)} words)</div>
+                {vocab_html if vocab_html else "<p>No vocabulary data.</p>"}
+            </div>
         </div>
         
-        <div class="section">
-            <div class="section-title">📐 Grammar Points</div>
-            {grammar_html if grammar_html else "<p>No grammar data.</p>"}
+        <!-- Grammar Tab -->
+        <div id="grammar" class="tab-content">
+            <div class="section">
+                <div class="section-title">📐 Grammar Points</div>
+                {grammar_html if grammar_html else "<p>No grammar data.</p>"}
+            </div>
         </div>
     </div>
 </body>
@@ -490,14 +674,21 @@ def generate_interactive_html(lesson_data):
 if not os.environ.get("OPENAI_API_KEY"):
     os.environ["OPENAI_API_KEY"] = "sk-placeholder"
 
-def generate_lesson_content(topic=None, level="HSK 5"):
-    agents = ChineseLearningAgents()
-    tasks = ChineseLearningTasks()
+def generate_lesson_content(topic=None, level="HSK 5", language="chinese"):
+    """Generate lesson content for the specified language and level."""
+    # Use new multi-language classes
+    agents = LanguageLearningAgents(language=language)
+    tasks = LanguageLearningTasks(language=language)
+    
+    config = get_language_config(language)
+    level_system = config.get("level_system", "Level")
 
     planner = agents.lesson_planner_agent()
     writer = agents.content_writer_agent()
     linguist = agents.linguist_agent()
     examiner = agents.examiner_agent()
+    writing_assessor = agents.writing_assessor_agent()
+
     
     crew_tasks = []
     
@@ -506,7 +697,7 @@ def generate_lesson_content(topic=None, level="HSK 5"):
     if not topic:
         topic_task = tasks.suggest_topic_task(planner, level)
         crew_tasks.append(topic_task)
-        print(f"Generating a random topic for {level}...")
+        print(f"Generating a random topic for {level} ({language})...")
         
     topic_description = topic if topic else "the topic suggested in the previous task"
 
@@ -514,19 +705,20 @@ def generate_lesson_content(topic=None, level="HSK 5"):
     write_task = tasks.write_content_task(writer, topic_description, level)
     analyze_task = tasks.analyze_language_task(linguist)
     quiz_task = tasks.create_quiz_task(examiner)
+    writing_prompt_task = tasks.generate_writing_prompt_task(writing_assessor, topic_description, level)
     
-    crew_tasks.extend([plan_task, write_task, analyze_task, quiz_task])
+    crew_tasks.extend([plan_task, write_task, analyze_task, quiz_task, writing_prompt_task])
 
-    # Sequential process: [Suggest] -> Plan -> Write -> Analyze -> Quiz
+    # Sequential process: [Suggest] -> Plan -> Write -> Analyze -> Quiz -> Writing Prompt
     crew = Crew(
-        agents=[planner, writer, linguist, examiner],
+        agents=[planner, writer, linguist, examiner, writing_assessor],
         tasks=crew_tasks,
         verbose=True,
         process=Process.sequential
     )
 
     print(f"######################")
-    print(f"Generating Lesson: {topic} ({level})")
+    print(f"Generating Lesson: {topic} ({level}) - {language.upper()}")
     print(f"######################")
     
     result = crew.kickoff()
@@ -544,11 +736,14 @@ def generate_lesson_content(topic=None, level="HSK 5"):
     plan_output = str(crew_tasks[task_offset].output) if len(crew_tasks) > task_offset else ""
     story_output = str(crew_tasks[task_offset + 1].output) if len(crew_tasks) > task_offset + 1 else ""
     analyze_output = str(crew_tasks[task_offset + 2].output) if len(crew_tasks) > task_offset + 2 else ""
+    analyze_output = str(crew_tasks[task_offset + 2].output) if len(crew_tasks) > task_offset + 2 else ""
     quiz_output = str(crew_tasks[task_offset + 3].output) if len(crew_tasks) > task_offset + 3 else ""
+    writing_prompt_output = str(crew_tasks[task_offset + 4].output) if len(crew_tasks) > task_offset + 4 else ""
     
-    # Parse JSON from analyze and quiz outputs
+    # Parse JSON from outputs
     analyze_json = parse_json_from_text(analyze_output)
     quiz_json = parse_json_from_text(quiz_output)
+    writing_prompt_json = parse_json_from_text(writing_prompt_output)
     
     vocabulary = []
     grammar = []
@@ -577,31 +772,34 @@ def generate_lesson_content(topic=None, level="HSK 5"):
     lesson_data = {
         "topic": final_topic_name,
         "level": level,
+        "language": language,
         "lesson_plan": plan_output,
         "story": story_output,
         "vocabulary": vocabulary,
         "grammar": grammar,
-        "quiz": quiz
+        "quiz": quiz,
+        "writing_prompt": writing_prompt_json
     }
     
     # Generate markdown (legacy)
     body_output = ""
-    headers = ["Lesson Plan", "Story", "Language Analysis", "Quiz"]
+    headers = ["Lesson Plan", "Story", "Language Analysis", "Quiz", "Writing Prompt"]
     for i, task in enumerate(crew_tasks[task_offset:]):
         header = headers[i] if i < len(headers) else f"Step {i+1}"
         body_output += f"## {header}\n\n"
         body_output += str(task.output) + "\n\n---\n\n"
     
-    final_markdown = f"# Lesson: {final_topic_name} - {level}\n\n" + body_output
+    final_markdown = f"# Lesson: {final_topic_name} - {level} ({language})\n\n" + body_output
     
     # Generate interactive HTML
-    html_content = generate_interactive_html(lesson_data)
+    html_content = generate_interactive_html(lesson_data, language)
     
     return final_topic_name, final_markdown, html_content, lesson_data
 
-def get_topic_suggestion(level="HSK 3", additional_excluded=None):
-    agents = ChineseLearningAgents()
-    tasks = ChineseLearningTasks()
+def get_topic_suggestion(level="HSK 3", language="chinese", additional_excluded=None):
+    """Get a random topic suggestion for the specified language and level."""
+    agents = LanguageLearningAgents(language=language)
+    tasks = LanguageLearningTasks(language=language)
     
     # Get existing topics from disk to avoid repetition
     output_dir = os.path.join(os.path.dirname(__file__), "output")
@@ -630,12 +828,13 @@ def get_topic_suggestion(level="HSK 3", additional_excluded=None):
     topic = str(result).strip().replace("'", "").replace('"', "")
     return topic
 
-def run(topic=None, level="HSK 5"):
-    final_topic_name, full_output, html_content, lesson_data = generate_lesson_content(topic, level)
+def run(topic=None, level="HSK 5", language="chinese"):
+    """Run lesson generation with specified parameters."""
+    final_topic_name, full_output, html_content, lesson_data = generate_lesson_content(topic, level, language)
     
     # Generate Filename
     safe_topic = "".join([c for c in final_topic_name if c.isalnum() or c in (' ', '_')]).rstrip()
-    base_filename = f"{safe_topic.replace(' ', '_').lower()}"
+    base_filename = f"{language}_{safe_topic.replace(' ', '_').lower()}"
     
     output_dir = os.path.join(os.path.dirname(__file__), "output")
     os.makedirs(output_dir, exist_ok=True)
@@ -660,13 +859,83 @@ def run(topic=None, level="HSK 5"):
     print(f"JSON generated: {json_path}")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
-        # python main.py "Topic" "HSK 5"
+    if len(sys.argv) > 3:
+        # python main.py "Topic" "HSK 5" "chinese"
+        run(topic=sys.argv[1], level=sys.argv[2], language=sys.argv[3])
+    elif len(sys.argv) > 2:
+        # python main.py "Topic" "HSK 5" (default Chinese)
         run(topic=sys.argv[1], level=sys.argv[2])
     elif len(sys.argv) > 1:
-        # python main.py "HSK 4" (Assume single arg is Level)
+        # python main.py "HSK 4" (Assume single arg is Level, default Chinese)
         run(level=sys.argv[1])
     else:
-        # python main.py (Default HSK 5, Auto Topic)
+        # python main.py (Default HSK 5, Auto Topic, Chinese)
         run()
+
+
+def generate_writing_prompt(topic, level, language="chinese"):
+
+    """Generate a writing prompt using the writing agent."""
+
+    agents = LanguageLearningAgents(language=language)
+
+    tasks = LanguageLearningTasks(language=language)
+
+    
+
+    assessor = agents.writing_assessor_agent()
+
+    prompt_task = tasks.generate_writing_prompt_task(assessor, topic, level)
+
+    
+
+    crew = Crew(
+
+        agents=[assessor],
+
+        tasks=[prompt_task],
+
+        verbose=True
+
+    )
+
+    
+
+    result = crew.kickoff()
+
+    return parse_json_from_text(str(result))
+
+
+
+def grade_writing_submission(submission, prompt_data, language="chinese"):
+
+    """Grade a writing submission using the writing agent."""
+
+    agents = LanguageLearningAgents(language=language)
+
+    tasks = LanguageLearningTasks(language=language)
+
+    
+
+    assessor = agents.writing_assessor_agent()
+
+    grade_task = tasks.grade_writing_task(assessor, submission, prompt_data)
+
+    
+
+    crew = Crew(
+
+        agents=[assessor],
+
+        tasks=[grade_task],
+
+        verbose=True
+
+    )
+
+    
+
+    result = crew.kickoff()
+
+    return parse_json_from_text(str(result))
 
