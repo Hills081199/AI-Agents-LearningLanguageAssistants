@@ -94,21 +94,34 @@ export default function WritingExercise({ topic, level, language, apiBaseUrl, au
             setGrade(data);
 
             // Save progress
+            // Save to Activity Log (Study Sessions)
             if (lessonFilename && authApiUrl) {
                 try {
                     const token = localStorage.getItem("auth_token");
-                    await fetch(`${authApiUrl}/lesson-history/${lessonFilename}`, {
-                        method: 'PUT',
+                    // Post to sessions endpoint
+                    await fetch(`${authApiUrl}/sessions/`, {
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': `Bearer ${token}`
                         },
                         body: JSON.stringify({
-                            writing_score: data.total_score
+                            lesson_id: lessonFilename,
+                            activity_type: 'writing',
+                            score: data.total_score,
+                            max_score: 100,
+                            topic: prompt.title || topic,
+                            data: {
+                                prompt: prompt,
+                                submission: submission,
+                                grade: data,
+                                type: 'writing_exercise'
+                            }
                         }),
                     });
 
-                    // Update local history
+                    // Update local history (client-side only for now in this session)
+                    // In real implementation, this should ideally come from the saved session response
                     setHistory(prev => [...prev, {
                         timestamp: Date.now() / 1000,
                         prompt,

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build: .
+    command: uvicorn ChineseLearning.auth_service.api:app --host 0.0.0.0 --port 8001 --reload
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  agent-service:
+    build: .
+    command: uvicorn ChineseLearning.agent_service.api:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./agent_outputs:/app/ChineseLearning/agent_service/output
+    environment:
+      - PYTHONPATH=/app
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

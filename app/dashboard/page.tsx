@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Sparkles, Loader2, BookOpen, GraduationCap, Target, Menu, X, ChevronRight, Zap, PlayCircle, Check, Circle, Dices, Crown, Globe, PenTool, LogOut } from "lucide-react";
+import { useAppSelector, useAppDispatch } from "../lib/hooks";
+import { logoutUser } from "../lib/features/auth/authSlice";
 import VocabularyList from "./components/VocabularyList";
 import Quiz from "./components/Quiz";
 import RoleplayChat from "./components/RoleplayChat";
@@ -70,6 +73,10 @@ const LANGUAGE_FLAGS: Record<string, string> = {
 };
 
 export default function Home() {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { token, isAuthenticated, isLoading: authLoading } = useAppSelector((state) => state.auth);
+
   const [language, setLanguage] = useState("chinese");
   const [languages, setLanguages] = useState<LanguageConfig[]>(DEFAULT_LANGUAGES);
   const [level, setLevel] = useState("HSK 3");
@@ -77,8 +84,9 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [htmlContent, setHtmlContent] = useState<string | null>(null);
+  const [activityLogs, setActivityLogs] = useState<any[]>([]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [activeView, setActiveView] = useState<"objectives" | "reading" | "quiz" | "writing">("objectives");
+  const [activeView, setActiveView] = useState<"objectives" | "vocabulary" | "reading" | "quiz" | "writing">("objectives");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [suggesting, setSuggesting] = useState(false);
 
@@ -115,9 +123,18 @@ export default function Home() {
     fetchLanguages();
   }, [apiBaseUrl]);
 
+  // Redirect if not authenticated
   useEffect(() => {
-    fetchHistory();
-  }, [authApiUrl, language]);
+    if (!authLoading && !isAuthenticated) {
+      router.push("/landing");
+    }
+  }, [isAuthenticated, authLoading, router]);
+
+  useEffect(() => {
+    if (isAuthenticated && token) {
+      fetchHistory();
+    }
+  }, [authApiUrl, language, isAuthenticated, token]);
 
   // Update level when language changes
   useEffect(() => {
@@ -153,11 +170,11 @@ export default function Home() {
 
   const fetchHistory = async () => {
     try {
-      const token = localStorage.getItem("auth_token");
       if (!authApiUrl) {
         console.warn("fetchHistory: authApiUrl is missing");
         return;
       }
+      if (!token) return;
 
       const res = await fetch(`${authApiUrl}/lesson-history?language=${language.toLowerCase()}`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -184,7 +201,6 @@ export default function Home() {
     if (loading) return;
     setLoading(true);
     try {
-      const token = localStorage.getItem("auth_token");
       // If it looks like a legacy filename (ends in .html), use agent service
       if (filename.endsWith('.html')) {
         const res = await fetch(`${apiBaseUrl}/file-history/${filename}`);
@@ -241,6 +257,19 @@ export default function Home() {
           } else {
             setHtmlContent(null);
           }
+
+          // Fetch Activity Log (Study Sessions)
+          try {
+            const logRes = await fetch(`${authApiUrl}/sessions/?lesson_id=${data.id}`, { // Use ID
+              headers: { Authorization: `Bearer ${token}` }
+            });
+            if (logRes.ok) {
+              const logs = await logRes.json();
+              setActivityLogs(logs);
+            }
+          } catch (e) {
+            console.warn("Failed to load activity logs", e);
+          }
         }
       }
     } catch (e) {
@@ -249,6 +278,26 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  const writingHistory = activityLogs
+    .filter(log => log.activity_type === 'writing' && log.data)
+    .map(log => ({
+      timestamp: new Date(log.created_at || log.start_time).getTime() / 1000,
+      prompt: log.data.prompt,
+      submission: log.data.submission,
+      grade: log.data.grade
+    }));
+
+  const quizHistory = activityLogs
+    .filter(log => log.activity_type === 'quiz' && log.data)
+    .map(log => ({
+      timestamp: new Date(log.created_at || log.start_time).getTime() / 1000,
+      score: log.score,
+      max_score: log.max_score,
+      topic: log.topic,
+      created_at: new Date(log.created_at || log.start_time).getTime() / 1000,
+      data: log.data
+    }));
 
   const generateLesson = async () => {
     if (loading) return;
@@ -285,7 +334,6 @@ export default function Home() {
 
       // 2. Save to Database (Auth Service)
       try {
-        const token = localStorage.getItem("auth_token");
         if (token && authApiUrl) {
           const saveResponse = await fetch(`${authApiUrl}/lesson-history`, {
             method: "POST",
@@ -331,6 +379,7 @@ export default function Home() {
   const navItems = [
 
     { key: "objectives", label: "Lesson Objectives", icon: Zap },
+    { key: "vocabulary", label: "Vocabulary", icon: BookOpen },
     { key: "reading", label: "Reading", icon: BookOpen },
     { key: "quiz", label: "Practice", icon: Target, count: lessonData?.quiz?.length },
     { key: "writing", label: "Writing", icon: PenTool },
@@ -504,8 +553,8 @@ export default function Home() {
 
             <button
               onClick={() => {
-                localStorage.removeItem("auth_token");
-                window.location.href = "/landing";
+                dispatch(logoutUser());
+                router.push("/landing");
               }}
               className="w-full py-3 px-4 bg-white border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 shadow-sm flex items-center justify-center gap-2 transition-all"
             >
@@ -589,53 +638,72 @@ export default function Home() {
                     />
                   </div>
                 ) : (
-                  <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    {lessonData?.vocabulary && lessonData.vocabulary.length > 0 && (
-                      <div className="space-y-4">
-                        <h2 className="text-xl font-bold flex items-center gap-2">
-                          <BookOpen className="w-5 h-5 text-indigo-600" />
-                          Key Vocabulary
-                        </h2>
-                        <VocabularyList vocabulary={lessonData.vocabulary} language={lessonData.language || language} />
+                  <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm animate-in fade-in zoom-in-95 duration-500">
+                    <div className="text-center py-12">
+                      <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Zap className="w-8 h-8" />
                       </div>
-                    )}
-
-                    {lessonData?.grammar && lessonData.grammar.length > 0 && (
-                      <div className="space-y-4">
-                        <h2 className="text-xl font-bold flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-amber-500" />
-                          Grammar Points
-                        </h2>
-                        <div className="grid gap-4">
-                          {lessonData.grammar.map((point: any, idx: number) => (
-                            <div key={idx} className="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
-                              <div className="flex items-start gap-3">
-                                <span className="px-2 py-1 bg-amber-100 text-amber-700 rounded-md text-xs font-bold uppercase tracking-wide flex-shrink-0 mt-1">
-                                  Point {idx + 1}
-                                </span>
-                                <h3 className="font-bold text-lg text-slate-800">{point.structure || point.point}</h3>
-                              </div>
-                              <p className="mt-2 text-slate-600 leading-relaxed text-sm">{point.explanation}</p>
-                              {point.examples && point.examples.length > 0 && (
-                                <div className="mt-4 bg-slate-50 p-4 rounded-lg">
-                                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Examples</p>
-                                  <ul className="space-y-2">
-                                    {point.examples.map((ex: string, i: number) => (
-                                      <li key={i} className="text-sm text-slate-700 italic flex items-start gap-2">
-                                        <span className="text-amber-400 mt-1">•</span>
-                                        {ex}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                      <h2 className="text-2xl font-bold text-slate-900 mb-2">{lessonData?.topic}</h2>
+                      <div className="flex justify-center gap-2 mb-6">
+                        <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{lessonData?.level}</span>
+                        <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{languages.find(l => l.code === (lessonData?.language || language))?.name}</span>
                       </div>
-                    )}
+                      <p className="text-slate-500 max-w-lg mx-auto">
+                        In this lesson, you will learn key vocabulary and grammar structures related to "{lessonData?.topic}".
+                        Complete the reading, practice with the quiz, and finish with a writing exercise.
+                      </p>
+                    </div>
                   </div>
                 )
+              )}
+
+              {activeView === "vocabulary" && (
+                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  {lessonData?.vocabulary && lessonData.vocabulary.length > 0 && (
+                    <div className="space-y-4">
+                      <h2 className="text-xl font-bold flex items-center gap-2">
+                        <BookOpen className="w-5 h-5 text-indigo-600" />
+                        Key Vocabulary
+                      </h2>
+                      <VocabularyList vocabulary={lessonData.vocabulary} language={lessonData.language || language} />
+                    </div>
+                  )}
+
+                  {lessonData?.grammar && lessonData.grammar.length > 0 && (
+                    <div className="space-y-4">
+                      <h2 className="text-xl font-bold flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-amber-500" />
+                        Grammar Points
+                      </h2>
+                      <div className="grid gap-4">
+                        {lessonData.grammar.map((point: any, idx: number) => (
+                          <div key={idx} className="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
+                            <div className="flex items-start gap-3">
+                              <span className="px-2 py-1 bg-amber-100 text-amber-700 rounded-md text-xs font-bold uppercase tracking-wide flex-shrink-0 mt-1">
+                                Point {idx + 1}
+                              </span>
+                              <h3 className="font-bold text-lg text-slate-800">{point.structure || point.point}</h3>
+                            </div>
+                            <p className="mt-2 text-slate-600 leading-relaxed text-sm">{point.explanation}</p>
+                            {point.examples && point.examples.length > 0 && (
+                              <div className="mt-4 bg-slate-50 p-4 rounded-lg">
+                                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Examples</p>
+                                <ul className="space-y-2">
+                                  {point.examples.map((ex: string, i: number) => (
+                                    <li key={i} className="text-sm text-slate-700 italic flex items-start gap-2">
+                                      <span className="text-amber-400 mt-1">•</span>
+                                      {ex}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               )}
 
               {activeView === "reading" && (
@@ -672,6 +740,7 @@ export default function Home() {
                   apiBaseUrl={apiBaseUrl}
                   authApiUrl={authApiUrl}
                   lessonFilename={lessonData.filename}
+                  initialHistory={quizHistory}
                 />
               )}
 
@@ -685,7 +754,7 @@ export default function Home() {
                   authApiUrl={authApiUrl}
                   initialPrompt={lessonData?.writing_prompt}
                   lessonFilename={lessonData?.filename}
-                  initialHistory={lessonData?.progress?.writing_history}
+                  initialHistory={writingHistory}
                 />
               )}
             </div>

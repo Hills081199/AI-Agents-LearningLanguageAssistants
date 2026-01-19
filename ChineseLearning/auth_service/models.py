@@ -28,24 +28,32 @@ class UserProfile(BaseModel):
 # ============== Study Session Models ==============
 
 class StudySessionBase(BaseModel):
-    topic: str
-    level: str
+    lesson_id: Optional[UUID4] = None
+    topic: Optional[str] = None
+    level: Optional[str] = None
     language: str = "chinese"
+    activity_type: Optional[str] = None # 'quiz', 'writing'
+    duration_seconds: Optional[int] = None
 
 class StudySessionCreate(StudySessionBase):
-    pass
+    score: Optional[int] = None
+    max_score: Optional[int] = None
+    data: Optional[Dict[str, Any]] = None # Store quiz answers, submission text
 
 class StudySessionUpdate(BaseModel):
     topic: Optional[str] = None
-    level: Optional[str] = None
-    language: Optional[str] = None
     end_time: Optional[datetime] = None
+    score: Optional[int] = None
+    data: Optional[Dict[str, Any]] = None
 
 class StudySession(StudySessionBase):
-    id: str
-    user_id: str
+    id: UUID4
+    user_id: UUID4
     start_time: datetime
     end_time: Optional[datetime] = None
+    score: Optional[int] = None
+    max_score: Optional[int] = None
+    data: Optional[Dict[str, Any]] = None
 
     class Config:
         from_attributes = True

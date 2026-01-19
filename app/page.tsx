@@ -3,19 +3,21 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { useAppSelector } from "./lib/hooks";
 
 export default function RootPage() {
     const router = useRouter();
+    const { isAuthenticated, isLoading } = useAppSelector((state) => state.auth);
 
     useEffect(() => {
-        // Check if user is logged in
-        const token = localStorage.getItem("auth_token");
-        if (token) {
-            router.push("/dashboard");
-        } else {
-            router.push("/landing");
+        if (!isLoading) {
+            if (isAuthenticated) {
+                router.push("/dashboard");
+            } else {
+                router.push("/landing");
+            }
         }
-    }, [router]);
+    }, [isAuthenticated, isLoading, router]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50">

@@ -24,37 +24,70 @@ def create_session(
     current_user = Depends(get_current_user),
     supabase: Client = Depends(get_supabase)
 ):
-    """Create a new study session."""
+    """Create or Update a study session (Activity Log). Stores only the latest score per activity."""
     try:
         user_id = str(current_user.id)
         
-        # Prepare data for insertion
-        data = session.model_dump()
+        # Prepare data for insertion/update
+        data = session.model_dump(mode='json')
         data["user_id"] = user_id
         
-        # Insert into Supabase
-        response = supabase.table("study_sessions").insert(data).execute()
+        # Ensure start_time is updated to now
+        from datetime import datetime
+        data["start_time"] = datetime.now().isoformat()
+        
+        # Check if session exists for this lesson and activity type
+        lesson_id = data.get("lesson_id")
+        activity_type = data.get("activity_type")
+        
+        existing = None
+        if lesson_id and activity_type:
+             query = supabase.table("study_sessions")\
+                .select("id")\
+                .eq("user_id", user_id)\
+                .eq("lesson_id", lesson_id)\
+                .eq("activity_type", activity_type)\
+                .execute()
+             if query.data and len(query.data) > 0:
+                 existing = query.data[0]
+
+        if existing:
+            # Update existing session
+            session_id = existing['id']
+            # We don't need to specify ID in data for update, just usage in EQ
+            response = supabase.table("study_sessions").update(data).eq("id", session_id).execute()
+        else:
+            # Insert new session
+            response = supabase.table("study_sessions").insert(data).execute()
         
         if not response.data:
-            raise HTTPException(status_code=500, detail="Failed to create session")
+            raise HTTPException(status_code=500, detail="Failed to save session")
         
         return response.data[0]
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"Error creating/updating session: {str(e)}")
+        print(f"Data payload: {data}")
+        raise HTTPException(status_code=500, detail=f"Error processing session: {str(e)}")
 
 
 @router.get("/", response_model=List[StudySession])
 def get_sessions(
+    lesson_id: str = None,
     current_user = Depends(get_current_user),
     supabase: Client = Depends(get_supabase)
 ):
-    """Get all study sessions for the current user."""
+    """Get all study sessions for the current user, optionally filtered by lesson_id."""
     try:
         user_id = str(current_user.id)
         
-        response = supabase.table("study_sessions").select("*").eq("user_id", user_id).order("start_time", desc=True).execute()
+        query = supabase.table("study_sessions").select("*").eq("user_id", user_id)
+        
+        if lesson_id:
+            query = query.eq("lesson_id", lesson_id)
+            
+        response = query.order("start_time", desc=True).execute()
         
         return response.data
     except Exception as e:

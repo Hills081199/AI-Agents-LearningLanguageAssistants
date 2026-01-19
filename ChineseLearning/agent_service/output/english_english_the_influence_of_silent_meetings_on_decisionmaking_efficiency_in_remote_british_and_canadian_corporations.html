@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English The Influence of Silent Meetings on Decision-Making Efficiency in Remote British and Canadian Corporations - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>English The Influence of Silent Meetings on Decision-Making Efficiency in Remote British and Canadian Corporations</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: The Influence of Silent Meetings on Decision-Making Efficiency in Remote British and Canadian Corporations</p>
+<p>Level: B2 (Upper-Intermediate)</p>
+<p>1. Learning Objectives:</p>
+<p>By the end of this lesson, students will be able to:</p>
+<li>Understand and discuss the concept of silent meetings and their impact on decision-making efficiency, particularly in remote work contexts in British and Canadian corporations.</li>
+<li>Use key vocabulary related to business meetings, remote work, and decision-making processes confidently and appropriately in context.</li>
+<li>Form complex sentences using the second conditional and the passive voice to describe hypothetical situations and processes related to silent meetings and decision-making.</li>
+<li>Develop speaking and writing skills by expressing opinions on the advantages and disadvantages of silent meetings compared to traditional meetings.</li>
+<p>2. Key Vocabulary:</p>
+<li>Silent meeting</li>
+<li>Remote work</li>
+<li>Decision-making</li>
+<li>Efficiency</li>
+<li>Collaboration</li>
+<li>Productivity</li>
+<li>Facilitator</li>
+<li>Consensus</li>
+<li>Distraction</li>
+<li>Transparency</li>
+<p>3. Grammar Points:</p>
+<p>a) Second Conditional (Hypothetical situations)</p>
+<li>Structure: If + past simple, would + base verb</li>
+<li>Example: If corporations adopted more silent meetings, decision-making might become more efficient.</li>
+<li>Use: To discuss hypothetical outcomes related to silent meetings in business settings.</li>
+<p>b) Passive Voice (Present and Past Simple)</p>
+<li>Structure: Subject + be (am/is/are/was/were) + past participle</li>
+<li>Example: Silent meetings are used to minimize distractions. Decisions were made more quickly during the silent meetings last quarter.</li>
+<li>Use: To describe processes and emphasize actions rather than actors in the context of silent meetings and corporate decision-making.</li>
+<p>---</p>
+<p>Lesson Procedure Suggestion (optional for completeness):</p>
+<li>Warm-up Discussion: Ask students about their experiences with remote meetings and decision-making.</li>
+<li>Vocabulary Introduction: Introduce and explain the key vocabulary with example sentences.</li>
+<li>Reading/Listening Task: Provide a short article or audio clip about silent meetings in British and Canadian companies.</li>
+<li>Grammar Presentation: Introduce the second conditional and passive voice with examples related to the topic.</li>
+<li>Practice Activities:</li>
+<li>Pair work on forming sentences using second conditional and passive voice with the vocabulary words.</li>
+<li>Group discussion or debate on the benefits and challenges of silent meetings.</li>
+<li>Writing Task: Write a short paragraph describing how silent meetings might improve or hinder decision-making efficiency in their own company or experience.</li>
+<li>Feedback and Error Correction: Review common mistakes related to vocabulary and grammar.</li>
+<p>This structured outline will support B2 learners in understanding and discussing the influence of silent meetings on decision-making, while integrating relevant vocabulary and grammar to enhance their language skills in a business context.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>In recent years, remote work has become a standard practice for many corporations, especially in Britain and Canada. This shift has led to new ways of conducting meetings, one of which is the silent meeting. Silent meetings are unique because participants communicate only through written messages, often using digital platforms, without speaking aloud. This format has gained attention for its potential to improve decision-making efficiency in remote teams.</p>
+<p>Silent meetings are designed to reduce distractions and ensure that all voices are heard equally. In traditional meetings, some participants might dominate the conversation while others remain silent. However, during silent meetings, every team member contributes by typing their thoughts and ideas, which are visible to all. This method promotes transparency and allows decisions to be reviewed carefully before reaching a consensus. As a result, many British and Canadian corporations have reported increased productivity and quicker decision-making since adopting silent meetings.</p>
+<p>One significant advantage of silent meetings is that they encourage reflection. Since participants cannot interrupt each other, they have time to think deeply about the issues discussed. If corporations adopted more silent meetings, decision-making might become more efficient because decisions would be based on thoughtful analysis rather than immediate reactions. Moreover, silent meetings are often structured so that a facilitator guides the process, ensuring that discussions stay on track and all relevant points are considered.</p>
+<p>On the other hand, some challenges have been observed during silent meetings. For example, the lack of verbal cues can sometimes lead to misunderstandings. When body language and tone of voice are absent, it might be harder to interpret the meaning behind certain messages. Additionally, some individuals may find it difficult to express themselves clearly in writing, which could affect collaboration. Despite these concerns, many companies believe that these drawbacks can be managed with proper training and clear guidelines.</p>
+<p>In British and Canadian remote corporations, silent meetings are increasingly being used alongside traditional meetings to balance efficiency with personal interaction. Decisions were made more quickly during the silent meetings last quarter in several companies, showing the method’s effectiveness. However, if silent meetings were used exclusively, some collaboration aspects might suffer. Therefore, a combination of both formats may be the most practical approach.</p>
+<p>To sum up, silent meetings have had a notable influence on decision-making efficiency in remote British and Canadian corporations. They minimize distractions, promote equal participation, and allow careful consideration of ideas. If more companies embraced silent meetings, remote work could become even more productive. Nevertheless, achieving the right balance between silent and spoken communication remains crucial to maintaining strong collaboration and successful decision outcomes.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Silent meeting**: A meeting format where participants communicate only through writing, without speaking aloud.</li>
+<li>**Remote work**: Working from a location outside the traditional office, often from home, using digital communication tools.</li>
+<li>**Decision-making efficiency**: How quickly and effectively decisions are reached within a group or organization.</li>
+<li>**Reduce distractions**: To minimize interruptions or disturbances that can affect focus and productivity.</li>
+<li>**Transparency**: Openness in communication and processes, where information is shared clearly and openly.</li>
+<li>**Reach a consensus**: To come to an agreement that all participants accept.</li>
+<li>**Thoughtful analysis**: Careful and detailed examination of information before making a decision.</li>
+<li>**Facilitator**: A person who helps guide discussions and ensures meetings run smoothly.</li>
+<li>**Verbal cues**: Communication signals such as tone of voice and body language used during spoken conversations.</li>
+<li>**Collaboration**: Working together effectively to achieve a common goal.</li>
+<li>**If corporations adopted more silent meetings, decision-making might become more efficient**: An example of the second conditional used to discuss a hypothetical positive outcome.</li>
+<li>**Decisions were made more quickly during the silent meetings last quarter**: An example of the passive voice describing a process that happened to decisions in the past.</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (19 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Silent meeting</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A meeting format where participants communicate only through writing, without speaking aloud.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Silent meetings promote equal participation by having everyone communicate in writing.</span>
+                    <button onclick="speak('Silent meetings promote equal participation by having everyone communicate in writing.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las reuniones silenciosas fomentan la participación equitativa al hacer que todos se comuniquen por escrito.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Silent meeting')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Remote work</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Working from a location outside the traditional office, often from home, using digital communication tools.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Remote work has become more common due to advances in technology.</span>
+                    <button onclick="speak('Remote work has become more common due to advances in technology.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El trabajo remoto se ha vuelto más común debido a los avances tecnológicos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Remote work')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Decision-making</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The process of making choices or reaching conclusions, especially within a group or organization.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Effective decision-making is crucial for business success.</span>
+                    <button onclick="speak('Effective decision-making is crucial for business success.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La toma de decisiones efectiva es crucial para el éxito empresarial.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Decision-making')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Efficiency</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The ability to achieve a desired result with minimum wasted effort or resources.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Silent meetings improve decision-making efficiency by reducing distractions.</span>
+                    <button onclick="speak('Silent meetings improve decision-making efficiency by reducing distractions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las reuniones silenciosas mejoran la eficiencia en la toma de decisiones al reducir las distracciones.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Efficiency')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Collaboration</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The act of working together to achieve a common goal.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Good collaboration is necessary for project success.</span>
+                    <button onclick="speak('Good collaboration is necessary for project success.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Una buena colaboración es necesaria para el éxito del proyecto.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Collaboration')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Productivity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The rate at which work is completed effectively.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many companies have reported higher productivity after adopting silent meetings.</span>
+                    <button onclick="speak('Many companies have reported higher productivity after adopting silent meetings.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Muchas empresas han reportado una mayor productividad después de adoptar reuniones silenciosas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Productivity')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Facilitator</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A person who helps guide discussions and ensures meetings run smoothly.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The facilitator keeps the silent meeting on track by managing time and topics.</span>
+                    <button onclick="speak('The facilitator keeps the silent meeting on track by managing time and topics.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El facilitador mantiene la reunión silenciosa en orden al gestionar el tiempo y los temas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Facilitator')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Consensus</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">General agreement among a group.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The team reached a consensus after careful consideration of all opinions.</span>
+                    <button onclick="speak('The team reached a consensus after careful consideration of all opinions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El equipo llegó a un consenso después de una cuidadosa consideración de todas las opiniones.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Consensus')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Distraction</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Something that prevents someone from concentrating.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Silent meetings reduce distractions during important discussions.</span>
+                    <button onclick="speak('Silent meetings reduce distractions during important discussions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las reuniones silenciosas reducen las distracciones durante discusiones importantes.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Distraction')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Transparency</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Openness in communication and processes where information is shared clearly and openly.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Transparency in silent meetings ensures that all contributions are visible to everyone.</span>
+                    <button onclick="speak('Transparency in silent meetings ensures that all contributions are visible to everyone.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La transparencia en las reuniones silenciosas asegura que todas las contribuciones sean visibles para todos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Transparency')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Reflection</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Careful thought or consideration about something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Silent meetings encourage reflection, allowing participants to think before responding.</span>
+                    <button onclick="speak('Silent meetings encourage reflection, allowing participants to think before responding.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las reuniones silenciosas fomentan la reflexión, permitiendo que los participantes piensen antes de responder.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Reflection')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Interrupt</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To stop someone from speaking by saying or doing something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Participants cannot interrupt each other during silent meetings.</span>
+                    <button onclick="speak('Participants cannot interrupt each other during silent meetings.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Los participantes no pueden interrumpirse unos a otros durante las reuniones silenciosas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Interrupt')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Verbal cues</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Signals such as tone of voice or body language used in spoken communication to express feelings or intentions.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The lack of verbal cues in silent meetings can sometimes cause misunderstandings.</span>
+                    <button onclick="speak('The lack of verbal cues in silent meetings can sometimes cause misunderstandings.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La falta de señales verbales en las reuniones silenciosas a veces puede causar malentendidos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Verbal cues')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Guideline</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A general rule or principle that provides advice on how something should be done.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Clear guidelines help participants communicate effectively in silent meetings.</span>
+                    <button onclick="speak('Clear guidelines help participants communicate effectively in silent meetings.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las directrices claras ayudan a los participantes a comunicarse eficazmente en las reuniones silenciosas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Guideline')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Hypothetical</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Based on or involving a possible idea or situation rather than real one.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The second conditional is used to discuss hypothetical situations in business contexts.</span>
+                    <button onclick="speak('The second conditional is used to discuss hypothetical situations in business contexts.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El segundo condicional se usa para discutir situaciones hipotéticas en contextos empresariales.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Hypothetical')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Facilitate</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To make a process easier or assist progress.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">A facilitator facilitates the flow of discussion in meetings.</span>
+                    <button onclick="speak('A facilitator facilitates the flow of discussion in meetings.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Un facilitador facilita el flujo de la discusión en las reuniones.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Facilitate')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Balance</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A state where different things exist in equal or correct amounts.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Finding a balance between silent and traditional meetings is important for collaboration.</span>
+                    <button onclick="speak('Finding a balance between silent and traditional meetings is important for collaboration.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Encontrar un equilibrio entre reuniones silenciosas y tradicionales es importante para la colaboración.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Balance')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Drawback</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A disadvantage or negative aspect of something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">One drawback of silent meetings is the potential difficulty in expressing emotions.</span>
+                    <button onclick="speak('One drawback of silent meetings is the potential difficulty in expressing emotions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Una desventaja de las reuniones silenciosas es la dificultad potencial para expresar emociones.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Drawback')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Embrace</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To accept or support willingly.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many companies have embraced silent meetings to improve productivity.</span>
+                    <button onclick="speak('Many companies have embraced silent meetings to improve productivity.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Muchas empresas han adoptado las reuniones silenciosas para mejorar la productividad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Embrace')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Second Conditional: If + past simple, would + base verb</div>
+                <div class="grammar-explanation">Used to talk about hypothetical or unreal situations in the present or future and their possible outcomes.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If corporations adopted more silent meetings, decision-making might become more efficient.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Passive Voice (Present Simple): Subject + am/is/are + past participle</div>
+                <div class="grammar-explanation">Used to focus on the action or the object that receives the action, rather than the doer, in the present tense.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Silent meetings are used to minimize distractions.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Passive Voice (Past Simple): Subject + was/were + past participle</div>
+                <div class="grammar-explanation">Used to describe actions that happened to the subject in the past, emphasizing the action rather than who did it.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Decisions were made more quickly during the silent meetings last quarter.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Modals in Second Conditional: might + base verb</div>
+                <div class="grammar-explanation">Used in hypothetical conditional sentences to express possibility or probability.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If corporations adopted more silent meetings, decision-making might become more efficient.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Complex Sentences with Relative Clauses</div>
+                <div class="grammar-explanation">Used to add extra information about a noun, making sentences richer and more specific.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Silent meetings, which use written messages instead of speech, promote equal participation.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

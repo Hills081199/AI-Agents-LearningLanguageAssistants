@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "../lib/hooks";
+import { loginUser, registerUser, clearError } from "../lib/features/auth/authSlice";
 import {
     Sparkles,
     Zap,
@@ -20,103 +22,63 @@ import {
     User,
     Eye,
     EyeOff,
+    Settings,
+    GraduationCap,
+    Quote,
+    Star,
+    Rocket
 } from "lucide-react";
+import Navbar from "../components/Navbar";
 
 export default function LandingPage() {
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
-    const [checkingAuth, setCheckingAuth] = useState(true);
+    const dispatch = useAppDispatch();
+    const { isAuthenticated, isLoading, error: authError } = useAppSelector((state) => state.auth);
+
+    const [loading, setLoading] = useState(false); // keep for local UI specific animations if needed, or sync with basic isLoading
     const [isSignUp, setIsSignUp] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const [success, setSuccess] = useState(""); // Local success message for signup
 
     // Form fields
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
 
-    // Auth service URL
-    const authApiUrl = typeof window !== "undefined"
-        ? (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-            ? "http://localhost:8001"
-            : `http://${window.location.hostname}:8001`)
-        : "http://localhost:8001";
-
     // Check if user is already logged in
     useEffect(() => {
-        const token = localStorage.getItem("auth_token");
-        if (token) {
-            fetch(`${authApiUrl}/auth/verify`, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
-                .then(res => {
-                    if (res.ok) {
-                        router.push("/dashboard");
-                    } else {
-                        localStorage.removeItem("auth_token");
-                        localStorage.removeItem("user");
-                        setCheckingAuth(false);
-                    }
-                })
-                .catch(() => {
-                    setCheckingAuth(false);
-                });
-        } else {
-            setCheckingAuth(false);
+        if (isAuthenticated) {
+            router.push("/dashboard");
         }
-    }, [authApiUrl, router]);
+    }, [isAuthenticated, router]);
+
+    // Clear errors when switching modes
+    useEffect(() => {
+        dispatch(clearError());
+        setSuccess("");
+    }, [isSignUp, dispatch]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
-        setError("");
         setSuccess("");
 
-        try {
-            const endpoint = isSignUp ? "/auth/signup" : "/auth/signin";
-            const body = isSignUp
-                ? { email, password, username }
-                : { email, password };
-
-            const res = await fetch(`${authApiUrl}${endpoint}`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body)
-            });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.detail || "Authentication failed");
-            }
-
-            // Store auth data
-            localStorage.setItem("auth_token", data.access_token);
-            localStorage.setItem("user", JSON.stringify(data.user));
-
-            if (isSignUp) {
+        if (isSignUp) {
+            const result = await dispatch(registerUser({ email, password, username }));
+            if (registerUser.fulfilled.match(result)) {
                 setSuccess("Account created! Redirecting...");
+                setTimeout(() => {
+                    router.push("/dashboard");
+                }, 1000);
             }
-
-            // Redirect to dashboard
-            setTimeout(() => {
+        } else {
+            const result = await dispatch(loginUser({ email, password }));
+            if (loginUser.fulfilled.match(result)) {
                 router.push("/dashboard");
-            }, 1000);
-
-        } catch (err: any) {
-            setError(err.message || "Something went wrong");
-            setLoading(false);
+            }
         }
     };
 
-    if (checkingAuth) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-                <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
-            </div>
-        );
-    }
+
 
     const features = [
         { icon: Brain, title: "AI-Powered Lessons", description: "Personalized content generated by advanced AI agents" },
@@ -128,30 +90,31 @@ export default function LandingPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50/50 to-pink-50/30 overflow-x-hidden">
             {/* Decorative Blobs */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-pink-200/20 to-indigo-200/20 rounded-full blur-3xl translate-x-1/2" />
-            <div className="absolute bottom-0 left-1/3 w-[600px] h-[300px] bg-gradient-to-t from-indigo-100/40 to-transparent rounded-full blur-3xl" />
+            <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none z-0" />
+            <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
 
-            {/* Header */}
-            <header className="relative z-10">
-                <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-                            <Zap className="w-5 h-5 text-white" />
-                        </div>
-                        <span className="font-bold text-xl tracking-tight">Language Factory</span>
-                    </div>
-                </nav>
-            </header>
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-float" />
+            <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-pink-200/20 to-indigo-200/20 rounded-full blur-3xl translate-x-1/2 animate-float-delayed" />
+            <div className="absolute bottom-0 left-1/3 w-[600px] h-[300px] bg-gradient-to-t from-indigo-100/40 to-transparent rounded-full blur-3xl animate-pulse-slow" />
+
+            <Navbar />
 
             {/* Hero Section with Auth Form */}
-            <section className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-16 lg:pt-16 lg:pb-24">
+            <section className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 lg:pt-32 lg:pb-24">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left Side - Content */}
-                    <div className="text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-indigo-100 rounded-full text-sm font-medium text-indigo-700 shadow-sm mb-8">
+                    <div className="text-center lg:text-left animate-in fade-in slide-in-from-bottom-8 duration-700 relative">
+                        {/* Floating Decorative Elements */}
+                        <div className="absolute -top-12 -left-12 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center rotate-12 animate-float delay-100 hidden lg:flex">
+                            <span className="text-3xl">你好</span>
+                        </div>
+                        <div className="absolute top-1/2 -right-12 w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center -rotate-6 animate-float-delayed delay-300 hidden lg:flex">
+                            <span className="text-2xl">Hola</span>
+                        </div>
+
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-indigo-100 rounded-full text-sm font-medium text-indigo-700 shadow-sm mb-8 relative">
                             <Sparkles className="w-4 h-4" />
                             <span>AI-Powered Language Learning</span>
                         </div>
@@ -167,46 +130,50 @@ export default function LandingPage() {
                             Generate personalized lessons, practice with interactive quizzes, and get instant AI feedback.
                         </p>
 
-                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-slate-500">
-                            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>Free to start</span></div>
-                            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>HSK & CEFR levels</span></div>
-                            <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>3 languages</span></div>
+                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-500 mb-10">
+                            <div className="flex items-center gap-2 bg-white/50 px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>Free to start</span></div>
+                            <div className="flex items-center gap-2 bg-white/50 px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>HSK & CEFR levels</span></div>
+                            <div className="flex items-center gap-2 bg-white/50 px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm"><CheckCircle2 className="w-4 h-4 text-emerald-500" /><span>3 languages</span></div>
                         </div>
 
-                        {/* Language Showcase */}
-                        <div className="flex justify-center lg:justify-start gap-4 mt-10">
-                            {[
-                                { flag: "🇨🇳", name: "Chinese" },
-                                { flag: "🇬🇧", name: "English" },
-                                { flag: "🇪🇸", name: "Spanish" }
-                            ].map((lang) => (
-                                <div key={lang.name} className="px-4 py-3 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl shadow-md flex items-center gap-3">
-                                    <span className="text-2xl">{lang.flag}</span>
-                                    <span className="font-semibold text-slate-700">{lang.name}</span>
-                                </div>
-                            ))}
+                        {/* Recent Stats Bar */}
+                        <div className="flex items-center justify-center lg:justify-start gap-8 pt-8 border-t border-slate-200/60">
+                            <div>
+                                <div className="text-2xl font-bold text-slate-900">10k+</div>
+                                <div className="text-xs text-slate-500 uppercase tracking-wide font-medium">Lessons</div>
+                            </div>
+                            <div className="w-px h-8 bg-slate-200" />
+                            <div>
+                                <div className="text-2xl font-bold text-slate-900">500+</div>
+                                <div className="text-xs text-slate-500 uppercase tracking-wide font-medium">Stories</div>
+                            </div>
+                            <div className="w-px h-8 bg-slate-200" />
+                            <div>
+                                <div className="text-2xl font-bold text-slate-900">4.9/5</div>
+                                <div className="text-xs text-slate-500 uppercase tracking-wide font-medium">Rating</div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Right Side - Auth Form */}
-                    <div className="relative">
+                    <div className="relative animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
                         <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl shadow-indigo-200/50 border border-white/60 p-8 lg:p-10">
                             {/* Tabs */}
                             <div className="flex gap-2 mb-8 p-1 bg-slate-100 rounded-xl">
                                 <button
-                                    onClick={() => { setIsSignUp(false); setError(""); setSuccess(""); }}
+                                    onClick={() => { setIsSignUp(false); setSuccess(""); }}
                                     className={`flex-1 py-3 text-sm font-semibold rounded-lg transition-all ${!isSignUp
-                                            ? "bg-white text-indigo-700 shadow-md"
-                                            : "text-slate-500 hover:text-slate-700"
+                                        ? "bg-white text-indigo-700 shadow-md"
+                                        : "text-slate-500 hover:text-slate-700"
                                         }`}
                                 >
                                     Sign In
                                 </button>
                                 <button
-                                    onClick={() => { setIsSignUp(true); setError(""); setSuccess(""); }}
+                                    onClick={() => { setIsSignUp(true); setSuccess(""); }}
                                     className={`flex-1 py-3 text-sm font-semibold rounded-lg transition-all ${isSignUp
-                                            ? "bg-white text-indigo-700 shadow-md"
-                                            : "text-slate-500 hover:text-slate-700"
+                                        ? "bg-white text-indigo-700 shadow-md"
+                                        : "text-slate-500 hover:text-slate-700"
                                         }`}
                                 >
                                     Sign Up
@@ -268,9 +235,9 @@ export default function LandingPage() {
                                     </div>
                                 </div>
 
-                                {error && (
+                                {authError && (
                                     <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
-                                        {error}
+                                        {typeof authError === 'string' ? authError : 'Authentication failed'}
                                     </div>
                                 )}
 
@@ -282,10 +249,10 @@ export default function LandingPage() {
 
                                 <button
                                     type="submit"
-                                    disabled={loading}
+                                    disabled={isLoading}
                                     className="w-full py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {loading ? (
+                                    {isLoading ? (
                                         <Loader2 className="w-5 h-5 animate-spin" />
                                     ) : (
                                         <>
@@ -317,8 +284,12 @@ export default function LandingPage() {
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {features.map((feature) => (
-                        <div key={feature.title} className="group p-7 bg-white/70 backdrop-blur-sm border border-slate-200/60 rounded-2xl hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all">
+                    {features.map((feature, index) => (
+                        <div
+                            key={feature.title}
+                            style={{ animationDelay: `${index * 100}ms` }}
+                            className="group p-7 bg-white/70 backdrop-blur-sm border border-slate-200/60 rounded-2xl hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all animate-in fade-in zoom-in-95 duration-500 fill-mode-both"
+                        >
                             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center mb-4 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
                                 <feature.icon className="w-6 h-6 text-white" />
                             </div>
@@ -326,6 +297,98 @@ export default function LandingPage() {
                             <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* How It Works */}
+            <section className="relative z-10 py-20 bg-white/40 backdrop-blur-md">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-xs font-semibold text-indigo-600 mb-4">
+                            <Target className="w-3 h-3" />
+                            <span>SIMPLE PROCESS</span>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">From Zero to Fluency</h2>
+                        <p className="text-slate-600 max-w-2xl mx-auto text-lg">Your personalized learning path in just three steps.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-12 relative">
+                        {/* Connector Line (Desktop) */}
+                        <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-indigo-200 via-purple-200 to-indigo-200" />
+
+                        {[
+                            { icon: Settings, title: "1. Customize", desc: "Choose your topic, level, and target language." },
+                            { icon: Sparkles, title: "2. Generate", desc: "AI creates a unique lesson with vocabulary & context." },
+                            { icon: GraduationCap, title: "3. Master", desc: "Practice with quizzes, speaking, and writing tools." }
+                        ].map((step, idx) => (
+                            <div key={idx} className="relative group text-center animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${idx * 150}ms` }}>
+                                <div className="w-24 h-24 mx-auto bg-white rounded-full border-4 border-indigo-50 shadow-xl flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                                    <step.icon className="w-10 h-10 text-indigo-600" />
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+                                <p className="text-slate-600 leading-relaxed px-4">{step.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonials */}
+            <section className="relative z-10 py-24">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Loved by Language Learners</h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {[
+                            { name: "Sarah Chen", role: "Design Student", quote: "The AI-generated stories make learning Chinese characters so much easier. I'm finally reading native content!", color: "bg-orange-100 text-orange-600" },
+                            { name: "Marcus Johnson", role: "Software Engineer", quote: "I love that I can generate lessons about tech topics. It's concise, relevant, and extremely effective.", color: "bg-blue-100 text-blue-600" },
+                            { name: "Elena Rodriguez", role: "Travel Blogger", quote: "Practicing pronunciation with the TTS feature gave me the confidence to speak with locals on my trip.", color: "bg-pink-100 text-pink-600" }
+                        ].map((item, idx) => (
+                            <div key={idx} className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-slate-100 shadow-lg hover:shadow-xl transition-all animate-in fade-in zoom-in-95 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                                <div className="flex gap-1 mb-4">
+                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />)}
+                                </div>
+                                <p className="text-slate-700 mb-6 italic relative">
+                                    <Quote className="w-8 h-8 text-indigo-100 absolute -top-4 -left-2 -z-10" />
+                                    "{item.quote}"
+                                </p>
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-full ${item.color} flex items-center justify-center font-bold text-sm`}>
+                                        {item.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <div className="font-bold text-slate-900 text-sm">{item.name}</div>
+                                        <div className="text-slate-500 text-xs">{item.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Final CTA */}
+            <section className="relative z-10 py-20 px-6">
+                <div className="max-w-5xl mx-auto bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                    <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                    <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+
+                    <div className="relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to start your journey?</h2>
+                        <p className="text-indigo-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                            Join thousands of learners mastering new languages with the power of artificial intelligence.
+                        </p>
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-2 mx-auto"
+                        >
+                            <Rocket className="w-5 h-5" />
+                            Get Started for Free
+                        </button>
+                    </div>
                 </div>
             </section>
 

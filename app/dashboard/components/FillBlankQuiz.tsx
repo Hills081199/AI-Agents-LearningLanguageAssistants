@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, HelpCircle, Volume2 } from 'lucide-react';
 
 // TTS language codes mapping
@@ -21,27 +20,20 @@ interface FillBlankExercise {
 interface FillBlankQuizProps {
     exercises: FillBlankExercise[];
     language?: string;
+    answers: Record<number, string>;
+    onAnswer: (index: number, value: string) => void;
+    isSubmitted: boolean;
+    onToggleHint?: (index: number) => void; // Optional if we want parent to manage hint visibility too, or keep it local
 }
 
-export default function FillBlankQuiz({ exercises, language = 'chinese' }: FillBlankQuizProps) {
-    const [answers, setAnswers] = useState<Record<number, string>>({});
-    const [checked, setChecked] = useState<Record<number, boolean>>({});
-    const [showHint, setShowHint] = useState<Record<number, boolean>>({});
-
-    // Reset state when exercises change (new lesson)
-    useEffect(() => {
-        setAnswers({});
-        setChecked({});
-        setShowHint({});
-    }, [exercises]);
+export default function FillBlankQuiz({ exercises, language = 'chinese', answers, onAnswer, isSubmitted }: FillBlankQuizProps) {
+    // Hint visibility is UI state, can remain local
+    const import_useState = require('react').useState;
+    const [showHint, setShowHint] = import_useState({});
 
     const handleInputChange = (index: number, value: string) => {
-        if (checked[index]) return;
-        setAnswers({ ...answers, [index]: value });
-    };
-
-    const checkAnswer = (index: number) => {
-        setChecked({ ...checked, [index]: true });
+        if (isSubmitted) return;
+        onAnswer(index, value);
     };
 
     const speak = (text: string) => {
@@ -71,16 +63,13 @@ export default function FillBlankQuiz({ exercises, language = 'chinese' }: FillB
             </div>
 
             {exercises.map((exercise, index) => {
-                const isAnswerChecked = checked[index];
                 const correct = isCorrect(index);
-
-                // Split sentence by ___ to render input in the middle
                 const parts = exercise.sentence.split('___');
 
                 return (
                     <div
                         key={index}
-                        className={`p-5 rounded-xl border-2 transition-all ${isAnswerChecked
+                        className={`p-5 rounded-xl border-2 transition-all ${isSubmitted
                             ? correct
                                 ? 'bg-green-50 border-green-300'
                                 : 'bg-red-50 border-red-300'
@@ -109,12 +98,12 @@ export default function FillBlankQuiz({ exercises, language = 'chinese' }: FillB
                                 type="text"
                                 value={answers[index] || ''}
                                 onChange={(e) => handleInputChange(index, e.target.value)}
-                                disabled={isAnswerChecked}
+                                disabled={isSubmitted}
                                 placeholder="..."
                                 className={`
                   w-32 px-3 py-2 text-center border-2 border-dashed rounded-lg text-lg font-medium
                   focus:outline-none focus:border-blue-500 transition-all
-                  ${isAnswerChecked
+                  ${isSubmitted
                                         ? correct
                                             ? 'bg-green-100 border-green-400 text-green-700'
                                             : 'bg-red-100 border-red-400 text-red-700'
@@ -141,35 +130,27 @@ export default function FillBlankQuiz({ exercises, language = 'chinese' }: FillB
                             </div>
                         )}
 
-                        {/* Check button or result */}
-                        {!isAnswerChecked ? (
-                            <button
-                                onClick={() => checkAnswer(index)}
-                                disabled={!answers[index]?.trim()}
-                                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                Check Answer
-                            </button>
-                        ) : (
-                            <div className="flex items-start gap-3">
+                        {/* Result Display */}
+                        {isSubmitted && (
+                            <div className="flex items-start gap-3 mt-3 animate-in fade-in slide-in-from-top-1">
                                 {correct ? (
                                     <div className="flex items-center gap-2 text-green-600">
                                         <CheckCircle className="w-5 h-5" />
                                         <span className="font-medium">Correct!</span>
                                     </div>
                                 ) : (
-                                    <div className="space-y-2">
+                                    <div className="space-y-2 w-full">
                                         <div className="flex items-center gap-2 text-red-600">
                                             <XCircle className="w-5 h-5" />
                                             <span className="font-medium">Incorrect</span>
                                         </div>
-                                        <div className="text-slate-600">
+                                        <div className="text-slate-600 bg-slate-50 p-2 rounded">
                                             Correct answer: <span className="font-bold text-green-600">{exercise.answer}</span>
                                         </div>
                                     </div>
                                 )}
                                 {exercise.explanation && (
-                                    <div className="text-sm text-slate-500 ml-auto">
+                                    <div className="text-sm text-slate-500 ml-auto bg-white/50 p-2 rounded">
                                         {exercise.explanation}
                                     </div>
                                 )}

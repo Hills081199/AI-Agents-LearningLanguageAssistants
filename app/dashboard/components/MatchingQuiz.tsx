@@ -24,23 +24,24 @@ interface MatchingExercise {
 interface MatchingQuizProps {
     exercises: MatchingExercise[];
     language?: string;
+    matches: Record<string, string>; // word -> meaning
+    onMatch: (word: string, meaning: string) => void;
+    isSubmitted: boolean;
+    onReset?: () => void;
 }
 
-export default function MatchingQuiz({ exercises, language = 'chinese' }: MatchingQuizProps) {
+export default function MatchingQuiz({ exercises, language = 'chinese', matches, onMatch, isSubmitted, onReset }: MatchingQuizProps) {
+    // Local UI state
     const [selectedWord, setSelectedWord] = useState<string | null>(null);
-    const [matches, setMatches] = useState<Record<string, string>>({});
     const [shuffledMeanings, setShuffledMeanings] = useState<string[]>([]);
-    const [isComplete, setIsComplete] = useState(false);
 
-    // Combine all pairs from all matching exercises
+    // Combine all pairs
     const allPairs = exercises.flatMap(e => e.pairs);
-
-    // Get word display (handle both hanzi and word fields)
     const getWord = (pair: MatchingPair) => pair.word || pair.hanzi || '';
 
+    // Initialize shuffled meanings
     useEffect(() => {
-        // Shuffle meanings on mount or when exercises change
-        resetGame();
+        setShuffledMeanings(allPairs.map(p => p.meaning).sort(() => Math.random() - 0.5));
     }, [exercises]);
 
     const speak = (text: string) => {
@@ -51,57 +52,41 @@ export default function MatchingQuiz({ exercises, language = 'chinese' }: Matchi
     };
 
     const handleWordClick = (word: string) => {
-        if (matches[word]) return; // Already matched
+        if (isSubmitted) return;
+        if (matches[word]) return;
         setSelectedWord(word);
     };
 
     const handleMeaningClick = (meaning: string) => {
+        if (isSubmitted) return;
         if (!selectedWord) return;
-        if (Object.values(matches).includes(meaning)) return; // Already used
+        if (Object.values(matches).includes(meaning)) return;
 
-        // Check if correct match
-        const correctPair = allPairs.find(p => getWord(p) === selectedWord);
-        if (correctPair && correctPair.meaning === meaning) {
-            setMatches({ ...matches, [selectedWord]: meaning });
-        }
+        // In controlled mode, we trust the user logic? Or we validate here?
+        // Parent expects onMatch(word, meaning).
+        // Validation happens in Parent? Or we allow any match?
+        // Original logic: ONLY allowed correct match. "if (correctPair...)"
+        // User wants "Submit to check".
+        // SO WE MUST ALLOW WRONG MATCHES.
+        // So I remove the validation check here!
+
+        onMatch(selectedWord, meaning);
         setSelectedWord(null);
-
-        // Check if complete
-        if (Object.keys(matches).length + 1 === allPairs.length) {
-            setIsComplete(true);
-        }
     };
 
-    const resetGame = () => {
-        setSelectedWord(null);
-        setMatches({});
-        setIsComplete(false);
-        setShuffledMeanings(allPairs.map(p => p.meaning).sort(() => Math.random() - 0.5));
+    // Helper to find if a matched pair is correct (for display after submit)
+    const isMatchCorrect = (word: string, meaning: string) => {
+        const pair = allPairs.find(p => getWord(p) === word);
+        return pair?.meaning === meaning;
     };
 
     const isWordMatched = (word: string) => matches[word] !== undefined;
     const isMeaningMatched = (meaning: string) => Object.values(matches).includes(meaning);
 
-    // Get display labels based on language
-    const getWordColumnLabel = () => {
-        switch (language) {
-            case 'chinese': return 'Chinese';
-            case 'spanish': return 'Spanish';
-            default: return 'Word';
-        }
-    };
+    const getWordColumnLabel = () => language === 'chinese' ? 'Chinese' : 'Word';
+    const getMeaningColumnLabel = () => 'Meaning';
 
-    const getMeaningColumnLabel = () => {
-        switch (language) {
-            case 'chinese': return 'English';
-            case 'spanish': return 'English';
-            default: return 'Meaning';
-        }
-    };
-
-    if (!exercises || exercises.length === 0 || allPairs.length === 0) {
-        return null;
-    }
+    if (!exercises || exercises.length === 0 || allPairs.length === 0) return null;
 
     return (
         <div className="space-y-6">
@@ -112,26 +97,23 @@ export default function MatchingQuiz({ exercises, language = 'chinese' }: Matchi
                     </div>
                     <h3 className="text-lg font-semibold text-slate-800">Match the Pairs</h3>
                 </div>
-                <div className="flex items-center gap-3">
-                    <span className="text-sm text-slate-500">
-                        {Object.keys(matches).length} / {allPairs.length} matched
-                    </span>
-                    <button
-                        onClick={resetGame}
-                        className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"
-                        title="Shuffle"
-                    >
-                        <Shuffle className="w-4 h-4 text-slate-600" />
-                    </button>
-                </div>
+                {!isSubmitted && (
+                    <div className="flex items-center gap-3">
+                        <span className="text-sm text-slate-500">
+                            {Object.keys(matches).length} / {allPairs.length} matched
+                        </span>
+                        {onReset && (
+                            <button
+                                onClick={onReset}
+                                className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"
+                                title="Reset / Shuffle"
+                            >
+                                <Shuffle className="w-4 h-4 text-slate-600" />
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
-
-            {isComplete && (
-                <div className="p-4 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl border border-green-200 text-center">
-                    <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                    <p className="text-green-700 font-semibold">🎉 Perfect! All pairs matched!</p>
-                </div>
-            )}
 
             <div className="grid grid-cols-2 gap-6">
                 {/* Word Column */}
@@ -139,31 +121,35 @@ export default function MatchingQuiz({ exercises, language = 'chinese' }: Matchi
                     <div className="text-sm font-medium text-slate-500 text-center mb-2">{getWordColumnLabel()}</div>
                     {allPairs.map((pair, index) => {
                         const word = getWord(pair);
-                        const isMatched = isWordMatched(word);
+                        const matchedMeaning = matches[word];
+                        const isMatched = !!matchedMeaning;
                         const isSelected = selectedWord === word;
+
+                        // Result styling
+                        let btnClass = isSelected
+                            ? 'bg-purple-100 border-purple-500 ring-2 ring-purple-300'
+                            : 'bg-white border-slate-200 hover:border-purple-400 hover:bg-purple-50';
+
+                        if (isSubmitted && isMatched) {
+                            const correct = isMatchCorrect(word, matchedMeaning);
+                            btnClass = correct
+                                ? 'bg-green-100 border-green-300 text-green-700'
+                                : 'bg-red-100 border-red-300 text-red-700';
+                        } else if (isMatched) {
+                            btnClass = 'bg-blue-50 border-blue-300 text-blue-700';
+                        }
 
                         return (
                             <button
                                 key={index}
                                 onClick={() => handleWordClick(word)}
-                                disabled={isMatched}
-                                className={`
-                  w-full p-4 rounded-xl border-2 transition-all flex items-center justify-between
-                  ${isMatched
-                                        ? 'bg-green-100 border-green-300 text-green-700'
-                                        : isSelected
-                                            ? 'bg-purple-100 border-purple-500 ring-2 ring-purple-300'
-                                            : 'bg-white border-slate-200 hover:border-purple-400 hover:bg-purple-50'
-                                    }
-                `}
+                                disabled={isMatched || isSubmitted}
+                                className={`w-full p-4 rounded-xl border-2 transition-all flex items-center justify-between ${btnClass}`}
                             >
                                 <span className="text-xl font-bold">{word}</span>
-                                <button
-                                    onClick={(e) => { e.stopPropagation(); speak(word); }}
-                                    className="p-2 rounded-full bg-white/50 hover:bg-white transition-colors"
-                                >
-                                    <Volume2 className="w-4 h-4 text-slate-500" />
-                                </button>
+                                <div onClick={(e) => { e.stopPropagation(); speak(word); }} className="p-2 rounded-full hover:bg-white/50 cursor-pointer">
+                                    <Volume2 className="w-4 h-4 opacity-50" />
+                                </div>
                             </button>
                         );
                     })}
@@ -174,21 +160,28 @@ export default function MatchingQuiz({ exercises, language = 'chinese' }: Matchi
                     <div className="text-sm font-medium text-slate-500 text-center mb-2">{getMeaningColumnLabel()}</div>
                     {shuffledMeanings.map((meaning, index) => {
                         const isMatched = isMeaningMatched(meaning);
+                        // Find matching word for coloring results
+                        const matchedWord = Object.keys(matches).find(w => matches[w] === meaning);
+
+                        let btnClass = selectedWord
+                            ? 'bg-white border-slate-200 hover:border-purple-400 hover:bg-purple-50 cursor-pointer'
+                            : 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed';
+
+                        if (isSubmitted && matchedWord) {
+                            const correct = isMatchCorrect(matchedWord, meaning);
+                            btnClass = correct
+                                ? 'bg-green-100 border-green-300 text-green-700'
+                                : 'bg-red-100 border-red-300 text-red-700';
+                        } else if (isMatched) {
+                            btnClass = 'bg-blue-50 border-blue-300 text-blue-700';
+                        }
 
                         return (
                             <button
                                 key={index}
                                 onClick={() => handleMeaningClick(meaning)}
-                                disabled={isMatched || !selectedWord}
-                                className={`
-                  w-full p-4 rounded-xl border-2 transition-all text-left
-                  ${isMatched
-                                        ? 'bg-green-100 border-green-300 text-green-700'
-                                        : selectedWord
-                                            ? 'bg-white border-slate-200 hover:border-purple-400 hover:bg-purple-50 cursor-pointer'
-                                            : 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed'
-                                    }
-                `}
+                                disabled={isMatched || !selectedWord || isSubmitted}
+                                className={`w-full p-4 rounded-xl border-2 transition-all text-left ${btnClass}`}
                             >
                                 <span className="text-lg">{meaning}</span>
                             </button>
@@ -197,9 +190,11 @@ export default function MatchingQuiz({ exercises, language = 'chinese' }: Matchi
                 </div>
             </div>
 
-            <p className="text-center text-sm text-slate-500">
-                Click a word, then click its meaning to match.
-            </p>
+            {!isSubmitted && (
+                <p className="text-center text-sm text-slate-500">
+                    Click a word (left), then click its meaning (right). You can assume any pair if not sure.
+                </p>
+            )}
         </div>
     );
 }

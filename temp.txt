@@ -12,5 +12,7 @@ SUPABASE_KEY=your-anon-key
 Sau đó chạy:
 
 powershell
+cd d:\HSKGPT\ChineseLearning\agent_service
+uvicorn api:app --reload --port 8000
 cd d:\HSKGPT\ChineseLearning\auth_service
 uvicorn api:app --reload --port 8001
