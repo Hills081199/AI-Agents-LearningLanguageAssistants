@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Impact of Intergenerational Storytelling Traditions on Family Identity in Celtic and Anglo-Saxon Communities - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>The Impact of Intergenerational Storytelling Traditions on Family Identity in Celtic and Anglo-Saxon Communities</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: The Impact of Intergenerational Storytelling Traditions on Family Identity in Celtic and Anglo-Saxon Communities</p>
+<p>CEFR Level: B2 (Upper-Intermediate)</p>
+<p>1. Learning Objectives</p>
+<p>By the end of the lesson, learners will be able to:</p>
+<li>Understand and discuss the role of intergenerational storytelling in shaping family identity within Celtic and Anglo-Saxon cultures.</li>
+<li>Recognize the cultural significance and common themes in storytelling traditions of both communities.</li>
+<li>Use targeted vocabulary related to storytelling and cultural identity appropriately in speaking and writing.</li>
+<li>Apply two key grammar structures (reporting speech and relative clauses) accurately in descriptive and narrative contexts.</li>
+<li>Develop critical thinking by comparing and contrasting storytelling traditions from both cultural backgrounds.</li>
+<p>2. Key Vocabulary (with brief definitions suitable for B2 learners):</p>
+<li>Tradition: a custom or belief passed down through generations.</li>
+<li>Storytelling: the act of telling stories, often orally.</li>
+<li>Heritage: something that is passed down from the past, like customs, stories, or objects.</li>
+<li>Ancestors: family members from previous generations.</li>
+<li>Identity: the characteristics and qualities that make a person or group unique.</li>
+<li>Legacy: something handed down from the past, especially from ancestors.</li>
+<li>Myth: a traditional story, typically involving supernatural beings or events.</li>
+<li>Community: a group of people living in the same area or sharing common interests.</li>
+<li>Influence: the effect or impact something has on a person or thing.</li>
+<li>Oral tradition: information passed down by word of mouth rather than written texts.</li>
+<p>3. Grammar Points</p>
+<p>a. Reported Speech (Indirect Speech)</p>
+<li>Focus: Reporting stories or what elders have said.</li>
+<li>Form: Changing direct speech into reported speech using appropriate tense shifts, pronouns, and connectors (e.g., "He said that...", "She told me that...").</li>
+<li>Example: Direct: "Our ancestors always gathered around the fire to share myths."</li>
+<p>Reported: He said that their ancestors always gathered around the fire to share myths.</p>
+<p>b. Relative Clauses</p>
+<li>Focus: Adding extra information about people, places, or things connected to storytelling and identity.</li>
+<li>Form: Using relative pronouns (who, whom, whose, which, that) to create defining and non-defining relative clauses.</li>
+<li>Example: The storyteller who shared the legend was very respected in the community.</li>
+<p>The Anglo-Saxon tales, which were often about heroes, are still told today.</p>
+<p>Lesson Structure Summary:</p>
+<li>Warm-up: Discuss family traditions, eliciting learners’ own experiences of storytelling.</li>
+<li>Introduction: Present key vocabulary with definitions and examples.</li>
+<li>Reading/Listening Task: Engage with a text or audio describing storytelling practices in Celtic and Anglo-Saxon communities.</li>
+<li>Grammar Focus: Practice reported speech using excerpts from elders’ tales; construct sentences with relative clauses about cultural stories.</li>
+<li>Speaking Activity: Compare storytelling traditions and discuss their impact on family and community identity.</li>
+<li>Writing Task: Write a short paragraph describing a storytelling tradition using target vocabulary and grammar structures.</li>
+<li>Review and Feedback: Recap vocabulary and grammar, answer questions, and provide corrections.</li>
+<p>This lesson plan ensures that B2 learners develop both linguistic skills and cultural awareness through meaningful, structured learning about intergenerational storytelling and its role in family identity in two rich cultural contexts.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>Intergenerational storytelling traditions play a crucial role in shaping family identity within both Celtic and Anglo-Saxon communities. These traditions, which have been handed down from ancestors, help families connect with their heritage and pass on important values, beliefs, and histories. Storytelling in these cultures is more than simply sharing tales; it is a way to keep the legacy of the past alive and influence the present sense of community and belonging.</p>
+<p>In Celtic communities, storytelling often centers on myths and legends involving heroes, magical creatures, and deep connections to nature. Elders, who are respected family members, usually tell these stories during gatherings. These gatherings, which sometimes take place around a fire or in the home, provide a setting where younger generations learn about their roots and the qualities that define their identity. For example, one elder once said that their ancestors believed the stories taught lessons about bravery and respect for the natural world, values that remain important today. The stories, which have been passed down orally, form a strong bond between the past and present, reminding families of their shared heritage.</p>
+<p>Anglo-Saxon communities also have rich storytelling traditions, where tales of adventure, courage, and moral lessons are common themes. These stories, which were originally passed down orally long before being written down, serve as a way for families to communicate their cultural identity. The storyteller, who is often a grandparent or another older relative, may recount events that emphasize the strength and honor of their ancestors. One grandparent told me that stories about legendary warriors were meant to inspire young people to act with integrity and loyalty. Such storytelling reinforces the values that families want to keep alive.</p>
+<p>Both Celtic and Anglo-Saxon storytelling traditions show how oral history can influence family identity. The stories create a shared sense of who the family is and where they come from. They also contribute to a sense of belonging within the wider community. The practice of telling stories that highlight important moral and cultural lessons means that each generation understands and appreciates the legacy left by their ancestors. As one storyteller explained, "Our family stories are the threads that weave us into the fabric of our community."</p>
+<p>In conclusion, intergenerational storytelling in Celtic and Anglo-Saxon communities serves as a vital link between past and present. These traditions, which involve elders sharing myths, legends, and historical accounts with younger family members, nurture a strong family identity. The stories, many of which emphasize bravery, respect, and honor, not only entertain but also teach valuable lessons that continue to shape cultural identity today. Through these storytelling practices, families maintain a living connection to their heritage and ensure that their unique histories and values endure.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Intergenerational storytelling traditions**: The practice of sharing stories between different generations within a family or community.</li>
+<li>**Shaping family identity**: Influencing the characteristics and values that define a family’s uniqueness.</li>
+<li>**Handed down from ancestors**: Passed from older family members to younger ones over time.</li>
+<li>**Legacy of the past**: The heritage or traditions inherited from previous generations.</li>
+<li>**Oral tradition**: Information or stories passed by word of mouth rather than writing.</li>
+<li>**Form a strong bond**: Create a close connection or relationship.</li>
+<li>**Emphasize the strength and honor of their ancestors**: Highlight the bravery and moral qualities of family members from earlier times.</li>
+<li>**Shared sense of who the family is**: A common understanding of the family’s identity and values.</li>
+<li>**Threads that weave us into the fabric of our community**: A metaphor describing how stories connect individuals to the larger society.</li>
+<li>**Nurture a strong family identity**: Encourage and support a distinct and proud family character.</li>
+<li>**Maintain a living connection to their heritage**: Keep an active and meaningful link with cultural traditions.</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (20 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Intergenerational</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Relating to or involving different generations</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Intergenerational storytelling traditions help pass wisdom from elders to the young.</span>
+                    <button onclick="speak('Intergenerational storytelling traditions help pass wisdom from elders to the young.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Intergenerational')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Tradition</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A custom or belief passed down through generations</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The family follows the tradition of telling stories every winter.</span>
+                    <button onclick="speak('The family follows the tradition of telling stories every winter.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Tradition')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Ancestor</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A person from whom one is descended, especially a distant relative</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Our ancestors believed that nature was sacred.</span>
+                    <button onclick="speak('Our ancestors believed that nature was sacred.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Ancestor')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Heritage</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Valuable traditions, qualities, or possessions passed down from previous generations</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The Celtic heritage includes many myths and legends.</span>
+                    <button onclick="speak('The Celtic heritage includes many myths and legends.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Heritage')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Legacy</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Something handed down from the past, like values or traditions</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The legacy of bravery inspires family members today.</span>
+                    <button onclick="speak('The legacy of bravery inspires family members today.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Legacy')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Myth</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A traditional story, especially one involving supernatural beings or events</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many Celtic myths involve magical creatures and heroes.</span>
+                    <button onclick="speak('Many Celtic myths involve magical creatures and heroes.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Myth')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Oral tradition</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The practice of passing down stories and information by speaking rather than writing</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Oral traditions help preserve family history through spoken stories.</span>
+                    <button onclick="speak('Oral traditions help preserve family history through spoken stories.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Oral tradition')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Elder</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">An older and respected member of a community or family</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The elders shared their stories around the fire.</span>
+                    <button onclick="speak('The elders shared their stories around the fire.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Elder')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Community</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A group of people living together or sharing common interests</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Storytelling strengthens the bonds within the community.</span>
+                    <button onclick="speak('Storytelling strengthens the bonds within the community.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Community')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Identity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The characteristics and qualities that make a person or group unique</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Family stories help shape a person's cultural identity.</span>
+                    <button onclick="speak('Family stories help shape a person's cultural identity.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Identity')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Influence</span>
+            <div class="vocab-info">
+                <span class="pos">noun/verb</span> <span class="meaning">The effect or impact something has on someone or something</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The stories influence how younger generations understand their roots.</span>
+                    <button onclick="speak('The stories influence how younger generations understand their roots.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Influence')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Bond</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A close connection or relationship</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Storytelling helps form a strong bond between family members.</span>
+                    <button onclick="speak('Storytelling helps form a strong bond between family members.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Bond')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Bravery</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Courageous behavior or character</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The myths often teach lessons about bravery and respect.</span>
+                    <button onclick="speak('The myths often teach lessons about bravery and respect.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Bravery')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Respect</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A feeling of admiration for someone or something because of their qualities</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Respect for nature is an important value in many stories.</span>
+                    <button onclick="speak('Respect for nature is an important value in many stories.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Respect')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Integrity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The quality of being honest and having strong moral principles</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The stories inspire young people to act with integrity.</span>
+                    <button onclick="speak('The stories inspire young people to act with integrity.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Integrity')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Loyalty</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A strong feeling of support or allegiance</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Loyalty to family is a common theme in Anglo-Saxon tales.</span>
+                    <button onclick="speak('Loyalty to family is a common theme in Anglo-Saxon tales.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Loyalty')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Narrative</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A spoken or written account of connected events; a story</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The narrative told by the elder connected past and present.</span>
+                    <button onclick="speak('The narrative told by the elder connected past and present.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Narrative')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Highlight</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To emphasize or make something stand out</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The storyteller highlighted the strength of their ancestors.</span>
+                    <button onclick="speak('The storyteller highlighted the strength of their ancestors.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Highlight')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Fabric (metaphorical)</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The complex structure or system that holds something together (often society or community)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Stories are the threads that weave us into the fabric of our community.</span>
+                    <button onclick="speak('Stories are the threads that weave us into the fabric of our community.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Fabric (metaphorical)')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Nurture</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To encourage the growth or development of something</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Storytelling nurtures a strong family identity.</span>
+                    <button onclick="speak('Storytelling nurtures a strong family identity.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Nurture')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Reported Speech (Indirect Speech)</div>
+                <div class="grammar-explanation">Used to report what someone else has said without quoting their exact words. It often involves changing the tense, pronouns, and time expressions to fit the context.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Direct: "Our ancestors always gathered around the fire." Reported: He said that their ancestors always gathered around the fire.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Defining Relative Clauses</div>
+                <div class="grammar-explanation">Used to give essential information about the noun that follows. These clauses define or identify the noun and are not separated by commas.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">The storyteller who shared the legend was very respected.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Non-defining Relative Clauses</div>
+                <div class="grammar-explanation">Give additional, non-essential information about a noun. These clauses are separated by commas and can be removed without changing the meaning of the sentence.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">The Anglo-Saxon tales, which were often about heroes, are still told today.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Relative Pronouns</div>
+                <div class="grammar-explanation">Words such as who, whom, whose, which, and that are used to introduce relative clauses and connect ideas by referring to a noun mentioned earlier.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">The elders, who shared many stories, are respected in the community.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Perfect Passive</div>
+                <div class="grammar-explanation">Used to describe actions that started in the past and have relevance to the present, especially when the doer of the action is unknown or unimportant. Formed with 'have/has been' + past participle.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">The stories have been passed down orally for generations.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

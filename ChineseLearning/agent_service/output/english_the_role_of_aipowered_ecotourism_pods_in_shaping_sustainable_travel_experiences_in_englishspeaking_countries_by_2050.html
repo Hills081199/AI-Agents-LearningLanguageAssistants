@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Role of AI-Powered Eco-Tourism Pods in Shaping Sustainable Travel Experiences in English-Speaking Countries by 2050 - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>The Role of AI-Powered Eco-Tourism Pods in Shaping Sustainable Travel Experiences in English-Speaking Countries by 2050</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: The Role of AI-Powered Eco-Tourism Pods in Shaping Sustainable Travel Experiences in English-Speaking Countries by 2050</p>
+<p>Level: B2 (Upper-Intermediate)</p>
+<p>1. Learning Objectives:</p>
+<p>By the end of the lesson, students will be able to:</p>
+<li>Understand and discuss the concept of AI-powered eco-tourism pods and their impact on sustainable travel.</li>
+<li>Use key vocabulary related to technology, tourism, and sustainability in context.</li>
+<li>Formulate complex sentences using the first and second conditionals to talk about future scenarios and hypothetical situations related to eco-tourism.</li>
+<li>Develop critical thinking and speaking skills through discussion and debate on the future of sustainable travel.</li>
+<li>Write a short opinion paragraph predicting the influence of AI eco-tourism pods by 2050 using the target vocabulary and grammar structures.</li>
+<p>2. Key Vocabulary (B2 level):</p>
+<li>Eco-tourism</li>
+<li>Sustainable</li>
+<li>Artificial Intelligence (AI)</li>
+<li>Pods (context: small, self-contained units)</li>
+<li>Carbon footprint</li>
+<li>Renewable resources</li>
+<li>Innovation</li>
+<li>Impact</li>
+<li>Conservation</li>
+<li>Future-proof</li>
+<p>3. Grammar Points:</p>
+<p>a) First Conditional (real future possibilities)</p>
+<li>Form: If + present simple, will + base verb</li>
+<li>Use: To talk about likely outcomes or real possibilities connected to AI eco-tourism pods (e.g., If eco-tourism pods use renewable energy, they will reduce carbon footprints.)</li>
+<p>b) Second Conditional (hypothetical or unlikely present/future situations)</p>
+<li>Form: If + past simple, would + base verb</li>
+<li>Use: To discuss hypothetical scenarios related to eco-tourism pods and sustainable travel (e.g., If more countries adopted AI pods, travel could become much more sustainable by 2050.)</li>
+<p>4. Suggested Lesson Flow:</p>
+<li>Warm-up discussion: What do students know about eco-tourism and AI?</li>
+<li>Introduction of vocabulary with definitions and example sentences.</li>
+<li>Reading/listening activity: Short article or video about AI eco-tourism pods.</li>
+<li>Grammar explanation and practice with first and second conditionals in related sentences.</li>
+<li>Pair/group discussion using vocabulary and grammar to debate the future of sustainable travel and AI pods.</li>
+<li>Writing task: Students write a short paragraph predicting the role of AI-powered eco-tourism pods in sustainable travel experiences by 2050.</li>
+<li>Feedback and wrap-up: Review new vocabulary and grammar; encourage students to reflect on sustainability issues.</li>
+<p>This lesson plan provides B2-level students with meaningful engagement with a futuristic and complex topic, integrating vocabulary development, grammar practice, speaking, and writing skills around sustainability and technology in travel.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>By the year 2050, sustainable travel is expected to change dramatically, especially in English-speaking countries. A major innovation contributing to this transformation is the use of AI-powered eco-tourism pods. These pods are small, self-contained units that use advanced Artificial Intelligence (AI) to offer travelers comfortable and eco-friendly experiences. Designed to minimize environmental impact, they are proving to be a future-proof solution for tourism.</p>
+<p>Eco-tourism focuses on visiting natural areas while conserving the environment and improving the well-being of local people. If eco-tourism pods use renewable resources such as solar or wind energy, they will reduce the carbon footprint of travelers. This is important because travel traditionally contributes to high levels of carbon emissions. By switching to clean energy, these pods help protect fragile ecosystems and promote conservation efforts.</p>
+<p>The impact of AI in these pods is remarkable. Each pod can learn and adapt to the traveler’s preferences while ensuring minimal waste and energy use. For example, if a pod detects high energy consumption, it will automatically adjust its systems to be more efficient. Additionally, AI helps guide tourists on activities that respect the local environment, encouraging responsible behavior. If more English-speaking countries adopt these pods, sustainable tourism will grow significantly, reducing harmful impacts on popular destinations.</p>
+<p>Some experts imagine that if tourism continued without innovations like AI-powered pods, natural habitats could suffer serious damage by 2050. However, the integration of technology and sustainability offers hope. These pods not only support eco-friendly travel but also provide educational experiences to raise awareness about environmental issues. If travelers understand the importance of conservation, they will make better choices that benefit the planet.</p>
+<p>Furthermore, pods are designed to be mobile and modular, which means they can be set up in remote or sensitive areas without causing long-term harm. If tourism companies invest in this technology, they will help protect valuable natural resources while meeting growing travel demands. This balance between human enjoyment and environmental care is the essence of sustainable tourism’s future.</p>
+<p>In summary, AI-powered eco-tourism pods play a vital role in shaping sustainable travel experiences by 2050. They combine technological innovation with environmental responsibility, reducing carbon footprints and promoting conservation. If travelers, companies, and governments support these developments, eco-tourism will flourish, allowing future generations to enjoy the beauty of natural places while preserving them for years to come.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Eco-tourism**: Travel that focuses on visiting natural areas responsibly, supporting conservation and local communities.</li>
+<li>**Sustainable**: Methods that do not harm the environment and can continue over the long term.</li>
+<li>**Artificial Intelligence (AI)**: Technology that enables machines to think and learn like humans.</li>
+<li>**Pods (self-contained units)**: Small, independent units designed for accommodation or activities, often with advanced technology.</li>
+<li>**Carbon footprint**: The total amount of greenhouse gases caused by an individual, event, or product.</li>
+<li>**Renewable resources**: Natural energy sources that can be used repeatedly, such as solar and wind power.</li>
+<li>**Innovation**: A new method, idea, or product that improves something.</li>
+<li>**Impact**: The strong effect or influence something has.</li>
+<li>**Conservation**: The protection and preservation of the environment and natural resources.</li>
+<li>**Future-proof**: Designed to be useful or effective in the future, despite changes.</li>
+<li>**If eco-tourism pods use renewable resources, they will reduce carbon footprints**: Example of first conditional showing a likely future event and result.</li>
+<li>**If more countries adopted AI pods, travel could become much more sustainable by 2050**: Example of second conditional describing a hypothetical situation.</li>
+<li>**Set up in remote or sensitive areas without causing long-term harm**: Shows careful installation to protect nature.</li>
+<li>**Promote responsible behavior**: Encourage actions that help the environment.</li>
+<li>**Balance between human enjoyment and environmental care**: Managing travel so that people can enjoy nature without damaging it.</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (17 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Eco-tourism</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Travel that focuses on visiting natural areas responsibly, supporting conservation and local communities.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Eco-tourism encourages travelers to respect the environment and benefit local people.</span>
+                    <button onclick="speak('Eco-tourism encourages travelers to respect the environment and benefit local people.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>生态旅游鼓励旅行者尊重环境并惠及当地人。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Eco-tourism')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Sustainable</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Methods that do not harm the environment and can continue over the long term.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Sustainable tourism aims to protect nature for future generations.</span>
+                    <button onclick="speak('Sustainable tourism aims to protect nature for future generations.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>可持续旅游旨在为后代保护自然。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Sustainable')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Artificial Intelligence (AI)</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Technology that enables machines to think and learn like humans.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">AI is used in eco-tourism pods to improve energy efficiency.</span>
+                    <button onclick="speak('AI is used in eco-tourism pods to improve energy efficiency.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>人工智能被用于生态旅游舱以提升能效。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Artificial Intelligence (AI)')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Pods</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Small, self-contained units designed for accommodation or activities, often with advanced technology.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The eco-tourism pods provide comfortable and eco-friendly lodging.</span>
+                    <button onclick="speak('The eco-tourism pods provide comfortable and eco-friendly lodging.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>生态旅游舱提供舒适且环保的住宿。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Pods')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Carbon footprint</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The total amount of greenhouse gases caused by an individual, event, or product.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Travelers try to reduce their carbon footprints by choosing eco-friendly options.</span>
+                    <button onclick="speak('Travelers try to reduce their carbon footprints by choosing eco-friendly options.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>旅行者通过选择环保选项来减少碳足迹。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Carbon footprint')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Renewable resources</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Natural energy sources that can be used repeatedly, such as solar and wind power.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Eco-tourism pods often use renewable resources like solar panels and wind turbines.</span>
+                    <button onclick="speak('Eco-tourism pods often use renewable resources like solar panels and wind turbines.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>生态旅游舱通常使用太阳能板和风力涡轮机等可再生资源。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Renewable resources')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Innovation</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A new method, idea, or product that improves something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The AI-powered pods represent a major innovation in sustainable travel.</span>
+                    <button onclick="speak('The AI-powered pods represent a major innovation in sustainable travel.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>人工智能驱动的旅游舱代表了可持续旅游领域的重大创新。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Innovation')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Impact</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The strong effect or influence something has.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The impact of eco-tourism pods on reducing pollution is significant.</span>
+                    <button onclick="speak('The impact of eco-tourism pods on reducing pollution is significant.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>生态旅游舱在减少污染方面的影响显著。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Impact')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Conservation</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The protection and preservation of the environment and natural resources.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Conservation efforts help protect fragile ecosystems for future visitors.</span>
+                    <button onclick="speak('Conservation efforts help protect fragile ecosystems for future visitors.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>保护工作有助于为未来游客保护脆弱的生态系统。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Conservation')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Future-proof</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Designed to be useful or effective in the future, despite changes.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">These eco-tourism pods are future-proof, using renewable energy to adapt to tomorrow's needs.</span>
+                    <button onclick="speak('These eco-tourism pods are future-proof, using renewable energy to adapt to tomorrow's needs.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>这些生态旅游舱具有未来适应性，利用可再生能源满足未来需求。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Future-proof')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Adapt</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To change or adjust in order to fit new conditions.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The AI system adapts to the traveler's habits to conserve energy.</span>
+                    <button onclick="speak('The AI system adapts to the traveler's habits to conserve energy.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>人工智能系统根据旅行者的习惯调整以节约能源。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Adapt')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Fragile</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Easily broken or damaged, delicate.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Fragile ecosystems require careful protection from tourism impacts.</span>
+                    <button onclick="speak('Fragile ecosystems require careful protection from tourism impacts.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>脆弱的生态系统需要旅游影响的细心保护。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Fragile')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Modular</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Made up of separate sections that can be connected or arranged.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The modular design of the pods allows for easy setup in remote areas.</span>
+                    <button onclick="speak('The modular design of the pods allows for easy setup in remote areas.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>这些舱的模块化设计使其能在偏远地区轻松搭建。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Modular')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Remote</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Far away from populated areas or centers.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Pods can be set up in remote locations without damaging the environment.</span>
+                    <button onclick="speak('Pods can be set up in remote locations without damaging the environment.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>舱可以在偏远地区搭建而不破坏环境。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Remote')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Hypothetical</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Based on possible ideas or situations rather than actual facts.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">We discussed hypothetical benefits of AI pods in future tourism scenarios.</span>
+                    <button onclick="speak('We discussed hypothetical benefits of AI pods in future tourism scenarios.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>我们讨论了人工智能舱在未来旅游中的假设性好处。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Hypothetical')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Integration</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The process of combining different parts into a whole.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The integration of AI technology with eco-tourism enhances sustainability.</span>
+                    <button onclick="speak('The integration of AI technology with eco-tourism enhances sustainability.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>人工智能技术与生态旅游的整合提升了可持续性。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Integration')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Contribute</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To help cause or bring about something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Innovation contributes significantly to the future of sustainable travel.</span>
+                    <button onclick="speak('Innovation contributes significantly to the future of sustainable travel.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>创新对可持续旅游的未来贡献显著。</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Contribute')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">First Conditional: If + present simple, will + base verb</div>
+                <div class="grammar-explanation">Used to talk about real and possible future situations and their likely result.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If eco-tourism pods use renewable energy, they will reduce carbon footprints.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Second Conditional: If + past simple, would + base verb</div>
+                <div class="grammar-explanation">Used to discuss hypothetical or unlikely present or future situations and their imagined result.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If more countries adopted AI pods, travel could become much more sustainable by 2050.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Simple for General Facts and Habits</div>
+                <div class="grammar-explanation">Used to state facts, general truths, and habits.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Travel traditionally contributes to high levels of carbon emissions.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Modal verb 'could' for Possibility</div>
+                <div class="grammar-explanation">Used to express possibility in hypothetical situations, often with the second conditional.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If tourism continued without innovations, natural habitats could suffer serious damage.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Passive Voice</div>
+                <div class="grammar-explanation">Used to emphasize the action or object rather than the subject performing the action.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Pods are designed to be mobile and modular to protect natural areas.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

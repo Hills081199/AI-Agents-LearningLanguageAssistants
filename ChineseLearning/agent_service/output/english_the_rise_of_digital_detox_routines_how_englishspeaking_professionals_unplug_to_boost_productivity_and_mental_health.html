@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rise of Digital Detox Routines: How English-Speaking Professionals Unplug to Boost Productivity and Mental Health - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>The Rise of Digital Detox Routines: How English-Speaking Professionals Unplug to Boost Productivity and Mental Health</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: The Rise of Digital Detox Routines: How English-Speaking Professionals Unplug to Boost Productivity and Mental Health</p>
+<p>CEFR Level: B2 (Upper-Intermediate)</p>
+<p>1. Learning Objectives:</p>
+<p>By the end of the lesson, students will be able to:</p>
+<li>Understand and discuss the concept of digital detox and its impact on productivity and mental health.</li>
+<li>Use key vocabulary related to digital detox and wellbeing accurately in speaking and writing.</li>
+<li>Apply the present perfect tense and modal verbs to talk about habits, experiences, and advice associated with digital detox.</li>
+<li>Develop critical thinking by sharing opinions on technology use and managing digital distractions.</li>
+<p>2. Key Vocabulary (B2 appropriate terms):</p>
+<li>Digital detox</li>
+<li>Unplug</li>
+<li>Productivity</li>
+<li>Mental health</li>
+<li>Distraction</li>
+<li>Mindfulness</li>
+<li>Habit</li>
+<li>Wellbeing</li>
+<li>Overwhelm</li>
+<li>Disconnect</li>
+<p>3. Grammar Points:</p>
+<p>a) Present Perfect Tense</p>
+<li>Focus: Usage to talk about experiences, changes, and actions that have relevance to the present.</li>
+<li>Example: "Many professionals have started digital detox routines to improve their focus."</li>
+<li>Practice: Students will form sentences and short paragraphs describing personal experiences with digital devices or attempts to unplug.</li>
+<p>b) Modal Verbs for Advice and Obligation (should, ought to, must)</p>
+<li>Focus: Using modals to give advice, make recommendations, and express necessity related to digital detox and mental health.</li>
+<li>Example: "You should limit your screen time to avoid feeling overwhelmed."</li>
+<li>Practice: Role-plays and discussions where students give advice to a colleague about managing digital distractions.</li>
+<p>---</p>
+<p>Suggested Lesson Stages:</p>
+<p>1. Warm-up (10 min): Discuss students’ daily tech use. Brainstorm advantages and disadvantages of digital devices.</p>
+<p>2. Vocabulary Introduction (15 min): Present key vocabulary with definitions and example sentences; pronunciation practice.</p>
+<p>3. Reading/Listening Activity (20 min): Short article or podcast excerpt about digital detox routines among professionals. Students identify main ideas and vocabulary in context.</p>
+<p>4. Grammar Focus (20 min): Explanation and controlled practice of the present perfect and modal verbs for advice. Use gap-fill, matching, and sentence formation exercises.</p>
+<p>5. Speaking Practice (20 min): Pair or small group discussions on digital detox habits: share experiences, give advice, and express opinions using new vocabulary and grammar.</p>
+<p>6. Writing Task (15 min): Write a short paragraph or email advising a colleague on how to start a digital detox routine.</p>
+<p>7. Wrap-up and Homework (5 min): Review key points; assign homework such as keeping a log of screen time and writing a reflection using present perfect.</p>
+<p>This lesson plan provides an engaging, skill-integrated approach suitable for upper-intermediate learners to explore a contemporary, relevant topic while practicing appropriate vocabulary and grammar structures.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>In recent years, more and more English-speaking professionals have started embracing digital detox routines. This new trend has grown as people recognize how constant connections to their devices can cause distractions and affect their mental health. A digital detox means purposely unplugging from digital devices like smartphones, tablets, and computers for a certain period. Many professionals have found that these breaks help improve their productivity and overall wellbeing.</p>
+<p>The modern workplace often requires employees to stay online for long hours. However, this connection can become overwhelming. Constant notifications, emails, and social media updates can drain attention and increase stress levels. To counter these effects, individuals have developed habits that limit their screen time. For example, some people set specific “no device” times during the day. Others have created spaces at home where technology is not allowed. These small changes encourage mindfulness, allowing the brain to rest and refocus.</p>
+<p>Research has shown that digital detox routines not only reduce distractions but also promote better mental health. When professionals disconnect, they experience less anxiety and feel more present in their daily activities. Many have discovered that taking time away from screens improves their sleep, mood, and creativity. Such positive changes contribute directly to better performance at work. In fact, several companies have introduced policies encouraging employees to unplug during breaks or after office hours to boost productivity.</p>
+<p>People who have started digital detox routines often recommend that others should try it too. They argue that everyone ought to recognize the importance of balancing technology use with real-life interactions. Experts say you must set clear boundaries around device use. For example, turning off phones during meetings or before bedtime can prevent overwhelm. Additionally, practicing mindfulness techniques during tech-free times can further enhance wellbeing.</p>
+<p>In conclusion, the rise of digital detox routines reflects a growing awareness among English-speaking professionals about their mental health and productivity. By choosing to unplug regularly, many have improved their focus and reduced stress. While technology plays a vital role in our lives, learning when to disconnect is equally important. Those who have made digital detox a habit have already noticed the positive effects, and they encourage others to do the same for a healthier, more balanced lifestyle.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Digital detox**: A period during which a person refrains from using digital devices to reduce stress and distractions.</li>
+<li>**Unplug**: To disconnect from digital devices and online activity.</li>
+<li>**Productivity**: The efficiency with which tasks and work are completed.</li>
+<li>**Mental health**: A person’s emotional and psychological well-being.</li>
+<li>**Distraction**: Something that takes attention away from the task at hand.</li>
+<li>**Mindfulness**: Being fully present and aware in the moment without judgement.</li>
+<li>**Habit**: A regular practice or routine that is repeated often.</li>
+<li>**Wellbeing**: The state of being comfortable, healthy, and happy.</li>
+<li>**Overwhelm**: A feeling of being stressed or burdened by too much to handle.</li>
+<li>**Disconnect**: To separate or stop the use of digital devices or communication.</li>
+<li>**Set specific “no device” times**: Designating certain parts of the day without technology use.</li>
+<li>**Turn off phones**: Deactivate phone functions to avoid interruptions.</li>
+<li>**Balance technology use with real-life interactions**: Managing time between digital activities and face-to-face communication.</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (17 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Digital detox</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A period during which a person refrains from using digital devices to reduce stress and distractions.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many professionals have started digital detox routines to improve their focus.</span>
+                    <button onclick="speak('Many professionals have started digital detox routines to improve their focus.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Muchas personas han empezado rutinas de desintoxicación digital para mejorar su concentración.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Digital detox')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Unplug</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To disconnect from digital devices and online activity.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">It is helpful to unplug from your phone for an hour each day.</span>
+                    <button onclick="speak('It is helpful to unplug from your phone for an hour each day.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Es útil desconectarse del teléfono durante una hora al día.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Unplug')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Productivity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The efficiency with which tasks and work are completed.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Taking breaks can actually boost your productivity at work.</span>
+                    <button onclick="speak('Taking breaks can actually boost your productivity at work.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Tomar descansos puede realmente aumentar tu productividad en el trabajo.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Productivity')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Mental health</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A person's emotional and psychological well-being.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Maintaining good mental health is important for overall happiness.</span>
+                    <button onclick="speak('Maintaining good mental health is important for overall happiness.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Mantener una buena salud mental es importante para la felicidad general.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Mental health')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Distraction</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Something that takes attention away from the task at hand.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Notifications on your phone can be a major distraction.</span>
+                    <button onclick="speak('Notifications on your phone can be a major distraction.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las notificaciones en tu teléfono pueden ser una distracción importante.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Distraction')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Mindfulness</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Being fully present and aware in the moment without judgement.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Practicing mindfulness helps reduce stress and increase focus.</span>
+                    <button onclick="speak('Practicing mindfulness helps reduce stress and increase focus.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Practicar la atención plena ayuda a reducir el estrés y aumentar la concentración.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Mindfulness')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Habit</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A regular practice or routine that is repeated often.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Building a habit of unplugging can improve your wellbeing.</span>
+                    <button onclick="speak('Building a habit of unplugging can improve your wellbeing.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Crear el hábito de desconectarse puede mejorar tu bienestar.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Habit')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Wellbeing</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The state of being comfortable, healthy, and happy.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Digital detox routines contribute positively to mental wellbeing.</span>
+                    <button onclick="speak('Digital detox routines contribute positively to mental wellbeing.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las rutinas de desintoxicación digital contribuyen positivamente al bienestar mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Wellbeing')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Overwhelm</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">A feeling of being stressed or burdened by too much to handle.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Too many emails can overwhelm employees causing stress.</span>
+                    <button onclick="speak('Too many emails can overwhelm employees causing stress.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Demasiados correos electrónicos pueden abrumar a los empleados causando estrés.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Overwhelm')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Disconnect</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To separate or stop the use of digital devices or communication.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">They decided to disconnect from their devices during weekends.</span>
+                    <button onclick="speak('They decided to disconnect from their devices during weekends.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Decidieron desconectarse de sus dispositivos durante los fines de semana.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Disconnect')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Notifications</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Alerts or messages that inform you about new events or updates on a device.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Constant notifications can interrupt daily work and focus.</span>
+                    <button onclick="speak('Constant notifications can interrupt daily work and focus.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las notificaciones constantes pueden interrumpir el trabajo y la concentración diaria.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Notifications')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Stress levels</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The amount of mental or emotional strain experienced.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Reducing screen time can lower stress levels significantly.</span>
+                    <button onclick="speak('Reducing screen time can lower stress levels significantly.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Reducir el tiempo frente a la pantalla puede disminuir significativamente los niveles de estrés.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Stress levels')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Boundaries</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Limits that define acceptable behavior or use, often to protect well-being.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Setting clear boundaries around device use is crucial for mental health.</span>
+                    <button onclick="speak('Setting clear boundaries around device use is crucial for mental health.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Establecer límites claros sobre el uso de dispositivos es crucial para la salud mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Boundaries')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Encourage</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To give support or confidence to someone to do something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Companies encourage employees to take regular breaks from screens.</span>
+                    <button onclick="speak('Companies encourage employees to take regular breaks from screens.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Las empresas animan a los empleados a tomar descansos regulares de las pantallas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Encourage')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Balancing</span>
+            <div class="vocab-info">
+                <span class="pos">verb (gerund)</span> <span class="meaning">Managing different elements so that none dominates excessively.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Balancing technology use with real-life interactions improves wellbeing.</span>
+                    <button onclick="speak('Balancing technology use with real-life interactions improves wellbeing.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Equilibrar el uso de la tecnología con las interacciones en la vida real mejora el bienestar.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Balancing')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Anxiety</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A feeling of worry, nervousness, or unease about something uncertain.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Disconnecting from screens has been shown to reduce anxiety.</span>
+                    <button onclick="speak('Disconnecting from screens has been shown to reduce anxiety.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Desconectarse de las pantallas ha demostrado reducir la ansiedad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Anxiety')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Creativity</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The use of imagination or original ideas to create something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Taking time off devices can improve creativity.</span>
+                    <button onclick="speak('Taking time off devices can improve creativity.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Tomarse un tiempo lejos de los dispositivos puede mejorar la creatividad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Creativity')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Perfect Tense (have/has + past participle)</div>
+                <div class="grammar-explanation">Used to describe experiences, actions that occurred at an unspecified time in the past but are relevant now, or changes over time.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Many professionals have started digital detox routines to improve their focus.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Modal verbs for advice (should, ought to, must)</div>
+                <div class="grammar-explanation">Used to give advice, recommendations, or express necessity or obligation.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">You should limit your screen time to avoid feeling overwhelmed.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Use of 'have + past participle' to describe experiences</div>
+                <div class="grammar-explanation">This pattern is used to talk about what someone has experienced up to the present moment.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">They have discovered that taking time away from screens improves sleep.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Use of 'set + noun phrase' for routines</div>
+                <div class="grammar-explanation">The verb 'set' followed by a noun phrase can describe arranging or deciding on specific rules or times.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Some people set specific 'no device' times during the day.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Use of 'allow + object + to + verb' for enabling actions</div>
+                <div class="grammar-explanation">Using 'allow' followed by an object and an infinitive verb to indicate permission or enabling.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Small changes encourage mindfulness, allowing the brain to rest and refocus.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

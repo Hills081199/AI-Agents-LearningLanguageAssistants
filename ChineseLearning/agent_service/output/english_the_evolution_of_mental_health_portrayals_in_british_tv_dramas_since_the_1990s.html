@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Evolution of Mental Health Portrayals in British TV Dramas Since the 1990s - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>The Evolution of Mental Health Portrayals in British TV Dramas Since the 1990s</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <strong>Lesson Plan Outline: The Evolution of Mental Health Portrayals in British TV Dramas Since the 1990s (B2 Level)</strong>
+<p>---</p>
+<h4>I. Learning Objectives</h4>
+<p>By the end of this lesson, students will be able to:</p>
+<p>1. Understand and discuss how mental health issues are portrayed differently in British TV dramas over the last three decades.</p>
+<p>2. Use specific vocabulary related to mental health and media analysis appropriately in conversation and writing.</p>
+<p>3. Analyze, compare, and express opinions on the cultural impact of TV portrayals of mental health.</p>
+<p>4. Apply relevant grammar structures to describe changes over time and hypothetical situations related to media portrayals.</p>
+<p>---</p>
+<h4>II. Key Vocabulary</h4>
+<p>1. Portrayal – the way in which a character or idea is shown or described in a film or TV show.</p>
+<p>2. Stigma – a negative social attitude attached to something, such as mental illness.</p>
+<p>3. Stereotype – an oversimplified and generalized belief about a group of people.</p>
+<p>4. Complex – involving many different and connected parts, often not simple.</p>
+<p>5. Character development – the process by which a character changes or evolves over time in a story.</p>
+<p>6. Sensitive – showing awareness and understanding of others' feelings or situations.</p>
+<p>7. Representation – how something is depicted or shown in media or art.</p>
+<p>8. Awareness – knowledge or understanding of a particular subject or situation.</p>
+<p>9. Taboo – something that is forbidden or socially discouraged to talk about.</p>
+<p>10. Narrative – the structured story or account presented in a drama or show.</p>
+<p>---</p>
+<h4>III. Grammar Points</h4>
+<p>1. **Past Perfect vs. Simple Past**</p>
+<li>To describe the sequence of events when discussing changes in the portrayal of mental health over time (e.g., "By the late 1990s, TV dramas had already started to show more complex characters struggling with mental illness.")</li>
+<li>Helps express what had happened before a certain point in the past and what happened subsequently.</li>
+<p>2. **Conditionals – Second Conditional (Hypothetical situations)**</p>
+<li>To speculate about how TV portrayals might influence society or how changes could have been different (e.g., "If British TV dramas did not show mental health issues sensitively, stigma would probably have continued to grow.")</li>
+<li>Encourages use of sophisticated structures to discuss possible outcomes and societal effects.</li>
+<p>---</p>
+<p>This structured approach ensures students practice both thematic vocabulary and grammatical accuracy while engaging deeply with a culturally relevant and unique topic in the Movies & TV domain.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>Since the 1990s, the portrayal of mental health in British TV dramas has undergone a remarkable transformation. In earlier decades, mental illness was often shown in a very simplified or negative way. Characters with mental health problems were usually presented as dangerous or unpredictable, which reinforced social stigma and stereotypes. These early representations sometimes lacked depth and failed to explore the true experiences of people living with mental health issues.</p>
+<p>By the late 1990s, however, TV dramas had already started to change their approach. Writers and producers began to create more complex characters who struggled with various mental health challenges. Instead of being mere villains or comic relief, these characters became central to the storyline. For example, some dramas showed protagonists grappling with depression or anxiety, allowing viewers to see sensitive and realistic portrayals of these conditions. This shift helped increase public awareness and understanding, breaking down many taboos around mental illness.</p>
+<p>Throughout the 2000s and into the 2010s, the representation of mental health on British television grew even more nuanced. Dramas explored a wide range of conditions such as bipolar disorder, schizophrenia, and post-traumatic stress disorder, often highlighting the difficulties faced by patients and their families. Character development became a key focus, with stories showing how people cope and sometimes recover over time. This kind of portrayal encouraged empathy and helped reduce stigma by presenting mental health as a normal part of human life rather than something shameful or frightening.</p>
+<p>If British TV dramas had not taken a more sensitive and realistic approach, the stigma around mental illness might have continued to grow unchecked. By showing mental health issues honestly and with depth, these shows played a part in fostering a society where people could talk more openly about their struggles. Additionally, the improved narratives allowed mental health professionals and patients to feel seen and respected in popular culture.</p>
+<p>Looking forward, the portrayal of mental health in British dramas remains an important topic. If future programs continue to offer thoughtful and accurate depictions, they will not only entertain but also educate audiences. This could lead to further reduction in stigma and more support for those affected by mental illness. The evolution of these portrayals over the past thirty years reflects a broader cultural shift toward empathy and awareness, showing how powerful media can be in shaping attitudes and encouraging social change.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Portrayal** – the way in which mental health characters and issues are shown in TV dramas.</li>
+<li>**Stigma** – the negative attitudes society holds against people with mental illness.</li>
+<li>**Stereotype** – a simplified and often wrong idea about people, like assuming people with mental illness are dangerous.</li>
+<li>**Complex characters** – characters with many layers, showing real emotions and challenges.</li>
+<li>**Sensitive portrayal** – showing mental health issues with care and respect, understanding people’s feelings.</li>
+<li>**Representation** – how mental health is depicted on TV, influencing how viewers think about it.</li>
+<li>**Awareness** – understanding and knowledge about mental health issues.</li>
+<li>**Taboo** – a subject that people tend to avoid talking about because it is uncomfortable or socially unacceptable.</li>
+<li>**Narrative** – the story told by the drama, including how mental health is included.</li>
+<li>**Character development** – how a TV character changes over time, especially showing growth or struggle related to mental health.</li>
+<li>**Hypothetical situation** – an imagined or “what if” situation, like “If TV dramas had not shown mental illness realistically…”</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (16 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Portrayal</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The way in which a character or idea is shown or described in a film or TV show.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The portrayal of mental health in the drama was both sensitive and realistic.</span>
+                    <button onclick="speak('The portrayal of mental health in the drama was both sensitive and realistic.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La representación de la salud mental en el drama fue sensible y realista.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Portrayal')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Stigma</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A negative social attitude attached to something, such as mental illness.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The stigma around mental illness has decreased thanks to better media portrayals.</span>
+                    <button onclick="speak('The stigma around mental illness has decreased thanks to better media portrayals.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El estigma en torno a la enfermedad mental ha disminuido gracias a mejores representaciones mediáticas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Stigma')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Stereotype</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">An oversimplified and generalized belief about a group of people.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Mental health stereotypes often portray sufferers as dangerous, which is inaccurate.</span>
+                    <button onclick="speak('Mental health stereotypes often portray sufferers as dangerous, which is inaccurate.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Los estereotipos sobre la salud mental a menudo retratan a los afectados como peligrosos, lo cual es inexacto.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Stereotype')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Complex</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Involving many different and connected parts; not simple.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The show developed complex characters who struggled with real emotions.</span>
+                    <button onclick="speak('The show developed complex characters who struggled with real emotions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El programa desarrolló personajes complejos que luchaban con emociones reales.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Complex')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Character development</span>
+            <div class="vocab-info">
+                <span class="pos">noun phrase</span> <span class="meaning">The process by which a character changes or evolves over time in a story.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Character development allowed viewers to understand the protagonist’s mental health journey.</span>
+                    <button onclick="speak('Character development allowed viewers to understand the protagonist’s mental health journey.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El desarrollo del personaje permitió a los espectadores entender el viaje de salud mental del protagonista.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Character development')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Sensitive</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Showing awareness and understanding of others' feelings or situations.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The drama’s sensitive portrayal helped reduce misconceptions about mental illness.</span>
+                    <button onclick="speak('The drama’s sensitive portrayal helped reduce misconceptions about mental illness.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La representación sensible del drama ayudó a reducir los malentendidos sobre la enfermedad mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Sensitive')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Representation</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">How something is depicted or shown in media or art.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Accurate representation of mental health can change public attitudes.</span>
+                    <button onclick="speak('Accurate representation of mental health can change public attitudes.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La representación precisa de la salud mental puede cambiar las actitudes públicas.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Representation')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Awareness</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Knowledge or understanding of a particular subject or situation.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Public awareness of mental health issues has increased over the years.</span>
+                    <button onclick="speak('Public awareness of mental health issues has increased over the years.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La conciencia pública sobre los problemas de salud mental ha aumentado con los años.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Awareness')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Taboo</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Something that is forbidden or socially discouraged to talk about.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Mental illness used to be a taboo subject in TV dramas.</span>
+                    <button onclick="speak('Mental illness used to be a taboo subject in TV dramas.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La enfermedad mental solía ser un tema tabú en los dramas televisivos.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Taboo')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Narrative</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The structured story or account presented in a drama or show.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The narrative focused on the protagonist’s struggle with anxiety.</span>
+                    <button onclick="speak('The narrative focused on the protagonist’s struggle with anxiety.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La narrativa se centró en la lucha del protagonista con la ansiedad.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Narrative')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Hypothetical</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Involving imagined or 'what if' situations rather than real ones.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">They discussed hypothetical outcomes if mental health stigma was eliminated.</span>
+                    <button onclick="speak('They discussed hypothetical outcomes if mental health stigma was eliminated.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Discutieron resultados hipotéticos si se eliminara el estigma de la salud mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Hypothetical')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Transformation</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A thorough or dramatic change in form or appearance.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The portrayal of mental health has undergone a remarkable transformation since the 1990s.</span>
+                    <button onclick="speak('The portrayal of mental health has undergone a remarkable transformation since the 1990s.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>La representación de la salud mental ha experimentado una transformación notable desde los años 90.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Transformation')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Grapple</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To struggle with or try hard to deal with something.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The character grappled with depression throughout the series.</span>
+                    <button onclick="speak('The character grappled with depression throughout the series.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El personaje luchó con la depresión a lo largo de la serie.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Grapple')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Empathy</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The ability to understand and share the feelings of another.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The show encouraged empathy for people with mental health conditions.</span>
+                    <button onclick="speak('The show encouraged empathy for people with mental health conditions.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El programa fomentó la empatía hacia las personas con condiciones de salud mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Empathy')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Nuanced</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Characterized by subtle differences or distinctions.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Recent dramas offer more nuanced representations of mental illness.</span>
+                    <button onclick="speak('Recent dramas offer more nuanced representations of mental illness.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Los dramas recientes ofrecen representaciones más matizadas de la enfermedad mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Nuanced')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Protagonist</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The main character in a drama or story.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The protagonist’s journey helped viewers understand mental health struggles.</span>
+                    <button onclick="speak('The protagonist’s journey helped viewers understand mental health struggles.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>El viaje del protagonista ayudó a los espectadores a entender las luchas relacionadas con la salud mental.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Protagonist')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Past Perfect vs. Simple Past</div>
+                <div class="grammar-explanation">Used to describe the sequence of events in the past, showing what happened before another past event. Past perfect shows an action completed before another past action.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">By the late 1990s, TV dramas had already started to show more complex characters.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Second Conditional (If + past simple, would + base verb)</div>
+                <div class="grammar-explanation">Used to talk about hypothetical or unlikely situations and their probable results in the present or future.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">If British TV dramas did not show mental health issues sensitively, stigma would probably have continued to grow.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Perfect for Recent or Ongoing Change</div>
+                <div class="grammar-explanation">Used to describe actions or changes that started in the past and continue to the present or have effects that are relevant now.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">The portrayal of mental health has undergone a remarkable transformation since the 1990s.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Passive Voice</div>
+                <div class="grammar-explanation">Used to emphasize the action or the receiver of the action rather than the subject performing it. Common in formal writing and media discussion.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Mental illness was often shown in a very simplified or negative way in earlier decades.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

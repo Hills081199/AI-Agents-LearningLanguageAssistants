@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极拳中的“松劲”技巧与内功修炼 - HSK 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">HSK 4</span>
+            <span class="lang-badge">Chinese</span>
+            <h1>太极拳中的“松劲”技巧与内功修炼</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>========================</p>
+<p>课程计划大纲</p>
+<p>主题：太极拳中的“松劲”技巧与内功修炼</p>
+<p>HSK等级：4级</p>
+<p>一、学习目标</p>
+<p>1. 学生能够理解和表达太极拳中“松劲”的概念及其重要性。</p>
+<p>2. 掌握描述内功修炼过程的基本词汇和句型。</p>
+<p>3. 通过阅读和口语练习，能够描述太极拳练习中的感受和技巧。</p>
+<p>4. 练习使用两个重要的语法点，提高语言的表达准确性和丰富性。</p>
+<p>二、关键词汇（5-10词，适合HSK4级）</p>
+<p>1. 太极拳 (tàijíquán) – Tai Chi</p>
+<p>2. 松劲 (sōngjìn) – relaxation of muscles/tension</p>
+<p>3. 技巧 (jìqiǎo) – skill, technique</p>
+<p>4. 内功 (nèigōng) – internal energy cultivation</p>
+<p>5. 修炼 (xiūliàn) – to practice, to cultivate (skill or ability)</p>
+<p>6. 呼吸 (hūxī) – breath, breathing</p>
+<p>7. 平衡 (pínghéng) – balance</p>
+<p>8. 集中 (jízhōng) – to concentrate, focus</p>
+<p>9. 轻松 (qīngsōng) – relaxed, easy</p>
+<p>10. 感觉 (gǎnjué) – feeling, sensation</p>
+<p>三、语法点</p>
+<p>1. 把字句 —— 结构用来强调动作的施加对象，尤其在描述动作步骤或技巧时非常有用。</p>
+<p>例：我们要把身体的力量松开。</p>
+<p>练习：描述如何“把”身体的某部分放松。</p>
+<p>2. 结果补语 —— 用来表达动作的结果，适合描述练习后的状态或效果。</p>
+<p>例：练习太极拳能让身体放松下来。</p>
+<p>练习：造句练习描述内功修炼的结果，例如“呼吸顺畅下来”， “动作稳定了”。</p>
+<p>四、教学环节安排（建议）</p>
+<p>1. 导入（10分钟）</p>
+<li>介绍太极拳和“松劲”技巧的基本概念。</li>
+<li>观看简短的视频或示范，激发学生兴趣。</li>
+<p>2. 词汇学习（15分钟）</p>
+<li>讲解关键词汇，结合图片和实例。</li>
+<li>词汇练习：配对、造句。</li>
+<p>3. 语法讲解与练习（20分钟）</p>
+<li>讲解“把字句”和结果补语结构。</li>
+<li>练习句子转换和描述太极拳动作。</li>
+<p>4. 阅读理解（15分钟）</p>
+<li>阅读一篇关于太极拳松劲技巧和内功修炼的小文章。</li>
+<li>回答理解问题，讨论训练感受。</li>
+<p>5. 口语练习（20分钟）</p>
+<li>小组讨论：分享自己对放松技巧的理解和练习经验。</li>
+<li>用学到的词汇及语法点描述动作。</li>
+<p>6. 课堂总结（10分钟）</p>
+<li>教师总结重点词汇与语法。</li>
+<li>布置作业：写一段关于太极拳练习经验的短文，使用本课词汇和语法点。</li>
+<p>========================</p>
+<p>此课程设计符合HSK4级学生的语言水平和学习需求，兼顾听、说、读、写综合能力的提升，紧扣太极拳的传统文化主题，帮助学生既学习语言又了解中国文化。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>太极拳是一种传统的中国武术，它强调身体的松劲和内功的修炼。在练习太极拳时，松劲是非常重要的技巧。所谓松劲，就是要把身体的肌肉放松，不要紧绷。这样才能让动作更加轻松自然，同时也能保护身体，避免受伤。练习太极拳时，我们要特别注意把肩膀、手臂和腿部的力量松开，不让它们僵硬。只有身体放松下来，才能更好地感受到内功的流动和呼吸的配合。</p>
+<p>内功修炼是太极拳中的核心部分。它主要通过呼吸和意念的配合来提高身体的平衡和集中力。在练习内功时，我们要随着呼吸慢慢地调整动作，达到气息顺畅下来的效果。很多太极拳练习者都会感受到自己的动作变得稳定了，心情也变得平静轻松。内功的修炼不仅能增强身体的柔韧性，还能提升精神的集中。通过长期的练习，身体和精神都会达到一种和谐的状态。</p>
+<p>在太极拳的学习过程中，掌握松劲技巧和内功修炼是非常重要的。把身体的力量松开，能让身体更加轻松灵活；而通过内功的修炼，可以让动作更加稳定，呼吸更加顺畅。练习太极拳不仅强身健体，还能培养耐心和专注力。对于初学者来说，理解和练习这些技巧有些难度，但只要坚持练习，就能逐渐体会到太极拳的奥妙和乐趣。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-romanization">
+                <p>Tàijíquán shì yī zhǒng chuántǒng de Zhōngguó wǔshù, tā qiángdiào shēntǐ de sōngjìn hé nèigōng de xiūliàn. Zài liànxí tàijíquán shí, sōngjìn shì fēicháng zhòngyào de jìqiǎo. Suǒwèi sōngjìn, jiùshì yào bǎ shēntǐ de jīròu fàngsōng, bù yào jǐn bēng. Zhèyàng cáinéng ràng dòngzuò gèngjiā qīngsōng zìrán, tóngshí yě néng bǎohù shēntǐ, bìmiǎn shòushāng. Liànxí tàijíquán shí, wǒmen yào tèbié zhùyì bǎ jiānbǎng, shǒubì hé tuǐbù de lìliang sōng kāi, bù ràng tāmen jiāngyìng. Zhǐyǒu shēntǐ fàngsōng xiàlái, cáinéng gèng hǎo de gǎnshòu dào nèigōng de liúdòng hé hūxī de pèihé.</p>
+<p>Nèigōng xiūliàn shì tàijíquán zhōng de héxīn bùfen. Tā zhǔyào tōngguò hūxī hé yìniàn de pèihé lái tígāo shēntǐ de pínghéng hé jízhōng lì. Zài liànxí nèigōng shí, wǒmen yào suízhe hūxī màn man de tiáozhěng dòngzuò, dádào qìxī shùnchàng xiàlái de xiàoguǒ. Hěnduō tàijíquán liànxí zhě dōu huì gǎnshòu dào zìjǐ de dòngzuò biàn dé wěndìng le, xīnqíng yě biàn dé píngjìng qīngsōng. Nèigōng de xiūliàn bùjǐn néng zēngqiáng shēntǐ de róu nènxìng, hái néng tíshēng jīngshén de jízhōng. Tōngguò chángqī de liànxí, shēntǐ hé jīngshén dōu huì dádào yī zhǒng héxié de zhuàngtài.</p>
+<p>Zài tàijíquán de xuéxí guòchéng zhōng, zhǎngwò sōngjìn jìqiǎo hé nèigōng xiūliàn shì fēicháng zhòngyào de. Bǎ shēntǐ de lìliang sōng kāi, néng ràng shēntǐ gèngjiā qīngsōng línghuó; ér tōngguò nèigōng de xiūliàn, kěyǐ ràng dòngzuò gèngjiā wěndìng, hūxī gèngjiā shùnchàng. Liànxí tàijíquán bùjǐn qiángshēn jiàntǐ, hái néng péiyǎng nàixīn hé zhuānxīn lì. Duìyú chūxué zhě lái shuō, lǐjiě hé liànxí zhèxiē jìqiǎo yǒuxiē nándù, dàn zhǐyào jiānchí liànxí, jiù néng zhújiàn tǐhuì dào tàijíquán de àomiào hé lèqù.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>Tai Chi is a traditional Chinese martial art that emphasizes relaxation of the body and cultivation of internal energy. When practicing Tai Chi, relaxation, known as "songjin," is a very important technique. To relax means to loosen the muscles of the body and avoid tension. Only by doing so can movements become more relaxed and natural, and it can also protect the body from injury. During Tai Chi practice, special attention must be paid to relaxing the strength in the shoulders, arms, and legs, not letting them become stiff. Only when the body is relaxed can one better feel the flow of internal energy and coordinate with breathing.</p>
+<p>The cultivation of internal energy (neigong) is the core part of Tai Chi. It mainly involves coordinating breathing and intention to improve the body’s balance and concentration. When practicing neigong, we adjust movements gradually with the breath, achieving the result of smooth and unblocked breathing. Many Tai Chi practitioners feel their movements become more stable, and their minds become calm and relaxed. Neigong cultivation not only strengthens the body’s flexibility but also enhances mental focus. Through long-term practice, both body and mind reach a harmonious state.</p>
+<p>In the learning process of Tai Chi, mastering the technique of relaxation and cultivating neigong are very important. Relaxing the body’s strength allows it to become more relaxed and flexible; through neigong training, movements can become more stable and breathing smoother. Practicing Tai Chi not only strengthens the body but also cultivates patience and concentration. For beginners, understanding and practicing these techniques may be somewhat difficult, but as long as they persist, they will gradually appreciate the mysteries and enjoyment of Tai Chi.</p>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (20 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">太极拳</span>
+            <div class="vocab-info">
+                <span class="romanization">tàijíquán</span> <span class="meaning">Tai Chi, a traditional Chinese martial art</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">太极拳是一种传统的中国武术。</span>
+                    <button onclick="speak('太极拳是一种传统的中国武术。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tàijíquán shì yī zhǒng chuántǒng de Zhōngguó wǔshù.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Tai Chi is a traditional Chinese martial art.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('太极拳')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">松劲</span>
+            <div class="vocab-info">
+                <span class="romanization">sōngjìn</span> <span class="meaning">relaxation of muscles/tension</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习太极拳时，松劲是非常重要的技巧。</span>
+                    <button onclick="speak('练习太极拳时，松劲是非常重要的技巧。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí tàijíquán shí, sōngjìn shì fēicháng zhòngyào de jìqiǎo.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Relaxation is a very important technique when practicing Tai Chi.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('松劲')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">技巧</span>
+            <div class="vocab-info">
+                <span class="romanization">jìqiǎo</span> <span class="meaning">skill, technique</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">掌握松劲技巧可以帮助动作更加轻松。</span>
+                    <button onclick="speak('掌握松劲技巧可以帮助动作更加轻松。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhǎngwò sōngjìn jìqiǎo kěyǐ bāngzhù dòngzuò gèngjiā qīngsōng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Mastering relaxation techniques can help make movements more relaxed.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('技巧')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">内功</span>
+            <div class="vocab-info">
+                <span class="romanization">nèigōng</span> <span class="meaning">internal energy cultivation</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">内功是太极拳的核心部分。</span>
+                    <button onclick="speak('内功是太极拳的核心部分。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Nèigōng shì tàijíquán de héxīn bùfen.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Internal energy cultivation is the core part of Tai Chi.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('内功')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">修炼</span>
+            <div class="vocab-info">
+                <span class="romanization">xiūliàn</span> <span class="meaning">to practice, to cultivate (skill or ability)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">通过修炼内功，可以增强身体的柔韧性。</span>
+                    <button onclick="speak('通过修炼内功，可以增强身体的柔韧性。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tōngguò xiūliàn nèigōng, kěyǐ zēngqiáng shēntǐ de róurènxìng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Through cultivating internal energy, one can strengthen the body's flexibility.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('修炼')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">呼吸</span>
+            <div class="vocab-info">
+                <span class="romanization">hūxī</span> <span class="meaning">breath, breathing</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习时要注意呼吸的配合。</span>
+                    <button onclick="speak('练习时要注意呼吸的配合。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí shí yào zhùyì hūxī de pèihé.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>During practice, pay attention to coordinating breathing.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('呼吸')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">平衡</span>
+            <div class="vocab-info">
+                <span class="romanization">pínghéng</span> <span class="meaning">balance</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">内功练习可以提高身体的平衡。</span>
+                    <button onclick="speak('内功练习可以提高身体的平衡。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Nèigōng liànxí kěyǐ tígāo shēntǐ de pínghéng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Internal energy practice can improve body balance.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('平衡')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">集中</span>
+            <div class="vocab-info">
+                <span class="romanization">jízhōng</span> <span class="meaning">to concentrate, focus</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">修炼内功能够提升精神的集中。</span>
+                    <button onclick="speak('修炼内功能够提升精神的集中。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Xiūliàn nèigōng nénggòu tíshēng jīngshén de jízhōng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Cultivating internal energy can enhance mental focus.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('集中')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">轻松</span>
+            <div class="vocab-info">
+                <span class="romanization">qīngsōng</span> <span class="meaning">relaxed, easy</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">只有身体放松，动作才会更加轻松自然。</span>
+                    <button onclick="speak('只有身体放松，动作才会更加轻松自然。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhǐyǒu shēntǐ fàngsōng, dòngzuò cáihuì gèngjiā qīngsōng zìrán.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Only when the body is relaxed will movements be more relaxed and natural.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('轻松')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">感觉</span>
+            <div class="vocab-info">
+                <span class="romanization">gǎnjué</span> <span class="meaning">feeling, sensation</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习者能感受到内功的流动。</span>
+                    <button onclick="speak('练习者能感受到内功的流动。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí zhě néng gǎnshòu dào nèigōng de liúdòng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Practitioners can feel the flow of internal energy.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('感觉')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">肌肉</span>
+            <div class="vocab-info">
+                <span class="romanization">jīròu</span> <span class="meaning">muscle</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">要把身体的肌肉放松。</span>
+                    <button onclick="speak('要把身体的肌肉放松。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yào bǎ shēntǐ de jīròu fàngsōng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>One must relax the muscles of the body.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('肌肉')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">肩膀</span>
+            <div class="vocab-info">
+                <span class="romanization">jiānbǎng</span> <span class="meaning">shoulder</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习时要把肩膀的力量松开。</span>
+                    <button onclick="speak('练习时要把肩膀的力量松开。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí shí yào bǎ jiānbǎng de lìliàng sōng kāi.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>During practice, the strength in the shoulders must be relaxed.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('肩膀')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">力量</span>
+            <div class="vocab-info">
+                <span class="romanization">lìliàng</span> <span class="meaning">strength, force</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">把身体的力量松开，动作会更加灵活。</span>
+                    <button onclick="speak('把身体的力量松开，动作会更加灵活。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Bǎ shēntǐ de lìliàng sōng kāi, dòngzuò huì gèngjiā línghuó.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Relaxing the body's strength makes the movements more flexible.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('力量')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">动作</span>
+            <div class="vocab-info">
+                <span class="romanization">dòngzuò</span> <span class="meaning">movement, action</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">动作用力过大会导致受伤。</span>
+                    <button onclick="speak('动作用力过大会导致受伤。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Dòngzuò yònglì guò dà huì dǎozhì shòushāng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Excessive force in movements can cause injuries.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('动作')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">气息</span>
+            <div class="vocab-info">
+                <span class="romanization">qìxī</span> <span class="meaning">breath, breathing</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习内功要让气息顺畅下来。</span>
+                    <button onclick="speak('练习内功要让气息顺畅下来。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí nèigōng yào ràng qìxī shùnchàng xiàlái.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Practicing internal cultivation requires smooth breathing.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('气息')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">稳定</span>
+            <div class="vocab-info">
+                <span class="romanization">wěndìng</span> <span class="meaning">stable, steady</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习后动作变得稳定了。</span>
+                    <button onclick="speak('练习后动作变得稳定了。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí hòu dòngzuò biàn dé wěndìng le.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>After practice, movements become stable.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('稳定')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">柔韧性</span>
+            <div class="vocab-info">
+                <span class="romanization">róurènxìng</span> <span class="meaning">flexibility (in body)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">内功修炼能增强身体的柔韧性。</span>
+                    <button onclick="speak('内功修炼能增强身体的柔韧性。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Nèigōng xiūliàn néng zēngqiáng shēntǐ de róurènxìng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Cultivating internal energy can enhance body flexibility.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('柔韧性')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">精神</span>
+            <div class="vocab-info">
+                <span class="romanization">jīngshén</span> <span class="meaning">spirit, mind, mental state</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">内功提升了精神的集中。</span>
+                    <button onclick="speak('内功提升了精神的集中。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Nèigōng tíshēng le jīngshén de jízhōng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Internal cultivation enhances mental focus.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('精神')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">耐心</span>
+            <div class="vocab-info">
+                <span class="romanization">nàixīn</span> <span class="meaning">patience</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">练习太极拳需要耐心和专注力。</span>
+                    <button onclick="speak('练习太极拳需要耐心和专注力。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Liànxí tàijíquán xūyào nàixīn hé zhuānxīn lì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Practicing Tai Chi requires patience and concentration.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('耐心')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">专注力</span>
+            <div class="vocab-info">
+                <span class="romanization">zhuānxīn lì</span> <span class="meaning">concentration</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">专注力对于内功修炼很重要。</span>
+                    <button onclick="speak('专注力对于内功修炼很重要。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhuānxīn lì duìyú nèigōng xiūliàn hěn zhòngyào.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Concentration is very important for internal energy cultivation.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('专注力')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">把字句</div>
+                <div class="grammar-explanation">把字句 structure is used to emphasize the object receiving the action, often used in instructions or descriptions of handling something.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">我们要把身体的力量松开。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">结果补语</div>
+                <div class="grammar-explanation">Resultative complement is used after a verb to indicate the result or outcome of an action.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">练习太极拳能让身体放松下来。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">随着……慢慢……</div>
+                <div class="grammar-explanation">‘随着’ means ‘along with’ or ‘following’, combined with ‘慢慢’ (slowly) to indicate gradual process happening simultaneously with something else.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">我们要随着呼吸慢慢地调整动作。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅……还……</div>
+                <div class="grammar-explanation">Used to connect two related positive statements, meaning ‘not only… but also…’</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">内功的修炼不仅能增强身体的柔韧性，还能提升精神的集中。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">只要……就……</div>
+                <div class="grammar-explanation">Used to express a condition and its consequence, meaning ‘as long as… then…’</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">只要坚持练习，就能逐渐体会到太极拳的奥妙和乐趣。</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

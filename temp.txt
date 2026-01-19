@@ -1,0 +1,16 @@
+🚀 Hướng dẫn chạy Backend
+1. Agent Service (Port 8000) - Xử lý AI/Lesson Generation
+powershell
+cd d:\HSKGPT\ChineseLearning\agent_service
+uvicorn api:app --reload --port 8000
+2. Auth Service (Port 8001) - Authentication + CRUD
+Trước khi chạy, cập nhật file .env:
+
+env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_KEY=your-anon-key
+Sau đó chạy:
+
+powershell
+cd d:\HSKGPT\ChineseLearning\auth_service
+uvicorn api:app --reload --port 8001
