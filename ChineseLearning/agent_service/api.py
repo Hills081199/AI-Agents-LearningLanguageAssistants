@@ -4,6 +4,18 @@ from pydantic import BaseModel
 from typing import Optional, List, Any
 import os
 import sys
+import io
+import os
+
+# Force UTF-8 encoding for stdout/stderr to handle Chinese characters on Windows
+try:
+    if sys.stdout.encoding != 'utf-8':
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    if sys.stderr.encoding != 'utf-8':
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+except Exception:
+    pass
+
 import json
 import time
 from datetime import datetime

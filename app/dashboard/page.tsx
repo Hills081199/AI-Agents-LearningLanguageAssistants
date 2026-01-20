@@ -10,6 +10,7 @@ import Quiz from "./components/Quiz";
 import RoleplayChat from "./components/RoleplayChat";
 import PricingModal from "./components/PricingModal";
 import WritingExercise from "./components/WritingExercise";
+import UserProfile from "./components/UserProfile";
 
 interface LessonData {
   topic: string;
@@ -314,6 +315,11 @@ export default function Home() {
         body: JSON.stringify({ topic: topic || null, level, language }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.detail || "Failed to generate lesson");
+      }
+
       const data = await response.json();
       if (data.html_content) setHtmlContent(data.html_content);
 
@@ -581,6 +587,9 @@ export default function Home() {
         >
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
+
+        {/* Top Right User Profile */}
+        <UserProfile />
 
         {hasData ? (
           <div className="max-w-7xl mx-auto px-8 py-12 md:py-16">

@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unexpected Role of Urban Beekeeping in Mitigating Air Pollution in London and Toronto - HSK 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">HSK 4</span>
+            <span class="lang-badge">Chinese</span>
+            <h1>The Unexpected Role of Urban Beekeeping in Mitigating Air Pollution in London and Toronto</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: 城市养蜂在缓解伦敦和多伦多空气污染中的意想不到的作用</p>
+<p>HSK Level: 4</p>
+<p>---</p>
+<strong>一、学习目标 (Learning Objectives):</strong>
+<p>1. 了解城市养蜂如何帮助改善空气质量，特别是在伦敦和多伦多的案例。</p>
+<p>2. 掌握与环境保护和城市生态相关的核心词汇及表达。</p>
+<p>3. 学习使用“虽然……但是……”和“被……所……”两种常见的HSK4语法结构来描述复杂的因果关系和被动句。</p>
+<p>4. 能够用中文描述和讨论有关环境保护措施和城市生态话题，提高口语和写作能力。</p>
+<p>---</p>
+<strong>二、核心词汇 (Key Vocabulary):</strong>
+<p>1. 养蜂 (yǎng fēng) — beekeeping</p>
+<p>2. 缓解 (huǎnjiě) — to alleviate, to mitigate</p>
+<p>3. 空气污染 (kōngqì wūrǎn) — air pollution</p>
+<p>4. 城市 (chéngshì) — city, urban area</p>
+<p>5. 生态 (shēngtài) — ecology</p>
+<p>6. 蜜蜂 (mìfēng) — bee</p>
+<p>7. 作用 (zuòyòng) — effect, function, role</p>
+<p>8. 监测 (jiāncè) — to monitor</p>
+<p>9. 研究 (yánjiū) — research, to study</p>
+<p>10. 环境保护 (huánjìng bǎohù) — environmental protection</p>
+<p>---</p>
+<strong>三、语法重点 (Grammar Points):</strong>
+<p>1. **虽然……但是……** (Although... but...)</p>
+<li>用法：表示转折，先承认某个事实，然后说明与之相反或补充的内容。</li>
+<li>示例句子：虽然城市养蜂在很多地方不常见，但是它对缓解空气污染有重要作用。</li>
+<p>2. **被……所……** (Passive voice enhanced by formal marker 所)</p>
+<li>用法：用于被动句，强调动作承受者以及动作本身的影响。</li>
+<li>示例句子：空气污染被城市养蜂所缓解。</li>
+<li>说明：相比简单“被”字句，“被……所……”结构更正式，适合书面和学术语言。</li>
+<p>---</p>
+<strong>四、课时安排建议 (Suggested Lesson Structure):</strong>
+<p>1. 引入 (10分钟)</p>
+<li>引导学生讨论城市空气污染问题，激发兴趣。</li>
+<li>简单介绍养蜂的概念及其在城市的应用。</li>
+<p>2. 词汇学习及练习 (15分钟)</p>
+<li>介绍重点词汇，结合图片和例句理解词义。</li>
+<li>小组活动，用新词造句。</li>
+<p>3. 语法讲解及练习 (20分钟)</p>
+<li>讲解“虽然……但是……”和“被……所……”结构。</li>
+<li>设计句子改错和造句练习。</li>
+<p>4. 阅读理解 (20分钟)</p>
+<li>阅读一篇关于伦敦和多伦多城市养蜂与空气污染关系的简短文章。</li>
+<li>回答理解问题，巩固词汇和语法。</li>
+<p>5. 口语/写作活动 (15分钟)</p>
+<li>讨论城市如何通过生态措施改善环境。</li>
+<li>书写一段短文，描述城市养蜂的意义。</li>
+<p>6. 复习总结 (10分钟)</p>
+<li>回顾重点词汇和语法。</li>
+<li>布置课后练习：写一篇关于环保措施的短文。</li>
+<p>---</p>
+<p>This lesson plan is designed to meet HSK 4 learners' language level while introducing complex ecological and environmental concepts through carefully selected vocabulary and formal grammar structures suitable for academic and conversational Chinese. It balances receptive and productive skills for an effective learning experience.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>在现代城市中，空气污染已经成为一个严重的问题。虽然很多人认为解决空气污染需要大型工业改革或者交通控制，但是城市养蜂的作用也被越来越多的研究所证明。在伦敦和多伦多这两个国际大都市，城市养蜂不仅为环境保护贡献了力量，还在缓解空气污染方面展现出意想不到的效果。</p>
+<p>首先，养蜂帮助改善了城市的生态环境。蜜蜂在采集花粉和花蜜的过程中，会促进植物的授粉，增强城市绿地的生长。伦敦的许多社区开始在公园和屋顶上养蜂，这些蜜蜂被认为是绿色生态系统的重要组成部分。虽然养蜂在城市看起来不太常见，但是这些蜜蜂却被城市生态所需要，它们的存在帮助维护了植物的多样性，从而改善了空气质量。</p>
+<p>另外，蜜蜂还能作为空气质量的“监测者”。由于蜜蜂对环境中化学物质非常敏感，科学家可以通过研究蜜蜂采集的花粉和蜂蜜中的物质含量来了解城市空气中的污染情况。在多伦多，某些区域的空气污染水平被蜜蜂所反映和记录，而且这些数据帮助环保组织采取了更加有效的措施进行空气治理。</p>
+<p>虽然城市养蜂并不能完全解决空气污染的问题，但是它作为一种创新的环保方式，确实带来了积极的影响。城市养蜂被越来越多的环保专家所认可，因为它不仅能增加城市的生态多样性，还能提高人们对环境保护的意识。通过养蜂活动，市民更加了解自然环境的复杂关系，从而支持更广泛的环保行动。</p>
+<p>总的来说，伦敦和多伦多的城市养蜂项目为缓解空气污染提供了一种新的思路。虽然挑战仍然存在，但是这种结合生态保护与城市发展的方法正被更多城市所借鉴和推广。通过支持城市养蜂，我们不仅保护了蜜蜂这种重要的生物，还为改善城市空气质量做出了贡献。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-romanization">
+                <p>Zài xiàndài chéngshì zhōng, kōngqì wūrǎn yǐjīng chéngwéi yīgè yánzhòng de wèntí. Suīrán hěn duō rén rènwéi jiějué kōngqì wūrǎn xūyào dàxíng gōngyè gǎigé huòzhě jiāotōng kòngzhì, dànshì chéngshì yǎngfēng de zuòyòng yě bèi yuè lái yuè duō de yánjiū suǒ zhèngmíng. Zài Lúndūn hé Duōlúnduō zhè liǎng gè guójì dà dūshì, chéngshì yǎngfēng bùjǐn wèi huánjìng bǎohù gòngxiànle lìliàng, hái zài huǎnjiě kōngqì wūrǎn fāngmiàn zhǎnxiàn chū yìxiǎng bùdào de xiàoguǒ.</p>
+<p>Shǒuxiān, yǎngfēng bāngzhù gǎishànle chéngshì de shēngtài huánjìng. Mìfēng zài cǎijí huāfěn hé huāmì de guòchéng zhōng, huì cùjìn zhíwù de shòufěn, zēngqiáng chéngshì lǜdì de shēngzhǎng. Lúndūn de xǔduō shèqū kāishǐ zài gōngyuán hé wūdǐng shàng yǎngfēng, zhèxiē mìfēng bèi rènwéi shì lǜsè shēngtài xìtǒng de zhòngyào zǔchéng bùfèn. Suīrán yǎngfēng zài chéngshì kàn qǐlái bù tài chángjiàn, dànshì zhèxiē mìfēng què bèi chéngshì shēngtài suǒ xūqiú, tāmen de cúnzài bāngzhù wéihùle zhíwù de duōyàng xìng, cóng'ér gǎishànle kōngqì zhìliàng.</p>
+<p>Lìngwài, mìfēng hái néng zuòwéi kōngqì zhìliàng de “jiāncè zhě”. Yóuyú mìfēng duì huánjìng zhōng huàxué wùzhí fēicháng mǐngǎn, kēxuéjiā kěyǐ tōngguò yánjiū mìfēng cǎijí de huāfěn hé fēngmì zhōng de wùzhí hánliàng lái liǎojiě chéngshì kōngqì zhōng de wūrǎn qíngkuàng. Zài Duōlúnduō, mǒuxiē qūyù de kōngqì wūrǎn shuǐpíng bèi mìfēng suǒ fǎnyìng hé jìlù, érqiě zhèxiē shùjù bāngzhù huánbǎo zǔzhī cǎiqǔle gèng jiā yǒuxiào de cuòshī jìnxíng kōngqì zhìlǐ.</p>
+<p>Suīrán chéngshì yǎngfēng bìng bùnéng wánquán jiějué kōngqì wūrǎn de wèntí, dànshì tā zuòwéi yīzhǒng chuàngxīn de huánbǎo fāngshì, quèshí dàiláile jījí de yǐngxiǎng. Chéngshì yǎngfēng bèi yuè lái yuè duō de huánbǎo zhuānjiā suǒ rènkě, yīnwèi tā bùjǐn néng zēngjiā chéngshì de shēngtài duōyàng xìng, hái néng tígāo rénmen duì huánjìng bǎohù de yìshí. Tōngguò yǎngfēng huódòng, shìmín gèngjiā liǎojiě zìrán huánjìng de fùzá guānxì, cóng'ér zhīchí gèng guǎngfàn de huánbǎo xíngdòng.</p>
+<p>Zǒng de lái shuō, Lúndūn hé Duōlúnduō de chéngshì yǎngfēng xiàngmù wèi huǎnjiě kōngqì wūrǎn tígōngle yī zhǒng xīn de sīlù. Suīrán tiǎozhàn réngrán cúnzài, dànshì zhè zhǒng jiéhé shēngtài bǎohù yǔ chéngshì fāzhǎn de fāngfǎ zhèng bèi gèng duō chéngshì suǒ jièjiàn hé tuīguǎng. Tōngguò zhīchí chéngshì yǎngfēng, wǒmen bùjǐn bǎohùle mìfēng zhè zhǒng zhòngyào de shēngwù, hái wèi gǎishàn chéngshì kōngqì zhìliàng zuò chūle gòngxiàn.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>In modern cities, air pollution has become a serious problem. Although many people think that solving air pollution requires large-scale industrial reforms or traffic control, the role of urban beekeeping has been increasingly proven by research. In two international metropolises, London and Toronto, urban beekeeping not only contributes to environmental protection but also shows unexpected effects in mitigating air pollution.</p>
+<p>First, beekeeping helps improve the urban ecological environment. During the process of collecting pollen and nectar, bees promote plant pollination and enhance the growth of urban green spaces. Many communities in London have started beekeeping in parks and rooftops; these bees are considered important components of the green ecosystem. Although beekeeping seems uncommon in the city, these bees are needed by the urban ecology, and their presence helps maintain plant diversity, thereby improving air quality.</p>
+<p>In addition, bees can act as “monitors” of air quality. Because bees are very sensitive to chemical substances in the environment, scientists can understand pollution in urban air by studying the contents of substances in the pollen and honey collected by bees. In Toronto, air pollution levels in certain areas are reflected and recorded by bees, and this data helps environmental organizations take more effective measures for air control.</p>
+<p>Although urban beekeeping cannot completely solve the problem of air pollution, as an innovative environmental protection method, it has indeed brought positive impacts. Urban beekeeping is increasingly recognized by environmental experts because it not only increases urban ecological diversity but also raises public awareness of environmental protection. Through beekeeping activities, citizens better understand the complex relationship of the natural environment and thus support broader environmental actions.</p>
+<p>In summary, urban beekeeping projects in London and Toronto provide a new idea for mitigating air pollution. Although challenges still exist, this method combining ecological protection with urban development is being adopted and promoted by more cities. By supporting urban beekeeping, we not only protect bees as important living organisms but also contribute to improving urban air quality.</p>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (16 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">养蜂</span>
+            <div class="vocab-info">
+                <span class="romanization">yǎng fēng</span> <span class="meaning">beekeeping</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">伦敦的许多社区开始养蜂来改善生态环境。</span>
+                    <button onclick="speak('伦敦的许多社区开始养蜂来改善生态环境。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Lúndūn de xǔduō shèqū kāishǐ yǎngfēng lái gǎishàn shēngtài huánjìng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Many communities in London started beekeeping to improve the ecological environment.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('养蜂')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">缓解</span>
+            <div class="vocab-info">
+                <span class="romanization">huǎnjiě</span> <span class="meaning">to alleviate; to mitigate</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">城市养蜂在缓解空气污染方面起到了重要作用。</span>
+                    <button onclick="speak('城市养蜂在缓解空气污染方面起到了重要作用。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Chéngshì yǎngfēng zài huǎnjiě kōngqì wūrǎn fāngmiàn qǐdàole zhòngyào zuòyòng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Urban beekeeping played an important role in alleviating air pollution.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('缓解')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">空气污染</span>
+            <div class="vocab-info">
+                <span class="romanization">kōngqì wūrǎn</span> <span class="meaning">air pollution</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">空气污染已经成为现代城市的严重问题。</span>
+                    <button onclick="speak('空气污染已经成为现代城市的严重问题。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Kōngqì wūrǎn yǐjīng chéngwéi xiàndài chéngshì de yánzhòng wèntí.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Air pollution has become a serious problem in modern cities.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('空气污染')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">生态</span>
+            <div class="vocab-info">
+                <span class="romanization">shēngtài</span> <span class="meaning">ecology</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">蜜蜂是城市绿色生态系统的重要组成部分。</span>
+                    <button onclick="speak('蜜蜂是城市绿色生态系统的重要组成部分。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Mìfēng shì chéngshì lǜsè shēngtài xìtǒng de zhòngyào zǔchéng bùfèn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Bees are an important part of the city's green ecological system.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('生态')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">监测</span>
+            <div class="vocab-info">
+                <span class="romanization">jiāncè</span> <span class="meaning">to monitor</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">科学家利用蜜蜂监测空气中的污染物质。</span>
+                    <button onclick="speak('科学家利用蜜蜂监测空气中的污染物质。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Kēxuéjiā lìyòng mìfēng jiāncè kōngqì zhōng de wūrǎn wùzhí.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Scientists use bees to monitor pollutants in the air.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('监测')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">贡献</span>
+            <div class="vocab-info">
+                <span class="romanization">gòngxiàn</span> <span class="meaning">to contribute; contribution</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">城市养蜂为环境保护贡献了力量。</span>
+                    <button onclick="speak('城市养蜂为环境保护贡献了力量。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Chéngshì yǎngfēng wèi huánjìng bǎohù gòngxiànle lìliàng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Urban beekeeping has contributed to environmental protection.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('贡献')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">意想不到</span>
+            <div class="vocab-info">
+                <span class="romanization">yìxiǎng bùdào</span> <span class="meaning">unexpected; surprising</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">养蜂缓解空气污染的效果是意想不到的。</span>
+                    <button onclick="speak('养蜂缓解空气污染的效果是意想不到的。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yǎngfēng huǎnjiě kōngqì wūrǎn de xiàoguǒ shì yìxiǎng bùdào de.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The effect of beekeeping in alleviating air pollution is unexpected.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('意想不到')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">授粉</span>
+            <div class="vocab-info">
+                <span class="romanization">shòufěn</span> <span class="meaning">pollination</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">蜜蜂采集花粉，促进植物授粉。</span>
+                    <button onclick="speak('蜜蜂采集花粉，促进植物授粉。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Mìfēng cǎijí huāfěn, cùjìn zhíwù shòufěn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Bees collect pollen, promoting plant pollination.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('授粉')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">多样性</span>
+            <div class="vocab-info">
+                <span class="romanization">duōyàng xìng</span> <span class="meaning">diversity</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">蜜蜂帮助维护植物的多样性。</span>
+                    <button onclick="speak('蜜蜂帮助维护植物的多样性。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Mìfēng bāngzhù wéihù zhíwù de duōyàng xìng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Bees help maintain the diversity of plants.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('多样性')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">复杂</span>
+            <div class="vocab-info">
+                <span class="romanization">fùzá</span> <span class="meaning">complex</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">通过养蜂活动，人们更了解自然环境的复杂关系。</span>
+                    <button onclick="speak('通过养蜂活动，人们更了解自然环境的复杂关系。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Tōngguò yǎngfēng huódòng, rénmen gèng liǎojiě zìrán huánjìng de fùzá guānxì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Through beekeeping activities, people better understand the complex relationships in the natural environment.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('复杂')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">被动句</span>
+            <div class="vocab-info">
+                <span class="romanization">bèi dòng jù</span> <span class="meaning">passive sentence</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">空气污染被城市养蜂所缓解是一个被动句的例子。</span>
+                    <button onclick="speak('空气污染被城市养蜂所缓解是一个被动句的例子。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Kōngqì wūrǎn bèi chéngshì yǎngfēng suǒ huǎnjiě shì yīgè bèidòngjù de lìzi.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>‘Air pollution is alleviated by urban beekeeping’ is an example of a passive sentence.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('被动句')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">创新</span>
+            <div class="vocab-info">
+                <span class="romanization">chuàngxīn</span> <span class="meaning">innovation; innovative</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">城市养蜂是一种创新的环保方式。</span>
+                    <button onclick="speak('城市养蜂是一种创新的环保方式。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Chéngshì yǎngfēng shì yī zhǒng chuàngxīn de huánbǎo fāngshì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Urban beekeeping is an innovative form of environmental protection.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('创新')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">意识</span>
+            <div class="vocab-info">
+                <span class="romanization">yìshí</span> <span class="meaning">awareness; consciousness</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">养蜂提升了人们的环境保护意识。</span>
+                    <button onclick="speak('养蜂提升了人们的环境保护意识。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yǎngfēng tíshēngle rénmen de huánjìng bǎohù yìshí.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Beekeeping has raised people's environmental protection awareness.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('意识')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">采取</span>
+            <div class="vocab-info">
+                <span class="romanization">cǎiqǔ</span> <span class="meaning">to adopt; to take (measures)</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">环保组织采取了有效的空气治理措施。</span>
+                    <button onclick="speak('环保组织采取了有效的空气治理措施。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Huánbǎo zǔzhī cǎiqǔle yǒuxiào de kōngqì zhìlǐ cuòshī.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Environmental organizations have taken effective measures for air management.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('采取')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">数据</span>
+            <div class="vocab-info">
+                <span class="romanization">shùjù</span> <span class="meaning">data</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">蜜蜂采集的数据帮助环保工作。</span>
+                    <button onclick="speak('蜜蜂采集的数据帮助环保工作。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Mìfēng cǎijí de shùjù bāngzhù huánbǎo gōngzuò.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The data collected by bees helps environmental protection efforts.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('数据')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">贡献</span>
+            <div class="vocab-info">
+                <span class="romanization">gòngxiàn</span> <span class="meaning">contribute; contribution</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">养蜂为改善空气质量做出了贡献。</span>
+                    <button onclick="speak('养蜂为改善空气质量做出了贡献。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yǎngfēng wèi gǎishàn kōngqì zhìliàng zuòchūle gòngxiàn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Beekeeping has contributed to improving air quality.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('贡献')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">虽然……但是……</div>
+                <div class="grammar-explanation">用来表示转折关系，先肯定一个事实，然后提出与之相反或者补充的内容。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">虽然城市养蜂并不能完全解决空气污染的问题，但是它作为一种创新的环保方式，带来了积极影响。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">被……所……</div>
+                <div class="grammar-explanation">用于被动句，强调动作的承受者和动作本身，结构更正式，常用于书面语和学术语言。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">空气污染被城市养蜂所缓解。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅……还……</div>
+                <div class="grammar-explanation">表示递进关系，强调不仅有前面的内容，还有更多后面的内容。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">城市养蜂不仅增加了生态多样性，还提高了人们的环保意识。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">通过……</div>
+                <div class="grammar-explanation">表示方式或手段，相当于“by means of”或“through”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">通过养蜂活动，市民更加了解自然环境的复杂关系。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">从而……</div>
+                <div class="grammar-explanation">表示结果或目的，后面说明因前面所述而引起的结果。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">蜜蜂帮助维护植物的多样性，从而改善了空气质量。</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

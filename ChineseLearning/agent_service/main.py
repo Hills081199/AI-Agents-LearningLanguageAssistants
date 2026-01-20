@@ -1,5 +1,18 @@
 import os
 import sys
+import sys
+import io
+import os
+
+# Force UTF-8 encoding for stdout/stderr to handle Chinese characters on Windows
+try:
+    if sys.stdout.encoding != 'utf-8':
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    if sys.stderr.encoding != 'utf-8':
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+except Exception:
+    pass
+
 import json
 import re
 
@@ -687,7 +700,7 @@ def generate_lesson_content(topic=None, level="HSK 5", language="chinese"):
     if not topic:
         topic_task = tasks.suggest_topic_task(planner, level)
         crew_tasks.append(topic_task)
-        print(f"Generating a random topic for {level} ({language})...")
+        print(f"Generating a random topic for {level} ({language})...".encode('ascii', 'replace').decode('ascii'))
         
     topic_description = topic if topic else "the topic suggested in the previous task"
 
@@ -707,9 +720,14 @@ def generate_lesson_content(topic=None, level="HSK 5", language="chinese"):
         process=Process.sequential
     )
 
-    print(f"######################")
-    print(f"Generating Lesson: {topic} ({level}) - {language.upper()}")
-    print(f"######################")
+    # Safe print for Windows consoles
+    try:
+        safe_topic = topic.encode('ascii', 'replace').decode('ascii') if topic else "Random Topic"
+        print(f"######################")
+        print(f"Generating Lesson: {safe_topic} ({level}) - {language.upper()}")
+        print(f"######################")
+    except:
+        print("Generating Lesson...")
     
     result = crew.kickoff()
     
