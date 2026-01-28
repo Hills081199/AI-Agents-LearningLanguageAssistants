@@ -16,6 +16,7 @@ interface LessonData {
   topic: string;
   level: string;
   language: string;
+  lesson_plan?: string;
   story: string;
   vocabulary: any[];
   grammar: any[];
@@ -227,6 +228,7 @@ export default function Home() {
             topic: content.topic,
             level: content.level,
             language: content.language,
+            lesson_plan: content.lesson_plan,
             story: content.story,
             vocabulary: content.vocabulary,
             grammar: content.grammar,
@@ -327,7 +329,8 @@ export default function Home() {
         topic: data.topic,
         level: data.level,
         language: data.language || language,
-        story: data.markdown_content,
+        lesson_plan: data.lesson_plan,
+        story: data.story,
         vocabulary: data.vocabulary || [],
         grammar: data.grammar || [],
         quiz: data.quiz || [],
@@ -641,27 +644,42 @@ export default function Home() {
                 htmlContent ? (
                   <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden ring-1 ring-black/[0.02]">
                     <iframe
-                      srcDoc={htmlContent.replace('</body>', '<script>switchTab("lesson-plan");</script></body>')}
+                      srcDoc={htmlContent.replace('</body>', '<script>document.addEventListener("DOMContentLoaded", function() { switchTab("lesson-plan"); });</script></body>')}
                       className="w-full h-[850px] border-none"
                       title="Lesson Objectives"
                     />
                   </div>
                 ) : (
                   <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm animate-in fade-in zoom-in-95 duration-500">
-                    <div className="text-center py-12">
-                      <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <Zap className="w-8 h-8" />
+                    {lessonData?.lesson_plan ? (
+                      <div className="prose prose-slate max-w-none">
+                        <div className="mb-6 pb-6 border-b border-slate-100">
+                          <h2 className="text-3xl font-bold text-slate-900 mb-3">🎯 Lesson Objectives</h2>
+                          <div className="flex gap-2">
+                            <span className="px-3 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold rounded-full">{lessonData?.level}</span>
+                            <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">{languages.find(l => l.code === (lessonData?.language || language))?.name}</span>
+                          </div>
+                        </div>
+                        <div className="whitespace-pre-wrap text-slate-700 leading-relaxed space-y-4">
+                          {lessonData.lesson_plan}
+                        </div>
                       </div>
-                      <h2 className="text-2xl font-bold text-slate-900 mb-2">{lessonData?.topic}</h2>
-                      <div className="flex justify-center gap-2 mb-6">
-                        <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{lessonData?.level}</span>
-                        <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{languages.find(l => l.code === (lessonData?.language || language))?.name}</span>
+                    ) : (
+                      <div className="text-center py-12">
+                        <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                          <Zap className="w-8 h-8" />
+                        </div>
+                        <h2 className="text-2xl font-bold text-slate-900 mb-2">{lessonData?.topic}</h2>
+                        <div className="flex justify-center gap-2 mb-6">
+                          <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{lessonData?.level}</span>
+                          <span className="px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 uppercase">{languages.find(l => l.code === (lessonData?.language || language))?.name}</span>
+                        </div>
+                        <p className="text-slate-500 max-w-lg mx-auto">
+                          In this lesson, you will learn key vocabulary and grammar structures related to "{lessonData?.topic}".
+                          Complete the reading, practice with the quiz, and finish with a writing exercise.
+                        </p>
                       </div>
-                      <p className="text-slate-500 max-w-lg mx-auto">
-                        In this lesson, you will learn key vocabulary and grammar structures related to "{lessonData?.topic}".
-                        Complete the reading, practice with the quiz, and finish with a writing exercise.
-                      </p>
-                    </div>
+                    )}
                   </div>
                 )
               )}
@@ -719,7 +737,7 @@ export default function Home() {
                 htmlContent ? (
                   <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden ring-1 ring-black/[0.02]">
                     <iframe
-                      srcDoc={htmlContent.replace('</body>', '<script>switchTab("story");</script></body>')}
+                      srcDoc={htmlContent.replace('</body>', '<script>document.addEventListener("DOMContentLoaded", function() { switchTab("story"); });</script></body>')}
                       className="w-full h-[850px] border-none"
                       title="Reading"
                     />

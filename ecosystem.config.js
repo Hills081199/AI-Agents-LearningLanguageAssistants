@@ -4,7 +4,7 @@ module.exports = {
             name: 'agent-service',
             cwd: 'd:\\HSKGPT\\ChineseLearning\\agent_service',
             script: 'uvicorn',
-            args: 'api:app --reload --port 8000',
+            args: 'api:app --host 0.0.0.0 --port 8000',
             interpreter: 'python',
             env: {
                 PYTHONUNBUFFERED: '1'
@@ -14,7 +14,7 @@ module.exports = {
             name: 'auth-service',
             cwd: 'd:\\HSKGPT\\ChineseLearning\\auth_service',
             script: 'uvicorn',
-            args: 'api:app --reload --port 8001',
+            args: 'api:app --host 0.0.0.0 --port 8001',
             interpreter: 'python',
             env: {
                 PYTHONUNBUFFERED: '1'

@@ -57,6 +57,7 @@ class LessonResponse(BaseModel):
     topic: str
     level: str
     language: str
+    lesson_plan: Optional[str] = None
     markdown_content: str
     html_content: str
     story: str
@@ -176,6 +177,7 @@ def generate_lesson(request: LessonRequest):
             topic=topic,
             level=request.level,
             language=language,
+            lesson_plan=lesson_data.get("lesson_plan", ""),
             markdown_content=markdown,
             html_content=html_content,
             story=lesson_data.get("story", ""),
