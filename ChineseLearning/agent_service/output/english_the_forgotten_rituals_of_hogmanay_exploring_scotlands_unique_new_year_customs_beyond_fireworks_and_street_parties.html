@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forgotten Rituals of Hogmanay: Exploring Scotland’s Unique New Year Customs Beyond Fireworks and Street Parties - B2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">B2</span>
+            <span class="lang-badge">English</span>
+            <h1>The Forgotten Rituals of Hogmanay: Exploring Scotland’s Unique New Year Customs Beyond Fireworks and Street Parties</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>Lesson Plan Outline</p>
+<p>Topic: The Forgotten Rituals of Hogmanay: Exploring Scotland’s Unique New Year Customs Beyond Fireworks and Street Parties</p>
+<p>Level: B2 (Upper-Intermediate)</p>
+<p>1. Learning Objectives:</p>
+<li>Understand and discuss traditional Hogmanay customs beyond the common celebrations of fireworks and street parties.</li>
+<li>Expand vocabulary related to cultural traditions, rituals, and festive celebrations.</li>
+<li>Develop reading comprehension skills through authentic text about Hogmanay rituals.</li>
+<li>Practice accurate use of complex sentence structures focusing on past simple vs. present perfect and relative clauses to describe events and customs.</li>
+<li>Enhance speaking skills by engaging in discussions and expressing opinions about cultural practices and their significance.</li>
+<p>2. Key Vocabulary (B2 level):</p>
+<li>Hogmanay</li>
+<li>First-footing</li>
+<li>Auld Lang Syne</li>
+<li>Merrymaking</li>
+<li>Bonfire</li>
+<li>Procession</li>
+<li>Tradition</li>
+<li>Ancestral</li>
+<li>Festivities</li>
+<li>Superstition</li>
+<p>3. Grammar Points:</p>
+<p>a) Past Simple vs. Present Perfect</p>
+<li>Use past simple to describe completed events in the past (e.g., “In the past, people celebrated Hogmanay with bonfires.”)</li>
+<li>Use present perfect to describe experiences or actions relevant to the present (e.g., “Scotland has maintained many of its Hogmanay traditions.”)</li>
+<li>Activities: Identify and convert sentences from past simple to present perfect and vice versa related to Hogmanay rituals.</li>
+<p>b) Relative Clauses (Defining and Non-defining)</p>
+<li>Use defining relative clauses to give essential information about Hogmanay customs (e.g., “First-footing is a tradition that involves visiting friends and neighbors after midnight.”)</li>
+<li>Use non-defining relative clauses to add extra information (e.g., “Auld Lang Syne, which is a song sung at midnight, symbolizes friendship and remembrance.”)</li>
+<li>Activities: Create sentences describing Hogmanay rituals using relative clauses, focusing on correct punctuation and meaning.</li>
+<p>Lesson Sequence Suggestion:</p>
+<p>1. Introduction: Brief discussion on New Year’s Eve traditions in students’ countries and what they know about Hogmanay.</p>
+<p>2. Vocabulary Introduction: Present key words with definitions and example sentences.</p>
+<p>3. Reading Activity: Read an authentic article or adapted text about the forgotten Hogmanay rituals.</p>
+<p>4. Comprehension Questions and Vocabulary Practice: Answer questions and match vocabulary to definitions.</p>
+<p>5. Grammar Focus: Explanation and controlled practice of past simple vs. present perfect and relative clauses.</p>
+<p>6. Speaking Activity: In pairs or groups, discuss which Hogmanay rituals seem most interesting and why traditions are important in culture.</p>
+<p>7. Writing Task: Write a short descriptive paragraph or essay about one Hogmanay ritual using target vocabulary and grammar.</p>
+<p>Materials Needed:</p>
+<li>Text about Hogmanay traditions (adapted to B2 reading level)</li>
+<li>Vocabulary and grammar worksheets</li>
+<li>Audio or video clips of Hogmanay celebrations (optional)</li>
+<p>Assessment:</p>
+<li>Informal assessment through participation in discussion and accuracy in grammar exercises.</li>
+<li>Written output assessed for vocabulary use and correct grammar application.</li>
+<p>This structured lesson plan will meet B2 learners’ needs by balancing cultural knowledge with language development in vocabulary, grammar, reading, speaking, and writing skills.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>Hogmanay, Scotland’s unique New Year celebration, is known worldwide for its vibrant fireworks and lively street parties, especially in cities like Edinburgh. However, many traditional rituals associated with Hogmanay have been forgotten or overshadowed by modern festivities. These customs, which have been practiced for centuries, offer a fascinating insight into Scotland’s rich cultural heritage. Exploring these rituals helps us appreciate Hogmanay beyond the usual loud celebrations.</p>
+<p>One of the most important Hogmanay traditions is *first-footing*. This custom involves being the first person to cross a friend’s or neighbour’s threshold after midnight. According to superstition, the kind of person who arrives first influences the luck of the household for the new year. Traditionally, a tall, dark-haired male bearing gifts such as coal, shortbread, or whisky is considered to bring good fortune. This practice has been maintained in many Scottish communities and reveals the close ties between neighbours during Hogmanay.</p>
+<p>Another lesser-known ritual is the *saining*, which is a blessing ceremony intended to protect the home and family from harm in the year ahead. In the past, families would sprinkle ‘magic’ water from the river, use burning juniper branches to fumigate each room, and recite protective prayers. Although saining is not as common today, some rural areas still observe it, highlighting the ancestral significance Hogmanay has beyond mere celebration.</p>
+<p>Additionally, Hogmanay has historically included *processions* called "the Hawick Common Riding," where riders parade horses through town to mark an old victory and protect communal lands. This tradition, which takes place in the Borders region, combines merrymaking with a strong sense of community identity. It emphasises that Hogmanay was also a time for remembering local history and showing respect for the past.</p>
+<p>One cannot discuss Hogmanay without mentioning the famous song *Auld Lang Syne*, which is sung at the stroke of midnight across Scotland and many English-speaking countries. This song, which was written by Robert Burns, is not only a festive tune but symbolizes friendship and the remembrance of times gone by. It serves as a collective moment of reflection for people as they welcome the new year.</p>
+<p>Scotland has maintained many of these unique Hogmanay customs despite the influence of modern global New Year celebrations. While fireworks and parties draw large crowds, the forgotten rituals remind us that festivals often carry deep cultural and historical meaning. By understanding and respecting these ancient practices, people can connect more deeply with Scotland’s heritage and the spirit of renewal that Hogmanay represents.</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Key Expressions</summary>
+            <div class="story-expressions">
+                <li>**Hogmanay**: The Scottish word for New Year’s Eve and the celebration surrounding it.</li>
+<li>**First-footing**: A Hogmanay tradition where the first visitor to a home after midnight brings gifts and good luck.</li>
+<li>**Superstition**: A widely held but irrational belief, often relating to luck or the supernatural.</li>
+<li>**Saining**: A traditional Scottish blessing ceremony to protect people and homes from harm.</li>
+<li>**Merrymaking**: The act of enjoying oneself with lively festivities or celebrations.</li>
+<li>**Procession**: A group of people moving forward in an organized way as part of a ceremony.</li>
+<li>**Ancestral**: Relating to family members from the past or earlier generations.</li>
+<li>**Auld Lang Syne**: A traditional Scottish song sung at midnight on New Year’s Eve, meaning “old long since” or “times gone by.”</li>
+<li>**Threshold**: The entrance or doorway of a building.</li>
+<li>**Collective moment**: An event shared by a group of people together.</li>
+<li>**Heritage**: The traditions, achievements, beliefs, etc., that are part of the history of a group or nation.</li>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (16 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">Hogmanay</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The Scottish word for New Year’s Eve and the celebration surrounding it.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Hogmanay is celebrated with unique Scottish customs that date back centuries.</span>
+                    <button onclick="speak('Hogmanay is celebrated with unique Scottish customs that date back centuries.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Hogmanay is the Scottish celebration of New Year’s Eve.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Hogmanay')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">First-footing</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A Hogmanay tradition where the first visitor to a home after midnight brings gifts and good luck.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">First-footing involves being the first person to cross a neighbour’s threshold after midnight.</span>
+                    <button onclick="speak('First-footing involves being the first person to cross a neighbour’s threshold after midnight.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>First-footing is when the first visitor after midnight brings gifts for good luck.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('First-footing')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Superstition</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A widely held but irrational belief, often relating to luck or the supernatural.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many people have superstitions about what will bring good fortune in the New Year.</span>
+                    <button onclick="speak('Many people have superstitions about what will bring good fortune in the New Year.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Superstition refers to beliefs that aren't based on reason but on luck.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Superstition')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Saining</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A traditional Scottish blessing ceremony to protect people and homes from harm.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">During saining, families sprinkle 'magic' water and burn juniper branches.</span>
+                    <button onclick="speak('During saining, families sprinkle 'magic' water and burn juniper branches.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Saining is a protective blessing ritual in Scottish culture.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Saining')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Merrymaking</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The act of enjoying oneself with lively festivities or celebrations.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The procession was full of merrymaking as people danced and sang through the streets.</span>
+                    <button onclick="speak('The procession was full of merrymaking as people danced and sang through the streets.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Merrymaking means having fun during celebrations.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Merrymaking')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Procession</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A group of people moving forward in an organized way as part of a ceremony.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The Hawick Common Riding procession marked an old victory in the Borders region.</span>
+                    <button onclick="speak('The Hawick Common Riding procession marked an old victory in the Borders region.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>A procession is a ceremonial march or parade.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Procession')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Ancestral</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Relating to family members from the past or earlier generations.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The ancestral significance of Hogmanay rituals connects modern Scots with their heritage.</span>
+                    <button onclick="speak('The ancestral significance of Hogmanay rituals connects modern Scots with their heritage.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Ancestral means connected to one’s forefathers.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Ancestral')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Auld Lang Syne</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A traditional Scottish song sung at midnight on New Year’s Eve, meaning 'old long since' or 'times gone by.'</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Everyone sang Auld Lang Syne as the clock struck midnight.</span>
+                    <button onclick="speak('Everyone sang Auld Lang Syne as the clock struck midnight.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Auld Lang Syne is a song symbolizing memories and friendship.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Auld Lang Syne')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Threshold</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The entrance or doorway of a building.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">First-footing involves crossing the neighbour’s threshold just after midnight.</span>
+                    <button onclick="speak('First-footing involves crossing the neighbour’s threshold just after midnight.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Threshold is the doorway or entry point.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Threshold')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Collective moment</span>
+            <div class="vocab-info">
+                <span class="pos">noun phrase</span> <span class="meaning">An event shared by a group of people together.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Singing Auld Lang Syne creates a collective moment of reflection.</span>
+                    <button onclick="speak('Singing Auld Lang Syne creates a collective moment of reflection.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>A collective moment is a shared experience by many people.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Collective moment')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Heritage</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">The traditions, achievements, beliefs, etc., that are part of the history of a group or nation.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The ancient rituals of Hogmanay are an important part of Scotland’s cultural heritage.</span>
+                    <button onclick="speak('The ancient rituals of Hogmanay are an important part of Scotland’s cultural heritage.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Heritage means the cultural history passed through generations.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Heritage')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Fumigate</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To use smoke or fumes to purify or disinfect a place.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Burning juniper branches was used to fumigate rooms during the saining ceremony.</span>
+                    <button onclick="speak('Burning juniper branches was used to fumigate rooms during the saining ceremony.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Fumigate means to clean a space using smoke.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Fumigate')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Ritual</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">A set of actions performed regularly and in a specific order, often with cultural or religious significance.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Hogmanay rituals reveal a rich cultural heritage beyond the fireworks.</span>
+                    <button onclick="speak('Hogmanay rituals reveal a rich cultural heritage beyond the fireworks.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>A ritual is a ceremonial practice done repeatedly.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Ritual')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Fortune</span>
+            <div class="vocab-info">
+                <span class="pos">noun</span> <span class="meaning">Good luck or wealth.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">The gifts brought during first-footing are believed to bring fortune to the household.</span>
+                    <button onclick="speak('The gifts brought during first-footing are believed to bring fortune to the household.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Fortune means good luck or prosperity.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Fortune')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Vibrant</span>
+            <div class="vocab-info">
+                <span class="pos">adjective</span> <span class="meaning">Full of energy and life; bright and striking.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Edinburgh’s Hogmanay celebration is known for its vibrant fireworks display.</span>
+                    <button onclick="speak('Edinburgh’s Hogmanay celebration is known for its vibrant fireworks display.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Vibrant means lively and colorful.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Vibrant')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">Overshadow</span>
+            <div class="vocab-info">
+                <span class="pos">verb</span> <span class="meaning">To appear more important or noticeable than something else.</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">Many traditional Hogmanay rituals have been overshadowed by modern festivities.</span>
+                    <button onclick="speak('Many traditional Hogmanay rituals have been overshadowed by modern festivities.')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Overshadow means to dominate or hide something less noticeable.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('Overshadow')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Past Simple vs. Present Perfect</div>
+                <div class="grammar-explanation">The past simple is used to describe specific completed events in the past, often with a clear time reference. The present perfect describes actions or experiences relevant to the present, without specifying when they happened.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">Past simple: 'In the past, people celebrated Hogmanay with bonfires.' Present perfect: 'Scotland has maintained many of its Hogmanay traditions.'</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Defining Relative Clauses</div>
+                <div class="grammar-explanation">Used to give essential information about the noun they modify, without which the sentence’s meaning would be incomplete. No commas are used.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">'First-footing is a tradition that involves visiting friends and neighbors after midnight.' Here, 'that involves visiting friends and neighbors after midnight' defines the tradition.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Non-defining Relative Clauses</div>
+                <div class="grammar-explanation">Used to add extra, non-essential information about the noun. These clauses are separated by commas.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">'Auld Lang Syne, which is a song sung at midnight, symbolizes friendship and remembrance.' The clause 'which is a song sung at midnight' provides additional information.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Use of Modal Verbs for Tradition and Custom</div>
+                <div class="grammar-explanation">Modal verbs like 'can,' 'may,' 'must,' or 'should' express necessity, possibility, or tradition in cultural contexts.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">'A tall, dark-haired male bearing gifts is considered to bring good fortune.' The modal form 'is considered' shows customary belief.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">Present Passive Voice in Describing Rituals</div>
+                <div class="grammar-explanation">Passive voice is often used to describe cultural practices or rituals to focus on the action rather than the doer.</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">'Families would sprinkle magic water from the river and use burning juniper branches to fumigate rooms.' The action is emphasized rather than who performs it.</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>

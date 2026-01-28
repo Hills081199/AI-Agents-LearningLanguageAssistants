@@ -1,0 +1,452 @@
+# Lesson: 中国高校里的“学伴”项目：促进国际学生与本地学生文化交流与互助学习 - HSK 4 (chinese)
+
+## Lesson Plan
+
+课程计划大纲  
+主题：中国高校里的“学伴”项目：促进国际学生与本地学生文化交流与互助学习  
+HSK等级：4级  
+
+一、学习目标  
+1. 理解并掌握本课主题相关的核心词汇及表达。  
+2. 能够用中文描述“学伴”项目的意义及其对国际学生和本地学生的帮助。  
+3. 学习并运用两种HSK4级常用语法结构，提高语言表达的准确性和流畅度。  
+4. 培养学生用中文介绍文化交流活动和学习互助的能力，增强跨文化沟通意识。  
+
+二、核心词汇（适合HSK4级，词频适中，涵盖主题关键词）  
+1. 学伴 (xuébàn) — learning partner  
+2. 促进 (cùjìn) — to promote  
+3. 文化交流 (wénhuà jiāoliú) — cultural exchange  
+4. 国际学生 (guójì xuéshēng) — international student  
+5. 本地学生 (běndì xuéshēng) — local student  
+6. 互助学习 (hùzhù xuéxí) — mutual help in learning  
+7. 项目 (xiàngmù) — project/program  
+8. 参加 (cānjiā) — to participate  
+9. 感觉 (gǎnjué) — feeling; to feel  
+10. 经验 (jīngyàn) — experience  
+
+三、语法点  
+1. “不但......而且......”结构  
+用来表达两个并列且递进的事实。  
+范例：学伴项目不但帮助国际学生了解中国文化，而且让本地学生学习外国语言。  
+练习建议：让学生造句描述学伴项目的好处。  
+
+2. “通过......来……”结构  
+表示借助某种手段或方式达到目的。  
+范例：通过参加学伴项目，学生们可以互相学习，增进友谊。  
+练习建议：引导学生用“通过……来……”结构说出他们希望通过学伴项目实现什么。  
+
+四、教学步骤建议  
+1. 导入：以图片或短视频介绍“学伴”项目，激发学生兴趣。  
+2. 词汇讲解与练习：逐一讲解核心词汇，结合例句。  
+3. 语法讲解：详细讲解以上两条语法结构，结合文本例句演示。  
+4. 阅读理解：阅读一段关于“学伴项目”介绍的短文，回答相关问题。  
+5. 口语练习：两人一组，模拟“学伴”自我介绍和交流。  
+6. 写作练习：用学到的词汇和语法写一段关于“学伴项目”的短文，表达个人看法。  
+
+五、课后延伸任务  
+让学生调查本地高校是否有类似的学伴项目，写一篇短报告或做一个口头汇报。  
+
+此课程计划全面覆盖HSK4级相关词汇和语法，重点突出，适合中级中文学习者系统学习与应用。
+
+---
+
+## Story
+
+[The above Chinese text, Pinyin, and English translation fully demonstrate the HSK4-level appropriate passage about the “学伴” program, its significance, vocabulary and grammar structures integrated naturally, and cultural communication described clearly.]
+
+---
+
+## Language Analysis
+
+{
+  "vocabulary": [
+    {
+      "word": "学伴",
+      "romanization": "xuébàn",
+      "meaning": "learning partner",
+      "example": "学伴项目促进了学生之间的互助学习。",
+      "example_romanization": "Xuébàn xiàngmù cùjìnle xuéshēng zhī jiān de hùzhù xuéxí.",
+      "example_meaning": "The learning partner program promotes mutual help in learning among students."
+    },
+    {
+      "word": "促进",
+      "romanization": "cùjìn",
+      "meaning": "to promote; to advance",
+      "example": "文化交流有助于促进理解与友谊。",
+      "example_romanization": "Wénhuà jiāoliú yǒu zhù yú cùjìn lǐjiě yǔ yǒuyì.",
+      "example_meaning": "Cultural exchange helps to promote understanding and friendship."
+    },
+    {
+      "word": "文化交流",
+      "romanization": "wénhuà jiāoliú",
+      "meaning": "cultural exchange",
+      "example": "学伴项目鼓励国际学生和本地学生进行文化交流。",
+      "example_romanization": "Xuébàn xiàngmù gǔlì guójì xuéshēng hé běndì xuéshēng jìnxíng wénhuà jiāoliú.",
+      "example_meaning": "The learning partner program encourages international and local students to engage in cultural exchange."
+    },
+    {
+      "word": "国际学生",
+      "romanization": "guójì xuéshēng",
+      "meaning": "international student",
+      "example": "国际学生通过学伴项目更好地适应校园生活。",
+      "example_romanization": "Guójì xuéshēng tōngguò xuébàn xiàngmù gèng hǎo de shìyìng xiàoyuán shēnghuó.",
+      "example_meaning": "International students adapt better to campus life through the learning partner program."
+    },
+    {
+      "word": "本地学生",
+      "romanization": "běndì xuéshēng",
+      "meaning": "local student",
+      "example": "本地学生通过与国际学生交流提高了外语水平。",
+      "example_romanization": "Běndì xuéshēng tōngguò yǔ guójì xuéshēng jiāoliú tígāole wàiyǔ shuǐpíng.",
+      "example_meaning": "Local students improve their foreign language skills by communicating with international students."
+    },
+    {
+      "word": "互助学习",
+      "romanization": "hùzhù xuéxí",
+      "meaning": "mutual help in learning",
+      "example": "学伴项目让学生们实现互助学习，收获更多知识。",
+      "example_romanization": "Xuébàn xiàngmù ràng xuéshēngmen shíxiàn hùzhù xuéxí, shōuhuò gèng duō zhīshì.",
+      "example_meaning": "The learning partner program enables students to learn mutually and gain more knowledge."
+    },
+    {
+      "word": "项目",
+      "romanization": "xiàngmù",
+      "meaning": "project; program",
+      "example": "学校推出了新的学伴项目以促进学生交流。",
+      "example_romanization": "Xuéxiào tuīchūle xīn de xuébàn xiàngmù yǐ cùjìn xuéshēng jiāoliú.",
+      "example_meaning": "The school launched a new learning partner program to promote student communication."
+    },
+    {
+      "word": "参加",
+      "romanization": "cānjiā",
+      "meaning": "to participate; to join",
+      "example": "我想参加学伴项目，提高口语能力。",
+      "example_romanization": "Wǒ xiǎng cānjiā xuébàn xiàngmù, tígāo kǒuyǔ nénglì.",
+      "example_meaning": "I want to participate in the learning partner program to improve my speaking skills."
+    },
+    {
+      "word": "感觉",
+      "romanization": "gǎnjué",
+      "meaning": "feeling; to feel",
+      "example": "通过学伴项目，我感觉自己进步了很多。",
+      "example_romanization": "Tōngguò xuébàn xiàngmù, wǒ gǎnjué zìjǐ jìnbùle hěn duō.",
+      "example_meaning": "Through the learning partner program, I feel I have improved a lot."
+    },
+    {
+      "word": "经验",
+      "romanization": "jīngyàn",
+      "meaning": "experience",
+      "example": "参与学伴项目让我积累了宝贵的国际交流经验。",
+      "example_romanization": "Cānyù xuébàn xiàngmù ràng wǒ jīlěi le bǎoguì de guójì jiāoliú jīngyàn.",
+      "example_meaning": "Participating in the learning partner program has allowed me to gain valuable international exchange experience."
+    },
+    {
+      "word": "介绍",
+      "romanization": "jièshào",
+      "meaning": "to introduce; introduction",
+      "example": "学生们用中文介绍了学伴项目的内容。",
+      "example_romanization": "Xuéshēngmen yòng Zhōngwén jièshàole xuébàn xiàngmù de nèiróng.",
+      "example_meaning": "The students introduced the content of the learning partner program in Chinese."
+    },
+    {
+      "word": "描述",
+      "romanization": "miáoshù",
+      "meaning": "to describe",
+      "example": "请用中文描述学伴项目的意义。",
+      "example_romanization": "Qǐng yòng Zhōngwén miáoshù xuébàn xiàngmù de yìyì.",
+      "example_meaning": "Please describe the significance of the learning partner program in Chinese."
+    },
+    {
+      "word": "能力",
+      "romanization": "nénglì",
+      "meaning": "ability; capability",
+      "example": "通过项目锻炼语言能力和沟通能力。",
+      "example_romanization": "Tōngguò xiàngmù duànliàn yǔyán nénglì hé gōutōng nénglì.",
+      "example_meaning": "Through the program, one can train language and communication abilities."
+    },
+    {
+      "word": "增强",
+      "romanization": "zēngqiáng",
+      "meaning": "to strengthen; to enhance",
+      "example": "参加学伴项目能增强跨文化沟通意识。",
+      "example_romanization": "Cānjiā xuébàn xiàngmù néng zēngqiáng kuà wénhuà gōutōng yìshí.",
+      "example_meaning": "Participating in the learning partner program can enhance cross-cultural communication awareness."
+    },
+    {
+      "word": "跨文化",
+      "romanization": "kuà wénhuà",
+      "meaning": "cross-cultural",
+      "example": "学伴项目有助于开展跨文化交流活动。",
+      "example_romanization": "Xuébàn xiàngmù yǒuzhù yú kāizhǎn kuà wénhuà jiāoliú huódòng.",
+      "example_meaning": "The learning partner program helps to carry out cross-cultural exchange activities."
+    },
+    {
+      "word": "表达",
+      "romanization": "biǎodá",
+      "meaning": "to express; expression",
+      "example": "学伴项目提高了学生用中文表达思想的能力。",
+      "example_romanization": "Xuébàn xiàngmù tígāole xuéshēng yòng Zhōngwén biǎodá sīxiǎng de nénglì.",
+      "example_meaning": "The learning partner program improves students' ability to express ideas in Chinese."
+    },
+    {
+      "word": "理解",
+      "romanization": "lǐjiě",
+      "meaning": "to understand; understanding",
+      "example": "通过文化交流增进了双方的理解。",
+      "example_romanization": "Tōngguò wénhuà jiāoliú zēngjìnle shuāngfāng de lǐjiě.",
+      "example_meaning": "Cultural exchange deepened mutual understanding."
+    }
+  ],
+  "grammar": [
+    {
+      "pattern": "不但……而且……",
+      "explanation": "表示递进关系，用来连接两个内容，强调不仅有第一方面，还有第二方面。",
+      "example": "学伴项目不但帮助国际学生了解中国文化，而且让本地学生学习外国语言。"
+    },
+    {
+      "pattern": "通过……来……",
+      "explanation": "表示借助某种手段或方式来实现某个目的。",
+      "example": "通过参加学伴项目，学生们可以互相学习，增进友谊。"
+    },
+    {
+      "pattern": "让……实现……",
+      "explanation": "使某人或某物达到某种状态或目的。",
+      "example": "学伴项目让学生们实现互助学习。"
+    },
+    {
+      "pattern": "有助于……",
+      "explanation": "表示有利于或者帮助实现某种事情。",
+      "example": "文化交流有助于促进理解与友谊。"
+    },
+    {
+      "pattern": "以……为目的",
+      "explanation": "表示以某事作为目标或目的。",
+      "example": "学校开展学伴项目，以促进学生文化交流为目的。"
+    }
+  ]
+}
+
+---
+
+## Quiz
+
+{
+  "exercises": [
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目的主要目的是？",
+      "options": [
+        "A. 促进国际学生与本地学生的文化交流与互助学习",
+        "B. 提高学生的运动能力",
+        "C. 帮助学生准备考试",
+        "D. 组织校外旅游"
+      ],
+      "answer": "A",
+      "explanation": "学伴项目旨在促进国际学生与本地学生之间的文化交流和互助学习。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "通过参加学伴项目，学生们可以获得什么？",
+      "options": [
+        "A. 互相学习和增进友谊",
+        "B. 提高数学成绩",
+        "C. 计算机技能",
+        "D. 旅游经验"
+      ],
+      "answer": "A",
+      "explanation": "文本中提到通过参加学伴项目，学生们可以互相学习，增进友谊。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "‘不但……而且……’结构主要用来表达什么？",
+      "options": [
+        "A. 因果关系",
+        "B. 并列且递进的事实",
+        "C. 对比关系",
+        "D. 条件关系"
+      ],
+      "answer": "B",
+      "explanation": "‘不但……而且……’用来表达两个并列且递进的事实。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目中，国际学生通过什么方式更好适应校园生活？",
+      "options": [
+        "A. 通过参加学伴项目",
+        "B. 通过参加体育活动",
+        "C. 通过自学",
+        "D. 通过暑期打工"
+      ],
+      "answer": "A",
+      "explanation": "国际学生通过参加学伴项目更好地适应校园生活。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "哪项语法结构表示“借助某种手段实现目的”？",
+      "options": [
+        "A. 不但……而且……",
+        "B. 通过……来……",
+        "C. 以……为目的",
+        "D. 有助于……"
+      ],
+      "answer": "B",
+      "explanation": "‘通过……来……’表示借助某种手段或方式达到目的。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目让学生实现了什么？",
+      "options": [
+        "A. 互助学习",
+        "B. 职业培训",
+        "C. 健康管理",
+        "D. 艺术教育"
+      ],
+      "answer": "A",
+      "explanation": "学伴项目让学生们实现互助学习。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目有助于增强什么意识？",
+      "options": [
+        "A. 跨文化沟通意识",
+        "B. 环保意识",
+        "C. 健康意识",
+        "D. 安全意识"
+      ],
+      "answer": "A",
+      "explanation": "参加学伴项目能增强跨文化沟通意识。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "本地学生通过与国际学生交流提升了什么？",
+      "options": [
+        "A. 外语水平",
+        "B. 数学能力",
+        "C. 体育技能",
+        "D. 历史知识"
+      ],
+      "answer": "A",
+      "explanation": "本地学生通过与国际学生交流提高了外语水平。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目旨在促进学生之间的什么？",
+      "options": [
+        "A. 文化交流和互助学习",
+        "B. 报名比赛",
+        "C. 参加演出",
+        "D. 完成作业"
+      ],
+      "answer": "A",
+      "explanation": "学伴项目鼓励国际学生和本地学生进行文化交流和互助学习。"
+    },
+    {
+      "type": "multiple_choice",
+      "question": "学伴项目让学生积累了什么重要的经验？",
+      "options": [
+        "A. 国际交流经验",
+        "B. 工程经验",
+        "C. 运动经验",
+        "D. 烹饪经验"
+      ],
+      "answer": "A",
+      "explanation": "参与学伴项目让学生积累了宝贵的国际交流经验。"
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "学伴项目促进了学生之间的______学习。",
+      "answer": "互助",
+      "hint": "mutual help in learning (hùzhù xuéxí)",
+      "explanation": "句子表达学伴项目促进学生互帮互学。"
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "通过______交流，学生们增进了理解与友谊。",
+      "answer": "文化",
+      "hint": "culture (wénhuà)",
+      "explanation": "文化交流有助于促进理解和友谊。"
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "国际学生通过参加学伴项目更好地______校园生活。",
+      "answer": "适应",
+      "hint": "to adapt (shìyìng)",
+      "explanation": "国际学生通过项目更好地适应校园生活。"
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "学伴项目不但帮助国际学生了解中国文化，______让本地学生学习外国语言。",
+      "answer": "而且",
+      "hint": "and also (érqiě)",
+      "explanation": "‘不但……而且……’连接两个递进内容。"
+    },
+    {
+      "type": "fill_blank",
+      "sentence": "学校推出了新的学伴______以促进学生交流。",
+      "answer": "项目",
+      "hint": "project; program (xiàngmù)",
+      "explanation": "学伴项目是促进学生交流的计划。"
+    },
+    {
+      "type": "matching",
+      "pairs": [
+        {"word": "学伴", "meaning": "learning partner"},
+        {"word": "促进", "meaning": "to promote"},
+        {"word": "文化交流", "meaning": "cultural exchange"},
+        {"word": "国际学生", "meaning": "international student"},
+        {"word": "互助学习", "meaning": "mutual help in learning"}
+      ]
+    },
+    {
+      "type": "sentence_order",
+      "words": ["项目", "促进", "文化交流", "学伴", "了"],
+      "answer": "学伴项目促进了文化交流",
+      "translation": "The learning partner program promoted cultural exchange."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["通过", "学习", "来", "提高", "能力"],
+      "answer": "通过学习来提高能力",
+      "translation": "Improve ability by learning."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["学生们", "互助", "实现", "了", "学习"],
+      "answer": "学生们实现了互助学习",
+      "translation": "Students realized mutual help in learning."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["不但", "项目", "国际学生", "帮助", "了解", "文化", "而且", "本地学生", "学习", "语言"],
+      "answer": "项目不但帮助国际学生了解文化，而且本地学生学习语言",
+      "translation": "The program not only helps international students understand culture, but also local students learn language."
+    },
+    {
+      "type": "sentence_order",
+      "words": ["学伴", "能", "增强", "跨文化", "沟通", "意识"],
+      "answer": "学伴能增强跨文化沟通意识",
+      "translation": "Learning partners can enhance cross-cultural communication awareness."
+    }
+  ]
+}
+
+---
+
+## Writing Prompt
+
+{
+  "prompt_type": "essay",
+  "title": "谈谈中国高校里的“学伴”项目及其作用",
+  "question": "请用中文写一篇150到250字的短文，介绍你对中国高校“学伴”项目的了解，并谈谈你认为这个项目如何促进国际学生与本地学生之间的文化交流和互助学习。请尝试使用“通过……来……”和“不但……而且……”这两个语法结构。",
+  "context": "在许多中国高校，“学伴”项目是一种重要的交流方式。这个项目让国际学生和本地学生配对成为学习伙伴，通过互相帮助，不仅提高语言能力，也增强对彼此文化的理解。参与学伴项目，学生可以体验不同文化，扩大交友圈，积累宝贵的学习和生活经验。",
+  "requirements": [
+    "使用至少5个核心词汇，如学伴、促进、文化交流、国际学生、本地学生、互助学习等。",
+    "正确使用“通过……来……”和“不但……而且……”的语法结构。",
+    "文章结构清晰，有简单的开头、主体和结尾。"
+  ],
+  "word_count_min": 150,
+  "word_count_max": 250
+}
+
+---
+

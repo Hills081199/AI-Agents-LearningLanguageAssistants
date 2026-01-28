@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>長江三峽的歷史與自然奇觀探訪 - HSK 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;5606&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: #1f2937;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 48px 32px;
+            min-height: 100vh;
+        }
+        .container { max-width: 880px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-right: 8px;
+        }
+        .lang-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            position: relative;
+            transition: all 0.2s;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: #3b82f6;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #3b82f6;
+            background: white;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 999px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Lesson Plan specific */
+        .lesson-plan-content {
+            line-height: 2;
+        }
+        .lesson-plan-content h2 {
+            color: #1e293b;
+            margin: 24px 0 12px 0;
+            font-size: 1.4rem;
+        }
+        .lesson-plan-content h3 {
+            color: #334155;
+            margin: 18px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .lesson-plan-content h4 {
+            color: #475569;
+            margin: 14px 0 8px 0;
+            font-size: 1.05rem;
+        }
+        .lesson-plan-content p {
+            margin: 8px 0;
+            color: #64748b;
+        }
+        .lesson-plan-content li {
+            margin-left: 24px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .lesson-plan-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        /* Story styles */
+        .story-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border-radius: 14px;
+        }
+        .story-section.main {
+            background: linear-gradient(to bottom right, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+        .story-section.romanization {
+            background: linear-gradient(to bottom right, #fef3c7, #fef9e7);
+            border: 1px solid #fde047;
+        }
+        .story-section.translation {
+            background: linear-gradient(to bottom right, #dbeafe, #eff6ff);
+            border: 1px solid #93c5fd;
+        }
+        .story-section.expressions {
+            background: linear-gradient(to bottom right, #e0e7ff, #f5f3ff);
+            border: 1px solid #c7d2fe;
+        }
+        .story-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            opacity: 0.7;
+        }
+        .story-text {
+            line-height: 2.2;
+            font-size: 1.05rem;
+        }
+        .story-section.main .story-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .story-section.romanization .story-text {
+            color: #92400e;
+            font-style: italic;
+        }
+        .story-section.translation .story-text {
+            color: #1e40af;
+        }
+        .story-section.expressions .story-text {
+            color: #4c1d95;
+        }
+        
+        /* Vocabulary styles */
+        .vocab-row {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            gap: 18px;
+            transition: background 0.15s;
+        }
+        .vocab-row:hover {
+            background: #f8fafc;
+        }
+        .vocab-row:last-child {
+            border-bottom: none;
+        }
+        .word {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 140px;
+        }
+        .vocab-info {
+            flex: 1;
+        }
+        .romanization {
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .pos {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-style: italic;
+            padding: 2px 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .meaning {
+            color: #475569;
+            font-size: 1rem;
+        }
+        .tts-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .tts-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            transform: scale(1.1);
+        }
+        
+        /* Grammar styles */
+        .grammar-card {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .grammar-card:hover {
+            transform: translateY(-2px);
+        }
+        .grammar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+        }
+        .grammar-body {
+            padding: 28px 24px;
+        }
+        .grammar-pattern {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            letter-spacing: -0.02em;
+        }
+        .grammar-explanation {
+            color: #64748b;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .grammar-example-box {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 18px 20px;
+            border-left: 4px solid #8b5cf6;
+        }
+        .grammar-example-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+        .grammar-example-content {
+            font-size: 1.05rem;
+            color: #334155;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px 0 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        function speak(text) {
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'zh-CN';
+            u.rate = 0.85;
+            speechSynthesis.speak(u);
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Expose function globally
+        window.switchTab = switchTab;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">HSK 4</span>
+            <span class="lang-badge">Chinese</span>
+            <h1>長江三峽的歷史與自然奇觀探訪</h1>
+        </div>
+        
+        <div class="tab-nav" style="display: none;">
+             <!-- Hidden tab nav, controlled by parent -->
+        </div>
+        
+        <!-- Lesson Plan Tab -->
+        <div id="lesson-plan" class="tab-content active">
+            <div class="section">
+                <div class="section-title">🎯 Lesson Objectives</div>
+                <div class="lesson-plan-content">
+                    <p>課程計劃大綱：長江三峽的歷史與自然奇觀探訪（HSK 4）</p>
+<p>一、學習目標</p>
+<p>1. 理解長江三峽的歷史背景及其在中國文化中的重要性。</p>
+<p>2. 認識長江三峽的主要自然景觀及其特色。</p>
+<p>3. 增強描述自然景觀和歷史事件的能力。</p>
+<p>4. 掌握與旅遊和地理相關的詞彙及Hsk 4級語法結構，能夠用中文流利表達旅遊見聞。</p>
+<p>二、重點詞彙</p>
+<p>1. 長江 (Chángjiāng) — Yangtze River</p>
+<p>2. 三峽 (Sānxiá) — Three Gorges</p>
+<p>3. 壯觀 (zhuàngguān) — magnificent, spectacular</p>
+<p>4. 歷史 (lìshǐ) — history</p>
+<p>5. 峽谷 (xiágǔ) — gorge</p>
+<p>6. 水壩 (shuǐbà) — dam</p>
+<p>7. 旅遊 (lǚyóu) — tourism, travel</p>
+<p>8. 風景區 (fēngjǐngqū) — scenic area</p>
+<p>9. 自然資源 (zìrán zīyuán) — natural resources</p>
+<p>10. 文化遺產 (wénhuà yíchǎn) — cultural heritage</p>
+<p>三、語法點</p>
+<p>1. 被字句（被動語態）</p>
+<li>用於描述長江三峽受到的影響，如「三峽大壩被建造後，水位改變了很多。」</li>
+<li>練習如何使用被字句表達事件的被動發生。</li>
+<p>2. 比較級句型 「比……更……」</p>
+<li>用於比較長江三峽的不同部分或與其他景點的差異，如「三峽的風景比我想像的更壯觀。」</li>
+<li>練習使用比較級句型描述地理風貌和旅遊體驗。</li>
+<p>四、課程結構建議</p>
+<p>1. 導入（5分鐘）：介紹長江三峽的地理位置及重要性，播放相關景色短片引發興趣。</p>
+<p>2. 詞彙教學（15分鐘）：講解重點詞彙並用圖片、例句輔助記憶。</p>
+<p>3. 閱讀理解（20分鐘）：一篇關於長江三峽歷史與自然奇觀的短文，針對詞彙及語法點進行討論。</p>
+<p>4. 語法練習（15分鐘）：製作被字句和比較句型的造句練習，並與同學交流使用。</p>
+<p>5. 口語活動（20分鐘）：模擬導遊解說長江三峽的特色，鼓勵學生用新學語法和詞彙描述。</p>
+<p>6. 小結與作業（5分鐘）：回顧重點內容，布置寫一段描述長江三峽旅遊體驗的短文。</p>
+<p>此課程設計結合歷史文化和自然風光，緊扣HSK 4級學生語言能力，兼具知識性和實用性，能有效提升學生中文綜合應用能力。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Tab (Combined Reading, Vocab, Grammar) -->
+        <div id="story" class="tab-content">
+            <div class="section">
+                <div class="section-title">📖 Reading Passage</div>
+                
+    <div class="story-block">
+        <div class="story-main">
+            <p>长江三峡是中国最著名的自然风景区之一，位于长江的中上游地带，横跨湖北省和重庆市。三峡由瞿塘峡、巫峡和西陵峡三部分组成，全长约二百多公里。这里不仅有壮观的峡谷风光，还蕴含着丰富的历史文化，是中国的重要文化遗产。</p>
+<p>三峡以其独特的自然景观吸引了无数游客。峡谷两岸高山耸立，峡谷深邃而险峻，让人感到大自然的壮丽和力量。尤其是巫峡，两岸悬崖峭壁如刀削斧劈，云雾缭绕，风景比我想象的更美，更神秘。除了自然美景，长江三峡还是历史上许多重要事件的发生地，比如曾经的战役和古代文化交流。因此，三峡被誉为文化和历史的交汇点。</p>
+<p>然而，三峡大坝的建造改变了峡谷的水位和生态环境。大坝建成后，河水被拦截形成高水位，使得航运变得更加方便，同时也保护了沿岸城市免受洪水灾害的影响。但大坝修建过程中，许多古老的遗址和村庄被淹没，一部分自然资源也受到了影响。这体现了现代发展和环境保护之间的矛盾。</p>
+<p>在旅游方面，三峡风景区提供了丰富的活动和体验。游客可以乘坐游船，沿江而下，欣赏两岸的峭壁和古树。船上导游通常会介绍三峡的历史故事和地理知识，帮助游客更好地了解这片神奇的土地。此外，附近还有许多博物馆和文化展览，展示三峡地区的民俗风情和传统工艺。</p>
+<p>总体来说，长江三峡是一个集历史文化和自然美景于一体的地方。与其他旅游景点相比，这里的风景更加壮观，历史更加悠久。虽然现代的开发带来了变化，但三峡依然保持着它独特的魅力，等待着更多游客来探访和感受。对于学习中文的朋友来说，了解三峡不仅能提升语言能力，也能加深对中国文化和自然的认识。</p>
+        </div>
+    </div>
+    
+        <details class="story-details">
+            <summary>Show Pinyin</summary>
+            <div class="story-romanization">
+                <p>Chángjiāng Sānxiá shì Zhōngguó zuì zhùmíng de zìrán fēngjǐngqū zhī yī, wèiyú Chángjiāng de zhōng shàngyóu dìdài, héngkuà Húběi shěng hé Chóngqìng shì. Sānxiá yóu Qútáng Xiá, Wū Xiá hé Xīlíng Xiá sān bùfèn zǔchéng, quán cháng yuē èrbǎi duō gōnglǐ. Zhèlǐ bù jǐn yǒu zhuàngguān de xiágǔ fēngguāng, hái yùnhán zhe fēngfù de lìshǐ wénhuà, shì Zhōngguó de zhòngyào wénhuà yíchǎn.</p>
+<p>Sānxiá yǐ qí dútè de zìrán jǐngguān xīyǐn le wúshù yóukè. Xiágǔ liǎng'àn gāoshān sǒnglì, xiágǔ shēnsuì ér xiǎnjùn, ràng rén gǎndào dà zìrán de zhuànglì hé lìliàng. Yóuqí shì Wū Xiá, liǎng'àn xuányá qiàobì rú dāoxiāo fǔpī, yúnwù liǎorào, fēngjǐng bǐ wǒ xiǎngxiàng de gèng měi, gèng shénmì. Chúle zìrán měijǐng, Chángjiāng Sānxiá hái shì lìshǐ shàng xǔduō zhòngyào shìjiàn de fāshēng dì, bǐrú céngjīng de zhànyì hé gǔdài wénhuà jiāoliú. Yīncǐ, Sānxiá bèi yùwéi wénhuà hé lìshǐ de jiāohuì diǎn.</p>
+<p>Rán'ér, Sānxiá Dàbà de jiànzào gǎibiàn le xiágǔ de shuǐwèi hé shēngtài huánjìng. Dàbà jiànchéng hòu, hé shuǐ bèi lánjié xíngchéng gāo shuǐwèi, shǐ dé hángyùn biàn dé gèngjiā fāngbiàn, tóngshí yě bǎohù le yán'àn chéngshì miǎn shòu hóngshuǐ zāihài de yǐngxiǎng. Dàn dàbà xiūjiàn guòchéng zhōng, xǔduō gǔlǎo de yízhǐ hé cūnzhuāng bèi yānmò, yībùfèn zìrán zīyuán yě shòudào le yǐngxiǎng. Zhè tǐxiàn le xiàndài fāzhǎn hé huánjìng bǎohù zhī jiān de máodùn.</p>
+<p>Zài lǚyóu fāngmiàn, Sānxiá fēngjǐngqū tígōng le fēngfù de huódòng hé tǐyàn. Yóukè kěyǐ chéngzuò yóuchuán, yán jiāng ér xià, xīnshǎng liǎng'àn de qiàobì hé gǔshù. Chuán shàng dǎoyóu tōngcháng huì jièshào Sānxiá de lìshǐ gùshì hé dìlǐ zhīshì, bāngzhù yóukè gèng hǎo de liǎojiě zhè piàn shénqí de tǔdì. Cǐwài, fùjìn hái yǒu xǔduō bówùguǎn hé wénhuà zhǎnlǎn, zhǎnshì Sānxiá dìqū de mínsú fēngqíng hé chuántǒng gōngyì.</p>
+<p>Zǒngtǐ lái shuō, Chángjiāng Sānxiá shì yīgè jí lìshǐ wénhuà hé zìrán měijǐng yú yītǐ de dìfāng. Yǔ qítā lǚyóu jǐngdiǎn xiāngbǐ, zhèlǐ de fēngjǐng gèng jiā zhuàngguān, lìshǐ gèng jiǔyǎo. Suīrán xiàndài de kāifā dàilái le biànhuà, dàn Sānxiá yīrán bǎochí zhe tā dútè de mèilì, děngdài zhe gèng duō yóukè lái tànfǎng hé gǎnshòu. Duìyú xuéxí Zhōngwén de péngyou lái shuō, liǎojiě Sānxiá bùjǐn néng tíshēng yǔyán nénglì, yě néng jiāshēn duì Zhōngguó wénhuà hé zìrán de rènshi.</p>
+            </div>
+        </details>
+        
+        <details class="story-details">
+            <summary>Show Translation</summary>
+            <div class="story-trans">
+                <p>The Yangtze River’s Three Gorges is one of China’s most famous natural scenic areas, located in the middle and upper reaches of the Yangtze River, spanning Hubei Province and Chongqing City. The Three Gorges consist of Qutang Gorge, Wu Gorge, and Xiling Gorge, with a total length of over two hundred kilometers. This area not only features magnificent gorge landscapes but also contains rich historical and cultural heritage, making it an important cultural site in China.</p>
+<p>The Three Gorges attract countless tourists due to their unique natural scenery. Tall mountains stand on both sides of the gorge, which is deep and steep, making people feel the grandeur and power of nature. Especially Wu Gorge, where the cliffs on both sides are as if cut by knives and axes, shrouded in mist, with scenery more beautiful and mysterious than imagined. Besides the natural beauty, the Yangtze Three Gorges is also the site of many important historical events, such as ancient battles and cultural exchanges. Therefore, the Three Gorges are praised as a convergence point of culture and history.</p>
+<p>However, the construction of the Three Gorges Dam changed the water levels and ecological environment of the gorge. After the dam was completed, the river was blocked to form a high water level, which made navigation more convenient and also protected riverside cities from flood disasters. But during the dam construction, many ancient sites and villages were submerged, and part of the natural resources were affected. This reflects the conflict between modern development and environmental protection.</p>
+<p>Regarding tourism, the Three Gorges Scenic Area offers a variety of activities and experiences. Visitors can take cruise ships down the river, enjoying the steep cliffs and ancient trees along the banks. The guides on the boat usually introduce the history and geography of the Three Gorges, helping visitors better understand this magical land. Additionally, there are many museums and cultural exhibitions nearby showcasing the local customs and traditional crafts of the Three Gorges area.</p>
+<p>Overall, the Yangtze Three Gorges is a place that integrates historical culture and natural beauty. Compared with other tourist destinations, the scenery here is more magnificent and the history is longer. Although modern developments have brought changes, the Three Gorges still maintain their unique charm, waiting for more visitors to explore and experience. For friends learning Chinese, understanding the Three Gorges not only improves language abilities but also deepens knowledge about Chinese culture and nature.</p>
+            </div>
+        </details>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📝 Vocabulary (18 words)</div>
+                
+        <div class="vocab-row">
+            <span class="word">长江</span>
+            <div class="vocab-info">
+                <span class="romanization">Chángjiāng</span> <span class="meaning">Yangtze River</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">长江是中国最长的河流。</span>
+                    <button onclick="speak('长江是中国最长的河流。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Chángjiāng shì Zhōngguó zuì cháng de héliú.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Yangtze River is the longest river in China.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('长江')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">三峡</span>
+            <div class="vocab-info">
+                <span class="romanization">Sānxiá</span> <span class="meaning">Three Gorges</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">三峡是著名的自然风景区。</span>
+                    <button onclick="speak('三峡是著名的自然风景区。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Sānxiá shì zhùmíng de zìrán fēngjǐngqū.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Three Gorges is a famous natural scenic area.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('三峡')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">壮观</span>
+            <div class="vocab-info">
+                <span class="romanization">zhuàngguān</span> <span class="meaning">magnificent, spectacular</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">长江三峡的峡谷风景非常壮观。</span>
+                    <button onclick="speak('长江三峡的峡谷风景非常壮观。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Chángjiāng Sānxiá de xiágǔ fēngjǐng fēicháng zhuàngguān.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The gorge scenery of the Yangtze Three Gorges is very magnificent.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('壮观')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">峡谷</span>
+            <div class="vocab-info">
+                <span class="romanization">xiágǔ</span> <span class="meaning">gorge, canyon</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">峡谷两岸高山耸立。</span>
+                    <button onclick="speak('峡谷两岸高山耸立。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Xiágǔ liǎng'àn gāoshān sǒnglì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Tall mountains stand on both sides of the gorge.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('峡谷')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">历史</span>
+            <div class="vocab-info">
+                <span class="romanization">lìshǐ</span> <span class="meaning">history</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">这里有丰富的历史文化。</span>
+                    <button onclick="speak('这里有丰富的历史文化。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Zhèlǐ yǒu fēngfù de lìshǐ wénhuà.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>There is rich historical culture here.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('历史')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">文化遗产</span>
+            <div class="vocab-info">
+                <span class="romanization">wénhuà yíchǎn</span> <span class="meaning">cultural heritage</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">三峡是中国的重要文化遗产。</span>
+                    <button onclick="speak('三峡是中国的重要文化遗产。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Sānxiá shì Zhōngguó de zhòngyào wénhuà yíchǎn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Three Gorges are an important cultural heritage of China.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('文化遗产')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">水坝</span>
+            <div class="vocab-info">
+                <span class="romanization">shuǐbà</span> <span class="meaning">dam</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">三峡大坝改变了峡谷的水位。</span>
+                    <button onclick="speak('三峡大坝改变了峡谷的水位。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Sānxiá Dàbà gǎibiàn le xiágǔ de shuǐwèi.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Three Gorges Dam changed the water level of the gorge.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('水坝')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">建造</span>
+            <div class="vocab-info">
+                <span class="romanization">jiànzào</span> <span class="meaning">to build, to construct</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">大坝是在人们的努力下建造的。</span>
+                    <button onclick="speak('大坝是在人们的努力下建造的。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Dàbà shì zài rénmen de nǔlì xià jiànzào de.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The dam was built through people's efforts.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('建造')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">生态环境</span>
+            <div class="vocab-info">
+                <span class="romanization">shēngtài huánjìng</span> <span class="meaning">ecological environment</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">建坝影响了生态环境。</span>
+                    <button onclick="speak('建坝影响了生态环境。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Jiànbà yǐngxiǎng le shēngtài huánjìng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The dam construction affected the ecological environment.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('生态环境')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">航运</span>
+            <div class="vocab-info">
+                <span class="romanization">hángyùn</span> <span class="meaning">navigation, shipping</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">大坝使航运更加方便。</span>
+                    <button onclick="speak('大坝使航运更加方便。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Dàbà shǐ hángyùn gèngjiā fāngbiàn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The dam made navigation more convenient.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('航运')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">洪水灾害</span>
+            <div class="vocab-info">
+                <span class="romanization">hóngshuǐ zāihài</span> <span class="meaning">flood disaster</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">大坝保护了城市免受洪水灾害。</span>
+                    <button onclick="speak('大坝保护了城市免受洪水灾害。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Dàbà bǎohù le chéngshì miǎn shòu hóngshuǐ zāihài.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The dam protected the city from flood disasters.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('洪水灾害')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">遗址</span>
+            <div class="vocab-info">
+                <span class="romanization">yízhǐ</span> <span class="meaning">ruins, site</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">古老的遗址被水淹没了。</span>
+                    <button onclick="speak('古老的遗址被水淹没了。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Gǔlǎo de yízhǐ bèi shuǐ yānmò le.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Ancient ruins were submerged by water.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('遗址')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">游船</span>
+            <div class="vocab-info">
+                <span class="romanization">yóuchuán</span> <span class="meaning">tour boat, cruise ship</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">游客乘坐游船欣赏风景。</span>
+                    <button onclick="speak('游客乘坐游船欣赏风景。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Yóukè chéngzuò yóuchuán xīnshǎng fēngjǐng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>Tourists take cruise ships to enjoy the scenery.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('游船')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">导游</span>
+            <div class="vocab-info">
+                <span class="romanization">dǎoyóu</span> <span class="meaning">tour guide</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">导游介绍三峡的历史和地理。</span>
+                    <button onclick="speak('导游介绍三峡的历史和地理。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Dǎoyóu jièshào Sānxiá de lìshǐ hé dìlǐ.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The tour guide introduces the history and geography of the Three Gorges.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('导游')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">民俗</span>
+            <div class="vocab-info">
+                <span class="romanization">mínsú</span> <span class="meaning">folk customs</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">博物馆展示了当地的民俗风情。</span>
+                    <button onclick="speak('博物馆展示了当地的民俗风情。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Bówùguǎn zhǎnshì le dàngdì de mínsú fēngqíng.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The museum displays the local folk customs.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('民俗')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">传统工艺</span>
+            <div class="vocab-info">
+                <span class="romanization">chuántǒng gōngyì</span> <span class="meaning">traditional craftsmanship</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">三峡地区保留了许多传统工艺。</span>
+                    <button onclick="speak('三峡地区保留了许多传统工艺。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Sānxiá dìqū bǎoliú le xǔduō chuántǒng gōngyì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Three Gorges area has preserved many traditional crafts.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('传统工艺')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">魅力</span>
+            <div class="vocab-info">
+                <span class="romanization">mèilì</span> <span class="meaning">charm, attractiveness</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">三峡依然保持着独特的魅力。</span>
+                    <button onclick="speak('三峡依然保持着独特的魅力。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Sānxiá yīrán bǎochí zhe dútè de mèilì.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>The Three Gorges still maintain their unique charm.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('魅力')">🔊</button>
+        </div>
+        
+        <div class="vocab-row">
+            <span class="word">矛盾</span>
+            <div class="vocab-info">
+                <span class="romanization">máodùn</span> <span class="meaning">conflict, contradiction</span>
+                
+            <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-weight:500; font-size:0.95rem; color:#334155;">现代发展和环境保护之间存在矛盾。</span>
+                    <button onclick="speak('现代发展和环境保护之间存在矛盾。')" style="background:none; border:none; cursor:pointer; font-size:0.85rem; opacity:0.6;">🔊</button>
+                </div>
+                <div style='font-size:0.85rem; color:#64748b; margin-top:2px;'>Xiàndài fāzhǎn hé huánjìng bǎohù zhī jiān cúnzài máodùn.</div>
+                <div style='font-size:0.85rem; color:#94a3b8; font-style:italic; margin-top:1px;'>There is a conflict between modern development and environmental protection.</div>
+            </div>
+            
+            </div>
+            <button class="tts-btn" onclick="speak('矛盾')">🔊</button>
+        </div>
+        
+            </div>
+            
+            <div class="section" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 40px;">
+                <div class="section-title">📐 Grammar Points</div>
+                
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">被字句</div>
+                <div class="grammar-explanation">被字句用于表示被动语态，表示动作的承受者，如“三峡大坝被建造后，水位改变了”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">许多古老的遗址和村庄被淹没了。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">比……更……</div>
+                <div class="grammar-explanation">比较级结构，用于表示两者之间的比较，说明一种程度更高，如“三峡的风景比我想象的更壮观”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">风景比我想象的更美。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">不仅……还……</div>
+                <div class="grammar-explanation">用于连接两个并列的内容，表示不但前者成立，后者也成立，如“这里不仅有壮观的峡谷风光，还蕴含着丰富的历史文化”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">这里不仅有自然美景，还有丰富的历史。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">使得……</div>
+                <div class="grammar-explanation">使得表示使产生某种结果或状态，常用来说明原因和结果之间的关系，如“大坝建成后，使得航运变得更加方便”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">大坝使得航运更加方便。</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grammar-card">
+            <div class="grammar-body">
+                <div class="grammar-pattern">对于……来说</div>
+                <div class="grammar-explanation">用于表示对某人或某事的立场或看法，如“对于学习中文的朋友来说，了解三峡很重要”。</div>
+                <div class="grammar-example-box">
+                    <span class="grammar-example-badge">Example</span>
+                    <div class="grammar-example-content">对于学生来说，这个课文很有意义。</div>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+</body>
+</html>
