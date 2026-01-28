@@ -1,45 +1,45 @@
 # Language Factory - AI-Powered Language Learning Platform
 
-## 📖 Tổng quan
+## 📖 Overview
 
-Language Factory là một nền tảng học ngôn ngữ thông minh sử dụng AI để tự động tạo ra bài học theo từng chủ đề và trình độ cho nhiều ngôn ngữ (Tiếng Trung, Tiếng Anh, Tiếng Tây Ban Nha). Hệ thống sử dụng CrewAI với nhiều agent chuyên biệt để tạo ra nội dung học tập toàn diện.
+Language Factory is an intelligent language learning platform that uses AI to automatically generate personalized lessons based on topics and proficiency levels for multiple languages (Chinese, English, Spanish). The system utilizes CrewAI with specialized agents to create comprehensive educational content.
 
-## 🎯 Tính năng chính
+## 🎯 Key Features
 
-### 📚 Tạo bài học tự động
-- **Nhiều ngôn ngữ:** Hỗ trợ Tiếng Trung (HSK 1-6), Tiếng Anh (CEFR A1-C2), Tiếng Tây Ban Nha (CEFR A1-C2)
-- **Nhiều trình độ:** Từ cơ bản đến nâng cao theo từng hệ thống cấp độ chuẩn
-- **Nội dung đa dạng:** Mỗi bài học bao gồm:
-  - 📋 Mục tiêu bài học (Lesson Objectives)
-  - 📖 Bài đọc theo chủ đề (Story/Reading)
-  - 📝 Từ vựng theo ngữ cảnh (Vocabulary)
-  - 📐 Ngữ pháp trọng tâm (Grammar Points)
-  - 📋 Bài tập trắc nghiệm (Quiz)
-  - ✍️ Đề bài viết (Writing Prompt)
+### 📚 Automatic Lesson Generation
+- **Multilingual Support:** Supports Chinese (HSK 1-6), English (CEFR A1-C2), and Spanish (CEFR A1-C2).
+- **Multiple Proficiency Levels:** From beginner to advanced, following standardized level systems.
+- **Comprehensive Content:** Each lesson includes:
+  - 📋 Lesson Objectives
+  - 📖 Thematic Reading (Story/Reading Passage)
+  - 📝 Contextual Vocabulary
+  - 📐 Grammar Focus points
+  - 📋 Interactive Quizzes
+  - ✍️ Writing Prompts
 
-### 🤖 Hệ thống AI Agents
-Hệ thống sử dụng 5 agent chuyên biệt với CrewAI:
+### 🤖 AI Agent System
+The system employs 5 specialized agents using CrewAI:
 
-1. **Lesson Planner Agent** - Lên kế hoạch bài học
-2. **Content Writer Agent** - Viết nội dung bài đọc
-3. **Linguist Agent** - Phân tích từ vựng và ngữ pháp
-4. **Examiner Agent** - Tạo bài tập kiểm tra
-5. **Writing Assessor Agent** - Đề bài viết và chấm điểm
+1. **Lesson Planner Agent** - Plans the lesson structure and objectives.
+2. **Content Writer Agent** - Dynamically writes the reading material.
+3. **Linguist Agent** - Analyzes vocabulary and explains grammar points.
+4. **Examiner Agent** - Creates assessment quizzes.
+5. **Writing Assessor Agent** - Generates writing prompts and provides detailed grading.
 
-### ✍️ Hệ thống Writing
-- **Tự động đề bài:** Generate đề bài viết theo chủ đề và trình độ
-- **Chấm điểm tự động:** AI đánh giá bài viết với feedback chi tiết
-- **Phản hồi đa chiều:** Đánh giá về ngữ pháp, từ vựng, cấu trúc câu
+### ✍️ Writing System
+- **Automatic Prompt Generation:** Creates writing tasks aligned with the lesson topic and level.
+- **Automated Grading:** AI evaluates submissions with detailed feedback.
+- **Multi-dimensional Feedback:** Assessment covers grammar, vocabulary usage, and sentence structure.
 
-## 🏗️ Kiến trúc hệ thống
+## 🏗️ System Architecture
 
 ### Frontend (Next.js + TypeScript)
 ```
 app/
-├── landing/          # Trang đăng nhập/đăng ký
-├── dashboard/        # Dashboard người dùng
-├── components/       # Components UI
-├── lib/             # Redux store và utilities
+├── landing/          # Login/Signup pages
+├── dashboard/        # User dashboard
+├── components/       # UI Components
+├── lib/             # Redux store and utilities
 └── StoreProvider.tsx # Redux provider
 ```
 
@@ -48,9 +48,9 @@ app/
 #### Agent Service (Python + FastAPI)
 ```
 ChineseLearning/agent_service/
-├── agents.py        # Định nghĩa các AI agents
-├── tasks.py         # Định nghĩa tasks cho agents
-├── main.py          # Logic orchestration chính
+├── agents.py        # AI agents definitions
+├── tasks.py         # Task definitions for agents
+├── main.py          # Main orchestration logic
 ├── api.py           # FastAPI endpoints
 ├── cache.py         # Caching mechanism
 ├── monitoring.py    # Performance monitoring
@@ -67,26 +67,26 @@ ChineseLearning/auth_service/
 └── middleware.py    # Auth middleware
 ```
 
-## 🚀 Cài đặt và chạy
+## 🚀 Installation & Setup
 
-### Yêu cầu
+### Prerequisites
 - Node.js 18+
 - Python 3.10+
 - PM2 (Process Manager)
 - OpenAI API Key
 
-### 1. Clone repository
+### 1. Clone the Repository
 ```bash
 git clone <repository-url>
 cd HSKGPT
 ```
 
-### 2. Cài đặt Frontend
+### 2. Frontend Setup
 ```bash
 npm install
 ```
 
-### 3. Cài đặt Backend Dependencies
+### 3. Backend Dependencies Setup
 ```bash
 # Agent Service
 cd ChineseLearning/agent_service
@@ -97,8 +97,8 @@ cd ../auth_service
 pip install -r requirements.txt
 ```
 
-### 4. Cấu hình Environment Variables
-Tạo file `.env` trong `ChineseLearning/agent_service/`:
+### 4. Configure Environment Variables
+Create a `.env` file in `ChineseLearning/agent_service/`:
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
 ENVIRONMENT=development
@@ -106,30 +106,30 @@ OPTIMIZED_MODEL=gpt-3.5-turbo
 PYTHONUNBUFFERED=1
 ```
 
-### 5. Khởi động Services
+### 5. Start Services with PM2
 ```bash
-# Khởi động tất cả services với PM2
+# Start all services using ecosystem configuration
 pm2 start ecosystem.config.js
 
-# Kiểm tra status
+# Check service status
 pm2 status
 
-# Xem logs
+# Monitor logs
 pm2 logs
 ```
 
-### 6. Chạy Frontend
+### 6. Run Frontend
 ```bash
 npm run dev
 ```
 
-Truy ứng dụng tại: `http://localhost:3000`
+The application will be available at: `http://localhost:3000`
 
 ## 📡 API Endpoints
 
 ### Agent Service (Port 8000)
 
-#### Tạo bài học
+#### Lesson Generation
 ```http
 POST /generate
 Content-Type: application/json
@@ -141,7 +141,7 @@ Content-Type: application/json
 }
 ```
 
-#### Gợi ý chủ đề
+#### Topic Suggestion
 ```http
 POST /suggest-topic
 Content-Type: application/json
@@ -152,7 +152,7 @@ Content-Type: application/json
 }
 ```
 
-#### Writing - Đề bài
+#### Writing - Prompt Generation
 ```http
 POST /writing/prompt
 Content-Type: application/json
@@ -164,247 +164,241 @@ Content-Type: application/json
 }
 ```
 
-#### Writing - Chấm điểm
+#### Writing - Grading
 ```http
 POST /writing/grade
 Content-Type: application/json
 
 {
-  "submission": "Nội dung bài viết...",
+  "submission": "Your essay content...",
   "prompt_data": {...},
   "language": "chinese"
 }
 ```
 
-#### Các endpoint khác
-- `GET /languages` - Danh sách ngôn ngữ hỗ trợ
-- `GET /health` - Kiểm tra sức khỏe service
-- `GET /` - Thông tin service
+#### Other Endpoints
+- `GET /languages` - List of supported languages.
+- `GET /health` - Service health check.
+- `GET /` - Basic service information.
 
 ### Auth Service (Port 8001)
 
 #### Authentication
 ```http
-POST /register        # Đăng ký
-POST /login           # Đăng nhập
-POST /logout          # Đăng xuất
-GET  /me              # Thông tin user
+POST /register        # User Registration
+POST /login           # User Login
+POST /logout          # Log out
+GET  /me              # Get Current User Information
 ```
 
-## 🎨 Flow tạo bài học
+## 🎨 Lesson Creation Flow
 
-### 1. Input từ User
-- Chọn ngôn ngữ (Chinese/English/Spanish)
-- Chọn trình độ (HSK 1-6 hoặc CEFR A1-C2)
-- Nhập chủ đề hoặc để tự động gợi ý
+### 1. User Input
+- Select Language (Chinese/English/Spanish)
+- Select Level (HSK 1-6 or CEFR A1-C2)
+- Enter a topic or use the automatic suggestion tool
 
 ### 2. AI Processing Pipeline
 ```
-Topic Suggestion (nếu cần)
-       ↓
-   Lesson Planning
-       ↓
-   Content Writing
-       ↓
-  Language Analysis
-       ↓
+Topic Suggestion (Optional)
+        ↓
+    Lesson Planning
+        ↓
+    Content Writing
+        ↓
+   Language Analysis
+        ↓
      Quiz Creation
-       ↓
-  Writing Prompt
+        ↓
+    Writing Prompt
 ```
 
 ### 3. Output
-- **Markdown content** - Nội dung đầy đủ
-- **Interactive HTML** - Giao diện học tập tương tác
-- **JSON data** - Dữ liệu cấu trúc cho frontend
-- **Files saved** - Lưu trữ local (.md, .html, .json)
+- **Markdown Content** - Full lesson text for reference.
+- **Interactive HTML** - Dynamic interface for an engaging learning experience.
+- **JSON Data** - Structured data for frontend rendering.
+- **Local Storage** - Files saved as .md, .html, and .json.
 
-## 🧠 AI Agents Chi tiết
+## 🧠 Detailed AI Agents
 
 ### 1. Lesson Planner Agent
-- **Vai trò:** Lên kế hoạch cấu trúc bài học
-- **Output:** Mục tiêu, từ vựng chính, điểm ngữ pháp
-- **Model:** GPT-3.5-turbo, temperature=0.3
+- **Role:** Designs the lesson architecture.
+- **Output:** Learning objectives, key vocabulary list, and grammar focuses.
+- **Model:** GPT-3.5-turbo (Temp: 0.3)
 
 ### 2. Content Writer Agent  
-- **Vai trò:** Viết bài đọc theo chủ đề
-- **Output:** Story/content 200-1200 từ tùy trình độ
-- **Model:** GPT-3.5-turbo, temperature=0.8
+- **Role:** Authors the thematic reading content.
+- **Output:** Engaging stories/passages (200-1200 words depending on level).
+- **Model:** GPT-3.5-turbo (Temp: 0.8)
 
 ### 3. Linguist Agent
-- **Vai trò:** Phân tích ngôn ngữ học
-- **Output:** Danh sách từ vựng, giải thích ngữ pháp
-- **Model:** GPT-3.5-turbo, temperature=0.2
+- **Role:** Performs linguistic analysis.
+- **Output:** Vocabulary definitions and grammatical explanations.
+- **Model:** GPT-3.5-turbo (Temp: 0.2)
 
 ### 4. Examiner Agent
-- **Vai trò:** Tạo bài tập kiểm tra
-- **Output:** Quiz trắc nghiệm, điền khuyết
-- **Model:** GPT-3.5-turbo, temperature=0.4
+- **Role:** Develops assessment materials.
+- **Output:** Multiple-choice and fill-in-the-blank quizzes.
+- **Model:** GPT-3.5-turbo (Temp: 0.4)
 
 ### 5. Writing Assessor Agent
-- **Vai trò:** Đề bài và chấm điểm writing
-- **Output:** Writing prompts, detailed feedback
-- **Model:** GPT-3.5-turbo, temperature=0.5
+- **Role:** Manages writing assessments.
+- **Output:** Thematic writing prompts and detailed corrective feedback.
+- **Model:** GPT-3.5-turbo (Temp: 0.5)
 
 ## 📊 Performance Optimization
 
 ### Caching System
-- **Memory Cache:** TTL 30 phút cho recent requests
-- **File Cache:** Persistent storage cho cache
-- **Cache Hit Rate:** ~80-90% cho repeated requests
+- **Memory Cache:** 30-minute TTL for frequent requests.
+- **File Cache:** Persistent storage for long-term caching.
+- **Cache Hit Rate:** ~80-90% for repeated requests.
 
 ### Request Management
-- **Queue System:** Priority queue với max 2 concurrent requests
-- **Load Balancing:** Auto-scaling based on system load
-- **Timeout Handling:** 10 phút timeout cho lesson generation
+- **Queue System:** Priority-based queueing with 2 concurrent requests max.
+- **Load Balancing:** Dynamic scaling based on system load.
+- **Timeout Handling:** 10-minute maximum for full lesson generation.
 
 ### Monitoring
-- **Performance Metrics:** Response time, success rate, error tracking
-- **System Health:** CPU, Memory, Disk monitoring
-- **Cache Analytics:** Hit rate, efficiency tracking
+- **Performance Metrics:** Tracks response times, success rates, and errors.
+- **System Health:** Continuous monitoring of CPU, RAM, and Disk usage.
+- **Cache Analytics:** Monitors hit rates and optimization efficiency.
 
-## 🔧 Development
+## 🔧 Development Stack
 
 ### Frontend Technologies
-- **Framework:** Next.js 14 with App Router
+- **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **State Management:** Redux Toolkit
 - **Styling:** Tailwind CSS
-- **UI Components:** Custom components với Lucide icons
+- **Iconography:** Lucide React
 
 ### Backend Technologies  
 - **Framework:** FastAPI (Python)
 - **AI Framework:** CrewAI
 - **Database:** SQLAlchemy (SQLite/PostgreSQL)
-- **Authentication:** JWT
+- **Security:** JWT Authentication
 - **Process Management:** PM2
 
 ### AI/ML Stack
-- **LLM:** OpenAI GPT-3.5-turbo/GPT-4
-- **Agent Framework:** CrewAI
-- **Prompt Engineering:** Optimized prompts cho từng agent type
-- **Token Optimization:** Efficient token usage
+- **Models:** OpenAI GPT-3.5-turbo / GPT-4
+- **Prompt Engineering:** Specialized, optimized prompt templates per agent.
+- **Efficiency:** Optimized token usage for cost and speed.
 
-## 📈 Performance Metrics
+## 📈 Performance Benchmarks
 
 ### Response Times
-- **Cache Hit:** <1 giây
-- **Normal Request:** 15-25 giây (tối ưu 60-70% so với trước)
-- **Queued Request:** 2-5 phút tùy load
+- **Cache Hit:** < 1 second
+- **Standard Generation:** 15-25 seconds (60-70% improvement over initial versions)
+- **Queued Tasks:** 2-5 minutes depending on concurrent load
 
 ### System Capacity
 - **Concurrent Users:** 50-100 active users
-- **Daily Lessons:** 500-1000 lessons
-- **Cache Storage:** 50MB-100MB
+- **Daily Throughput:** 500-1000 lessons
+- **Cache Footprint:** 50MB-100MB
 
 ## 🛠️ Troubleshooting
 
 ### Common Issues
 
-#### Service không khởi động
+#### Services Fail to Start
 ```bash
-# Kiểm tra logs
+# Check service logs
 pm2 logs agent-service
 
-# Restart service
+# Restart the service
 pm2 restart agent-service
 
-# Kiểm tra port
-netstat -an | grep 8000
+# Verify port availability
+netstat -an | findstr :8000
 ```
 
-#### Lỗi CrewAI/Python
+#### Python/CrewAI Errors
 ```bash
-# Kiểm tra Python version
-python --version  # Should be 3.10+
+# Verify Python version
+python --version  # Must be 3.10+
 
-# Reinstall dependencies
+# Force reinstall dependencies
 pip install --force-reinstall -r requirements.txt
 ```
 
-#### Frontend không kết nối được API
+#### Frontend Cannot Connect to API
 ```bash
-# Kiểm tra API status
+# Test API locally
 curl http://localhost:8000/health
 
-# Kiểm tra CORS configuration
-# Đảm bảo agent-service đang chạy
+# Check CORS settings in Backend
+# Ensure agent-service is currently running
 ```
 
 ### Debug Mode
 ```bash
-# Chạy agent service trong debug mode
+# Run Agent Service in reload mode
 cd ChineseLearning/agent_service
 uvicorn api:app --reload --host 0.0.0.0 --port 8000
 
-# Chạy auth service trong debug mode  
+# Run Auth Service in reload mode
 cd ../auth_service
 uvicorn api:app --reload --host 0.0.0.0 --port 8001
 ```
 
 ## 📝 Logging & Monitoring
 
-### Log Files
-- **Agent Service:** `logs/agent-service-*.log`
-- **Auth Service:** `logs/auth-service-*.log`
-- **PM2 Logs:** `pm2 logs [service-name]`
+### Log Locations
+- **Agent Service Logs:** `logs/agent-service-*.log`
+- **Auth Service Logs:** `logs/auth-service-*.log`
+- **PM2 Centralized Logs:** `pm2 logs [service-name]`
 
-### Performance Monitoring
-```bash
-# Check performance stats
-curl http://localhost:8000/performance/stats
-
-# Check queue status
-curl http://localhost:8000/queue/stats
-```
+### Metrics Endpoints
+- **Performance Stats:** `GET http://localhost:8000/performance/stats`
+- **Queue Status:** `GET http://localhost:8000/queue/stats`
 
 ## 🚀 Deployment
 
 ### Production Setup
-1. **Environment Variables:** Cấu hình production keys
-2. **Database:** Setup PostgreSQL cho production
-3. **Load Balancer:** Nginx/Apache cho frontend
-4. **SSL:** HTTPS certificates
-5. **Monitoring:** Setup alerts cho system health
+1. **Environment Variables:** Secure production keys and environment flags.
+2. **Database:** Switch to PostgreSQL for reliable production storage.
+3. **Web Server:** Use Nginx/Apache as a reverse proxy for the frontend.
+4. **Security:** Implement SSL/TLS certificates (HTTPS).
+5. **Alerting:** Configure threshold-based system health alerts.
 
-### PM2 Production Commands
+### PM2 Production Operations
 ```bash
-# Start production
+# Start with production environment
 pm2 start ecosystem.config.js --env production
 
-# Save PM2 config
+# Persist current processes
 pm2 save
 
-# Setup startup script
+# Configure OS startup hook
 pm2 startup
 ```
 
 ## 🤝 Contributing
 
-1. Fork repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Team
+## 👥 The Team
 
-- **Backend Developer:** AI/Python Engineer
-- **Frontend Developer:** React/Next.js Developer  
-- **AI Specialist:** Prompt Engineering & CrewAI Expert
-- **DevOps:** System Administration & Deployment
+- **Backend Development:** AI & Python Engineers
+- **Frontend Development:** React & Next.js Specialists
+- **AI Integration:** Prompt Engineering & CrewAI Experts
+- **Infrastructure:** DevOps & System Administration
 
 ## 📞 Support
 
-For support and questions:
-- Create Issue in GitHub repository
+For any questions or issues:
+- Open an Issue on the GitHub repository.
 - Email: support@languagefactory.com
-- Documentation: [Wiki](link-to-wiki)
+- Visit the [Project Wiki](link-to-wiki) for more detailed documentation.
 
 ---
 
-**Language Factory** - Transform Language Learning with AI 🚀
+**Language Factory** - Empowering Language Learning through AI 🚀
