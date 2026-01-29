@@ -451,12 +451,44 @@ export default function Home() {
                   onClick={async () => {
                     if (loading || suggesting) return;
                     setSuggesting(true);
+
+                    // 1. Try to get topic from DB Warehouse
+                    try {
+                      setTopic("Checking Library...");
+                      if (authApiUrl && token) {
+                        const dbRes = await fetch(`${authApiUrl}/topics/suggest-db`, {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                          },
+                          body: JSON.stringify({ level, language })
+                        });
+
+                        if (dbRes.ok) {
+                          const dbData = await dbRes.json();
+                          if (dbData.topic) {
+                            setTopic(dbData.topic);
+                            setSuggesting(false);
+                            return; // Found in DB, stop here
+                          }
+                        }
+                      }
+                    } catch (e) {
+                      console.warn("Topic Warehouse fetch failed:", e);
+                    }
+
+                    // 2. Fallback to Agent Service
                     setTopic("Asking AI...");
                     try {
                       const res = await fetch(`${apiBaseUrl}/suggest-topic`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ level, language })
+                        body: JSON.stringify({
+                          level,
+                          language,
+                          excluded_topics: history.map(h => h.topic)
+                        })
                       });
                       const data = await res.json();
                       if (data.topic) setTopic(data.topic);

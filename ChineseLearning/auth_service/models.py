@@ -85,3 +85,22 @@ class LessonHistory(LessonHistoryBase):
 
     class Config:
         from_attributes = True
+
+
+# ============== Topic Models ==============
+
+class TopicBase(BaseModel):
+    name: str
+    level: str
+    language: str = "chinese"
+
+class TopicCreate(TopicBase):
+    pass
+
+class Topic(TopicBase):
+    id: UUID4
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+

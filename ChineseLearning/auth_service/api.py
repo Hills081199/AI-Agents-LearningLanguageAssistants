@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, sessions, history
+from routers import auth, sessions, history, topics
 
 app = FastAPI(
     title="Language Learning Auth Service",
@@ -27,6 +27,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(sessions.router)
 app.include_router(history.router)
+app.include_router(topics.router)
 
 
 @app.get("/")

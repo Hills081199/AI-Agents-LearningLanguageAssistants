@@ -70,6 +70,7 @@ class LessonResponse(BaseModel):
 class TopicRequest(BaseModel):
     level: str = "HSK 3"
     language: str = "chinese"
+    excluded_topics: Optional[List[str]] = []
 
 class WritingPromptRequest(BaseModel):
     topic: str
@@ -126,10 +127,15 @@ def suggest_topic(request: TopicRequest):
         if language not in recent_suggestions:
             recent_suggestions[language] = []
         
+        # Combine recent suggestions with client-provided exclusions
+        server_side_exclusions = recent_suggestions[language]
+        client_side_exclusions = request.excluded_topics or []
+        all_excluded = list(set(server_side_exclusions + client_side_exclusions))
+
         topic = get_topic_suggestion(
             request.level, 
             language=language,
-            additional_excluded=recent_suggestions[language]
+            additional_excluded=all_excluded
         )
         
         # Add to recent suggestions, keep list manageable

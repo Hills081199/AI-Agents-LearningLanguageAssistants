@@ -40,6 +40,25 @@ def create_lesson_history(
         
         if not response.data:
             raise HTTPException(status_code=500, detail="Failed to save lesson history")
+            
+        # Also ensure topic exists in "topics" warehouse (Warehouse Auto-Fill)
+        try:
+            topic_data = {
+                "name": data["topic"],
+                "level": data["level"],
+                "language": data.get("language", "chinese")
+            }
+            # Try to insert, ignore if exists (relying on unique constraint)
+            # Note: Supabase-js/py doesn't have explicit ON CONFLICT DO NOTHING helper easily accessible 
+            # without upsert or rpc, but simple insert + existing check works or upsert with ignore.
+            # Using upsert with on_conflict is cleaner if supported, otherwise check-then-insert.
+            # Simple approach: Check existence first to avoid error log noise
+            existing_topic = supabase.table("topics").select("id").eq("name", topic_data["name"]).eq("level", topic_data["level"]).eq("language", topic_data["language"]).execute()
+            if not existing_topic.data:
+                 supabase.table("topics").insert(topic_data).execute()
+        except Exception as e:
+            # Non-critical, just log warning
+            print(f"Warning: Failed to auto-save topic to warehouse: {e}")
         
         return response.data[0]
     except HTTPException:
